@@ -2,29 +2,29 @@ import isMobile from '@/utils/is-mobile';
 
 import type { Notifications } from './types';
 
-const title = 'React PWA';
+const title = 'Abair';
 
-const email = 'auther-email@gmail.com';
+const email = 'sloanjs@tcd.ie';
 
-const repository = 'https://github.com/suren-atoyan/react-pwa';
+const repository = 'https://github.com/JohnSloan8/abair';
 
 const messages = {
   app: {
     crash: {
-      title: 'Oooops... Sorry, I guess, something went wrong. You can:',
+      title: 'Hmmmm... something went wrong. You can:',
       options: {
-        email: `contact with author by this email - ${email}`,
+        email: `contact the Abair team through this email - ${email}`,
         reset: 'Press here to reset the application',
       },
     },
   },
   loader: {
-    fail: 'Hmmmmm, there is something wrong with this component loading process... Maybe trying later would be the best idea',
+    fail: 'There is something wrong with this component loading process... please try again later',
   },
   images: {
     failed: 'something went wrong during image loading :(',
   },
-  404: 'Hey bro? What are you looking for?',
+  404: 'No route for this URL',
 };
 
 const dateFormat = 'MMMM DD, YYYY';
@@ -50,7 +50,7 @@ const defaultMetaTags = {
   image: '/cover.png',
   description: 'Starter kit for modern web applications',
 };
-const giphy404 = 'https://giphy.com/embed/xTiN0L7EW5trfOvEk0';
+const giphy404 = 'https://c.tenor.com/0T9VEI1iM5YAAAAC/father-ted.gif';
 
 export {
   loader,

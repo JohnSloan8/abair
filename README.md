@@ -1,19 +1,19 @@
-<a href="http://react-pwa.surenatoyan.com/" target="_blank" rel="noreferrer">
- <img src="./public/cover.png" title="Base App">
+<a href="https://abair.ie/" target="_blank" rel="noreferrer">
+ <img src="./public/favicon.svg" title="Abair Website">
 </a>
 
-# React-PWA - `v2` is here 🚀🎉⚡️
+# Abair
 
-**Starter kit for modern web applications!**
+**Irish Language Technologies**
 
 ## Synopsis
 
-This project (a GitHub template) is an opinionated setup for modern web applications.
-It's a combination of essential (and minimal) libraries/components/utils/etc., which developers usually need during the process of making modern React applications.
+This is the source code for the abair.ie project.
+It is extended from [this template](https://github.com/suren-atoyan/react-pwa)
 
 ## Motivation
 
-Almost all projects need to have a router, a UI framework, store integration, theming, error handling, base file/folder structure, a builder, some developer tools (eslint, prettier, etc), and many more. In this starter kit, we tried to put together the best options available from the above-mentioned fields. Out of the box, it provides a modern production-ready setup created by developers for developers 💚
+---
 
 ## Features
 
@@ -149,26 +149,6 @@ Your users will also be informed about the new version of your app:
 
 <img src="./public/pwa-reload.png" width="600" title="pwa reload">
 
-#### Performance
-
-After all these integrations the biggest bundle size is `~79KB`. It means even the first load will be pretty fast (in my case it's `1.1s`), further loads (already cached by `service worker` and `workbox`) will take `~0.25s`.
-
-<img src="./public/bundle.png" title="bundle">
-
-<img src="./public/audit.png" title="audit">
-
-NOTE: The performance is not 100 because it's running on demo server.
-
-#### Hotkeys
-
-A basic implementation of hotkeys is demonstrated here. Check the [src/sections/HotKeys](./src/sections/HotKeys/HotKeys.tsx) for more information.
-
-Currently, you can use the following hotkeys:
-
-`Alt+s` - to toggle the theme mode
-`Alt+t` - to toggle the sidebar
-`Alt+/` - to open the hotkeys dialog
-
 #### Error Handling
 
 Nobody likes white screens and crashes without any notes. In [src/error-handling](./src/error-handling) you can find the error handling implementation. Here you can find `withErrorHandler` high order component. You can wrap any component by this HOC and it will catch all errors and show a default or your custom fallback. Currently, the main APP component is wrapped by `withErrorHandler` HOC.
@@ -235,12 +215,6 @@ The last one is a router-based switcher. All routes are defined in [src/routes](
 
 ## Usage
 
-You can use this template by just pressing `Use this temaplte`.
-
-<img src="./public/use-template.png" width="300" title="Use this temaplte">
-
-Or you can fork/clone it.
-
 Install dependencies:
 
 ```bash
@@ -265,12 +239,6 @@ There are two more scripts:
 
 - `preview` command will boot up local static web server that serves the files from `dist` folder. It's an easy way to check if the production build looks OK in your local environment.
 - `https-preview` is the same, but with HTTPS. It's handy for testing your PWA capabilities in your local environment.
-
-## [Live Demo](https://react-pwa.surenatoyan.com/)
-
-<div>
- <img src="./public/demo-dark.png" width="280" title="Dark demo"> <img src="./public/demo-light.png" width="280" title="Light demo">
-</div>
 
 ## License
 

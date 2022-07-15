@@ -11,7 +11,6 @@ function NotFound() {
       <FullSizeCenteredFlexBox flexDirection="column">
         <iframe
           src={giphy404}
-          width="100%"
           height="50%"
           style={{ maxHeight: '60%', maxWidth: '100%' }}
           frameBorder="0"
