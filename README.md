@@ -139,8 +139,6 @@ Here how the base file/folder structure looks like:
 
 <img src="./public/file-folder-structure.png" title="file folder structure">
 
-TBD: more information about the file/folder structure will be added soon.
-
 #### PWA
 
 Out of the box, it's a `Progressive Web Application`. It can be installed on mobile and desktop devices 🙂, it can work offline, and many more. Check more about PWAs [here](https://web.dev/progressive-web-apps/)

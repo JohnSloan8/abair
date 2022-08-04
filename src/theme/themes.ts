@@ -1,3 +1,4 @@
+import { blue, green } from '@mui/material/colors';
 import { ThemeOptions } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
@@ -8,6 +9,18 @@ const sharedTheme = {
     background: {
       default: '#fafafa',
       paper: '#fff',
+    },
+    primary: {
+      wafer: green[50],
+      light: green[100],
+      main: green[600],
+      dark: green[800],
+    },
+    secondary: {
+      wafer: blue[50],
+      light: blue[100],
+      main: blue[600],
+      dark: blue[800],
     },
   },
   components: {
@@ -33,7 +46,6 @@ const sharedTheme = {
     },
   },
 } as ThemeOptions; // the reason for this casting is deepmerge return type
-// TODO (Suren): replace mui-utils-deepmerge with lodash or ramda deepmerge
 
 const themes: Record<Themes, ThemeOptions> = {
   light: deepmerge(sharedTheme, {
@@ -42,9 +54,6 @@ const themes: Record<Themes, ThemeOptions> = {
       background: {
         default: '#fafafa',
         paper: '#fff',
-      },
-      primary: {
-        main: '#3f51b5',
       },
     },
   }),

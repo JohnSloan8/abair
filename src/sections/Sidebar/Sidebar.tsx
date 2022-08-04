@@ -13,24 +13,31 @@ import useSidebar from '@/store/sidebar';
 
 function Sidebar() {
   const [isSidebarOpen, sidebarActions] = useSidebar();
-
   return (
     <SwipeableDrawer
-      anchor="right"
+      anchor="left"
       open={isSidebarOpen}
       onClose={sidebarActions.close}
       onOpen={sidebarActions.open}
       disableBackdropTransition={false}
-      swipeAreaWidth={30}
+      swipeAreaWidth={20}
+      transitionDuration={500}
     >
-      <List sx={{ width: 250, pt: (theme) => `${theme.mixins.toolbar.minHeight}px` }}>
+      <List
+        sx={{
+          width: 280,
+          pt: (theme) => `${theme.mixins.toolbar.minHeight}px`,
+        }}
+      >
         {Object.values(routes)
           .filter((route) => route.title)
           .map(({ path, title, icon: Icon }) => (
-            <ListItem sx={{ p: 0 }} key={path}>
+            <ListItem sx={{ py: 0, px: 1 }} key={path}>
               <ListItemButton onClick={sidebarActions.close} component={Link} to={path}>
-                <ListItemIcon>{Icon ? <Icon /> : <DefaultIcon />}</ListItemIcon>
-                <ListItemText>{title}</ListItemText>
+                <ListItemIcon sx={{ color: 'primary.dark' }}>
+                  {Icon ? <Icon /> : <DefaultIcon />}
+                </ListItemIcon>
+                <ListItemText sx={{ color: 'secondary.main' }}>{title}</ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
