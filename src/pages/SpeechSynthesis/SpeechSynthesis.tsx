@@ -1,15 +1,27 @@
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
+import InfoHeader from '@/components/InfoHeader';
 import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 function SpeechSynthesis() {
   return (
     <>
       <Meta title="speech synthesis" />
-      <FullSizeCenteredFlexBox>
-        <Typography variant="h3">Speech Synthesis</Typography>
-      </FullSizeCenteredFlexBox>
+      <InfoHeader title="Speech Synthesis" />
+      <Box component="form" noValidate autoComplete="off">
+        <TextField
+          sx={{ width: '50%', backgroundColor: 'white' }}
+          id="outlined-multiline-static"
+          label="Scríobh anseo"
+          multiline
+          rows={4}
+          defaultValue=""
+          autoFocus
+        />
+        <Button>Synthesise</Button>
+      </Box>
     </>
   );
 }

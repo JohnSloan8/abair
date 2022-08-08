@@ -1,15 +1,11 @@
-import Typography from '@mui/material/Typography';
-
+import InfoHeader from '@/components/InfoHeader';
 import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 function Contact() {
   return (
     <>
       <Meta title="contact" />
-      <FullSizeCenteredFlexBox>
-        <Typography variant="h3">Contact</Typography>
-      </FullSizeCenteredFlexBox>
+      <InfoHeader title="Contact" />
     </>
   );
 }
