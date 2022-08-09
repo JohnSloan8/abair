@@ -23,7 +23,7 @@ function Home() {
         <Grid
           container
           direction="row"
-          px={0}
+          px={1}
           spacing={1}
           justifyContent="center"
           alignItems="center"
@@ -54,7 +54,7 @@ function Home() {
           container
           direction="row"
           spacing={1}
-          px={0}
+          px={1}
           justifyContent="center"
           alignItems="center"
         >

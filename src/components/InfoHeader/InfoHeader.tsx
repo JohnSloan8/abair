@@ -8,7 +8,7 @@ interface InfoHeaderProps {
 
 function InfoHeader({ title, description }: InfoHeaderProps) {
   return (
-    <Box p={{ sm: 4, xs: 1 }}>
+    <Box pt={{ sm: 4, xs: 1 }} pb={{ sm: 2, xs: 0 }}>
       <Typography sx={{ typography: { sm: 'h4', xs: 'h5' } }} mb={{ sm: 2, xs: 1 }} align="center">
         {title}
       </Typography>

@@ -1,5 +1,5 @@
 interface CardStyles {
-  titleVariant: string;
+  titleVariant: 'h5' | 'h6';
   color: string;
   padding: number;
   bottom?: number;
@@ -15,7 +15,7 @@ const styles: { [name: string]: CardStyles } = {
     padding: 2,
     bottom: 0,
     minWidth: 280,
-    maxWidth: 320,
+    maxWidth: 280,
     image: 'assets/images/misc/400x600_fallbackAbairImage.png',
   },
   app: {
@@ -23,8 +23,8 @@ const styles: { [name: string]: CardStyles } = {
     color: 'secondary.dark',
     padding: 1,
     bottom: undefined,
-    minWidth: 160,
-    maxWidth: 200,
+    minWidth: 120,
+    maxWidth: 164,
     image: 'assets/images/misc/400x400_fallbackAbairImage.png',
   },
 };

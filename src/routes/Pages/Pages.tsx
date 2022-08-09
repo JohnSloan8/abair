@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+
+import { CenteredFlexBox } from '@/components/styled';
 
 import routes from '..';
 
@@ -9,15 +10,15 @@ import routes from '..';
 
 function Pages() {
   return (
-    <Box /*sx={{ height: (theme) => getPageHeight(theme) }}*/>
-      <Container maxWidth="md">
+    <CenteredFlexBox>
+      <Box maxWidth="md">
         <Routes>
           {Object.values(routes).map(({ path, component: Component }) => {
             return <Route key={path} path={path} element={<Component />} />;
           })}
         </Routes>
-      </Container>
-    </Box>
+      </Box>
+    </CenteredFlexBox>
   );
 }
 

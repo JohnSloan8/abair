@@ -11,7 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { FlexBox } from '@/components/styled';
 import useSidebar from '@/store/sidebar';
 
-import abairFullLogo from '/assets/images/brand/abairFullLogoWhite.png';
+import abairFullLogo from '/assets/images/brand/abairFullLogo.png';
 
 interface HeaderProps {
   logoSize?: number;
@@ -22,14 +22,14 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar color="primary" elevation={1} position="static">
+      <AppBar color="inherit" elevation={1} position="static">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <FlexBox>
             <IconButton
               onClick={sidebarActions.toggle}
               size="large"
               edge="start"
-              sx={{ color: 'white' }}
+              sx={{ color: 'primary.main' }}
               aria-label="menu"
             >
               <MenuIcon />
@@ -47,7 +47,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
               }}
               size="large"
               edge="end"
-              sx={{ color: 'white' }}
+              sx={{ color: 'primary.main' }}
               aria-label="log in"
             >
               <LoginIcon />

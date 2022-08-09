@@ -5,7 +5,7 @@ function Team() {
   return (
     <>
       <Meta title="team" />
-      <InfoHeader title="Speech Synthesis" />
+      <InfoHeader title="Team" />
     </>
   );
 }
