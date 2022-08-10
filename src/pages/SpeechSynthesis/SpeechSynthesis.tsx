@@ -10,11 +10,14 @@ import RadioGroup from '@mui/material/RadioGroup';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-import AccordionDropdown from '@/components/AccordionDropdown';
+import AbAccordion from '@/components/AbAccordion';
+import AbAudioPlayer from '@/components/AbAudioPlayer';
 import InfoHeader from '@/components/InfoHeader';
 import Meta from '@/components/Meta';
+import synthesisController from '@/services/synthesis';
 import {
-  isSynthesisTextEmptyString,
+  isSynthesisAudioEmpty,
+  isSynthesisTextEmptyString, // useSynthesisAudio,
   useSynthesisDialect,
   useSynthesisText,
 } from '@/store/synthesis';
@@ -22,11 +25,12 @@ import {
 function SpeechSynthesis() {
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
+  // const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
 
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
 
   const submitSynthesis = () => {
-    console.log('synthesisText:', synthesisText);
+    synthesisController(synthesisText);
   };
 
   return (
@@ -55,6 +59,9 @@ function SpeechSynthesis() {
             Synthesise
           </Button>
         </Typography>
+        {!isSynthesisAudioEmpty && (
+          <AbAudioPlayer audioURL="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" />
+        )}
         <FormControl sx={{ px: 2, justifyContent: 'center' }}>
           <FormLabel id="demo-row-radio-buttons-group-label">Dialect</FormLabel>
           <RadioGroup
@@ -69,7 +76,7 @@ function SpeechSynthesis() {
             <FormControlLabel value="Munster" control={<Radio />} label="Munster" />
           </RadioGroup>
         </FormControl>
-        <AccordionDropdown />
+        <AbAccordion accordionType="synthesis" />
       </Box>
     </>
   );

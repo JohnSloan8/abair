@@ -19,6 +19,25 @@ const isSynthesisTextEmptyString = selector({
   },
 });
 
+const synthesisAudioState = atom<string>({
+  key: 'synthesis-audio-state',
+  default: '',
+});
+
+const useSynthesisAudio = () => {
+  const [synthesisAudio, setSynthesisAudio] = useRecoilState(synthesisAudioState);
+
+  return { synthesisAudio, setSynthesisAudio };
+};
+
+const isSynthesisAudioEmpty = selector({
+  key: 'synthesis-audio-empty-state', // unique ID (with respect to other atoms/selectors)
+  get: ({ get }) => {
+    const url = get(synthesisAudioState);
+    return url.length > 0 ? false : true;
+  },
+});
+
 const synthesisDialectState = atom<string>({
   key: 'synthesis-dialect-state',
   default: 'Ulster',
@@ -88,6 +107,8 @@ const useSynthesisPitch = () => {
 export {
   useSynthesisText,
   isSynthesisTextEmptyString,
+  useSynthesisAudio,
+  isSynthesisAudioEmpty,
   useSynthesisDialect,
   useSynthesisAccordion,
   useSynthesisGender,
