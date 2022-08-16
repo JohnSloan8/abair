@@ -12,13 +12,12 @@ import CreateItem from './styles';
 import { AccordionItem } from './types';
 
 interface AbAccordionProps {
-  accordionType: string;
+  variation: string;
 }
 
-const AbAccordion = ({ accordionType = 'synthesis' }: AbAccordionProps) => {
+const AbAccordion = ({ variation = 'synthesis' }: AbAccordionProps) => {
   const styles: { [name: string]: AccordionItem } = CreateItem();
-  const style = styles[accordionType];
-  console.log('style', style);
+  const style = styles[variation];
 
   const toggleSynthesisAccordion = () => {
     style.setter(!style.getter);

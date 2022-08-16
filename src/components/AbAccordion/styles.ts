@@ -44,7 +44,7 @@ const CreateItem = () => {
           name: 'speed',
           getter: synthesisSpeed,
           setter: setSynthesisSpeed,
-          options: ['slow', 'normal', 'fast', 'very fast'],
+          options: ['very slow', 'slow', 'normal', 'fast', 'very fast'],
         },
       ],
     },

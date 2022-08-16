@@ -1,38 +1,57 @@
+import { SetterOrUpdater } from 'recoil';
+
 import axios from 'axios';
 
-interface synthesisControllerProps {
-  requestOrigin: string;
-  synthesisText: string;
-}
+import { synthesisURL } from '@/config';
 
-const synthesisController = ({
-  requestOrigin = 'main',
-  synthesisText = 'dia duit',
-}: synthesisControllerProps) => {
-  console.log('in synthesisControllerFrom:', requestOrigin);
-  console.log('in synthesisController:', synthesisText);
-  getAudio(synthesisText);
-  return true;
-};
+import {
+  dialectType,
+  genderType,
+  getVoice,
+  modeType,
+  pitchNum,
+  pitchType,
+  speedNum,
+  speedType,
+} from './types';
 
-const getAudio = (text: string) => {
-  axios
-    .get('https://phoneticsrv3.lcs.tcd.ie/nemo/synthesise', {
-      params: {
-        voice: 'anb.nemo',
-        input: text,
-        speed: 1,
-        mode: 'DNN',
-      },
-    })
+const SynthesisController = (
+  text: string,
+  dialect: dialectType,
+  gender: genderType,
+  speed: speedType,
+  pitch: pitchType,
+  mode: modeType,
+  setter: SetterOrUpdater<string>,
+) => {
+  axios({
+    method: 'post',
+    url: synthesisURL,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {
+      input: text,
+      voice: getVoice(gender, dialect) + '.nemo',
+      speaker: null,
+      outputType: 'JSON',
+      audioEncoding: 'wav',
+      cutSilence: false,
+      speed: speedNum[speed],
+      ps: null,
+      pa: pitchNum[pitch],
+    },
+  })
     .then(function (response) {
-      console.log(response);
+      setter('data:audio/wav;base64,' + response.data.audioContent);
     })
     .catch(function (error) {
-      console.log(error);
+      alert('error:' + error);
+      return 'problem';
     })
     .then(function () {
-      // always executed
+      console.log('synthesis complete');
     });
 };
-export default synthesisController;
+
+export default SynthesisController;

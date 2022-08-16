@@ -1,11 +1,11 @@
-import InfoHeader from '@/components/InfoHeader';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 
 function SpeechRecognition() {
   return (
     <>
       <Meta title="speech recognition" />
-      <InfoHeader title="Speech Recognition" />
+      <AbInfoHeader title="Speech Recognition" />
     </>
   );
 }

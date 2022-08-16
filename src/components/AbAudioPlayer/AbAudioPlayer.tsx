@@ -4,7 +4,7 @@ interface AbAudioPlayerProps {
   audioURL: string;
 }
 
-const AbAudioPlayer = ({ audioURL = 'assets/audio/LRMonoPhase4.wav' }: AbAudioPlayerProps) => {
+const AbAudioPlayer = ({ audioURL }: AbAudioPlayerProps) => {
   return <ReactAudioPlayer src={audioURL} autoPlay controls />;
 };
 

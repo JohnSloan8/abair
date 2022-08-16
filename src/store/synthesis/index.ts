@@ -7,7 +7,6 @@ const synthesisTextState = atom<string>({
 
 const useSynthesisText = () => {
   const [synthesisText, setSynthesisText] = useRecoilState(synthesisTextState);
-
   return { synthesisText, setSynthesisText };
 };
 
@@ -33,8 +32,8 @@ const useSynthesisAudio = () => {
 const isSynthesisAudioEmpty = selector({
   key: 'synthesis-audio-empty-state', // unique ID (with respect to other atoms/selectors)
   get: ({ get }) => {
-    const url = get(synthesisAudioState);
-    return url.length > 0 ? false : true;
+    const data = get(synthesisAudioState);
+    return data.length > 0 ? false : true;
   },
 });
 

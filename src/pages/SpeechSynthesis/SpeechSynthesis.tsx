@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
@@ -12,56 +13,55 @@ import Typography from '@mui/material/Typography';
 
 import AbAccordion from '@/components/AbAccordion';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
-import InfoHeader from '@/components/InfoHeader';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
+import { CenteredFlexBox } from '@/components/styled';
 import synthesisController from '@/services/synthesis';
 import {
   isSynthesisAudioEmpty,
-  isSynthesisTextEmptyString, // useSynthesisAudio,
+  isSynthesisTextEmptyString,
+  useSynthesisAudio, // useSynthesisAudio,
   useSynthesisDialect,
+  useSynthesisGender,
+  useSynthesisMode,
+  useSynthesisPitch,
+  useSynthesisSpeed,
   useSynthesisText,
 } from '@/store/synthesis';
 
 function SpeechSynthesis() {
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
-  // const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
-
+  const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
+  const { synthesisGender } = useSynthesisGender();
+  const { synthesisMode } = useSynthesisMode();
+  const { synthesisPitch } = useSynthesisPitch();
+  const { synthesisSpeed } = useSynthesisSpeed();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
+  const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
 
-  const submitSynthesis = () => {
-    synthesisController(synthesisText);
+  useEffect(() => {
+    console.log('synthesisAudio:', synthesisAudio);
+    console.log('emptyAudio:', emptyAudio);
+  }, [synthesisAudio, emptyAudio]);
+
+  const getSynthesis = () => {
+    synthesisController(
+      synthesisText,
+      synthesisDialect,
+      synthesisGender,
+      synthesisSpeed,
+      synthesisPitch,
+      synthesisMode,
+      setSynthesisAudio,
+    );
   };
 
   return (
     <>
       <Meta title="speech synthesis" />
-      <InfoHeader title="Speech Synthesis" />
+      <AbInfoHeader title="Speech Synthesis" />
       <Box maxWidth="sm" px={1} component="form" noValidate autoComplete="off">
-        <TextField
-          sx={{ backgroundColor: 'white', mt: 0 }}
-          onChange={(e) => setSynthesisText(e.target.value)}
-          id="outlined-multiline-static"
-          label="Scríobh anseo"
-          multiline
-          rows={4}
-          value={synthesisText}
-          autoFocus
-          fullWidth
-        />
-        <Typography align="center" p={{ sm: 4, xs: 2 }}>
-          <Button
-            disabled={emptyString}
-            variant="contained"
-            color="primary"
-            onClick={submitSynthesis}
-          >
-            Synthesise
-          </Button>
-        </Typography>
-        {!isSynthesisAudioEmpty && (
-          <AbAudioPlayer audioURL="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" />
-        )}
         <FormControl sx={{ px: 2, justifyContent: 'center' }}>
           <FormLabel id="demo-row-radio-buttons-group-label">Dialect</FormLabel>
           <RadioGroup
@@ -76,7 +76,30 @@ function SpeechSynthesis() {
             <FormControlLabel value="Munster" control={<Radio />} label="Munster" />
           </RadioGroup>
         </FormControl>
-        <AbAccordion accordionType="synthesis" />
+        <Box sx={{ mb: 2 }}>
+          <AbAccordion accordionType="synthesis" />
+        </Box>
+        <TextField
+          sx={{ backgroundColor: 'white', mt: 0 }}
+          onChange={(e) => setSynthesisText(e.target.value)}
+          id="outlined-multiline-static"
+          label="Scríobh anseo"
+          multiline
+          rows={4}
+          value={synthesisText}
+          autoFocus
+          fullWidth
+        />
+        <Typography align="center" p={{ sm: 4, xs: 2 }}>
+          <Button disabled={emptyString} variant="contained" color="primary" onClick={getSynthesis}>
+            Synthesise
+          </Button>
+        </Typography>
+        {!emptyAudio && (
+          <CenteredFlexBox>
+            <AbAudioPlayer audioURL={synthesisAudio} />
+          </CenteredFlexBox>
+        )}
       </Box>
     </>
   );

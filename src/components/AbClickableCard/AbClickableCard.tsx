@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import styles from './styles';
 
-interface ClickableCardProps {
+interface AbClickableCardProps {
   image?: string;
   title?: string;
   description?: string;
@@ -16,9 +16,8 @@ interface ClickableCardProps {
   variation: string;
 }
 
-const ClickableCard = ({ path, image, title, description, variation }: ClickableCardProps) => {
+const AbClickableCard = ({ path, image, title, description, variation }: AbClickableCardProps) => {
   const style = styles[variation];
-  console.log('style.titleVariant:', style.titleVariant);
 
   return (
     <Card sx={{ minWidth: style.minWidth, maxWidth: style.maxWidth }}>
@@ -43,4 +42,4 @@ const ClickableCard = ({ path, image, title, description, variation }: Clickable
   );
 };
 
-export default ClickableCard;
+export default AbClickableCard;

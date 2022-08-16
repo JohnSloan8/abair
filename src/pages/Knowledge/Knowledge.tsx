@@ -1,11 +1,11 @@
-import InfoHeader from '@/components/InfoHeader';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 
 function Knowledge() {
   return (
     <>
       <Meta title="knowledge" />
-      <InfoHeader title="Knowledge" />
+      <AbInfoHeader title="Knowledge" />
     </>
   );
 }

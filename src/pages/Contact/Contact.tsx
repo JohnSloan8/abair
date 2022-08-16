@@ -1,11 +1,11 @@
-import InfoHeader from '@/components/InfoHeader';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 
 function Contact() {
   return (
     <>
       <Meta title="contact" />
-      <InfoHeader title="Contact" />
+      <AbInfoHeader title="Contact" />
     </>
   );
 }

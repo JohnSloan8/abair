@@ -8,6 +8,8 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
+const synthesisURL = 'http://localhost:5000/api/v1/synthesis';
+
 const messages = {
   app: {
     crash: {
@@ -62,4 +64,5 @@ export {
   title,
   defaultMetaTags,
   giphy404,
+  synthesisURL,
 };
