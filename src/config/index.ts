@@ -50,7 +50,7 @@ const loader = {
 
 const defaultMetaTags = {
   image: '/cover.png',
-  description: 'Starter kit for modern web applications',
+  description: 'Abair - Irish Speech & Language Technologies',
 };
 const giphy404 = 'https://c.tenor.com/0T9VEI1iM5YAAAAC/father-ted.gif';
 

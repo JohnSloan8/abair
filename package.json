@@ -1,15 +1,15 @@
 {
-  "name": "react-pwa",
-  "version": "2.0.2",
+  "name": "abair",
+  "version": "1.0.1",
   "description": "Starter kit for modern web applications",
-  "homepage": "https://react-pwa.surenatoyan.com/",
+  "homepage": "https://abair.ie",
   "repository": {
     "type": "git",
-    "url": "https://github.com/suren-atoyan/react-pwa.git"
+    "url": "https://github.com/JohnSloan8/abair.git"
   },
   "bugs": {
-    "url": "https://github.com/suren-atoyan/react-pwa/issues",
-    "email": "contact@surenatoyan.com"
+    "url": "https://github.com/JohnSloan8/abair/issues",
+    "email": "sloanjo@tcd.ie"
   },
   "license": "MIT",
   "scripts": {
@@ -81,7 +81,7 @@
   },
   "author": {
     "name": "Abair Team",
-    "email": "---@---.com",
+    "email": "sloanjo@tcd.ie",
     "url": "http://abair.ie"
   },
   "keywords": [
