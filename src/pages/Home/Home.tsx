@@ -33,7 +33,7 @@ function Home() {
               path="/speech-synthesis"
               title="Speech Synthesis"
               description="Listen to our voices in the 3 main Irish dialects"
-              variation="core"
+              variation="main"
             />
           </Grid>
           <Grid item>
@@ -41,7 +41,7 @@ function Home() {
               path="/speech-recognition"
               title="Speech Recognition"
               description="Speak in Irish and see your words as text"
-              variation="core"
+              variation="main"
             />
           </Grid>
         </Grid>

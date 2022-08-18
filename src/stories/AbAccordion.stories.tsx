@@ -25,8 +25,14 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof AbAccordion> = (args) => <AbAccordion {...args} />;
 
-export const Primary = Template.bind({});
+export const Main = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+Main.args = {
+  variation: 'main',
+};
+
+export const Synthesis = Template.bind({});
+
+Synthesis.args = {
   variation: 'synthesis',
 };

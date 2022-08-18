@@ -17,18 +17,18 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof AbClickableCard> = (args) => <AbClickableCard {...args} />;
 
-export const Primary = Template.bind({});
+export const Main = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  path: '/speech-synthesis',
+Main.args = {
+  path: '#',
   title: 'Speech Synthesis',
   description: 'Listen to our voices in the 3 main Irish dialects',
-  variation: 'core',
+  variation: 'main',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  path: '/speech-recognition',
+export const App = Template.bind({});
+App.args = {
+  path: '#',
   title: 'Speech Recognition',
   description: 'Speak in Irish and see your words as text',
   variation: 'app',

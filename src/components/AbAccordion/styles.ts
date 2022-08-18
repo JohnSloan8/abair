@@ -48,6 +48,19 @@ const CreateItem = () => {
         },
       ],
     },
+    main: {
+      title: 'Test Accordion',
+      getter: synthesisAccordion,
+      setter: setSynthesisAccordion,
+      items: [
+        {
+          name: 'gender',
+          getter: synthesisGender,
+          setter: setSynthesisGender,
+          options: ['test1', 'test2', 'test3'],
+        },
+      ],
+    },
   };
 
   return styles;

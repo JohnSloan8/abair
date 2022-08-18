@@ -9,9 +9,9 @@ interface CardStyles {
 }
 
 const styles: { [name: string]: CardStyles } = {
-  core: {
-    titleVariant: 'h5',
-    color: 'primary.main',
+  main: {
+    titleVariant: 'h6',
+    color: 'gray',
     padding: 2,
     bottom: 0,
     minWidth: 280,
@@ -20,7 +20,7 @@ const styles: { [name: string]: CardStyles } = {
   },
   app: {
     titleVariant: 'h6',
-    color: 'secondary.main',
+    color: 'gray',
     padding: 1,
     bottom: undefined,
     minWidth: 120,

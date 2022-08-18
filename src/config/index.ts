@@ -8,6 +8,8 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
+const rootURL = 'http://localhost:5173/';
+
 const synthesisURL = 'http://localhost:5000/api/v1/synthesis';
 
 const messages = {
@@ -64,5 +66,6 @@ export {
   title,
   defaultMetaTags,
   giphy404,
+  rootURL,
   synthesisURL,
 };

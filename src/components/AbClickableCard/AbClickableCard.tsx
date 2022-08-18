@@ -13,22 +13,17 @@ interface AbClickableCardProps {
   title?: string;
   description?: string;
   path: string;
-  variation: string;
+  variation: 'main' | 'app';
 }
 
 const AbClickableCard = ({ path, image, title, description, variation }: AbClickableCardProps) => {
   const style = styles[variation];
-
   return (
     <Card sx={{ minWidth: style.minWidth, maxWidth: style.maxWidth }}>
       <Link to={path}>
         <CardActionArea>
           <CardContent sx={{ bottom: style.bottom, position: 'absolute', p: style.padding }}>
-            <Typography
-              gutterBottom
-              /* variant={style.titleVariant}*/ variant={style.titleVariant}
-              color={style.color}
-            >
+            <Typography gutterBottom variant={style.titleVariant} color={style.color}>
               {title}
             </Typography>
             <Typography variant="body2" color={style.color}>

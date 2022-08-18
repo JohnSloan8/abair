@@ -25,8 +25,26 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof AbRadioGroup> = (args) => <AbRadioGroup {...args} />;
 
-export const Primary = Template.bind({});
+export const Gender = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  // variation: 'synthesis'
+Gender.args = {
+  name: 'gender',
+};
+
+export const Pitch = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Pitch.args = {
+  name: 'pitch',
+};
+
+export const Speed = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Speed.args = {
+  name: 'speed',
+};
+
+export const Mode = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Mode.args = {
+  name: 'mode',
 };

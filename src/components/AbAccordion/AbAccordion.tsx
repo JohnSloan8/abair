@@ -12,7 +12,7 @@ import CreateItem from './styles';
 import { AccordionItem } from './types';
 
 interface AbAccordionProps {
-  variation: string;
+  variation: 'main' | 'synthesis';
 }
 
 const AbAccordion = ({ variation = 'synthesis' }: AbAccordionProps) => {

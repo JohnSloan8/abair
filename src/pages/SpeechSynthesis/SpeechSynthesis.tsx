@@ -8,12 +8,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import AbAccordion from '@/components/AbAccordion';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbInfoHeader from '@/components/AbInfoHeader';
+import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import synthesisController from '@/services/synthesis';
@@ -30,7 +30,7 @@ import {
 } from '@/store/synthesis';
 
 function SpeechSynthesis() {
-  const { synthesisText, setSynthesisText } = useSynthesisText();
+  const { synthesisText } = useSynthesisText();
   const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
   const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
   const { synthesisGender } = useSynthesisGender();
@@ -58,50 +58,47 @@ function SpeechSynthesis() {
   };
 
   return (
-    <>
-      <Meta title="speech synthesis" />
-      <AbInfoHeader title="Speech Synthesis" />
-      <Box maxWidth="sm" px={1} component="form" noValidate autoComplete="off">
-        <FormControl sx={{ px: 2, justifyContent: 'center' }}>
-          <FormLabel id="demo-row-radio-buttons-group-label">Dialect</FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-            value={synthesisDialect}
-            onChange={(e) => setSynthesisDialect(e.target.value)}
-          >
-            <FormControlLabel value="Ulster" control={<Radio />} label="Ulster" />
-            <FormControlLabel value="Connaught" control={<Radio />} label="Connaught" />
-            <FormControlLabel value="Munster" control={<Radio />} label="Munster" />
-          </RadioGroup>
-        </FormControl>
-        <Box sx={{ mb: 2 }}>
-          <AbAccordion accordionType="synthesis" />
+    <CenteredFlexBox>
+      <Box sx={{ width: '100%', maxWidth: 'sm' }}>
+        <Meta title="speech synthesis" />
+        <AbInfoHeader title="Speech Synthesis" />
+        <Box px={1} component="form" noValidate autoComplete="off">
+          <FormControl sx={{ px: 2, justifyContent: 'center' }}>
+            <FormLabel id="demo-row-radio-buttons-group-label">Dialect</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              value={synthesisDialect}
+              onChange={(e) => setSynthesisDialect(e.target.value)}
+            >
+              <FormControlLabel value="Ulster" control={<Radio />} label="Ulster" />
+              <FormControlLabel value="Connaught" control={<Radio />} label="Connaught" />
+              <FormControlLabel value="Munster" control={<Radio />} label="Munster" />
+            </RadioGroup>
+          </FormControl>
+          <Box sx={{ mb: 2 }}>
+            <AbAccordion variation="synthesis" />
+          </Box>
+          <AbTextField variation="synthesis" />
+          <Typography align="center" p={{ sm: 4, xs: 2 }}>
+            <Button
+              disabled={emptyString}
+              variant="contained"
+              color="primary"
+              onClick={getSynthesis}
+            >
+              Synthesise
+            </Button>
+          </Typography>
+          {!emptyAudio && (
+            <CenteredFlexBox>
+              <AbAudioPlayer audioURL={synthesisAudio} />
+            </CenteredFlexBox>
+          )}
         </Box>
-        <TextField
-          sx={{ backgroundColor: 'white', mt: 0 }}
-          onChange={(e) => setSynthesisText(e.target.value)}
-          id="outlined-multiline-static"
-          label="Scríobh anseo"
-          multiline
-          rows={4}
-          value={synthesisText}
-          autoFocus
-          fullWidth
-        />
-        <Typography align="center" p={{ sm: 4, xs: 2 }}>
-          <Button disabled={emptyString} variant="contained" color="primary" onClick={getSynthesis}>
-            Synthesise
-          </Button>
-        </Typography>
-        {!emptyAudio && (
-          <CenteredFlexBox>
-            <AbAudioPlayer audioURL={synthesisAudio} />
-          </CenteredFlexBox>
-        )}
       </Box>
-    </>
+    </CenteredFlexBox>
   );
 }
 
