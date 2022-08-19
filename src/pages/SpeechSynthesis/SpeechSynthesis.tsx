@@ -10,31 +10,32 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
 
+import axios from 'axios';
+
 import AbAccordion from '@/components/AbAccordion';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import synthesisController from '@/services/synthesis';
 import {
   isSynthesisAudioEmpty,
   isSynthesisTextEmptyString,
   useSynthesisAudio, // useSynthesisAudio,
   useSynthesisDialect,
-  useSynthesisGender,
-  useSynthesisMode,
+  useSynthesisGender, // useSynthesisMode,
   useSynthesisPitch,
   useSynthesisSpeed,
   useSynthesisText,
 } from '@/store/synthesis';
 
+import { getVoice, pitchNum, speedNum } from './types';
+
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
-  const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
+  const { synthesisAudio } = useSynthesisAudio();
   const { synthesisGender } = useSynthesisGender();
-  const { synthesisMode } = useSynthesisMode();
   const { synthesisPitch } = useSynthesisPitch();
   const { synthesisSpeed } = useSynthesisSpeed();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
@@ -46,15 +47,44 @@ function SpeechSynthesis() {
   }, [synthesisAudio, emptyAudio]);
 
   const getSynthesis = () => {
-    synthesisController(
-      synthesisText,
-      synthesisDialect,
-      synthesisGender,
-      synthesisSpeed,
-      synthesisPitch,
-      synthesisMode,
-      setSynthesisAudio,
-    );
+    axios({
+      method: 'post',
+      // url: 'https://phoneticsrv3.lcs.tcd.ie/nemo/synthesise',
+      url: 'https://abair.ie/api2',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        input: synthesisText,
+        voice: getVoice(synthesisGender, synthesisDialect) + '.nemo',
+        speaker: null,
+        outputType: 'JSON',
+        audioEncoding: 'wav',
+        cutSilence: false,
+        speed: speedNum[synthesisSpeed],
+        ps: null,
+        pa: pitchNum[synthesisPitch],
+      },
+    })
+      .then(function (response) {
+        // console.log(response);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+    // synthesisController(
+    //   synthesisText,
+    //   synthesisDialect,
+    //   synthesisGender,
+    //   synthesisSpeed,
+    //   synthesisPitch,
+    //   synthesisMode,
+    //   setSynthesisAudio,
+    // );
   };
 
   return (

@@ -1,5 +1,17 @@
 import { SetterOrUpdater } from 'recoil';
 
+// interface requestDataObject {
+//   input: string;
+//   voice: string;
+//   speaker: string;
+//   outputType: string;
+//   audioEncoding: string;
+//   cutSilence: boolean;
+//   speed: number;
+//   ps: string;
+//   pa: number;
+// }
+
 type dialectType = 'Ulster' | 'Connaught' | 'Munster';
 type genderType = 'male' | 'female';
 type speedType = 'very slow' | 'slow' | 'normal' | 'fast' | 'very fast';

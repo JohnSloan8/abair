@@ -18,11 +18,7 @@ const recordingState = atom<boolean>({
 const useRecording = () => {
   const [recording, setRecording] = useRecoilState(recordingState);
 
-  function toggleRecording() {
-    setRecording((recording: boolean) => !recording);
-  }
-
-  return { recording, toggleRecording };
+  return { recording, setRecording };
 };
 
 const isRecognitionTextEmptyString = selector({

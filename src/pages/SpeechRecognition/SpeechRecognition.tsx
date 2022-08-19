@@ -1,8 +1,8 @@
-import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import StopIcon from '@mui/icons-material/Stop';
-import { IconButton } from '@mui/material';
+import { useReactMediaRecorder } from 'react-media-recorder';
+
 import Box from '@mui/material/Box';
 
+import AbIconButton from '@/components/AbIconButton';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
@@ -10,7 +10,16 @@ import { CenteredFlexBox } from '@/components/styled';
 import { useRecording } from '@/store/recognition';
 
 function SpeechRecognition() {
-  const { recording, toggleRecording } = useRecording();
+  const { recording, setRecording } = useRecording();
+  const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({
+    audio: true,
+    video: false,
+  });
+
+  const toggleRecording = () => {
+    recording ? stopRecording() : startRecording();
+    setRecording((recording: boolean) => !recording);
+  };
 
   return (
     <CenteredFlexBox>
@@ -20,33 +29,15 @@ function SpeechRecognition() {
         <Box>
           <AbTextField variation="recognition" />
         </Box>
+        <p>{status}</p>
         <CenteredFlexBox pt={4}>
           {!recording ? (
-            <IconButton
-              aria-label="microphone"
-              color="info"
-              sx={{
-                backgroundColor: 'secondary.main',
-                '&:hover': { backgroundColor: 'secondary.dark' },
-              }}
-              onClick={toggleRecording}
-            >
-              <KeyboardVoiceIcon fontSize="large" />
-            </IconButton>
+            <AbIconButton variation="record" handleClick={toggleRecording} />
           ) : (
-            <IconButton
-              aria-label="stop"
-              color="info"
-              sx={{
-                backgroundColor: 'warning.main',
-                '&:hover': { backgroundColor: 'warning.dark' },
-              }}
-              onClick={toggleRecording}
-            >
-              <StopIcon fontSize="large" />
-            </IconButton>
+            <AbIconButton variation="stop" handleClick={toggleRecording} />
           )}
         </CenteredFlexBox>
+        <audio src={mediaBlobUrl} controls autoPlay />
       </Box>
     </CenteredFlexBox>
   );
