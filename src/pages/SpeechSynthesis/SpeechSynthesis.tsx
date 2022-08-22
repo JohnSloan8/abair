@@ -22,22 +22,18 @@ import {
   isSynthesisAudioEmpty,
   isSynthesisTextEmptyString,
   useSynthesisAudio, // useSynthesisAudio,
-  useSynthesisDialect,
-  useSynthesisGender, // useSynthesisMode,
-  useSynthesisPitch,
-  useSynthesisSpeed,
+  useSynthesisDialect, // useSynthesisGender, // useSynthesisMode,
+  // useSynthesisPitch,
+  // useSynthesisSpeed,
   useSynthesisText,
 } from '@/store/synthesis';
 
-import { getVoice, pitchNum, speedNum } from './types';
+// import { getVoice, pitchNum, speedNum } from './types';
 
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
-  const { synthesisAudio } = useSynthesisAudio();
-  const { synthesisGender } = useSynthesisGender();
-  const { synthesisPitch } = useSynthesisPitch();
-  const { synthesisSpeed } = useSynthesisSpeed();
+  const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
 
@@ -48,27 +44,42 @@ function SpeechSynthesis() {
 
   const getSynthesis = () => {
     axios({
-      method: 'post',
+      // method: 'post',
+      // // url: 'https://phoneticsrv3.lcs.tcd.ie/nemo/synthesise',
+      // url: 'https://abair.ie/api2/synthesise/',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+      // data: {
+      //   input: synthesisText,
+      //   voice: getVoice(synthesisGender, synthesisDialect) + '.nemo',
+      //   speaker: null,
+      //   outputType: 'JSON',
+      //   audioEncoding: 'wav',
+      //   cutSilence: false,
+      //   speed: speedNum[synthesisSpeed],
+      //   ps: null,
+      //   pa: pitchNum[synthesisPitch],
+      // },
+      method: 'get',
       // url: 'https://phoneticsrv3.lcs.tcd.ie/nemo/synthesise',
-      url: 'https://abair.ie/api2',
+      url: 'https://abair.ie/api2/synthesise',
       headers: {
-        'Content-Type': 'application/json',
+        accept: 'application/json',
       },
-      data: {
+      params: {
         input: synthesisText,
-        voice: getVoice(synthesisGender, synthesisDialect) + '.nemo',
-        speaker: null,
+        voice: 'ga_UL_anb_nnmnkwii',
         outputType: 'JSON',
-        audioEncoding: 'wav',
-        cutSilence: false,
-        speed: speedNum[synthesisSpeed],
-        ps: null,
-        pa: pitchNum[synthesisPitch],
+        audioEncoding: 'LINEAR16',
+        speed: 1,
+        pitch: 1,
       },
     })
       .then(function (response) {
         // console.log(response);
         console.log(response.data);
+        setSynthesisAudio('data:audio/wav;base64,' + response.data.audioContent);
       })
       .catch(function (error) {
         console.log(error);

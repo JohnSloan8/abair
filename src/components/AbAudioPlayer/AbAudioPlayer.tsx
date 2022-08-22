@@ -1,7 +1,7 @@
 import ReactAudioPlayer from 'react-audio-player';
 
 interface AbAudioPlayerProps {
-  audioURL: string;
+  audioURL: string | undefined;
 }
 
 const AbAudioPlayer = ({ audioURL }: AbAudioPlayerProps) => {

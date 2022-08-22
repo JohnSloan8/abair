@@ -22,29 +22,32 @@ const useRecording = () => {
 };
 
 const isRecognitionTextEmptyString = selector({
-  key: 'recognitionTextEmptyStringState', // unique ID (with respect to other atoms/selectors)
+  key: 'recognitionTextEmptyStringState',
   get: ({ get }) => {
     const text = get(recognitionTextState);
     return text.length > 0 ? false : true;
   },
 });
 
-const recognitionAudioState = atom<string>({
+const recognitionAudioState = atom<string | undefined>({
   key: 'recognition-audio-state',
   default: '',
 });
 
 const useRecognitionAudio = () => {
-  const [RecognitionAudio, setRecognitionAudio] = useRecoilState(recognitionAudioState);
+  const [recognitionAudio, setRecognitionAudio] = useRecoilState(recognitionAudioState);
 
-  return { RecognitionAudio, setRecognitionAudio };
+  return { recognitionAudio, setRecognitionAudio };
 };
 
 const isRecognitionAudioEmpty = selector({
-  key: 'recognition-audio-empty-state', // unique ID (with respect to other atoms/selectors)
+  key: 'recognition-audio-empty-state',
   get: ({ get }) => {
     const data = get(recognitionAudioState);
-    return data.length > 0 ? false : true;
+    if (data) {
+      return data.length > 0 ? false : true;
+    }
+    return true;
   },
 });
 
