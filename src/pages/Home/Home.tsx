@@ -50,47 +50,6 @@ function Home() {
         <Typography gutterBottom variant="h5" m={2} align="center">
           Applications
         </Typography>
-        <Grid
-          container
-          direction="row"
-          spacing={1}
-          px={1}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <AbClickableCard
-              path="/applications"
-              title="An Scéalaí"
-              description="Computer Assisted Language Learning platform"
-              variation="app"
-            />
-          </Grid>
-          <Grid item>
-            <AbClickableCard
-              path="/applications"
-              title="Leon don Lón"
-              description="Pronunciation exercises"
-              variation="app"
-            />
-          </Grid>
-          <Grid item>
-            <AbClickableCard
-              path="/applications"
-              title="AAC"
-              description="Augmentative and Alternative Communication"
-              variation="app"
-            />
-          </Grid>
-          <Grid item>
-            <AbClickableCard
-              path="/applications"
-              title="LARA"
-              description="Interactive Digital Storybooks"
-              variation="app"
-            />
-          </Grid>
-        </Grid>
       </Box>
       <Box maxWidth="md" mt={{ xs: 2, sm: 4 }}>
         <Typography gutterBottom variant="h5" m={2} align="center">

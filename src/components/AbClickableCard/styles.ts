@@ -20,7 +20,7 @@ const styles: { [name: string]: CardStyles } = {
   },
   app: {
     titleVariant: 'h6',
-    color: 'gray',
+    color: 'info.main',
     padding: 1,
     bottom: undefined,
     minWidth: 120,
