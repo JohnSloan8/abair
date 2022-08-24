@@ -28,7 +28,7 @@ import {
   useSynthesisText,
 } from '@/store/synthesis';
 
-// import { getVoice, pitchNum, speedNum } from './types';
+// import { getVoice, pitchNum, speedNum } from './typesgit';
 
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
