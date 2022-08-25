@@ -17,9 +17,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "https-preview": "serve dist",
-    "prepare": "husky install",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -29,30 +27,20 @@
     "@mui/material": "^5.8.1",
     "@mui/system": "^5.8.1",
     "@mui/utils": "^5.8.0",
-    "abair-component-library": "^1.0.1",
+    "abair-component-library": "^1.0.7",
     "axios": "^0.27.2",
     "is-mobile": "^3.1.1",
-    "notistack": "^2.0.5",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.1.0",
     "react-error-boundary": "^3.1.4",
     "react-helmet-async": "^1.3.0",
-    "react-hotkeys-hook": "^3.4.6",
     "react-media-recorder": "^1.6.6",
     "react-router-dom": "^6.3.0",
-    "recoil": "^0.7.2",
-    "storybook-addon-react-router-v6": "^0.1.14"
+    "recoil": "^0.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-vite": "^0.2.2",
-    "@storybook/react": "^6.5.10",
-    "@storybook/testing-library": "^0.0.13",
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/node": "^17.0.36",
     "@types/react": "^18.0.9",

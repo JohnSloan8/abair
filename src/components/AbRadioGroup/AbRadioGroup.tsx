@@ -4,15 +4,17 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 
-import styles from './styles';
-import { RadioGroupItem } from './types';
+// import styles from './styles';
+import { AbRadioGroupModel } from './types';
 
 const AbRadioGroup = ({
   name = 'synthesis',
   getter = 'male',
   setter = () => null,
-}: RadioGroupItem) => {
-  const style = styles[name];
+  options = ['male', 'female'],
+}: // variation = 'large'
+AbRadioGroupModel) => {
+  // const style = styles[variation];
   return (
     <FormControl>
       <FormLabel id="demo-row-radio-buttons-group-label">{name}</FormLabel>
@@ -23,7 +25,7 @@ const AbRadioGroup = ({
         value={getter}
         onChange={(e) => setter(e.target.value)}
       >
-        {style.options.map((o: string, i: number) => (
+        {options.map((o: string, i: number) => (
           <FormControlLabel key={i} value={o} control={<Radio />} label={o} />
         ))}
       </RadioGroup>

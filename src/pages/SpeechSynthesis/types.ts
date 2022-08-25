@@ -59,6 +59,22 @@ const getVoice = (gender: genderType, dialect: dialectType): voiceType => {
   return voice;
 };
 
+interface AbRadioGroupModel {
+  name: string;
+  getter: string;
+  setter: SetterOrUpdater<string>;
+  options: string[];
+}
+
+interface AbAccordionModel {
+  title: string;
+  getter: boolean;
+  setter: SetterOrUpdater<boolean>;
+  items: AbRadioGroupModel[];
+}
+
+export type { AbAccordionModel, AbRadioGroupModel };
+
 export default synthesisProps;
 export { getVoice, speedNum, pitchNum };
 export type { dialectType, genderType, speedType, pitchType, modeType };

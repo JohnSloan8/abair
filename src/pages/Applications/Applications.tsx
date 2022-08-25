@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 
-import AbClickableCard from '@/components/AbClickableCard';
+import { AbClickableCard } from 'abair-component-library';
+
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 
@@ -19,7 +20,9 @@ function Applications() {
       >
         <Grid item>
           <AbClickableCard
-            path="/applications"
+            handleClickEvent={() => {
+              window.location.href = 'https://abair.ie/scealai';
+            }}
             title="An Scéalaí"
             description="Computer Assisted Language Learning platform"
             variation="app"

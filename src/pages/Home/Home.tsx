@@ -1,14 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import AbClickableCard from '@/components/AbClickableCard';
+// import AbClickableCard from '@/components/AbClickableCard';
+import { AbClickableCard } from 'abair-component-library';
+
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 
 // import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <Meta title="home" />
@@ -30,7 +35,7 @@ function Home() {
         >
           <Grid item>
             <AbClickableCard
-              path="/speech-synthesis"
+              handleClickEvent={() => navigate('/speech-synthesis')}
               title="Speech Synthesis"
               description="Listen to our voices in the 3 main Irish dialects"
               variation="main"
@@ -38,7 +43,7 @@ function Home() {
           </Grid>
           <Grid item>
             <AbClickableCard
-              path="/speech-recognition"
+              handleClickEvent={() => navigate('/speech-recognition')}
               title="Speech Recognition"
               description="Speak in Irish and see your words as text"
               variation="main"

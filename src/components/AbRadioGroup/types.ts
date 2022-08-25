@@ -1,10 +1,10 @@
 import { SetterOrUpdater } from 'recoil';
 
-interface RadioGroupItem {
+interface AbRadioGroupModel {
   name: string;
   getter: string;
   setter: SetterOrUpdater<string>;
   options: string[];
 }
 
-export type { RadioGroupItem };
+export type { AbRadioGroupModel };

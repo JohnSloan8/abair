@@ -1,12 +1,7 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { RadioGroupItem } from '../AbRadioGroup/types';
-
-interface AccordionItem {
-  title: string;
-  getter: boolean;
-  setter: SetterOrUpdater<boolean>;
-  items: RadioGroupItem[];
+interface AbAccordionProps {
+  variation?: 'large' | 'small';
+  label: string;
+  children?: React.ReactNode[];
 }
 
-export type { AccordionItem };
+export type { AbAccordionProps };
