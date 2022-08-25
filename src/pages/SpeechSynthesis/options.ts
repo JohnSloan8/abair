@@ -5,15 +5,15 @@ import {
   useSynthesisSpeed,
 } from '@/store/synthesis';
 
-import { RadioGroupItem } from './types';
+import { AbRadioGroupModel } from './types';
 
-const CreateItem = () => {
+const CreateOptions = () => {
   const { synthesisGender, setSynthesisGender } = useSynthesisGender();
   const { synthesisMode, setSynthesisMode } = useSynthesisMode();
   const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
   const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
 
-  const synthesisProps: RadioGroupItem[] = [
+  const synthesisProps: AbRadioGroupModel[] = [
     {
       name: 'gender',
       getter: synthesisGender,
@@ -43,4 +43,4 @@ const CreateItem = () => {
   return synthesisProps;
 };
 
-export default CreateItem;
+export default CreateOptions;
