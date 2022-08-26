@@ -37,27 +37,37 @@ function SpeechSynthesis() {
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
   const synthesisOptions = CreateItem();
 
+  // const setterForSetSynthesisDialect = () => {};
+
   return (
     <CenteredFlexBox>
       <Box sx={{ width: '100%', maxWidth: 'sm' }}>
         <Meta title="speech synthesis" />
         <AbInfoHeader title="Speech Synthesis" />
         <Box px={1} component="form" noValidate autoComplete="off">
-          <AbRadioGroup
-            name="Dialect"
-            getter={synthesisDialect}
-            setter={setSynthesisDialect}
-            options={['Ulster', 'Connaught', 'Munster']}
-          />
+          <Box mx={2}>
+            <AbRadioGroup
+              name="Dialect"
+              getter={synthesisDialect}
+              handleChangeEvent={(e) => {
+                setSynthesisDialect(e.target.value);
+              }}
+              options={['Ulster', 'Connaught', 'Munster']}
+              variation="small"
+            />
+          </Box>
           <Box sx={{ mb: 2 }}>
-            <AbAccordion label="Advanced Options" variation="large">
+            <AbAccordion label="Advanced Options" variation="small">
               {synthesisOptions.map((item: AbRadioGroupModel) => (
                 <Box key={item.name}>
                   <AbRadioGroup
                     name={item.name}
                     getter={item.getter}
-                    setter={item.setter}
+                    handleChangeEvent={(e) => {
+                      item.setter(e.target.value);
+                    }}
                     options={item.options}
+                    variation="small"
                   />
                 </Box>
               ))}
