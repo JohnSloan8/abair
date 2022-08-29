@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { AbRadioGroup } from 'abair-component-library';
+import { AbRadioGroup, AbRadioGroupProps } from 'abair-component-library';
 
 import AbAccordion from '@/components/AbAccordion';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
@@ -24,7 +24,6 @@ import {
 
 import getSynthesis from '../../services/synthesis';
 import CreateItem from './options';
-import { AbRadioGroupModel } from './types';
 
 // import { getVoice, pitchNum, speedNum } from './typesgit';
 
@@ -49,7 +48,7 @@ function SpeechSynthesis() {
             <AbRadioGroup
               name="Dialect"
               getter={synthesisDialect}
-              handleChangeEvent={(e) => {
+              handleChangeEvent={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSynthesisDialect(e.target.value);
               }}
               options={['Ulster', 'Connaught', 'Munster']}
@@ -58,12 +57,12 @@ function SpeechSynthesis() {
           </Box>
           <Box sx={{ mb: 2 }}>
             <AbAccordion label="Advanced Options" variation="small">
-              {synthesisOptions.map((item: AbRadioGroupModel) => (
+              {synthesisOptions.map((item: AbRadioGroupProps) => (
                 <Box key={item.name}>
                   <AbRadioGroup
                     name={item.name}
                     getter={item.getter}
-                    handleChangeEvent={(e) => {
+                    handleChangeEvent={(e: React.ChangeEvent<HTMLInputElement>) => {
                       item.setter(e.target.value);
                     }}
                     options={item.options}
