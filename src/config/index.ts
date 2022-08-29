@@ -11,6 +11,7 @@ const repository = 'https://github.com/JohnSloan8/abair';
 const rootURL = 'http://localhost:5173/';
 
 const synthesisURL = 'http://localhost:5000/api/v1/synthesis';
+const synthesisMetadataURL = 'http://0.0.0.0:8888/meta_ideal';
 
 const messages = {
   app: {
@@ -68,4 +69,5 @@ export {
   giphy404,
   rootURL,
   synthesisURL,
+  synthesisMetadataURL,
 };

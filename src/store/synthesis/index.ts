@@ -1,4 +1,5 @@
 import { atom, selector, useRecoilState } from 'recoil';
+import { SetterOrUpdater } from 'recoil';
 
 const synthesisTextState = atom<string>({
   key: 'synthesis-text-state',
@@ -39,7 +40,7 @@ const isSynthesisAudioEmpty = selector({
 
 const synthesisDialectState = atom<string>({
   key: 'synthesis-dialect-state',
-  default: 'Ulster',
+  default: 'all',
 });
 
 const useSynthesisDialect = () => {
@@ -61,7 +62,7 @@ const useSynthesisAccordion = () => {
 
 const synthesisGenderState = atom<string>({
   key: 'synthesis-gender-state',
-  default: 'male',
+  default: 'all',
 });
 
 const useSynthesisGender = () => {
@@ -72,7 +73,7 @@ const useSynthesisGender = () => {
 
 const synthesisModeState = atom<string>({
   key: 'synthesis-mode-state',
-  default: 'DNN',
+  default: 'all',
 });
 
 const useSynthesisMode = () => {
@@ -103,6 +104,34 @@ const useSynthesisPitch = () => {
   return { synthesisPitch, setSynthesisPitch };
 };
 
+const synthesisMetadataState = atom<[]>({
+  key: 'synthesis-metadata-state',
+  default: [],
+});
+
+const useSynthesisMetadata = () => {
+  const [synthesisMetadata, setSynthesisMetadata] = useRecoilState(synthesisMetadataState);
+
+  return { synthesisMetadata, setSynthesisMetadata };
+};
+
+interface voiceOptionsModel {
+  name: string;
+  getter: string;
+  setter: SetterOrUpdater<string>;
+  options: string[];
+}
+
+const VoiceOptionsState = atom<voiceOptionsModel[]>({
+  key: 'synthesis-voice-options-state',
+  default: [],
+});
+
+const useVoiceOptions = () => {
+  const [voiceOptions, setVoiceOptions] = useRecoilState(VoiceOptionsState);
+  return { voiceOptions, setVoiceOptions };
+};
+
 export {
   useSynthesisText,
   isSynthesisTextEmptyString,
@@ -114,4 +143,8 @@ export {
   useSynthesisMode,
   useSynthesisSpeed,
   useSynthesisPitch,
+  useSynthesisMetadata,
+  useVoiceOptions,
 };
+
+export type { voiceOptionsModel };
