@@ -18,6 +18,7 @@ import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import getSynthesisMetadata from '@/services/synthesis/metadata';
 import {
+  APIVoiceOptionsModel,
   isSynthesisAudioEmpty,
   isSynthesisTextEmptyString,
   useSynthesisAudio,
@@ -32,12 +33,6 @@ import {
 } from '@/store/synthesis';
 
 import getSynthesis from '../../services/synthesis';
-import { APIVoiceOptionsModel } from './types';
-
-// import UpdateVoiceOptions from './options';
-// import { voiceOptionsModel } from './types';
-
-// import { getVoice, pitchNum, speedNum } from './typesgit';
 
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
@@ -67,7 +62,7 @@ function SpeechSynthesis() {
     const tempGenderArray: string[] = [];
     const tempDialectArray: string[] = [];
     const tempModeArray: string[] = [];
-    Object.values(synthesisMetadata).forEach((v) => {
+    Object.values(synthesisMetadata).forEach((v: APIVoiceOptionsModel) => {
       if (!tempGenderArray.includes(v.gender)) {
         tempGenderArray.push(v.gender);
       }
@@ -102,8 +97,100 @@ function SpeechSynthesis() {
     ]);
   }, [synthesisMetadata]);
 
+  const optionSelected = (option: string, choice: string) => {
+    console.log('option:', option);
+    console.log('choice:', choice);
+    option === 'dialect' ? setSynthesisDialect(choice) : null;
+    option === 'gender' ? setSynthesisGender(choice) : null;
+    option === 'mode' ? setSynthesisMode(choice) : null;
+
+    const newVoiceOptions: voiceOptionsModel[] = [...voiceOptions].map(
+      (item: voiceOptionsModel) => {
+        if (item.name === option) return { ...item, getter: choice };
+        else return item;
+      },
+    );
+    setVoiceOptions(newVoiceOptions);
+
+    // voiceOptions.map((v) => {
+    //   console.log('v.name:', v.name);
+    //   let newSynthesisMetadata: APIVoiceOptionsModel[];
+    //   if (option === 'dialect' && choice) {
+    //     newSynthesisMetadata = [...synthesisMetadata].map((item: APIVoiceOptionsModel) => {
+    //       // console.log('item.locale:', item.locale);
+    //       // console.log('v.getter:', v.getter);
+    //       if (item.locale !== choice) return { ...item, variant: 'text' };
+    //       else return { ...item, variant: 'outlined' };
+    //     });
+    //     setSynthesisMetadata(newSynthesisMetadata);
+    //   }
+    // });
+  };
+
+  useEffect(() => {
+    const newSynthesisMetadata: APIVoiceOptionsModel[] = [...synthesisMetadata].map(
+      (item: APIVoiceOptionsModel) => {
+        console.log('item.locale:', item.locale);
+        console.log('item.locale:', synthesisDialect);
+        console.log('item.gender:', item.gender);
+        console.log('item.gender:', synthesisGender);
+        console.log('item.voices:', item.voices);
+        console.log('item.voices:', synthesisMode);
+
+        let dialectState = false;
+        if (item.locale === synthesisDialect || synthesisDialect === 'all') {
+          dialectState = true;
+        }
+        let genderState = false;
+        if (item.gender === synthesisGender || synthesisGender === 'all') {
+          genderState = true;
+        }
+        let modeState = false;
+        if (item.voices.includes(synthesisMode) || synthesisMode === 'all') {
+          modeState = true;
+        }
+
+        if (dialectState && genderState && modeState) {
+          return { ...item, variant: 'outlined' };
+        } else return { ...item, variant: 'text' };
+        // item.mode !== synthesisGender ||
+        // item.gender !== 'all' ||
+        // !item.voices.includes(synthesisMode) ||
+        // !item.voices.includes('all')
+        // )
+        //   return { ...item, variant: 'text' };
+        // else return { ...item, variant: 'outlined' };
+      },
+    );
+    setSynthesisMetadata(newSynthesisMetadata);
+  }, [synthesisDialect, synthesisGender, synthesisMode]);
+
+  // } else if (v.name === 'gender' && v.getter !== 'all') {
+  //   newSynthesisMetadata = [...synthesisMetadata].map((item: APIVoiceOptionsModel) => {
+  //     if (item.gender !== v.getter) return { ...item, variant: 'text' };
+  //     else return { ...item, variant: 'outlined' };
+  //   });
+  //   setSynthesisMetadata(newSynthesisMetadata);
+  // } else if (v.name === 'mode' && v.getter !== 'all') {
+  //   newSynthesisMetadata = [...synthesisMetadata].map((item: APIVoiceOptionsModel) => {
+  //     if (!item.voices.includes(v.getter)) return { ...item, variant: 'text' };
+  //     else return { ...item, variant: 'outlined' };
+  //   });
+  //   setSynthesisMetadata(newSynthesisMetadata);
+  //     }
+  //   });
+  //   console.log('in updateVoiceOptionButtons');
+  // };
+
   const clickVoice = (v: string) => {
-    console.log('v:', v);
+    const newSynthesisMetadata: APIVoiceOptionsModel[] = [...synthesisMetadata].map(
+      (item: APIVoiceOptionsModel) => {
+        if (item.variant === 'contained') return { ...item, variant: 'outlined' };
+        else if (item.name === v) return { ...item, variant: 'contained' };
+        else return item;
+      },
+    );
+    setSynthesisMetadata(newSynthesisMetadata);
   };
 
   return (
@@ -132,9 +219,9 @@ function SpeechSynthesis() {
                 <Box key={item.name}>
                   <AbRadioGroup
                     name={item.name}
-                    getter={item.getter}
+                    value={item.getter}
                     handleChangeEvent={(e) => {
-                      item.setter(e.target.value);
+                      optionSelected(item.name, e.target.value);
                     }}
                     options={item.options}
                     variation="small"

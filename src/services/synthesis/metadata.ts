@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { synthesisMetadataURL } from '@/config';
-import { APIVoiceOptionsModel } from '@/pages/SpeechSynthesis/types';
+import { APIVoiceOptionsModel } from '@/store/synthesis';
 
 const getSynthesisMetadata = async () => {
   const res = await axios.get(synthesisMetadataURL);

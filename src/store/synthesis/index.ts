@@ -104,7 +104,15 @@ const useSynthesisPitch = () => {
   return { synthesisPitch, setSynthesisPitch };
 };
 
-const synthesisMetadataState = atom<[]>({
+interface APIVoiceOptionsModel {
+  name: string;
+  gender: string;
+  locale: string;
+  shortCode: string;
+  voices: string[];
+  variant?: 'text' | 'outlined' | 'contained' | undefined;
+}
+const synthesisMetadataState = atom<APIVoiceOptionsModel[]>({
   key: 'synthesis-metadata-state',
   default: [],
 });
@@ -147,4 +155,4 @@ export {
   useVoiceOptions,
 };
 
-export type { voiceOptionsModel };
+export type { voiceOptionsModel, APIVoiceOptionsModel };

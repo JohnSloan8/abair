@@ -56,13 +56,4 @@
 // export { getVoice, speedNum, pitchNum };
 // export type { dialectType, genderType, speedType, pitchType, modeType };
 
-interface APIVoiceOptionsModel {
-  name: string;
-  gender: string;
-  locale: string;
-  shortCode: string;
-  voices: string[];
-  variant?: 'text' | 'outlined' | 'contained' | undefined;
-}
-
-export type { APIVoiceOptionsModel };
+// export type { APIVoiceOptionsModel };
