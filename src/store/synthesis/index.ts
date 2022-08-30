@@ -60,6 +60,17 @@ const useSynthesisAccordion = () => {
   return { synthesisAccordion, setSynthesisAccordion };
 };
 
+const synthesisMapState = atom<string>({
+  key: 'synthesis-map-state',
+  default: '',
+});
+
+const useSynthesisMap = () => {
+  const [synthesisMap, setSynthesisMap] = useRecoilState(synthesisMapState);
+
+  return { synthesisMap, setSynthesisMap };
+};
+
 const synthesisGenderState = atom<string>({
   key: 'synthesis-gender-state',
   default: 'all',
@@ -110,7 +121,8 @@ interface APIVoiceOptionsModel {
   locale: string;
   shortCode: string;
   voices: string[];
-  variant?: 'text' | 'outlined' | 'contained' | undefined;
+  selected: boolean;
+  disabled: boolean;
 }
 const synthesisMetadataState = atom<APIVoiceOptionsModel[]>({
   key: 'synthesis-metadata-state',
@@ -153,6 +165,7 @@ export {
   useSynthesisPitch,
   useSynthesisMetadata,
   useVoiceOptions,
+  useSynthesisMap,
 };
 
 export type { voiceOptionsModel, APIVoiceOptionsModel };
