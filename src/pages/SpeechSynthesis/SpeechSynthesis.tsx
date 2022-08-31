@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import { AbButton, AbRadioGroup } from 'abair-component-library';
+import { AbButton } from 'abair-component-library';
 
-import AbAccordion from '@/components/AbAccordion';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbMap from '@/components/AbMap';
@@ -19,134 +18,50 @@ import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import getSynthesisMetadata from '@/services/synthesis/metadata';
 import {
-  APIVoiceOptionsModel,
   isSynthesisAudioEmpty,
   isSynthesisTextEmptyString,
   useSynthesisAudio,
-  useSynthesisDialect,
-  useSynthesisGender,
-  useSynthesisMetadata,
-  useSynthesisMode, // useSynthesisPitch,
-  // useSynthesisSpeed,
   useSynthesisText,
-  useVoiceOptions,
-  voiceOptionsModel,
 } from '@/store/synthesis';
+import {
+  filteredSynthesisVoiceOptionsState,
+  synthesisVoiceState,
+  useSynthesisVoice,
+  useSynthesisVoiceOptions,
+} from '@/store/synthesis/voiceOptions';
 
 import getSynthesis from '../../services/synthesis';
 
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
-  const { synthesisMetadata, setSynthesisMetadata } = useSynthesisMetadata();
-  const { voiceOptions, setVoiceOptions } = useVoiceOptions();
-  const { synthesisGender, setSynthesisGender } = useSynthesisGender();
-  const { synthesisMode, setSynthesisMode } = useSynthesisMode();
-  // const { synthesisMap, setSynthesisMap } = useSynthesisMap();
-  // const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
-  // const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
-  const { synthesisDialect, setSynthesisDialect } = useSynthesisDialect();
+  const { synthesisVoice, setSynthesisVoice } = useSynthesisVoice();
+  const { setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
-  const mapRef = useRef(null);
+  const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
+  const resetSynthesisVoice = useResetRecoilState(synthesisVoiceState);
 
   useEffect(() => {
     getSynthesisMetadata()
       .then((res) => {
-        setSynthesisMetadata(res);
+        setSynthesisVoiceOptions(res);
       })
       .catch((error) => {
         alert('error:' + error);
       });
-    console.log('mapRef.current', mapRef.current);
   }, []);
 
   useEffect(() => {
-    const tempGenderArray: string[] = [];
-    const tempDialectArray: string[] = [];
-    const tempModeArray: string[] = [];
-    Object.values(synthesisMetadata).forEach((v: APIVoiceOptionsModel) => {
-      if (!tempGenderArray.includes(v.gender)) {
-        tempGenderArray.push(v.gender);
-      }
-      if (!tempDialectArray.includes(v.locale)) {
-        tempDialectArray.push(v.locale);
-      }
-      v.voices.forEach((k: string) => {
-        if (!tempModeArray.includes(k)) {
-          tempModeArray.push(k);
-        }
-      });
-    });
-    setVoiceOptions([
-      {
-        name: 'dialect',
-        getter: synthesisDialect,
-        setter: setSynthesisDialect,
-        options: ['all', ...tempDialectArray],
-      },
-      {
-        name: 'gender',
-        getter: synthesisGender,
-        setter: setSynthesisGender,
-        options: ['all', ...tempGenderArray],
-      },
-      {
-        name: 'mode',
-        getter: synthesisMode,
-        setter: setSynthesisMode,
-        options: ['all', ...tempModeArray],
-      },
-    ]);
-  }, [synthesisMetadata]);
+    console.log('filteredSynthesisVoiceOptions:', filteredSynthesisVoiceOptions);
+  }, [filteredSynthesisVoiceOptions]);
 
-  const optionSelected = (option: string, choice: string) => {
-    option === 'dialect' ? setSynthesisDialect(choice) : null;
-    option === 'gender' ? setSynthesisGender(choice) : null;
-    option === 'mode' ? setSynthesisMode(choice) : null;
-
-    const newVoiceOptions: voiceOptionsModel[] = [...voiceOptions].map(
-      (item: voiceOptionsModel) => {
-        if (item.name === option) return { ...item, getter: choice };
-        else return item;
-      },
-    );
-    setVoiceOptions(newVoiceOptions);
-  };
-
-  useEffect(() => {
-    const newSynthesisMetadata: APIVoiceOptionsModel[] = [...synthesisMetadata].map(
-      (item: APIVoiceOptionsModel) => {
-        let dialectState = false;
-        if (item.locale === synthesisDialect || synthesisDialect === 'all') {
-          dialectState = true;
-        }
-        let genderState = false;
-        if (item.gender === synthesisGender || synthesisGender === 'all') {
-          genderState = true;
-        }
-        let modeState = false;
-        if (item.voices.includes(synthesisMode) || synthesisMode === 'all') {
-          modeState = true;
-        }
-
-        if (dialectState && genderState && modeState) {
-          return { ...item, disabled: false };
-        } else return { ...item, disabled: true };
-      },
-    );
-    setSynthesisMetadata(newSynthesisMetadata);
-  }, [synthesisDialect, synthesisGender, synthesisMode]);
-
-  const clickVoice = (v: string) => {
-    const newSynthesisMetadata: APIVoiceOptionsModel[] = [...synthesisMetadata].map(
-      (item: APIVoiceOptionsModel) => {
-        if (item.selected) return { ...item, selected: false };
-        else if (item.name === v) return { ...item, selected: true };
-        else return item;
-      },
-    );
-    setSynthesisMetadata(newSynthesisMetadata);
+  const toggleVoice = (voice: synthesisVoiceOptionsModel) => {
+    if (synthesisVoice === voice) {
+      resetSynthesisVoice();
+    } else {
+      setSynthesisVoice(voice);
+    }
   };
 
   return (
@@ -156,13 +71,12 @@ function SpeechSynthesis() {
         <AbInfoHeader title="Speech Synthesis" />
         <CenteredFlexBox p={1}>
           <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
-            {synthesisMetadata.map((k: APIVoiceOptionsModel, i) => (
+            {filteredSynthesisVoiceOptions.map((k: APIVoiceOptionsModel, i) => (
               <AbButton
                 label={k.name}
-                onClick={() => clickVoice(k.name)}
+                onClick={() => toggleVoice(k)}
                 key={i}
-                disabled={k.disabled}
-                selected={k.selected}
+                selected={k === synthesisVoice ? true : false}
                 variation="voice"
               />
             ))}
@@ -172,23 +86,6 @@ function SpeechSynthesis() {
           <AbMap />
         </CenteredFlexBox>
         <Box px={1} component="form" noValidate autoComplete="off">
-          <Box sx={{ mb: 1 }}>
-            <AbAccordion label="Options" variation="small">
-              {voiceOptions.map((item: voiceOptionsModel) => (
-                <Box key={item.name}>
-                  <AbRadioGroup
-                    name={item.name}
-                    value={item.getter}
-                    handleChangeEvent={(e) => {
-                      optionSelected(item.name, e.target.value);
-                    }}
-                    options={item.options}
-                    variation="small"
-                  />
-                </Box>
-              ))}
-            </AbAccordion>
-          </Box>
           <AbTextField variation="synthesis" />
           <Typography align="center" p={{ sm: 4, xs: 2 }}>
             <Button

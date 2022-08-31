@@ -1,5 +1,4 @@
 import { atom, selector, useRecoilState } from 'recoil';
-import { SetterOrUpdater } from 'recoil';
 
 const synthesisTextState = atom<string>({
   key: 'synthesis-text-state',
@@ -38,134 +37,97 @@ const isSynthesisAudioEmpty = selector({
   },
 });
 
-const synthesisDialectState = atom<string>({
-  key: 'synthesis-dialect-state',
-  default: 'all',
-});
+// const synthesisDialectState = atom<string>({
+//   key: 'synthesis-dialect-state',
+//   default: 'all',
+// });
 
-const useSynthesisDialect = () => {
-  const [synthesisDialect, setSynthesisDialect] = useRecoilState(synthesisDialectState);
+// const useSynthesisDialect = () => {
+//   const [synthesisDialect, setSynthesisDialect] = useRecoilState(synthesisDialectState);
 
-  return { synthesisDialect, setSynthesisDialect };
-};
+//   return { synthesisDialect, setSynthesisDialect };
+// };
 
-const synthesisAccordionState = atom<boolean>({
-  key: 'synthesis-accordion-state',
-  default: false,
-});
+// const synthesisAccordionState = atom<boolean>({
+//   key: 'synthesis-accordion-state',
+//   default: false,
+// });
 
-const useSynthesisAccordion = () => {
-  const [synthesisAccordion, setSynthesisAccordion] = useRecoilState(synthesisAccordionState);
+// const useSynthesisAccordion = () => {
+//   const [synthesisAccordion, setSynthesisAccordion] = useRecoilState(synthesisAccordionState);
 
-  return { synthesisAccordion, setSynthesisAccordion };
-};
+//   return { synthesisAccordion, setSynthesisAccordion };
+// };
 
-const synthesisMapState = atom<string>({
-  key: 'synthesis-map-state',
-  default: '',
-});
+// const synthesisMapState = atom<string>({
+//   key: 'synthesis-map-state',
+//   default: '',
+// });
 
-const useSynthesisMap = () => {
-  const [synthesisMap, setSynthesisMap] = useRecoilState(synthesisMapState);
+// const useSynthesisMap = () => {
+//   const [synthesisMap, setSynthesisMap] = useRecoilState(synthesisMapState);
 
-  return { synthesisMap, setSynthesisMap };
-};
+//   return { synthesisMap, setSynthesisMap };
+// };
 
-const synthesisGenderState = atom<string>({
-  key: 'synthesis-gender-state',
-  default: 'all',
-});
+// const synthesisGenderState = atom<string>({
+//   key: 'synthesis-gender-state',
+//   default: 'all',
+// });
 
-const useSynthesisGender = () => {
-  const [synthesisGender, setSynthesisGender] = useRecoilState(synthesisGenderState);
+// const useSynthesisGender = () => {
+//   const [synthesisGender, setSynthesisGender] = useRecoilState(synthesisGenderState);
 
-  return { synthesisGender, setSynthesisGender };
-};
+//   return { synthesisGender, setSynthesisGender };
+// };
 
-const synthesisModeState = atom<string>({
-  key: 'synthesis-mode-state',
-  default: 'all',
-});
+// const synthesisModeState = atom<string>({
+//   key: 'synthesis-mode-state',
+//   default: 'all',
+// });
 
-const useSynthesisMode = () => {
-  const [synthesisMode, setSynthesisMode] = useRecoilState(synthesisModeState);
+// const useSynthesisMode = () => {
+//   const [synthesisMode, setSynthesisMode] = useRecoilState(synthesisModeState);
 
-  return { synthesisMode, setSynthesisMode };
-};
+//   return { synthesisMode, setSynthesisMode };
+// };
 
-const synthesisSpeedState = atom<string>({
-  key: 'synthesis-speed-state',
-  default: 'normal',
-});
+// const synthesisSpeedState = atom<string>({
+//   key: 'synthesis-speed-state',
+//   default: 'normal',
+// });
 
-const useSynthesisSpeed = () => {
-  const [synthesisSpeed, setSynthesisSpeed] = useRecoilState(synthesisSpeedState);
+// const useSynthesisSpeed = () => {
+//   const [synthesisSpeed, setSynthesisSpeed] = useRecoilState(synthesisSpeedState);
 
-  return { synthesisSpeed, setSynthesisSpeed };
-};
+//   return { synthesisSpeed, setSynthesisSpeed };
+// };
 
-const synthesisPitchState = atom<string>({
-  key: 'synthesis-pitch-state',
-  default: 'normal',
-});
+// const synthesisPitchState = atom<string>({
+//   key: 'synthesis-pitch-state',
+//   default: 'normal',
+// });
 
-const useSynthesisPitch = () => {
-  const [synthesisPitch, setSynthesisPitch] = useRecoilState(synthesisPitchState);
+// const useSynthesisPitch = () => {
+//   const [synthesisPitch, setSynthesisPitch] = useRecoilState(synthesisPitchState);
 
-  return { synthesisPitch, setSynthesisPitch };
-};
-
-interface APIVoiceOptionsModel {
-  name: string;
-  gender: string;
-  locale: string;
-  shortCode: string;
-  voices: string[];
-  selected: boolean;
-  disabled: boolean;
-}
-const synthesisMetadataState = atom<APIVoiceOptionsModel[]>({
-  key: 'synthesis-metadata-state',
-  default: [],
-});
-
-const useSynthesisMetadata = () => {
-  const [synthesisMetadata, setSynthesisMetadata] = useRecoilState(synthesisMetadataState);
-
-  return { synthesisMetadata, setSynthesisMetadata };
-};
-
-interface voiceOptionsModel {
-  name: string;
-  getter: string;
-  setter: SetterOrUpdater<string>;
-  options: string[];
-}
-
-const VoiceOptionsState = atom<voiceOptionsModel[]>({
-  key: 'synthesis-voice-options-state',
-  default: [],
-});
-
-const useVoiceOptions = () => {
-  const [voiceOptions, setVoiceOptions] = useRecoilState(VoiceOptionsState);
-  return { voiceOptions, setVoiceOptions };
-};
+//   return { synthesisPitch, setSynthesisPitch };
+// };
 
 export {
   useSynthesisText,
   isSynthesisTextEmptyString,
   useSynthesisAudio,
   isSynthesisAudioEmpty,
-  useSynthesisDialect,
-  useSynthesisAccordion,
-  useSynthesisGender,
-  useSynthesisMode,
-  useSynthesisSpeed,
-  useSynthesisPitch,
-  useSynthesisMetadata,
-  useVoiceOptions,
-  useSynthesisMap,
+  // useSynthesisDialect,
+  // useSynthesisAccordion,
+  // useSynthesisGender,
+  // useSynthesisMode,
+  // useSynthesisSpeed,
+  // useSynthesisPitch,
+  // useSynthesisMetadata,
+  // useVoiceOptions,
+  // useSynthesisMap,
 };
 
-export type { voiceOptionsModel, APIVoiceOptionsModel };
+// export type { voiceOptionsModel, APIVoiceOptionsModel };
