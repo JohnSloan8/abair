@@ -20,6 +20,7 @@ const sharedTheme = {
     secondary: {
       wafer: blue[50],
       light: blue[100],
+      medium: blue[200],
       main: blue[600],
       dark: blue[800],
     },

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useResetRecoilState } from 'recoil';
 
+import Box from '@mui/material/Box';
 import { blue, green } from '@mui/material/colors';
 
 import {
@@ -14,7 +15,7 @@ import irelandMapData from './data';
 import localeToCounty from './utils';
 
 const AbMap = () => {
-  const unselectedColour = blue[300];
+  const unselectedColour = blue[200];
   const voiceSelectedColour = blue[500];
   const countySelectedColour = blue[700];
   const hoverColour = blue[800];
@@ -41,33 +42,35 @@ const AbMap = () => {
   };
 
   return (
-    <svg viewBox="0 0 1600 800">
-      <g onMouseLeave={handleMouseLeave}>
-        {irelandMapData.map((c, i) => (
-          <g
-            key={i}
-            fill={
-              gaeltachts.includes(c.name)
-                ? c.name === hoveringCounty
-                  ? hoverColour
-                  : c.name === synthesisMapFilter
-                  ? countySelectedColour
-                  : localeToCounty(synthesisVoice.locale) === c.name
-                  ? voiceSelectedColour
-                  : unselectedColour
-                : restOfIrelandColour
-            }
-            onMouseEnter={() => handleMouseEnter(c.name)}
-            onClick={() => {
-              handleClick(c.name);
-            }}
-            style={{ cursor: 'pointer' }}
-          >
-            <path d={c.coordinates} />
-          </g>
-        ))}
-      </g>
-    </svg>
+    <Box m={{ xs: 4, sm: 1 }} my={{ xs: 0 }}>
+      <svg viewBox="-100 0 800 800">
+        <g onMouseLeave={handleMouseLeave}>
+          {irelandMapData.map((c, i) => (
+            <g
+              key={i}
+              fill={
+                gaeltachts.includes(c.name)
+                  ? c.name === hoveringCounty
+                    ? hoverColour
+                    : c.name === synthesisMapFilter
+                    ? countySelectedColour
+                    : localeToCounty(synthesisVoice.locale) === c.name
+                    ? voiceSelectedColour
+                    : unselectedColour
+                  : restOfIrelandColour
+              }
+              onMouseEnter={() => handleMouseEnter(c.name)}
+              onClick={() => {
+                handleClick(c.name);
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <path d={c.coordinates} />
+            </g>
+          ))}
+        </g>
+      </svg>
+    </Box>
   );
 };
 

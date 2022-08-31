@@ -6,8 +6,10 @@ interface synthesisVoiceModel {
   locale: string;
   shortCode: string;
   voices: string[];
-  pitch?: number[];
-  speed?: number[];
+  pitch: number;
+  pitchRange: number[];
+  speed: number;
+  speedRange: number[];
 }
 
 const synthesisVoiceState = atom<synthesisVoiceModel>({
@@ -18,8 +20,10 @@ const synthesisVoiceState = atom<synthesisVoiceModel>({
     locale: '',
     shortCode: '',
     voices: [],
-    pitch: [0.5, 1.5],
-    speed: [0.5, 1.5],
+    pitch: 1,
+    pitchRange: [0.5, 1.5],
+    speed: 1,
+    speedRange: [0.5, 1.5],
   },
 });
 
@@ -59,6 +63,13 @@ const synthesisGenderFilterState = atom({
   key: 'synthesis-gender-filter',
   default: 'all',
 });
+
+const useSynthesisGenderFilter = () => {
+  const [synthesisGenderFilter, setSynthesisGenderFilter] = useRecoilState(
+    synthesisGenderFilterState,
+  );
+  return { synthesisGenderFilter, setSynthesisGenderFilter };
+};
 
 const filteredSynthesisVoiceOptionsState = selector({
   key: 'filtered-synthesis-voice-options',
@@ -121,26 +132,7 @@ export {
   synthesisVoiceState,
   useSynthesisMapFilter,
   synthesisMapFilterState,
+  useSynthesisGenderFilter,
 };
 
 export type { synthesisVoiceModel };
-
-// const synthesisVoiceOptionsState = atom<synthesisVoiceOptionsModel[]>({
-//   key: 'synthesis-voice-options-state',
-//   default: [],
-// });
-
-// const useSynthesisMetadata = () => {
-//   const [synthesisVoiceOptions, setSynthesisVoiceOptions] = useRecoilState(
-//     synthesisVoiceOptionsState,
-//   );
-
-//   return { synthesisVoiceOptions, setSynthesisVoiceOptions };
-// };
-
-// interface voiceOptionsModel {
-//   name: string;
-//   getter: string;
-//   setter: SetterOrUpdater<string>;
-//   options: string[];
-// }

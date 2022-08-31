@@ -6,7 +6,7 @@ import type { SvgIconProps } from '@mui/material/SvgIcon';
 import CreateItem from './styles';
 
 interface AbIconButtonProps {
-  variation: 'record' | 'stop';
+  variation: 'record' | 'stop' | 'genderSelected' | 'genderHighlighted' | 'genderUnselected';
   handleClick: () => void;
   icon: FC<SvgIconProps>;
 }
@@ -18,8 +18,8 @@ const AbIconButton = ({ variation, handleClick, icon: Icon }: AbIconButtonProps)
   return (
     <IconButton
       aria-label={variation}
-      color="info"
       sx={{
+        color: style.iconColour,
         backgroundColor: style.backgroundColor,
         '&:hover': { backgroundColor: style.backgroundColor },
         m: { sm: style.marginSmall, xs: style.marginXSmall },

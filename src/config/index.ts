@@ -10,7 +10,7 @@ const repository = 'https://github.com/JohnSloan8/abair';
 
 const rootURL = 'http://localhost:5173/';
 
-const synthesisURL = 'http://localhost:5000/api/v1/synthesis';
+const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
 
 const messages = {
