@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
-import { useResetRecoilState } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import Box from '@mui/material/Box';
 import { blue, green } from '@mui/material/colors';
 
 import {
-  synthesisVoiceState,
+  synthesisMapFilterState,
+  synthesisVoiceIndexState,
+  synthesisVoiceSelectedState,
   useSynthesisMapFilter,
-  useSynthesisVoice,
 } from '@/store/synthesis/voiceOptions';
 
 import irelandMapData from './data';
@@ -23,8 +24,9 @@ const AbMap = () => {
   const { synthesisMapFilter, setSynthesisMapFilter } = useSynthesisMapFilter();
   const [hoveringCounty, setHoveringCounty] = useState('');
   const gaeltachts = ['Donegal', 'Galway', 'Kerry'];
-  const { synthesisVoice } = useSynthesisVoice();
-  const resetSynthesisVoice = useResetRecoilState(synthesisVoiceState);
+  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
+  const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
+  const resetMapFilter = useResetRecoilState(synthesisMapFilterState);
 
   const handleMouseEnter = (county: string) => {
     gaeltachts.includes(county) ? setHoveringCounty(county) : setHoveringCounty('');
@@ -35,9 +37,15 @@ const AbMap = () => {
   };
 
   const handleClick = (county: string) => {
-    setSynthesisMapFilter(county);
-    if (county !== localeToCounty(synthesisVoice.locale)) {
-      resetSynthesisVoice();
+    if (county === synthesisMapFilter) {
+      resetMapFilter();
+    } else {
+      setSynthesisMapFilter(county);
+      gaeltachts.includes(county)
+        ? localeToCounty(synthesisVoiceSelected.locale) !== county
+          ? resetSynthesisVoiceIndex()
+          : null
+        : null;
     }
   };
 
@@ -54,7 +62,7 @@ const AbMap = () => {
                     ? hoverColour
                     : c.name === synthesisMapFilter
                     ? countySelectedColour
-                    : localeToCounty(synthesisVoice.locale) === c.name
+                    : synthesisMapFilter === c.name
                     ? voiceSelectedColour
                     : unselectedColour
                   : restOfIrelandColour

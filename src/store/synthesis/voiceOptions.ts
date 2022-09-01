@@ -12,24 +12,14 @@ interface synthesisVoiceModel {
   speedRange: number[];
 }
 
-const synthesisVoiceState = atom<synthesisVoiceModel>({
-  key: 'synthesis-voice',
-  default: {
-    name: '',
-    gender: '',
-    locale: '',
-    shortCode: '',
-    voices: [],
-    pitch: 1,
-    pitchRange: [0.5, 1.5],
-    speed: 1,
-    speedRange: [0.5, 1.5],
-  },
+const synthesisVoiceIndexState = atom<number>({
+  key: 'synthesis-voice-index',
+  default: -1,
 });
 
-const useSynthesisVoice = () => {
-  const [synthesisVoice, setSynthesisVoice] = useRecoilState(synthesisVoiceState);
-  return { synthesisVoice, setSynthesisVoice };
+const useSynthesisVoiceIndex = () => {
+  const [synthesisVoiceIndex, setSynthesisVoiceIndex] = useRecoilState(synthesisVoiceIndexState);
+  return { synthesisVoiceIndex, setSynthesisVoiceIndex };
 };
 
 const synthesisVoiceOptionsState = atom<synthesisVoiceModel[]>({
@@ -43,6 +33,31 @@ const useSynthesisVoiceOptions = () => {
   );
   return { synthesisVoiceOptions, setSynthesisVoiceOptions };
 };
+
+const synthesisVoiceSelectedState = selector({
+  key: 'synthesis-voice-selected',
+  get: ({ get }) => {
+    const selectedVoiceIndex = get(synthesisVoiceIndexState);
+    const voiceOptions = get(synthesisVoiceOptionsState);
+    console.log('voiceOptions:', voiceOptions);
+    console.log('voiceOptions:', voiceOptions);
+    if (selectedVoiceIndex === -1) {
+      return {
+        name: '',
+        gender: 'all',
+        locale: 'all',
+        shortCode: '',
+        voices: [],
+        pitch: 1,
+        pitchRange: [0.5, 1.5],
+        speed: 1,
+        speedRange: [0.5, 1.5],
+      };
+    } else {
+      return voiceOptions[selectedVoiceIndex];
+    }
+  },
+});
 
 const synthesisMapFilterState = atom({
   key: 'synthesis-map-filter',
@@ -127,12 +142,13 @@ const filteredSynthesisVoiceOptionsState = selector({
 
 export {
   filteredSynthesisVoiceOptionsState,
-  useSynthesisVoice,
+  useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
-  synthesisVoiceState,
   useSynthesisMapFilter,
   synthesisMapFilterState,
   useSynthesisGenderFilter,
+  synthesisVoiceSelectedState,
+  synthesisVoiceIndexState,
 };
 
 export type { synthesisVoiceModel };

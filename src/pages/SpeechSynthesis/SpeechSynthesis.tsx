@@ -30,9 +30,10 @@ import {
 } from '@/store/synthesis';
 import {
   filteredSynthesisVoiceOptionsState,
+  synthesisVoiceIndexState,
   synthesisVoiceModel,
-  synthesisVoiceState,
-  useSynthesisVoice,
+  synthesisVoiceSelectedState,
+  useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
 
@@ -41,12 +42,13 @@ import getSynthesis from '../../services/synthesis';
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
-  const { synthesisVoice, setSynthesisVoice } = useSynthesisVoice();
+  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
   const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
-  const resetSynthesisVoice = useResetRecoilState(synthesisVoiceState);
+  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
+  const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
 
   useEffect(() => {
     getSynthesisMetadata()
@@ -68,36 +70,46 @@ function SpeechSynthesis() {
     console.log('audio:', synthesisAudio);
   }, [emptyAudio]);
 
-  // useEffect(() => {
-  //   console.log('filteredSynthesisVoiceOptions:', filteredSynthesisVoiceOptions);
-  // }, [filteredSynthesisVoiceOptions]);
+  useEffect(() => {
+    console.log('filteredSynthesisVoiceOptions:', filteredSynthesisVoiceOptions);
+  }, [filteredSynthesisVoiceOptions]);
 
   const handleSynthesisRequest = () => {
-    getSynthesis(synthesisText, synthesisVoice, setSynthesisAudio);
+    getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio);
   };
 
   const toggleVoice = (voice: synthesisVoiceModel) => {
-    if (synthesisVoice === voice) {
-      resetSynthesisVoice();
+    if (synthesisVoiceSelected === voice) {
+      resetSynthesisVoiceIndex();
     } else {
-      setSynthesisVoice(voice);
+      setSynthesisVoiceIndex(
+        synthesisVoiceOptions.findIndex((v: synthesisVoiceModel) => v === voice),
+      );
     }
   };
-
-  const handleSpeedChange = (event: Event) => {
-    setSynthesisVoice((synthesisVoice) => ({ ...synthesisVoice, speed: event.target.value }));
-    const newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
-      return { ...item, speed: event.target.value };
-    });
-    setSynthesisVoiceOptions(newSynthesisVoiceOptions);
-  };
-
-  const handlePitchChange = (event: Event) => {
-    setSynthesisVoice((synthesisVoice) => ({ ...synthesisVoice, pitch: event.target.value }));
-    const newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
-      return { ...item, speed: event.target.value };
-    });
-    setSynthesisVoiceOptions(newSynthesisVoiceOptions);
+  function replaceItemAtIndex(
+    arr: synthesisVoiceModel[],
+    index: number,
+    newValue: synthesisVoiceModel,
+  ) {
+    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+  }
+  const handleSliderChange = (event: Event, control: string) => {
+    // setSynthesisVoiceOptions((synthesisVoiceOptions[synthesisVoiceIndex]) => ({ ...synthesisVoice, speed: event.target.value }));
+    let newSynthesisVoiceOptions: synthesisVoiceModel[];
+    if (control === 'speed') {
+      newSynthesisVoiceOptions = replaceItemAtIndex(synthesisVoiceOptions, synthesisVoiceIndex, {
+        ...synthesisVoiceSelected,
+        speed: event.target.value,
+      });
+      setSynthesisVoiceOptions(newSynthesisVoiceOptions);
+    } else if (control === 'pitch') {
+      newSynthesisVoiceOptions = replaceItemAtIndex(synthesisVoiceOptions, synthesisVoiceIndex, {
+        ...synthesisVoiceSelected,
+        pitch: event.target.value,
+      });
+      setSynthesisVoiceOptions(newSynthesisVoiceOptions);
+    }
   };
 
   return (
@@ -134,11 +146,11 @@ function SpeechSynthesis() {
                   aria-label="Speed"
                   valueLabelDisplay="auto"
                   defaultValue={1}
-                  min={synthesisVoice.speedRange[0]}
+                  min={synthesisVoiceSelected.speedRange[0]}
                   step={0.1}
-                  max={synthesisVoice.speedRange[1]}
+                  max={synthesisVoiceSelected.speedRange[1]}
                   sx={{ color: 'secondary.main' }}
-                  onChange={handleSpeedChange}
+                  onChange={(e) => handleSliderChange(e, 'speed')}
                 />
               </Stack>
 
@@ -155,11 +167,11 @@ function SpeechSynthesis() {
                   aria-label="Pitch"
                   valueLabelDisplay="auto"
                   defaultValue={1}
-                  min={synthesisVoice.pitchRange[0]}
+                  min={synthesisVoiceSelected.pitchRange[0]}
                   step={0.1}
-                  max={synthesisVoice.pitchRange[1]}
+                  max={synthesisVoiceSelected.pitchRange[1]}
                   sx={{ color: 'secondary.main' }}
-                  onChange={handlePitchChange}
+                  onChange={(e) => handleSliderChange(e, 'pitch')}
                 />
               </Stack>
             </Grid>
@@ -172,7 +184,7 @@ function SpeechSynthesis() {
                 label={k.name}
                 onClick={() => toggleVoice(k)}
                 key={i}
-                selected={k === synthesisVoice ? true : false}
+                selected={k === synthesisVoiceSelected ? true : false}
                 variation="voice"
               />
             ))}

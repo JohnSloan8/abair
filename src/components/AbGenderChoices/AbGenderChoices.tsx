@@ -1,26 +1,42 @@
+import { useEffect } from 'react';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
+
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Grid } from '@mui/material';
 
-import { useSynthesisGenderFilter, useSynthesisVoice } from '@/store/synthesis/voiceOptions';
+import {
+  synthesisVoiceIndexState,
+  synthesisVoiceSelectedState,
+  useSynthesisGenderFilter,
+} from '@/store/synthesis/voiceOptions';
 
 import AbIconButton from '../AbIconButton';
 
 const AbGenderChoices = () => {
-  const { synthesisVoice } = useSynthesisVoice();
+  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
   const { synthesisGenderFilter, setSynthesisGenderFilter } = useSynthesisGenderFilter();
+  const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
+
   const genders = [
     { name: 'male', icon: MaleIcon },
     { name: 'female', icon: FemaleIcon },
     { name: 'neutral', icon: TransgenderIcon },
-    { name: 'reset', icon: RestartAltIcon },
   ];
   const toggleGender = (gender: string) => {
     console.log('toggling gender:', gender);
-    setSynthesisGenderFilter(gender);
+    if (gender === synthesisGenderFilter) {
+      setSynthesisGenderFilter('all');
+    } else {
+      setSynthesisGenderFilter(gender);
+      resetSynthesisVoiceIndex();
+    }
   };
+
+  useEffect(() => {
+    console.log('synthesisGenderFilter:', synthesisGenderFilter);
+  }, [synthesisGenderFilter]);
 
   return (
     <Grid container direction="row" id="genderGridContainer" justifyContent="center">
@@ -31,7 +47,7 @@ const AbGenderChoices = () => {
           variation={
             synthesisGenderFilter === g.name
               ? 'genderSelected'
-              : synthesisVoice.gender === g.name
+              : synthesisVoiceSelected.gender === g.name
               ? 'genderHighlighted'
               : 'genderUnselected'
           }
