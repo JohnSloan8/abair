@@ -27,6 +27,7 @@
     "@mui/material": "^5.8.1",
     "@mui/system": "^5.8.1",
     "@mui/utils": "^5.8.0",
+    "@supabase/supabase-js": "^2.0.0-rc.8",
     "abair-component-library": "^1.0.25",
     "axios": "^0.27.2",
     "is-mobile": "^3.1.1",

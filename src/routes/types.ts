@@ -10,6 +10,8 @@ enum Pages {
   Knowledge,
   Applications,
   Team,
+  Login,
+  Logout,
   Contact,
   NotFound,
 }

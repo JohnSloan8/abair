@@ -3,6 +3,8 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
@@ -52,6 +54,18 @@ const routes: Routes = {
     path: '/contact',
     title: 'Contact',
     icon: ContactMailIcon,
+  },
+  [Pages.Login]: {
+    component: asyncComponentLoader(() => import('@/pages/Login')),
+    path: '/login',
+    title: 'Login/Signup',
+    icon: LoginIcon,
+  },
+  [Pages.Logout]: {
+    component: asyncComponentLoader(() => import('@/pages/Logout')),
+    path: '/logout',
+    title: 'Logout',
+    icon: LogoutIcon,
   },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),
