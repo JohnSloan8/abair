@@ -16,10 +16,9 @@ const returnDialectCode = (dialect: string) => {
 };
 
 const getVoiceType = (cV) => {
-  // if (cV.voices.includes('NEMO')) {
-  //   return 'nemo';
-  // } else
-  if (cV.voices.includes('DNN')) {
+  if (cV.voices.includes('NEMO')) {
+    return 'nemo';
+  } else if (cV.voices.includes('DNN')) {
     return 'nnmnkwii';
   } else if (cV.voices.includes('HTS')) {
     return 'exthts';
@@ -63,7 +62,6 @@ const getSynthesis = (
         effectsProfileId: [],
       },
       outputType: 'JSON',
-      timing: 'WORD',
     },
   })
     .then(function (response) {
