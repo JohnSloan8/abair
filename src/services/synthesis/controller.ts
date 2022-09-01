@@ -15,13 +15,28 @@ const returnDialectCode = (dialect: string) => {
   }
 };
 
+const getVoiceType = (cV) => {
+  // if (cV.voices.includes('NEMO')) {
+  //   return 'nemo';
+  // } else
+  if (cV.voices.includes('DNN')) {
+    return 'nnmnkwii';
+  } else if (cV.voices.includes('HTS')) {
+    return 'exthts';
+  } else {
+    return '';
+  }
+};
+
 const getSynthesis = (
   text: string,
   currentVoice: synthesisVoiceModel,
   setter: SetterOrUpdater<string>,
 ) => {
+  const voiceType = getVoiceType(currentVoice);
   const voiceName =
-    returnDialectCode(currentVoice.locale) + '_' + currentVoice.shortCode + '_' + 'nnmnkwii';
+    returnDialectCode(currentVoice.locale) + '_' + currentVoice.shortCode + '_' + voiceType;
+  console.log('voiceName:', voiceName);
   axios({
     method: 'post',
     url: synthesisURL,

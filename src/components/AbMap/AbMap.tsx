@@ -60,7 +60,7 @@ const AbMap = () => {
                 gaeltachts.includes(c.name)
                   ? c.name === hoveringCounty
                     ? hoverColour
-                    : c.name === synthesisMapFilter
+                    : c.name === localeToCounty(synthesisVoiceSelected.locale)
                     ? countySelectedColour
                     : synthesisMapFilter === c.name
                     ? voiceSelectedColour

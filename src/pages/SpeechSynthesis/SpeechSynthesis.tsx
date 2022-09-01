@@ -42,7 +42,7 @@ import getSynthesis from '../../services/synthesis';
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
-  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
+  const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
@@ -87,26 +87,18 @@ function SpeechSynthesis() {
       );
     }
   };
-  function replaceItemAtIndex(
-    arr: synthesisVoiceModel[],
-    index: number,
-    newValue: synthesisVoiceModel,
-  ) {
-    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
-  }
+
   const handleSliderChange = (event: Event, control: string) => {
     // setSynthesisVoiceOptions((synthesisVoiceOptions[synthesisVoiceIndex]) => ({ ...synthesisVoice, speed: event.target.value }));
     let newSynthesisVoiceOptions: synthesisVoiceModel[];
     if (control === 'speed') {
-      newSynthesisVoiceOptions = replaceItemAtIndex(synthesisVoiceOptions, synthesisVoiceIndex, {
-        ...synthesisVoiceSelected,
-        speed: event.target.value,
+      newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
+        return { ...item, speed: event.target.value };
       });
       setSynthesisVoiceOptions(newSynthesisVoiceOptions);
     } else if (control === 'pitch') {
-      newSynthesisVoiceOptions = replaceItemAtIndex(synthesisVoiceOptions, synthesisVoiceIndex, {
-        ...synthesisVoiceSelected,
-        pitch: event.target.value,
+      newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
+        return { ...item, pitch: event.target.value };
       });
       setSynthesisVoiceOptions(newSynthesisVoiceOptions);
     }
@@ -177,19 +169,25 @@ function SpeechSynthesis() {
             </Grid>
           </Grid>
         </CenteredFlexBox>
-        <CenteredFlexBox p={1} mb={{ sm: 2, xs: 1 }}>
-          <Stack direction="row" spacing={{ sm: 1, xs: 0.25 }} sx={{ flexWrap: 'wrap' }}>
-            {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i) => (
-              <AbButton
-                label={k.name}
-                onClick={() => toggleVoice(k)}
-                key={i}
-                selected={k === synthesisVoiceSelected ? true : false}
-                variation="voice"
-              />
-            ))}
-          </Stack>
-        </CenteredFlexBox>
+        {/* <CenteredFlexBox p={1} mb={{ sm: 2, xs: 1 }}> */}
+        <Stack
+          direction="row"
+          spacing={{ sm: 1, xs: 0.25 }}
+          sx={{ flexWrap: 'wrap' }}
+          justifyContent="center"
+          mb={{ sm: 2, xs: 1 }}
+        >
+          {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i) => (
+            <AbButton
+              label={k.name}
+              onClick={() => toggleVoice(k)}
+              key={i}
+              selected={k === synthesisVoiceSelected ? true : false}
+              variation="voice"
+            />
+          ))}
+        </Stack>
+        {/* </CenteredFlexBox> */}
         <Box px={1} component="form" noValidate autoComplete="off">
           <AbTextField variation="synthesis" />
           <Typography align="center" p={{ sm: 4, xs: 2 }}>
