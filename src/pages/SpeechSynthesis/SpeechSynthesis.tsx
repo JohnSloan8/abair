@@ -70,10 +70,6 @@ function SpeechSynthesis() {
     console.log('audio:', synthesisAudio);
   }, [emptyAudio]);
 
-  useEffect(() => {
-    console.log('filteredSynthesisVoiceOptions:', filteredSynthesisVoiceOptions);
-  }, [filteredSynthesisVoiceOptions]);
-
   const handleSynthesisRequest = () => {
     getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio);
   };

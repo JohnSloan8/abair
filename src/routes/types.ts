@@ -11,7 +11,7 @@ enum Pages {
   Applications,
   Team,
   Login,
-  Logout,
+  Profile,
   Contact,
   NotFound,
 }

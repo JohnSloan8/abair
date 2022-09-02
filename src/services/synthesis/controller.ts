@@ -36,6 +36,7 @@ const getSynthesis = (
   const voiceName =
     returnDialectCode(currentVoice.locale) + '_' + currentVoice.shortCode + '_' + voiceType;
   console.log('voiceName:', voiceName);
+  console.log('currentVoice.speed:', currentVoice.speed);
   axios({
     method: 'post',
     url: synthesisURL,

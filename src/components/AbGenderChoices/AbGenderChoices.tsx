@@ -3,7 +3,6 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
-import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Grid } from '@mui/material';
 
 import {
@@ -22,7 +21,6 @@ const AbGenderChoices = () => {
   const genders = [
     { name: 'male', icon: MaleIcon },
     { name: 'female', icon: FemaleIcon },
-    { name: 'neutral', icon: TransgenderIcon },
   ];
   const toggleGender = (gender: string) => {
     console.log('toggling gender:', gender);
