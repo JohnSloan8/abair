@@ -10,6 +10,7 @@ enum Pages {
   Knowledge,
   Applications,
   Team,
+  News,
   Login,
   Profile,
   Contact,

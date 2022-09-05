@@ -9,6 +9,7 @@ import { AbClickableCard } from 'abair-component-library';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
+import { CenteredFlexBox } from '@/components/styled';
 
 // import { FullSizeCenteredFlexBox } from '@/components/styled';
 
@@ -51,11 +52,24 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-      <Box maxWidth="md" mt={{ xs: 2, sm: 4 }}>
-        <Typography gutterBottom variant="h5" m={2} align="center">
-          Applications
-        </Typography>
-      </Box>
+      <CenteredFlexBox maxWidth="md" mt={{ xs: 2, sm: 4 }}>
+        <Box sx={{ maxWidth: 'sm', width: '100%' }}>
+          <Typography gutterBottom variant="h5" m={2} align="center">
+            Applications
+          </Typography>
+          <CenteredFlexBox>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: { xs: 350, sm: 600 },
+              }}
+              alt="Abair Applications"
+              src="/assets/images/misc/abair-applications.png"
+            />
+          </CenteredFlexBox>
+        </Box>
+      </CenteredFlexBox>
+
       <Box maxWidth="md" mt={{ xs: 2, sm: 4 }}>
         <Typography gutterBottom variant="h5" m={2} align="center">
           Knowledge Base

@@ -5,6 +5,7 @@ import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import PersonIcon from '@mui/icons-material/Person';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
@@ -48,6 +49,12 @@ const routes: Routes = {
     path: '/team',
     title: 'Team',
     icon: GroupsIcon,
+  },
+  [Pages.News]: {
+    component: asyncComponentLoader(() => import('@/pages/News')),
+    path: '/news',
+    title: 'News',
+    icon: NewspaperIcon,
   },
   [Pages.Contact]: {
     component: asyncComponentLoader(() => import('@/pages/Contact')),

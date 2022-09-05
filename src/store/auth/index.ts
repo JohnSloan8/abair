@@ -10,4 +10,14 @@ const useSession = () => {
   return { session, setSession };
 };
 
-export { useSession };
+const usernameState = atom({
+  key: 'username',
+  default: undefined,
+});
+
+const useUsername = () => {
+  const [username, setUsername] = useRecoilState(usernameState);
+  return { username, setUsername };
+};
+
+export { useSession, useUsername };

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/system';
@@ -8,10 +8,8 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { supabase } from '@/services/supabase';
-import { useSession } from '@/store/auth';
 
 function Login() {
-  const { setSession } = useSession();
   const [loading, setLoading] = useState(false);
   const [confirmationEmailSent, setConfirmationEmailSent] = useState(false);
   const [showSignupPage, setShowSignupPage] = useState(false);
@@ -19,16 +17,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
 
   const toggleSignupPage = () => {
     setShowSignupPage(!showSignupPage);
