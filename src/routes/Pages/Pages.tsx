@@ -11,7 +11,7 @@ import routes from '..';
 function Pages() {
   return (
     <CenteredFlexBox>
-      <Box sx={{ width: '100%', maxWidth: 'md' }} justifyContent="center">
+      <Box sx={{ width: '100%' }} justifyContent="center">
         <Routes>
           {Object.values(routes).map(({ path, component: Component }) => {
             return <Route key={path} path={path} element={<Component />} />;

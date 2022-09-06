@@ -6,9 +6,7 @@ interface synthesisVoiceModel {
   locale: string;
   shortCode: string;
   voices: string[];
-  pitch: number;
   pitchRange: number[];
-  speed: number;
   speedRange: number[];
 }
 
@@ -39,8 +37,6 @@ const synthesisVoiceSelectedState = selector({
   get: ({ get }) => {
     const selectedVoiceIndex = get(synthesisVoiceIndexState);
     const voiceOptions = get(synthesisVoiceOptionsState);
-    console.log('voiceOptions:', voiceOptions);
-    console.log('voiceOptions:', voiceOptions);
     if (selectedVoiceIndex === -1) {
       return {
         name: '',
@@ -48,9 +44,7 @@ const synthesisVoiceSelectedState = selector({
         locale: 'all',
         shortCode: '',
         voices: [],
-        pitch: 1,
         pitchRange: [0.5, 1.5],
-        speed: 1,
         speedRange: [0.5, 1.5],
       };
     } else {
@@ -58,6 +52,26 @@ const synthesisVoiceSelectedState = selector({
     }
   },
 });
+
+const synthesisPitchState = atom<number>({
+  key: 'synthesis-pitch',
+  default: 1,
+});
+
+const useSynthesisPitch = () => {
+  const [synthesisPitch, setSynthesisPitch] = useRecoilState(synthesisPitchState);
+  return { synthesisPitch, setSynthesisPitch };
+};
+
+const synthesisSpeedState = atom<number>({
+  key: 'synthesis-speed',
+  default: 1,
+});
+
+const useSynthesisSpeed = () => {
+  const [synthesisSpeed, setSynthesisSpeed] = useRecoilState(synthesisSpeedState);
+  return { synthesisSpeed, setSynthesisSpeed };
+};
 
 const synthesisMapFilterState = atom({
   key: 'synthesis-map-filter',
@@ -147,6 +161,8 @@ export {
   useSynthesisMapFilter,
   synthesisMapFilterState,
   useSynthesisGenderFilter,
+  useSynthesisPitch,
+  useSynthesisSpeed,
   synthesisVoiceSelectedState,
   synthesisVoiceIndexState,
 };

@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import SpeedIcon from '@mui/icons-material/Speed';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
@@ -17,7 +16,7 @@ import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbGenderChoices from '@/components/AbGenderChoices';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbMap from '@/components/AbMap';
-// import AbRadioGroup from '@/components/AbRadioGroup';
+import AbSlider from '@/components/AbSlider';
 import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
@@ -30,9 +29,10 @@ import {
 } from '@/store/synthesis';
 import {
   filteredSynthesisVoiceOptionsState,
-  synthesisVoiceIndexState,
   synthesisVoiceModel,
   synthesisVoiceSelectedState,
+  useSynthesisPitch,
+  useSynthesisSpeed,
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
@@ -42,20 +42,20 @@ import getSynthesis from '../../services/synthesis';
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();
   const { synthesisAudio, setSynthesisAudio } = useSynthesisAudio();
-  const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
-  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
+  const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
+
+  const { setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
   const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
   const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
-  const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
 
   useEffect(() => {
     getSynthesisMetadata()
       .then((res) => {
         res.map((v: synthesisVoiceModel) => {
-          v.speed = 1;
-          v.pitch = 1;
           v.speedRange = [0.5, 1.5];
           v.pitchRange = [0.5, 1.5];
         });
@@ -69,36 +69,6 @@ function SpeechSynthesis() {
   useEffect(() => {
     console.log('audio:', synthesisAudio);
   }, [emptyAudio]);
-
-  const handleSynthesisRequest = () => {
-    getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio);
-  };
-
-  const toggleVoice = (voice: synthesisVoiceModel) => {
-    if (synthesisVoiceSelected === voice) {
-      resetSynthesisVoiceIndex();
-    } else {
-      setSynthesisVoiceIndex(
-        synthesisVoiceOptions.findIndex((v: synthesisVoiceModel) => v === voice),
-      );
-    }
-  };
-
-  const handleSliderChange = (event: Event, control: string) => {
-    // setSynthesisVoiceOptions((synthesisVoiceOptions[synthesisVoiceIndex]) => ({ ...synthesisVoice, speed: event.target.value }));
-    let newSynthesisVoiceOptions: synthesisVoiceModel[];
-    if (control === 'speed') {
-      newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
-        return { ...item, speed: event.target.value };
-      });
-      setSynthesisVoiceOptions(newSynthesisVoiceOptions);
-    } else if (control === 'pitch') {
-      newSynthesisVoiceOptions = [...synthesisVoiceOptions].map((item) => {
-        return { ...item, pitch: event.target.value };
-      });
-      setSynthesisVoiceOptions(newSynthesisVoiceOptions);
-    }
-  };
 
   return (
     <CenteredFlexBox>
@@ -121,51 +91,30 @@ function SpeechSynthesis() {
             >
               <AbGenderChoices />
 
-              <Stack
-                spacing={1}
-                py={{ sm: 2, xs: 0.5 }}
-                sx={{ width: '80%' }}
-                direction="row"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <SpeedIcon sx={{ color: 'secondary.main' }} />
-                <Slider
-                  aria-label="Speed"
-                  valueLabelDisplay="auto"
-                  defaultValue={1}
-                  min={synthesisVoiceSelected.speedRange[0]}
-                  step={0.1}
-                  max={synthesisVoiceSelected.speedRange[1]}
-                  sx={{ color: 'secondary.main' }}
-                  onChange={(e) => handleSliderChange(e, 'speed')}
-                />
-              </Stack>
+              <AbSlider
+                min={synthesisVoiceSelected.speedRange[0]}
+                value={synthesisSpeed}
+                max={synthesisVoiceSelected.speedRange[1]}
+                handleSliderChange={(e) => setSynthesisSpeed(parseFloat(e.target.value))}
+                step={0.1}
+                icon={SpeedIcon}
+                control="speed"
+                color="secondary.main"
+              />
 
-              <Stack
-                spacing={1}
-                py={{ sm: 2, xs: 0.5 }}
-                sx={{ width: '80%' }}
-                direction="row"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <GraphicEqIcon sx={{ color: 'secondary.main' }} />
-                <Slider
-                  aria-label="Pitch"
-                  valueLabelDisplay="auto"
-                  defaultValue={1}
-                  min={synthesisVoiceSelected.pitchRange[0]}
-                  step={0.1}
-                  max={synthesisVoiceSelected.pitchRange[1]}
-                  sx={{ color: 'secondary.main' }}
-                  onChange={(e) => handleSliderChange(e, 'pitch')}
-                />
-              </Stack>
+              <AbSlider
+                min={synthesisVoiceSelected.pitchRange[0]}
+                value={synthesisPitch}
+                max={synthesisVoiceSelected.pitchRange[1]}
+                handleSliderChange={(e) => setSynthesisPitch(parseFloat(e.target.value))}
+                step={0.1}
+                icon={GraphicEqIcon}
+                control="pitch"
+                color="secondary.main"
+              />
             </Grid>
           </Grid>
         </CenteredFlexBox>
-        {/* <CenteredFlexBox p={1} mb={{ sm: 2, xs: 1 }}> */}
         <Stack
           direction="row"
           spacing={{ sm: 1, xs: 0.25 }}
@@ -173,17 +122,19 @@ function SpeechSynthesis() {
           justifyContent="center"
           mb={{ sm: 2, xs: 1 }}
         >
-          {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i) => (
+          {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i: number) => (
             <AbButton
               label={k.name}
-              onClick={() => toggleVoice(k)}
+              onClick={() =>
+                synthesisVoiceIndex === i ? setSynthesisVoiceIndex(-1) : setSynthesisVoiceIndex(i)
+              }
               key={i}
               selected={k === synthesisVoiceSelected ? true : false}
               variation="voice"
+              color={''}
             />
           ))}
         </Stack>
-        {/* </CenteredFlexBox> */}
         <Box px={1} component="form" noValidate autoComplete="off">
           <AbTextField variation="synthesis" />
           <Typography align="center" p={{ sm: 4, xs: 2 }}>
@@ -191,7 +142,7 @@ function SpeechSynthesis() {
               disabled={emptyString}
               variant="contained"
               color="primary"
-              onClick={() => handleSynthesisRequest()}
+              onClick={() => getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio)}
             >
               Synthesise
             </Button>
