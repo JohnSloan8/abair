@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,13 +17,11 @@ interface AbNewsStoryModel {
 }
 
 function AbNewsStory({ id, title, blurb, images }: AbNewsStoryModel) {
-  const handleCardClick = () => {
-    console.log('card Clicked id:', id);
-  };
+  const navigate = useNavigate();
 
   return (
     <Box m={{ sm: 2, xs: 1 }}>
-      <CardActionArea onClick={handleCardClick}>
+      <CardActionArea onClick={() => navigate(`/news/${id}`)}>
         <Card sx={{ display: 'flex' }}>
           <CardMedia
             component="img"

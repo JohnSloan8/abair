@@ -15,7 +15,7 @@ function News() {
   const [loading] = useState(false);
   const { newsStories, setNewsStories } = useNewsStories();
   useEffect(() => {
-    newsStories.length === 0 ? getNews(setNewsStories) : null;
+    newsStories.length < 4 ? getNews(setNewsStories) : null;
   }, []);
 
   return (

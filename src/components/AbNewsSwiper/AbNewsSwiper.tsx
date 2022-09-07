@@ -13,16 +13,18 @@ interface AbSwiperModel {
 function AbNewsSwiper({ children }: AbSwiperModel) {
   return (
     <Swiper
-      spaceBetween={10}
-      centeredSlides={true}
+      sx={{ padding: 4 }}
+      slidesPerView={1}
+      loop={true}
+      spaceBetween={30}
       autoplay={{
-        delay: 5000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
       pagination={{
         clickable: true,
       }}
-      navigation={true}
+      navigation={false}
       modules={[Autoplay, Pagination, Navigation]}
       className="mySwiper"
     >

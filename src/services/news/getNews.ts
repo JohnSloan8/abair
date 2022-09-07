@@ -9,7 +9,7 @@ const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
 
     const { data, error, status } = await supabase
       .from('news_stories')
-      .select(`id, date, title, blurb, images`);
+      .select(`id, date, title, blurb, body, images`);
 
     if (error && status !== 406) {
       throw error;

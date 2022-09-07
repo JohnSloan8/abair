@@ -7,8 +7,8 @@ import { Themes } from './types';
 const sharedTheme = {
   palette: {
     background: {
-      default: '#fafafa',
-      paper: '#fff',
+      default: '#fff',
+      paper: '#fafafa',
       main: '#fff',
     },
     primary: {
@@ -61,7 +61,7 @@ const themes: Record<Themes, ThemeOptions> = {
     palette: {
       mode: 'light',
       background: {
-        default: '#fafafa',
+        default: '#fff',
         paper: '#fff',
       },
     },

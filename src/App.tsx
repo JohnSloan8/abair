@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import Pages from '@/routes/Pages';
+// import Footer from '@/sections/Footer';
 import Header from '@/sections/Header';
 import Sidebar from '@/sections/Sidebar';
 import { supabase } from '@/services/supabase';
@@ -34,6 +35,7 @@ function App() {
         <Header />
         <Sidebar />
         <Pages />
+        {/* <Footer /> */}
       </BrowserRouter>
     </Fragment>
   );

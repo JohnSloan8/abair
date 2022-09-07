@@ -1,135 +1,80 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-// import AbClickableCard from '@/components/AbClickableCard';
-import { AbButton } from 'abair-component-library';
 import { AbClickableCard } from 'abair-component-library';
 import { SwiperSlide } from 'swiper/react';
 
+// import AbClickableCard from '@/components/AbClickableCardOld';
 import AbInfoHeader from '@/components/AbInfoHeader';
-import AbMap from '@/components/AbMap';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
-import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { getNews } from '@/services/news';
-import getSynthesisMetadata from '@/services/synthesis/metadata';
 import { useNewsStories } from '@/store/news';
-import { isSynthesisTextEmptyString, useSynthesisAudio, useSynthesisText } from '@/store/synthesis';
-import {
-  filteredSynthesisVoiceOptionsState,
-  synthesisVoiceModel,
-  synthesisVoiceSelectedState,
-  useSynthesisVoiceIndex,
-  useSynthesisVoiceOptions,
-} from '@/store/synthesis/voiceOptions';
-
-import getSynthesis from '../../services/synthesis';
 
 function Home() {
-  const { synthesisText } = useSynthesisText();
-  const { setSynthesisAudio } = useSynthesisAudio();
-  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
-  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
-
-  const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
   const { newsStories, setNewsStories } = useNewsStories();
-  const emptyString = useRecoilValue(isSynthesisTextEmptyString);
-  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     newsStories.length === 0 ? getNews(setNewsStories) : null;
-    synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Meta title="home" />
-      <Box sx={{ backgroundColor: 'white' }}>
+      <Box>
         <AbInfoHeader
           title="Speech and Language Technology for Irish"
           description="Abair hosts a wide range of state-of-the-art speech and language technologies for use in"
         />
 
         <CenteredFlexBox>
-          <Box my={{ xs: 2, sm: 4 }} maxWidth="md">
-            <Typography gutterBottom variant="h5" mb={2} align="center">
-              Speech Synthesis
+          <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
+            <Typography gutterBottom variant="h5" m={2} align="center">
+              Core Technologies
             </Typography>
-            <Grid container spacing={0} width="100%">
-              <Grid item xs={12} sm={4}>
-                <AbMap />
+            <Grid
+              container
+              direction="row"
+              px={1}
+              py={{ sm: 2, xs: 1 }}
+              spacing={{ sm: 4, xs: 1 }}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid item>
+                <AbClickableCard
+                  handleClickEvent={() => navigate('/speech-synthesis')}
+                  title="Speech Synthesis"
+                  description="Listen to our voices in the 3 main Irish dialects"
+                  variation="main"
+                />
               </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                sm={8}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Stack
-                  direction="row"
-                  spacing={{ sm: 1, xs: 0.25 }}
-                  sx={{ flexWrap: 'wrap' }}
-                  justifyContent="center"
-                  mb={{ sm: 2, xs: 1 }}
-                >
-                  {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i: number) => (
-                    <AbButton
-                      label={k.name}
-                      onClick={() =>
-                        synthesisVoiceIndex === i
-                          ? setSynthesisVoiceIndex(-1)
-                          : setSynthesisVoiceIndex(i)
-                      }
-                      key={i}
-                      selected={k === synthesisVoiceSelected ? true : false}
-                      variation="voice"
-                      color={''}
-                    />
-                  ))}
-                </Stack>
-                {/* </CenteredFlexBox> */}
-                <Box px={0} component="form" noValidate autoComplete="off" sx={{ width: '90%' }}>
-                  <AbTextField variation="synthesis" />
-                  <Typography align="center" p={{ sm: 4, xs: 2 }}>
-                    <Button
-                      disabled={emptyString}
-                      variant="contained"
-                      color="primary"
-                      onClick={() =>
-                        getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio)
-                      }
-                    >
-                      Synthesise
-                    </Button>
-                  </Typography>
-                  {/* {!emptyAudio && (
-                    <CenteredFlexBox>
-                      <AbAudioPlayer audioURL={synthesisAudio} />
-                    </CenteredFlexBox>
-                  )} */}
-                </Box>
+              <Grid item>
+                <AbClickableCard
+                  handleClickEvent={() => navigate('/speech-recognition')}
+                  title="Speech Recognition"
+                  description="Speak in Irish and see your words as text"
+                  variation="main"
+                />
               </Grid>
             </Grid>
           </Box>
         </CenteredFlexBox>
       </Box>
 
-      <CenteredFlexBox sx={{ backgroundColor: 'white' }}>
-        <Box my={{ xs: 1, sm: 2 }} maxWidth="md">
+      <CenteredFlexBox>
+        <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">
             Applications
           </Typography>
@@ -148,31 +93,49 @@ function Home() {
         </Box>
       </CenteredFlexBox>
 
-      <CenteredFlexBox sx={{ backgroundColor: 'white' }}>
-        <Box my={{ xs: 1, sm: 2 }} maxWidth="md">
-          <Typography gutterBottom variant="h5" m={2} align="center">
-            Knowledge Base
-          </Typography>
-        </Box>
-      </CenteredFlexBox>
       <CenteredFlexBox>
-        <Box my={{ xs: 1, sm: 2 }} maxWidth="sm">
+        <Box mt={{ xs: 2, sm: 6 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">
             Latest News
           </Typography>
           <AbNewsSwiper>
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
-                <AbClickableCard
-                  path="/news"
-                  image={nS.images[0].url}
-                  title={nS.title}
-                  description={nS.blurb}
-                  variation="main"
-                />
+                {/* <Box
+                  component="img"
+                  sx={{ minHeight: 200, maxHeight: 200, minWidth: 300, maxWidth: 300 }}
+                  src={nS.images[0].url}
+                  alt="news image"
+                /> */}
+                <Card>
+                  <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
+                    <CardMedia
+                      component="img"
+                      sx={{ minHeight: 200, maxHeight: 200 }}
+                      src={nS.images[0].url}
+                      alt="news image"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" align="left">
+                        {nS.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" align="left">
+                        {nS.blurb}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
               </SwiperSlide>
             ))}
           </AbNewsSwiper>
+        </Box>
+      </CenteredFlexBox>
+
+      <CenteredFlexBox>
+        <Box mt={{ xs: 2, sm: 6 }} mb={24} maxWidth="md">
+          <Typography gutterBottom variant="h5" m={2} align="center">
+            Knowledge Base
+          </Typography>
         </Box>
       </CenteredFlexBox>
     </>
