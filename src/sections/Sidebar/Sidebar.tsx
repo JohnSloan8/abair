@@ -30,7 +30,7 @@ function Sidebar() {
         }}
       >
         {Object.values(routes)
-          .filter((route) => route.title)
+          .filter((route) => route.showInSidebar)
           .map(({ path, title, icon: Icon }) => (
             <ListItem sx={{ py: 0, px: 1 }} key={path}>
               <ListItemButton onClick={sidebarActions.close} component={Link} to={path}>

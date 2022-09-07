@@ -11,6 +11,7 @@ enum Pages {
   Applications,
   Team,
   News,
+  NewsItem,
   Login,
   Profile,
   Contact,
@@ -21,6 +22,7 @@ type PathRouteCustomProps = {
   title?: string;
   component: FC;
   icon?: FC<SvgIconProps>;
+  showInSidebar: boolean;
 };
 
 type Routes = Record<Pages, PathRouteProps & PathRouteCustomProps>;

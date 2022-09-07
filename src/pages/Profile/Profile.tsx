@@ -38,8 +38,6 @@ function Profile() {
       }
 
       if (data) {
-        console.log('data:', data);
-        console.log('dialect:', data.dialect);
         setUsername(data.username);
         setDialect(data.dialect);
         setYear(data.year);

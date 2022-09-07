@@ -1,3 +1,4 @@
 import getNews from './getNews';
+import getNewsItem from './getNewsItem';
 
-export default getNews;
+export { getNews, getNewsItem };

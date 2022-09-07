@@ -1,63 +1,34 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
-import AbNewsStory from '@/components/AbNewsStory';
-import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
 import Meta from '@/components/Meta';
-import { supabase } from '@/services/supabase';
+import { getNewsItem } from '@/services/news';
 import { useNewsStories } from '@/store/news';
 
+type NewsItemModel = {
+  id: string;
+};
+
 function NewsItem() {
-  // const [loading, setLoading] = useState(false);
   const { newsStories, setNewsStories } = useNewsStories();
+  const { id } = useParams<NewsItemModel>();
   useEffect(() => {
-    getNewsStories();
+    newsStories.length === 0 || newsStories.filter((nS) => nS.id.toString() === id).length === 0
+      ? getNewsItem(setNewsStories, id)
+      : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const getNewsStories = async () => {
-    if (newsStories.length !== 0) {
-      try {
-        // setLoading(true);
-
-        const { data, error, status } = await supabase
-          .from('news_stories')
-          .select(`id, date, title, blurb, body, images`);
-
-        if (error && status !== 406) {
-          throw error;
-        } else {
-          console.log('error:', error);
-        }
-
-        if (data) {
-          console.log('data:', data);
-          setNewsStories(data);
-        }
-      } catch (e) {
-        alert(e.message);
-      } finally {
-        setLoading(false);
-      }
-    } else {
-      console.log('already retrieved stories');
-    }
-  };
-
+  console.log('in news item: ', id);
+  console.log('newsStories: ', newsStories);
+  console.log(
+    'newsStories.filter(nS => nS.id.toString() === id): ',
+    newsStories.filter((nS) => nS.id.toString() === id),
+  );
   return (
     <>
-      <Meta title="news" />
-      <AbInfoHeader title="News" />
-      {newsStories.map((nS: AbNewsStoryModel, i: number) => (
-        <AbNewsStory
-          key={i}
-          id={nS.id}
-          title={nS.title}
-          blurb={nS.blurb}
-          body={nS.body}
-          images={nS.images}
-        />
-      ))}
+      <Meta title="news item" />
+      <AbInfoHeader title="News Item" />
     </>
   );
 }

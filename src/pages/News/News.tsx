@@ -8,14 +8,14 @@ import AbNewsStory from '@/components/AbNewsStory';
 import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import getNews from '@/services/news';
+import { getNews } from '@/services/news';
 import { useNewsStories } from '@/store/news';
 
 function News() {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const { newsStories, setNewsStories } = useNewsStories();
   useEffect(() => {
-    newsStories.length === 0 ? getNews(setNewsStories, setLoading) : null;
+    newsStories.length === 0 ? getNews(setNewsStories) : null;
   }, []);
 
   return (

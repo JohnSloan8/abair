@@ -19,7 +19,8 @@ import AbNewsSwiper from '@/components/AbNewsSwiper';
 import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import getNews from '@/services/news';
+import { getNews } from '@/services/news';
+import getSynthesisMetadata from '@/services/synthesis/metadata';
 import { useNewsStories } from '@/store/news';
 import { isSynthesisTextEmptyString, useSynthesisAudio, useSynthesisText } from '@/store/synthesis';
 import {
@@ -27,16 +28,16 @@ import {
   synthesisVoiceModel,
   synthesisVoiceSelectedState,
   useSynthesisVoiceIndex,
+  useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
 
 import getSynthesis from '../../services/synthesis';
-
-// import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 function Home() {
   const { synthesisText } = useSynthesisText();
   const { setSynthesisAudio } = useSynthesisAudio();
   const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
+  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
 
   const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
   const { newsStories, setNewsStories } = useNewsStories();
@@ -46,6 +47,8 @@ function Home() {
   // const navigate = useNavigate();
   useEffect(() => {
     newsStories.length === 0 ? getNews(setNewsStories) : null;
+    synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,7 +66,7 @@ function Home() {
             <Typography gutterBottom variant="h5" mb={2} align="center">
               Speech Synthesis
             </Typography>
-            <Grid container spacing={0}>
+            <Grid container spacing={0} width="100%">
               <Grid item xs={12} sm={4}>
                 <AbMap />
               </Grid>

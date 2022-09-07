@@ -45,7 +45,7 @@ function SpeechSynthesis() {
   const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
   const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
 
-  const { setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
@@ -53,17 +53,7 @@ function SpeechSynthesis() {
   const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
 
   useEffect(() => {
-    getSynthesisMetadata()
-      .then((res) => {
-        res.map((v: synthesisVoiceModel) => {
-          v.speedRange = [0.5, 1.5];
-          v.pitchRange = [0.5, 1.5];
-        });
-        setSynthesisVoiceOptions(res);
-      })
-      .catch((error) => {
-        alert('error:' + error);
-      });
+    synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
   }, []);
 
   useEffect(() => {
@@ -126,7 +116,9 @@ function SpeechSynthesis() {
             <AbButton
               label={k.name}
               onClick={() =>
-                synthesisVoiceIndex === i ? setSynthesisVoiceIndex(-1) : setSynthesisVoiceIndex(i)
+                synthesisVoiceIndex === i
+                  ? setSynthesisVoiceIndex(-1)
+                  : setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))
               }
               key={i}
               selected={k === synthesisVoiceSelected ? true : false}
