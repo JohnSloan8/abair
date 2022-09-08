@@ -40,10 +40,11 @@ function Login() {
       }
     } else {
       setLoading(true);
-      const { user, error } = supabase.auth.signInWithPassword({ email, password });
+      const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
+        setLoading(false);
+        navigate('/profile', { replace: true });
+      });
       error ? console.log(error) : console.log(user);
-      setLoading(false);
-      navigate('/', { replace: true });
     }
   };
 

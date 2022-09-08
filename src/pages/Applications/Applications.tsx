@@ -1,59 +1,70 @@
-import { Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
-import { AbClickableCard } from 'abair-component-library';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 
+import AbApplicationCard from '@/components/AbApplicationCard';
+import { ApplicationModel } from '@/components/AbApplicationCard/types';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
+import { CenteredFlexBox } from '@/components/styled';
+import { getApplications } from '@/services/supabase/applications';
+import getCategories from '@/services/supabase/applications/getCategories';
+import {
+  filteredApplicationsState,
+  useApplicationCategoryFilter,
+  useApplications,
+  useCategories,
+} from '@/store/applications';
 
 function Applications() {
+  const [tab, setTab] = useState(0);
+  const { applications, setApplications } = useApplications();
+  const { categories, setCategories } = useCategories();
+  const filteredApplications = useRecoilValue(filteredApplicationsState);
+  const { setApplicationCategoryFilter } = useApplicationCategoryFilter();
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const newIndex = categories[newValue].id;
+    setApplicationCategoryFilter(newIndex);
+    setTab(newValue);
+  };
+
+  useEffect(() => {
+    applications.length === 0 ? getApplications(setApplications) : null;
+    categories.length === 0 ? getCategories(setCategories) : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Meta title="applications" />
       <AbInfoHeader title="Applications" />
-      <Grid
-        container
-        direction="row"
-        spacing={1}
-        px={1}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item>
-          <AbClickableCard
-            handleClickEvent={() => {
-              window.location.href = 'https://abair.ie/scealai';
-            }}
-            title="An Scéalaí"
-            description="Computer Assisted Language Learning platform"
-            variation="app"
-            image="/assets/images/misc/scealai-image.png"
-          />
-        </Grid>
-        <Grid item>
-          <AbClickableCard
-            path="/applications"
-            title="Leon don Lón"
-            description="Pronunciation exercises"
-            variation="app"
-          />
-        </Grid>
-        <Grid item>
-          <AbClickableCard
-            path="/applications"
-            title="AAC"
-            description="Augmentative and Alternative Communication"
-            variation="app"
-          />
-        </Grid>
-        <Grid item>
-          <AbClickableCard
-            path="/applications"
-            title="LARA"
-            description="Interactive Digital Storybooks"
-            variation="app"
-          />
-        </Grid>
-      </Grid>
+
+      <CenteredFlexBox>
+        {categories ? (
+          <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
+            <Tab label={'education'} />
+            <Tab label={'accessibility'} />
+          </Tabs>
+        ) : null}
+      </CenteredFlexBox>
+      <CenteredFlexBox mt={2}>
+        <Box sx={{ maxWidth: 'sm', width: '100%' }}>
+          {filteredApplications.map((a: ApplicationModel, i: number) => (
+            <AbApplicationCard
+              key={i}
+              url={a.url}
+              name={a.name}
+              description={a.description}
+              image={a.image}
+              category={a.category}
+            />
+          ))}
+        </Box>
+      </CenteredFlexBox>
     </>
   );
 }

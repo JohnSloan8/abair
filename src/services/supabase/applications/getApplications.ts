@@ -1,17 +1,15 @@
 import { SetterOrUpdater } from 'recoil';
 
-import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
+import { ApplicationModel } from '@/components/AbApplicationCard/types';
 import { supabase } from '@/services/supabase';
 
-const getNewsItem = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>, id: number) => {
+const getApplications = async (dataSetter: SetterOrUpdater<ApplicationModel[]>) => {
   try {
     // setLoading(true);
-    const numberID = parseInt(id);
-    console.log('numberID:', numberID);
+
     const { data, error, status } = await supabase
-      .from('news_stories')
-      .select(`id, date, title, blurb, body, images`)
-      .eq('id', id);
+      .from('applications')
+      .select(`name, url, category, description, image`);
 
     if (error && status !== 406) {
       throw error;
@@ -26,8 +24,8 @@ const getNewsItem = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>, id: 
   } catch (e) {
     alert(e.message);
   } finally {
-    console.log('done getting news');
+    console.log('done getting applications');
   }
 };
 
-export default getNewsItem;
+export default getApplications;

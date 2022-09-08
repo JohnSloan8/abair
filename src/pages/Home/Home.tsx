@@ -17,7 +17,7 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import { getNews } from '@/services/news';
+import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
 function Home() {
@@ -98,6 +98,7 @@ function Home() {
           <Typography gutterBottom variant="h5" m={2} align="center">
             Latest News
           </Typography>
+
           <AbNewsSwiper>
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
@@ -112,11 +113,12 @@ function Home() {
                     <CardMedia
                       component="img"
                       sx={{ minHeight: 200, maxHeight: 200 }}
-                      src={nS.images[0].url}
+                      src={nS.images ? nS.images[0].url : null}
                       alt="news image"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" align="left">
+                      <Typography variant="body2">{nS.date}</Typography>
+                      <Typography gutterBottom variant="h5">
                         {nS.title}
                       </Typography>
                       <Typography variant="body2" color="text.secondary" align="left">
@@ -128,6 +130,11 @@ function Home() {
               </SwiperSlide>
             ))}
           </AbNewsSwiper>
+          <Box component={Link} to={'/news'}>
+            <Typography variant="body1" m={2} align="center">
+              See all
+            </Typography>
+          </Box>
         </Box>
       </CenteredFlexBox>
 

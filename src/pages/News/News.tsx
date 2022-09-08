@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsStory from '@/components/AbNewsStory';
-import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
+import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import { getNews } from '@/services/news';
+import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
 function News() {
@@ -32,6 +32,7 @@ function News() {
                 key={i}
                 id={nS.id}
                 title={nS.title}
+                date={nS.date}
                 blurb={nS.blurb}
                 body={nS.body}
                 images={nS.images}

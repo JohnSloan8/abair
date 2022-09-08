@@ -4,19 +4,9 @@ import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-interface ImageDataModel {
-  url: string;
-}
+import { AbNewsStoryModel } from './types';
 
-interface AbNewsStoryModel {
-  id: number;
-  title: string;
-  blurb: string;
-  body: string;
-  images: ImageDataModel[];
-}
-
-function AbNewsStory({ id, title, blurb, images }: AbNewsStoryModel) {
+function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryModel) {
   const navigate = useNavigate();
 
   return (
@@ -31,9 +21,8 @@ function AbNewsStory({ id, title, blurb, images }: AbNewsStoryModel) {
           />
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h5">
-                {title}
-              </Typography>
+              <Typography variant="body2">{date}</Typography>
+              <Typography variant="h5">{title}</Typography>
               <Typography variant="subtitle1" color="text.secondary" component="div">
                 {blurb}
               </Typography>
@@ -46,4 +35,3 @@ function AbNewsStory({ id, title, blurb, images }: AbNewsStoryModel) {
 }
 
 export default AbNewsStory;
-export type { AbNewsStoryModel };

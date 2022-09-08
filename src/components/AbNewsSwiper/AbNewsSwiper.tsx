@@ -14,11 +14,11 @@ function AbNewsSwiper({ children }: AbSwiperModel) {
   return (
     <Swiper
       sx={{ padding: 4 }}
-      slidesPerView={1}
+      slidesPerView={3}
       loop={true}
       spaceBetween={30}
       autoplay={{
-        delay: 4000,
+        delay: 3000,
         disableOnInteraction: false,
       }}
       pagination={{

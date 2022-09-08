@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
@@ -13,11 +14,13 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [dialect, setDialect] = useState(null);
   const [year, setYear] = useState(null);
+  const [gender, setGender] = useState(null);
   const [username, setUsername] = useState('');
   const { session } = useSession();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    session ? getProfile() : console.log('no session:', session);
+    session ? getProfile() : navigate('/login');
   }, []);
 
   const getProfile = async () => {
@@ -27,7 +30,7 @@ function Profile() {
 
       const { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, dialect, year`)
+        .select(`username, dialect, gender, year`)
         .eq('id', user.id)
         .single();
 
@@ -41,6 +44,7 @@ function Profile() {
         setUsername(data.username);
         setDialect(data.dialect);
         setYear(data.year);
+        setGender(data.gender);
       }
     } catch (e) {
       alert(e.message);
@@ -60,6 +64,7 @@ function Profile() {
         id: user.id,
         username,
         dialect,
+        gender,
         year,
         updated_at: new Date(),
       };
@@ -85,7 +90,7 @@ function Profile() {
           <div aria-live="polite">
             {loading ? (
               'Loading...'
-            ) : (
+            ) : session ? (
               <form onSubmit={updateProfile} className="form-widget">
                 <div>Email: {session.user.email}</div>
                 <div>Birth Year: {year}</div>
@@ -108,11 +113,22 @@ function Profile() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="dialect">Gender</label>
+                  <input
+                    id="gender"
+                    type="number"
+                    value={gender || ''}
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                </div>
+                <div>
                   <button className="button primary block" disabled={loading}>
                     Update profile
                   </button>
                 </div>
               </form>
+            ) : (
+              <p>not logged in</p>
             )}
           </div>
         </CenteredFlexBox>
