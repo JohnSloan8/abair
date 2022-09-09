@@ -7,78 +7,34 @@ import Box from '@mui/material/Box';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import { supabase } from '@/services/supabase';
+import { getDialects } from '@/services/supabase/dialects';
+import { getGenders } from '@/services/supabase/genders';
+import { getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
+import { useDialects, useGenders, useProfile } from '@/store/profile';
 
 function Profile() {
-  const [loading, setLoading] = useState(true);
-  const [dialect, setDialect] = useState(null);
-  const [year, setYear] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState<boolean>(true);
   const { session } = useSession();
+  const { profile, setProfile } = useProfile();
+  const { dialects, setDialects } = useDialects();
+  const { genders, setGenders } = useGenders();
   const navigate = useNavigate();
 
   useEffect(() => {
-    session ? getProfile() : navigate('/login');
+    session ? getProfile(session, setProfile, setLoading) : navigate('/login');
+
+    dialects === undefined ? getDialects(setDialects) : null;
+    genders === undefined ? getGenders(setGenders) : null;
   }, []);
 
-  const getProfile = async () => {
-    try {
-      setLoading(true);
-      const { user } = session;
-
-      const { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, dialect, gender, year`)
-        .eq('id', user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      } else {
-        console.log('error:', error);
-      }
-
-      if (data) {
-        setUsername(data.username);
-        setDialect(data.dialect);
-        setYear(data.year);
-        setGender(data.gender);
-      }
-    } catch (e) {
-      alert(e.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const updateProfile = async (e) => {
+  const prepareToUpdateProfile = (e) => {
     e.preventDefault();
-
-    try {
-      setLoading(true);
-      const { user } = session;
-
-      const updates = {
-        id: user.id,
-        username,
-        dialect,
-        gender,
-        year,
-        updated_at: new Date(),
-      };
-
-      const { error } = await supabase.from('profiles').upsert(updates);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
+    console.log('dialects:', dialects);
+    const updatedDialect = dialects.filter((d) => d.name === profile.dialect)[0];
+    const updatedGender = genders.filter((g) => g.name === profile.gender)[0];
+    console.log('updatedDialect:', updatedDialect);
+    updateProfile(session, profile, updatedDialect, updatedGender);
   };
 
   return (
@@ -91,35 +47,57 @@ function Profile() {
             {loading ? (
               'Loading...'
             ) : session ? (
-              <form onSubmit={updateProfile} className="form-widget">
+              <form onSubmit={(e) => prepareToUpdateProfile(e)} className="form-widget">
                 <div>Email: {session.user.email}</div>
-                <div>Birth Year: {year}</div>
+                <div>Birth Year: {profile.year}</div>
                 <div>
                   <label htmlFor="username">Username</label>
                   <input
                     id="username"
                     type="text"
-                    value={username || ''}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={profile ? profile.username : ''}
+                    onChange={(e) => {
+                      setProfile((profile) => ({ ...profile, username: e.target.value }));
+                    }}
                   />
                 </div>
                 <div>
                   <label htmlFor="dialect">Dialect</label>
-                  <input
+                  <select
                     id="dialect"
-                    type="number"
-                    value={dialect || ''}
-                    onChange={(e) => setDialect(e.target.value)}
-                  />
+                    name="dialect"
+                    value={profile ? profile.dialect : ''}
+                    onChange={(e) =>
+                      setProfile((profile) => ({ ...profile, dialect: e.target.value }))
+                    }
+                  >
+                    {dialects
+                      ? dialects.map((d) => (
+                          <option key={d.id} value={d.name}>
+                            {d.name}
+                          </option>
+                        ))
+                      : null}
+                  </select>
                 </div>
                 <div>
                   <label htmlFor="dialect">Gender</label>
-                  <input
+                  <select
                     id="gender"
-                    type="number"
-                    value={gender || ''}
-                    onChange={(e) => setGender(e.target.value)}
-                  />
+                    name="gender"
+                    value={profile ? profile.gender : ''}
+                    onChange={(e) =>
+                      setProfile((profile) => ({ ...profile, gender: e.target.value }))
+                    }
+                  >
+                    {genders
+                      ? genders.map((d) => (
+                          <option key={d.id} value={d.name}>
+                            {d.name}
+                          </option>
+                        ))
+                      : null}
+                  </select>
                 </div>
                 <div>
                   <button className="button primary block" disabled={loading}>

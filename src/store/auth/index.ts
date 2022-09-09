@@ -1,6 +1,8 @@
 import { atom, useRecoilState } from 'recoil';
 
-const sessionState = atom({
+import { Session } from '@supabase/supabase-js';
+
+const sessionState = atom<Session>({
   key: 'session',
   default: undefined,
 });
@@ -10,14 +12,4 @@ const useSession = () => {
   return { session, setSession };
 };
 
-const usernameState = atom({
-  key: 'username',
-  default: undefined,
-});
-
-const useUsername = () => {
-  const [username, setUsername] = useRecoilState(usernameState);
-  return { username, setUsername };
-};
-
-export { useSession, useUsername };
+export { useSession };

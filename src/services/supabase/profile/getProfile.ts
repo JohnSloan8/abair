@@ -1,13 +1,22 @@
+import { Dispatch } from 'react';
+import { SetterOrUpdater } from 'recoil';
+
+import { Session } from '@supabase/supabase-js';
+
+import { ProfileModel } from '@/models/profile';
 import { supabase } from '@/services/supabase';
 
-const getProfile = async () => {
+const getProfile = async (
+  sess: Session,
+  setter: SetterOrUpdater<ProfileModel>,
+  setLoader: Dispatch<boolean>,
+) => {
   try {
-    setLoading(true);
-    const { user } = session;
+    const { user } = sess;
 
     const { data, error, status } = await supabase
       .from('profiles')
-      .select(`username, dialect, gender, year`)
+      .select(`username, dialect(name), gender(name), year`)
       .eq('id', user.id)
       .single();
 
@@ -18,15 +27,18 @@ const getProfile = async () => {
     }
 
     if (data) {
-      setUsername(data.username);
-      setDialect(data.dialect);
-      setYear(data.year);
-      setGender(data.gender);
+      setter({
+        username: data.username,
+        dialect: data.dialect.name,
+        gender: data.gender.name,
+        year: data.year,
+      });
+      console.log('profile data:', data);
     }
   } catch (e) {
     alert(e.message);
   } finally {
-    setLoading(false);
+    setLoader(false);
   }
 };
 

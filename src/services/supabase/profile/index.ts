@@ -1,3 +1,4 @@
-import getApplications from './getApplications';
+import getProfile from './getProfile';
+import updateProfile from './updateProfile';
 
-export { getApplications };
+export { getProfile, updateProfile };
