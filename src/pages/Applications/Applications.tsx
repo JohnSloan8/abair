@@ -52,7 +52,7 @@ function Applications() {
         ) : null}
       </CenteredFlexBox>
       <CenteredFlexBox mt={2}>
-        <Box sx={{ maxWidth: 'sm', width: '100%' }}>
+        <Box sx={{ maxWidth: 'md', width: '100%' }}>
           {filteredApplications.map((a: ApplicationModel, i: number) => (
             <AbApplicationCard
               key={i}

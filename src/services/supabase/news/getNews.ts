@@ -1,6 +1,6 @@
 import { SetterOrUpdater } from 'recoil';
 
-import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
+import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import { supabase } from '@/services/supabase';
 
 const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
@@ -23,8 +23,6 @@ const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
     }
   } catch (e) {
     alert(e.message);
-  } finally {
-    console.log('done getting news');
   }
 };
 

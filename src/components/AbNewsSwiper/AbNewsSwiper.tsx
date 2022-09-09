@@ -18,7 +18,7 @@ function AbNewsSwiper({ children }: AbSwiperModel) {
       loop={true}
       spaceBetween={30}
       autoplay={{
-        delay: 3000,
+        delay: 2500,
         disableOnInteraction: false,
       }}
       pagination={{

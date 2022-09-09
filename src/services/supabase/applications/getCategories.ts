@@ -22,8 +22,6 @@ const getCategories = async (dataSetter: SetterOrUpdater<ApplicationCategoryMode
     }
   } catch (e) {
     alert(e.message);
-  } finally {
-    console.log('done getting categories');
   }
 };
 

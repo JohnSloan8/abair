@@ -52,7 +52,6 @@ const filteredApplicationsState = selector({
     };
 
     const filteredApplications = filterCategory(list);
-    console.log('filteredApplications:', filteredApplications);
     return filteredApplications;
   },
 });

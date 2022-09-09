@@ -18,13 +18,11 @@ const getApplications = async (dataSetter: SetterOrUpdater<ApplicationModel[]>) 
     }
 
     if (data) {
-      console.log('data:', data);
+      console.log('applications data:', data);
       dataSetter(data);
     }
   } catch (e) {
     alert(e.message);
-  } finally {
-    console.log('done getting applications');
   }
 };
 
