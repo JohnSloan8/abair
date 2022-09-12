@@ -9,10 +9,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { AbClickableCard } from 'abair-component-library';
+import Image from 'mui-image';
+// import { AbClickableCard } from 'abair-component-library';
 import { SwiperSlide } from 'swiper/react';
 
-// import AbClickableCard from '@/components/AbClickableCardOld';
+import AbClickableCard from '@/components/AbClickableCard';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
@@ -58,6 +59,7 @@ function Home() {
                   title="Speech Synthesis"
                   description="Listen to our voices in the 3 main Irish dialects"
                   variation="main"
+                  shift="left"
                 />
               </Grid>
               <Grid item>
@@ -66,6 +68,7 @@ function Home() {
                   title="Speech Recognition"
                   description="Speak in Irish and see your words as text"
                   variation="main"
+                  shift="right"
                 />
               </Grid>
             </Grid>
@@ -80,13 +83,16 @@ function Home() {
           </Typography>
           <CenteredFlexBox>
             <Link to="/applications">
-              <Box
-                component="img"
+              <Image
+                duration={1000}
                 sx={{
                   maxWidth: { xs: 350, sm: 600 },
                 }}
+                easing="ease-out"
                 alt="Abair Applications"
                 src="/assets/images/misc/abair-applications.png"
+                bgColor="#fff"
+                showLoading
               />
             </Link>
           </CenteredFlexBox>
