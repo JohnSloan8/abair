@@ -31,6 +31,7 @@
     "abair-component-library": "^1.0.26",
     "axios": "^0.27.2",
     "is-mobile": "^3.1.1",
+    "moment": "^2.29.4",
     "mui-image": "^1.0.7",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",

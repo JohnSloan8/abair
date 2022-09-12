@@ -4,7 +4,7 @@ import { DialectModel, GenderModel, ProfileModel } from '@/models/profile';
 import { supabase } from '@/services/supabase';
 
 const updateProfile = async (
-  sess: Session,
+  sess: Session | undefined,
   profile: ProfileModel,
   updatedDialect: DialectModel,
   updatedGender: GenderModel,

@@ -5,18 +5,18 @@ import { IconButtonItem } from './types';
 const CreateItem = () => {
   const styles: { [name: string]: IconButtonItem } = {
     record: {
-      backgroundColor: 'primary.main',
-      backgroundHoverColor: 'primary.dark',
-      iconColour: 'info',
-      marginSmall: 4,
-      marginXSmall: 2,
+      backgroundColor: 'background.default',
+      backgroundHoverColor: 'secondary.main',
+      iconColour: 'secondary.main',
+      marginSmall: 2,
+      marginXSmall: 1,
     },
     stop: {
-      backgroundColor: 'warning.main',
-      backgroundHoverColor: 'warning.dark',
-      iconColour: 'info',
-      marginSmall: 4,
-      marginXSmall: 2,
+      backgroundColor: 'background.default',
+      backgroundHoverColor: 'warning.main',
+      iconColour: 'warning.main',
+      marginSmall: 2,
+      marginXSmall: 1,
     },
     genderUnselected: {
       backgroundColor: 'info',

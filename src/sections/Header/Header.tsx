@@ -37,8 +37,13 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, backgroundColor: 'primary.wafer', borderBottom: '1px solid #e8f5e9' }}>
-      <AppBar color="inherit" elevation={1} position="static">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        color="inherit"
+        elevation={0}
+        position="static"
+        sx={{ borderBottom: 1, borderColor: 'primary.light' }}
+      >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <FlexBox>
             <IconButton
