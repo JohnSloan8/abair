@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Box } from '@mui/system';
@@ -22,11 +22,11 @@ function Login() {
     setShowSignupPage(!showSignupPage);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (showSignupPage) {
       setLoading(true);
-      const { user, error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
       });
@@ -34,31 +34,19 @@ function Login() {
       if (error) {
         console.log(error);
       } else {
-        console.log(user);
+        console.log(data.user);
         setConfirmationEmailSent(true);
         setShowSignupPage(false);
       }
     } else {
       setLoading(true);
-      const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
+      // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
+      supabase.auth.signInWithPassword({ email, password }).then(() => {
         setLoading(false);
         navigate('/profile', { replace: true });
       });
-      error ? console.log(error) : console.log(user);
     }
   };
-
-  // const handleSignUp = async (e) => {
-  //   e.preventDefault();
-  //   const { user, session, error } = await supabase.auth.signUp({
-  //     email: email,
-  //     password: password,
-  //   });
-
-  //   error ? console.log(error) : console.log(user);
-  //   console.log('user:', user);
-  //   console.log('session:', session);
-  // };
 
   return (
     <CenteredFlexBox>
@@ -80,7 +68,11 @@ function Login() {
           ) : confirmationEmailSent ? (
             <></>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={(e) => {
+                handleSubmit(e);
+              }}
+            >
               <label htmlFor="email">Email</label>
               <input
                 id="email"

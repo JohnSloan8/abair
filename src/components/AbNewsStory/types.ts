@@ -4,7 +4,7 @@ interface ImageDataModel {
 
 interface AbNewsStoryModel {
   id: number;
-  date: Date;
+  date: string;
   title: string;
   blurb: string;
   body: string;

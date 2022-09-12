@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import type { SvgIconProps } from '@mui/material/SvgIcon';
 
 interface AbSliderProps {
-  handleSliderChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSliderChange: (e: Event) => void;
   icon?: FC<SvgIconProps>;
   value: number;
   control: string;

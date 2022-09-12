@@ -1,6 +1,6 @@
 import { atom, useRecoilState } from 'recoil';
 
-import { AbNewsStoryModel } from '@/components/AbNewsStory/AbNewsStory';
+import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 
 const newsStoriesState = atom<AbNewsStoryModel[]>({
   key: 'news-stories-state',

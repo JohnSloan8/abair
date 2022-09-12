@@ -1,7 +1,5 @@
 import isMobile from '@/utils/is-mobile';
 
-import type { Notifications } from './types';
-
 const title = 'Abair';
 
 const email = 'sloanjs@tcd.ie';

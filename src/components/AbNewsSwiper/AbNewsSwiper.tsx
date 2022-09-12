@@ -13,7 +13,6 @@ interface AbSwiperModel {
 function AbNewsSwiper({ children }: AbSwiperModel) {
   return (
     <Swiper
-      sx={{ padding: 4 }}
       slidesPerView={3}
       loop={true}
       spaceBetween={30}
