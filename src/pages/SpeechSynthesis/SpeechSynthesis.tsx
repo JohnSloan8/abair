@@ -20,7 +20,8 @@ import AbSlider from '@/components/AbSlider';
 import AbTextField from '@/components/AbTextField';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import getSynthesisMetadata from '@/services/synthesis/metadata';
+import getSynthesis from '@/services/abair/synthesis';
+import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import {
   isSynthesisAudioEmpty,
   isSynthesisTextEmptyString,
@@ -36,8 +37,6 @@ import {
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
-
-import getSynthesis from '../../services/synthesis';
 
 function SpeechSynthesis() {
   const { synthesisText } = useSynthesisText();

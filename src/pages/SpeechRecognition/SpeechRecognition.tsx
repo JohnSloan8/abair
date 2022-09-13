@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useReactMediaRecorder } from 'react-media-recorder';
 import { useRecoilValue } from 'recoil';
 
@@ -12,16 +12,16 @@ import Typography from '@mui/material/Typography';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbIconButton from '@/components/AbIconButton';
 import AbInfoHeader from '@/components/AbInfoHeader';
-import AbTranscription from '@/components/AbTranscription';
 import AbTranscriptionContainer from '@/components/AbTranscriptionContainer';
-import AbTranscriptionEditable from '@/components/AbTranscriptionEditable';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import { transcriptionModel } from '@/models/transcription';
+// import { postCorrectnessJudgement } from '@/services/supabase/transcriptions';
+import getCorrections from '@/services/supabase/transcriptions/getCorrections';
 // import postAudioBlob from '@/services/abair/recognition';
 import getTranscriptions from '@/services/supabase/transcriptions/getTranscriptions';
 import { useSession } from '@/store/auth';
 import { isRecognitionAudioEmpty, useRecognitionAudio, useRecording } from '@/store/recognition';
+import { useCorrections, useTranscriptions } from '@/store/transcriptions';
 
 function SpeechRecognition() {
   const { recording, setRecording } = useRecording();
@@ -33,7 +33,8 @@ function SpeechRecognition() {
   const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
   const { session } = useSession();
   // const [transcriptionsLoading, setTranscriptionsLoading] = useState(true)
-  const [transcriptions, setTranscriptions] = useState<transcriptionModel[]>([]);
+  const { transcriptions, setTranscriptions } = useTranscriptions();
+  const { setCorrections } = useCorrections();
 
   const toggleRecording = () => {
     recording ? prepareToPostAudioBlob() : startRecording();
@@ -50,12 +51,21 @@ function SpeechRecognition() {
   };
 
   useEffect(() => {
-    getTranscriptions(session.user.id).then((res) => {
-      console.log('res:', res);
+    const userID = session ? session.user.id : 'anonymous';
+    getTranscriptions(userID).then((res) => {
+      console.log('transcriptions:', res);
       setTranscriptions(res);
+    });
+    getCorrections(userID).then((res) => {
+      console.log('corrections:', res);
+      setCorrections(res);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log('transcriptionsUpdated:', transcriptions);
+  }, [transcriptions]);
 
   return (
     <>
@@ -73,13 +83,7 @@ function SpeechRecognition() {
             </CenteredFlexBox>
           )}
           {transcriptions.map((t, i) => (
-            <AbTranscriptionContainer key={i}>
-              {t.correct === null ? (
-                <AbTranscription text={t.text} />
-              ) : (
-                <AbTranscriptionEditable text={t.text} />
-              )}
-            </AbTranscriptionContainer>
+            <AbTranscriptionContainer transcription={t} key={i} />
           ))}
         </Box>
       </CenteredFlexBox>

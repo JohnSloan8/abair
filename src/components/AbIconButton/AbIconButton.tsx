@@ -6,7 +6,14 @@ import type { SvgIconProps } from '@mui/material/SvgIcon';
 import CreateItem from './styles';
 
 interface AbIconButtonProps {
-  variation: 'record' | 'stop' | 'genderSelected' | 'genderHighlighted' | 'genderUnselected';
+  variation:
+    | 'record'
+    | 'stop'
+    | 'genderSelected'
+    | 'genderHighlighted'
+    | 'genderUnselected'
+    | 'correct'
+    | 'incorrect';
   handleClick: () => void;
   icon: FC<SvgIconProps>;
 }
@@ -20,15 +27,15 @@ const AbIconButton = ({ variation, handleClick, icon: Icon }: AbIconButtonProps)
       aria-label={variation}
       sx={{
         color: style.iconColour,
-        border: 1,
+        border: style.border,
         borderColor: style.backgroundHoverColor,
         backgroundColor: style.backgroundColor,
-        '&:hover': { backgroundColor: style.backgroundHoverColor, color: '#fff' },
+        '&:hover': { backgroundColor: style.backgroundHoverColor, color: style.hoverColor },
         m: { sm: style.marginSmall, xs: style.marginXSmall },
       }}
       onClick={handleClick}
     >
-      {<Icon fontSize={'large'} />}
+      {style.fontSize === 'large' ? <Icon fontSize={'large'} /> : <Icon fontSize={'medium'} />}
     </IconButton>
   );
 };

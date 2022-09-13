@@ -1,19 +1,38 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Typography from '@mui/material/Typography';
+
+import { correctionModel } from '@/models/transcription';
 
 interface AbTranscriptionWordProps {
   word: string;
   index: number;
+  corrections: correctionModel[];
+  handleClick: () => void;
 }
 
-const AbTranscriptionWord = ({ word, index }: AbTranscriptionWordProps) => {
-  const [selected, setSelected] = useState(false);
+const AbTranscriptionWord = ({
+  word,
+  index,
+  corrections,
+  handleClick,
+}: AbTranscriptionWordProps) => {
+  const [wordSelected, setWordSelected] = useState(false);
 
-  const handleWordClick = () => {
-    console.log('word clicked');
-    setSelected(!selected);
+  const isWordSelected = () => {
+    setWordSelected(false);
+    corrections.map((c: correctionModel) => {
+      if (index >= c.start && index <= c.end) {
+        setWordSelected(true);
+      }
+    });
   };
+
+  useEffect(() => {
+    isWordSelected();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [corrections]);
 
   return (
     <Typography
@@ -24,10 +43,10 @@ const AbTranscriptionWord = ({ word, index }: AbTranscriptionWordProps) => {
       sx={{
         border: 1,
         borderColor: '#eee',
-        backgroundColor: selected ? 'warning.light' : '#fff',
+        backgroundColor: wordSelected ? 'warning.light' : '#fff',
         '&:hover': { borderColor: 'warning.main', cursor: 'pointer' },
       }}
-      onClick={() => handleWordClick(index)}
+      onClick={handleClick}
     >
       {word}
     </Typography>
