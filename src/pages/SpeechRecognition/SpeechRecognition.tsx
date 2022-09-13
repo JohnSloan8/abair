@@ -16,12 +16,11 @@ import AbTranscriptionContainer from '@/components/AbTranscriptionContainer';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 // import { postCorrectnessJudgement } from '@/services/supabase/transcriptions';
-import getCorrections from '@/services/supabase/transcriptions/getCorrections';
 // import postAudioBlob from '@/services/abair/recognition';
 import getTranscriptions from '@/services/supabase/transcriptions/getTranscriptions';
 import { useSession } from '@/store/auth';
 import { isRecognitionAudioEmpty, useRecognitionAudio, useRecording } from '@/store/recognition';
-import { useCorrections, useTranscriptions } from '@/store/transcriptions';
+import { useTranscriptions } from '@/store/transcriptions';
 
 function SpeechRecognition() {
   const { recording, setRecording } = useRecording();
@@ -34,7 +33,6 @@ function SpeechRecognition() {
   const { session } = useSession();
   // const [transcriptionsLoading, setTranscriptionsLoading] = useState(true)
   const { transcriptions, setTranscriptions } = useTranscriptions();
-  const { setCorrections } = useCorrections();
 
   const toggleRecording = () => {
     recording ? prepareToPostAudioBlob() : startRecording();
@@ -55,10 +53,6 @@ function SpeechRecognition() {
     getTranscriptions(userID).then((res) => {
       console.log('transcriptions:', res);
       setTranscriptions(res);
-    });
-    getCorrections(userID).then((res) => {
-      console.log('corrections:', res);
-      setCorrections(res);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -83,7 +77,11 @@ function SpeechRecognition() {
             </CenteredFlexBox>
           )}
           {transcriptions.map((t, i) => (
-            <AbTranscriptionContainer transcription={t} key={i} />
+            <AbTranscriptionContainer
+              transcription={t}
+              setTranscriptions={setTranscriptions}
+              key={i}
+            />
           ))}
         </Box>
       </CenteredFlexBox>

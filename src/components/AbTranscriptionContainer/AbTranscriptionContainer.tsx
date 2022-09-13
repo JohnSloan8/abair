@@ -1,24 +1,22 @@
+import { SetterOrUpdater } from 'recoil';
+
 import Box from '@mui/material/Box';
 
 import AbTranscription from '@/components/AbTranscription';
 import AbTranscriptionEditable from '@/components/AbTranscriptionEditable';
 import { transcriptionModel } from '@/models/transcription';
-import { useCorrections } from '@/store/transcriptions';
 
 import AbTranscriptionCorrect from '../AbTranscriptionCorrect';
 
 interface AbTranscriptionContainerProps {
   transcription: transcriptionModel;
+  setTranscriptions: SetterOrUpdater<transcriptionModel[]>;
 }
 
-const AbTranscriptionContainer = ({ transcription }: AbTranscriptionContainerProps) => {
-  const { corrections, setCorrections } = useCorrections();
-  // const [thisTranscriptionCorrections, setThisTranscriptionCorrections] = useState([])
-
-  // useEffect(() => {
-  //   setThisTranscriptionCorrections()
-  // }, [])
-
+const AbTranscriptionContainer = ({
+  transcription,
+  setTranscriptions,
+}: AbTranscriptionContainerProps) => {
   return (
     <Box
       m={1}
@@ -36,8 +34,7 @@ const AbTranscriptionContainer = ({ transcription }: AbTranscriptionContainerPro
       ) : (
         <AbTranscriptionEditable
           transcription={transcription}
-          corrections={corrections.filter((c) => c.transcription_id === transcription.id)}
-          setCorrections={setCorrections}
+          setTranscriptions={setTranscriptions}
         />
       )}
     </Box>
