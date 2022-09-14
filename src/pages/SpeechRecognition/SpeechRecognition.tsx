@@ -12,15 +12,17 @@ import Typography from '@mui/material/Typography';
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbIconButton from '@/components/AbIconButton';
 import AbInfoHeader from '@/components/AbInfoHeader';
-import AbTranscriptionContainer from '@/components/AbTranscriptionContainer';
+import AbTranscription from '@/components/AbTranscription';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-// import { postCorrectnessJudgement } from '@/services/supabase/transcriptions';
+import { transcriptionModel } from '@/models/transcription';
 // import postAudioBlob from '@/services/abair/recognition';
+import { postCorrection } from '@/services/supabase/transcriptions';
 import getTranscriptions from '@/services/supabase/transcriptions/getTranscriptions';
 import { useSession } from '@/store/auth';
 import { isRecognitionAudioEmpty, useRecognitionAudio, useRecording } from '@/store/recognition';
 import { useTranscriptions } from '@/store/transcriptions';
+import { updateTranscriptions } from '@/store/transcriptions/utils';
 
 function SpeechRecognition() {
   const { recording, setRecording } = useRecording();
@@ -28,38 +30,65 @@ function SpeechRecognition() {
   const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({
     audio: true,
     video: false,
+    onStop: async (blobUrl: string, blob: Blob) => {
+      console.log(await convertBlobToBase64(blob));
+      setRecognitionAudio(mediaBlobUrl);
+      // const username = session === null ? 'anon' : session.user.id;
+      // const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
+      // const filename = `${filenamePrefix}_${username}`;
+      // const ts = postAudioBlob(mediaBlobUrl, filename);
+    },
   });
   const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
   const { session } = useSession();
   // const [transcriptionsLoading, setTranscriptionsLoading] = useState(true)
   const { transcriptions, setTranscriptions } = useTranscriptions();
 
-  const toggleRecording = () => {
-    recording ? prepareToPostAudioBlob() : startRecording();
-    setRecording((recording: boolean) => !recording);
+  const convertBlobToBase64 = async (blob: Blob) => {
+    // blob data
+    return await blobToBase64(blob);
   };
 
-  const prepareToPostAudioBlob = () => {
-    stopRecording();
-    setRecognitionAudio(mediaBlobUrl);
-    // const username = session === null ? 'anon' : session.user.id;
-    // const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
-    // const filename = `${filenamePrefix}_${username}`;
-    // const ts = postAudioBlob(mediaBlobUrl, filename);
+  const blobToBase64 = (blob: Blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  const toggleRecording = () => {
+    recording ? stopRecording() : startRecording();
+    setRecording((recording: boolean) => !recording);
   };
 
   useEffect(() => {
     const userID = session ? session.user.id : 'anonymous';
     getTranscriptions(userID).then((res) => {
-      console.log('transcriptions:', res);
       setTranscriptions(res);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    console.log('transcriptionsUpdated:', transcriptions);
-  }, [transcriptions]);
+  const handleCorrection = (
+    transcription: transcriptionModel,
+    correct: boolean | null,
+    correction: string | null,
+    corrected: boolean,
+  ) => {
+    postCorrection(transcription, correct, correction, corrected).then((res) => {
+      res
+        ? updateTranscriptions(
+            transcription.id,
+            correct,
+            correction,
+            corrected,
+            transcriptions,
+            setTranscriptions,
+          )
+        : alert('postCorrection failed');
+    });
+  };
 
   return (
     <>
@@ -77,11 +106,9 @@ function SpeechRecognition() {
             </CenteredFlexBox>
           )}
           {transcriptions.map((t, i) => (
-            <AbTranscriptionContainer
-              transcription={t}
-              setTranscriptions={setTranscriptions}
-              key={i}
-            />
+            <AbTranscription transcription={t} key={i} handleCorrection={handleCorrection}>
+              <p>audio test</p>
+            </AbTranscription>
           ))}
         </Box>
       </CenteredFlexBox>

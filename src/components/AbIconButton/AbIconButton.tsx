@@ -13,7 +13,9 @@ interface AbIconButtonProps {
     | 'genderHighlighted'
     | 'genderUnselected'
     | 'correct'
-    | 'incorrect';
+    | 'incorrect'
+    | 'editGreen'
+    | 'editRed';
   handleClick: () => void;
   icon: FC<SvgIconProps>;
 }

@@ -1,6 +1,6 @@
 import { atom, useRecoilState } from 'recoil';
 
-import { correctionModel, transcriptionModel } from '@/models/transcription';
+import { transcriptionModel } from '@/models/transcription';
 
 const transcriptionsState = atom<transcriptionModel[]>({
   key: 'transcriptions',
@@ -12,14 +12,4 @@ const useTranscriptions = () => {
   return { transcriptions, setTranscriptions };
 };
 
-const correctionsState = atom<correctionModel[]>({
-  key: 'corrections',
-  default: [],
-});
-
-const useCorrections = () => {
-  const [corrections, setCorrections] = useRecoilState(correctionsState);
-  return { corrections, setCorrections };
-};
-
-export { useTranscriptions, useCorrections };
+export { useTranscriptions };

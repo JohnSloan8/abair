@@ -74,6 +74,26 @@ const CreateItem = () => {
       border: 0,
       fontSize: 'large',
     },
+    editGreen: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundHoverColor: 'rgba(0,0,0,0)',
+      hoverColor: 'primary.dark',
+      iconColour: 'primary.main',
+      marginSmall: 1,
+      marginXSmall: 1,
+      border: 0,
+      fontSize: 'medium',
+    },
+    editRed: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundHoverColor: 'rgba(0,0,0,0)',
+      hoverColor: 'warning.dark',
+      iconColour: 'warning.main',
+      marginSmall: 1,
+      marginXSmall: 1,
+      border: 0,
+      fontSize: 'medium',
+    },
   };
 
   return styles;

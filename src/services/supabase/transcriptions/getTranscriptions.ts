@@ -4,7 +4,7 @@ const getTranscriptions = async (userID: string) => {
   try {
     const { data, error, status } = await supabase
       .from('transcriptions')
-      .select(`id, created_at, model, text, correct`)
+      .select(`id, created_at, model, text, correct, correction, corrected`)
       .eq('user', userID);
     console.log('transcription status:', status);
 
