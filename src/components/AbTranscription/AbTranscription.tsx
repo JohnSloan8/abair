@@ -17,7 +17,7 @@ interface AbTranscriptionProps {
   handleCorrection: (
     transcription: transcriptionModel,
     correct: boolean | null,
-    correction: string,
+    correction: string | null,
     corrected: boolean,
   ) => void;
   children: React.ReactNode;
@@ -25,7 +25,7 @@ interface AbTranscriptionProps {
 }
 
 const AbTranscription = ({ transcription, handleCorrection, children }: AbTranscriptionProps) => {
-  const [correctionText, setCorrectionText] = useState<string | null>();
+  const [correctionText, setCorrectionText] = useState<string | null>(null);
 
   useEffect(() => {
     transcription.corrected
