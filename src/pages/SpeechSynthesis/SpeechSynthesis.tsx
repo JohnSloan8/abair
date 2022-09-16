@@ -55,10 +55,6 @@ function SpeechSynthesis() {
     synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
   }, []);
 
-  useEffect(() => {
-    console.log('audio:', synthesisAudio);
-  }, [emptyAudio]);
-
   return (
     <CenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
