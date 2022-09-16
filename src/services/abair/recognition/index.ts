@@ -1,3 +1,3 @@
-import postAudioBlob from './postAudioBlob';
+import postAudio from './postAudio';
 
-export default postAudioBlob;
+export default postAudio;

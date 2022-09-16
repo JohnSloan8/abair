@@ -16,7 +16,7 @@ import AbTranscription from '@/components/AbTranscription';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { transcriptionModel } from '@/models/transcription';
-// import postAudioBlob from '@/services/abair/recognition';
+// import postAudioData from '@/services/abair/recognition';
 import { postCorrection } from '@/services/supabase/transcriptions';
 import getTranscriptions from '@/services/supabase/transcriptions/getTranscriptions';
 import { useSession } from '@/store/auth';
@@ -24,38 +24,31 @@ import { isRecognitionAudioEmpty, useRecognitionAudio, useRecording } from '@/st
 import { useTranscriptions } from '@/store/transcriptions';
 import { updateTranscriptions } from '@/store/transcriptions/utils';
 
+// import convertBlobToBase64 from './utils';
+
 function SpeechRecognition() {
   const { recording, setRecording } = useRecording();
   const { recognitionAudio, setRecognitionAudio } = useRecognitionAudio();
-  const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({
+  // const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({
+  const { status, startRecording, stopRecording } = useReactMediaRecorder({
     audio: true,
     video: false,
-    onStop: async (blobUrl: string, blob: Blob) => {
-      console.log(await convertBlobToBase64(blob));
-      setRecognitionAudio(mediaBlobUrl);
+    // onStop: async (blobUrl: string, blob: Blob) => {
+    onStop: async (blobUrl: string) => {
+      console.log('blobUrl:', blobUrl);
+      setRecognitionAudio(blobUrl);
+      // const audioDataInBase64 = await convertBlobToBase64(blob);
+      // console.log(audioDataInBase64);
       // const username = session === null ? 'anon' : session.user.id;
       // const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
       // const filename = `${filenamePrefix}_${username}`;
-      // const ts = postAudioBlob(mediaBlobUrl, filename);
+      // postAudioData(audioDataInBase64, filename);
     },
   });
   const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
   const { session } = useSession();
-  // const [transcriptionsLoading, setTranscriptionsLoading] = useState(true)
+
   const { transcriptions, setTranscriptions } = useTranscriptions();
-
-  const convertBlobToBase64 = async (blob: Blob) => {
-    // blob data
-    return await blobToBase64(blob);
-  };
-
-  const blobToBase64 = (blob: Blob) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
 
   const toggleRecording = () => {
     recording ? stopRecording() : startRecording();
