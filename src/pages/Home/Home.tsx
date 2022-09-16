@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
@@ -59,7 +58,6 @@ function Home() {
                   title="Speech Synthesis"
                   description="Listen to our voices in the 3 main Irish dialects"
                   variation="main"
-                  shift="left"
                 />
               </Grid>
               <Grid item>
@@ -68,7 +66,6 @@ function Home() {
                   title="Speech Recognition"
                   description="Speak in Irish and see your words as text"
                   variation="main"
-                  shift="right"
                 />
               </Grid>
             </Grid>
@@ -108,19 +105,19 @@ function Home() {
           <AbNewsSwiper>
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
-                {/* <Box
-                  component="img"
-                  sx={{ minHeight: 200, maxHeight: 200, minWidth: 300, maxWidth: 300 }}
-                  src={nS.images[0].url}
-                  alt="news image"
-                /> */}
                 <Card>
                   <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                    <CardMedia
-                      component="img"
-                      sx={{ minHeight: 200, maxHeight: 200 }}
+                    <Image
+                      duration={1000}
+                      sx={{
+                        maxHeight: { xs: 200, sm: 200 },
+                        minHeight: { xs: 200, sm: 200 },
+                      }}
+                      easing="ease-out"
+                      alt={`${nS.title + i}`}
                       src={nS.images ? nS.images[0].url : null}
-                      alt="news image"
+                      bgColor="#fff"
+                      showLoading
                     />
                     <CardContent>
                       <Typography variant="body2">{nS.date}</Typography>

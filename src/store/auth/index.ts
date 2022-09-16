@@ -2,7 +2,7 @@ import { atom, useRecoilState } from 'recoil';
 
 import { Session } from '@supabase/supabase-js';
 
-const sessionState = atom<Session | null>({
+const sessionState = atom<Session | undefined>({
   key: 'session',
   default: undefined,
 });

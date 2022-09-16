@@ -28,7 +28,7 @@ function Profile() {
     genders === undefined ? getGenders(setGenders) : null;
   }, []);
 
-  const prepareToUpdateProfile = (e) => {
+  const prepareToUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('dialects:', dialects);
     const updatedDialect = dialects.filter((d) => d.name === profile.dialect)[0];

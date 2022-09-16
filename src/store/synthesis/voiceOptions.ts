@@ -35,7 +35,7 @@ const useSynthesisVoiceOptions = () => {
   return { synthesisVoiceOptions, setSynthesisVoiceOptions };
 };
 
-const synthesisVoiceSelectedState = selector({
+const synthesisVoiceSelectedState = selector<synthesisVoiceModel>({
   key: 'synthesis-voice-selected',
   get: ({ get }) => {
     const selectedVoiceIndex = get(synthesisVoiceIndexState);
@@ -49,6 +49,8 @@ const synthesisVoiceSelectedState = selector({
         voices: [],
         pitchRange: [0.5, 1.5],
         speedRange: [0.5, 1.5],
+        speed: 1,
+        pitch: 1,
       };
     } else {
       return voiceOptions[selectedVoiceIndex];

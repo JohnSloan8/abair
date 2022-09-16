@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import Image from 'mui-image';
+
 import AbInfoHeader from '@/components/AbInfoHeader';
 import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import Meta from '@/components/Meta';
@@ -40,13 +42,17 @@ function NewsItem() {
             <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
               <Typography align="center">
                 {newsStory.images.map((image, i) => (
-                  <Box
-                    height="200px"
+                  <Image
                     key={i}
-                    component="img"
-                    src={image}
+                    duration={1000}
+                    sx={{
+                      maxHeight: { xs: 160, sm: 200 },
+                    }}
+                    easing="ease-out"
                     alt={`${newsStory.title + i}`}
-                    loading="lazy"
+                    src={image}
+                    bgColor="#fff"
+                    showLoading
                   />
                 ))}
               </Typography>

@@ -14,9 +14,12 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { user, session, error } = await supabase.auth.signUp({
+    const {
+      data: { user, session },
+      error,
+    } = await supabase.auth.signUp({
       email: email,
       password: password,
     });

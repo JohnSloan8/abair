@@ -39,7 +39,11 @@ function SpeechRecognition() {
       const username = session === null ? 'anon' : session.user.id;
       const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
       const filename = `${filenamePrefix}_${username}`;
-      postAudio(audioDataInBase64, filename);
+      if (typeof audioDataInBase64 === 'string') {
+        postAudio(audioDataInBase64, filename);
+      } else {
+        alert('problem with audioDataInBase64');
+      }
     },
   });
   const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);

@@ -27,15 +27,21 @@ const getProfile = async (
     }
 
     if (data) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const dialect: any = data.dialect;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const gender: any = data.gender;
       setter({
         username: data.username,
-        dialect: data.dialect.name,
-        gender: data.gender.name,
+        dialect: dialect.name,
+        gender: gender.name,
         year: data.year,
       });
       console.log('profile data:', data);
     }
-  } catch (e) {
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
     alert(e.message);
   } finally {
     setLoader(false);
