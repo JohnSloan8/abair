@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-// import Card from '@mui/material/Card';
-// import CardActionArea from '@mui/material/CardActionArea';
-// import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import Image from 'mui-image';
-
 // import { AbClickableCard } from 'abair-component-library';
-// import { SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
+
 import AbClickableCard from '@/components/AbClickableCard';
 import AbInfoHeader from '@/components/AbInfoHeader';
-// import AbNewsSwiper from '@/components/AbNewsSwiper';
+import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { getNews } from '@/services/supabase/news';
@@ -100,7 +100,7 @@ function Home() {
             Latest News
           </Typography>
 
-          {/* <AbNewsSwiper>
+          <AbNewsSwiper>
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
                 <Card>
@@ -127,7 +127,7 @@ function Home() {
                 </Card>
               </SwiperSlide>
             ))}
-          </AbNewsSwiper> */}
+          </AbNewsSwiper>
           <Box component={Link} to={'/news'}>
             <Typography variant="body1" m={2} align="center">
               See all
