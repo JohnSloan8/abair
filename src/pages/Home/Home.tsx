@@ -82,9 +82,7 @@ function Home() {
             <Link to="/applications">
               <Image
                 duration={1000}
-                sx={{
-                  maxWidth: { xs: 350, sm: 600 },
-                }}
+                width={600}
                 easing="ease-out"
                 alt="Abair Applications"
                 src="/assets/images/misc/abair-applications.png"
@@ -109,10 +107,7 @@ function Home() {
                   <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
                     <Image
                       duration={1000}
-                      sx={{
-                        maxHeight: { xs: 200, sm: 200 },
-                        minHeight: { xs: 200, sm: 200 },
-                      }}
+                      height={200}
                       easing="ease-out"
                       alt={`${nS.title + i}`}
                       src={nS.images ? nS.images[0].url : ''}

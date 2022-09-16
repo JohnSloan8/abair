@@ -47,9 +47,7 @@ function NewsItem() {
                       <Image
                         key={i}
                         duration={1000}
-                        sx={{
-                          maxHeight: { xs: 160, sm: 200 },
-                        }}
+                        height={200}
                         easing="ease-out"
                         alt={`${newsStory.title + i}`}
                         src={image.url}
