@@ -115,7 +115,7 @@ function Home() {
                       }}
                       easing="ease-out"
                       alt={`${nS.title + i}`}
-                      src={nS.images ? nS.images[0].url : null}
+                      src={nS.images ? nS.images[0].url : ''}
                       bgColor="#fff"
                       showLoading
                     />

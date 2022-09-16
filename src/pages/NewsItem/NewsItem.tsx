@@ -41,20 +41,23 @@ function NewsItem() {
           <CenteredFlexBox>
             <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
               <Typography align="center">
-                {newsStory.images.map((image, i) => (
-                  <Image
-                    key={i}
-                    duration={1000}
-                    sx={{
-                      maxHeight: { xs: 160, sm: 200 },
-                    }}
-                    easing="ease-out"
-                    alt={`${newsStory.title + i}`}
-                    src={image}
-                    bgColor="#fff"
-                    showLoading
-                  />
-                ))}
+                {newsStory.images.map(
+                  (image, i) =>
+                    image !== null && (
+                      <Image
+                        key={i}
+                        duration={1000}
+                        sx={{
+                          maxHeight: { xs: 160, sm: 200 },
+                        }}
+                        easing="ease-out"
+                        alt={`${newsStory.title + i}`}
+                        src={image.url}
+                        bgColor="#fff"
+                        showLoading
+                      />
+                    ),
+                )}
               </Typography>
               <Typography gutterBottom variant="body1" m={2} align="left">
                 {newsStory.body}

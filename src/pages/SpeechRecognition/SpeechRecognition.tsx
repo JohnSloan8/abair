@@ -36,7 +36,7 @@ function SpeechRecognition() {
       setRecognitionAudio(blobUrl);
       const audioDataInBase64 = await convertBlobToBase64(blob);
       console.log(audioDataInBase64);
-      const username = session === undefined ? 'anon' : session.user.id;
+      const username = session === null ? 'anon' : session.user.id;
       const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
       const filename = `${filenamePrefix}_${username}`;
       if (typeof audioDataInBase64 === 'string') {
