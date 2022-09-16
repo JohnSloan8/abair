@@ -4,8 +4,7 @@ import axios from 'axios';
 import { recognitionURL } from '@/config';
 
 // const postAudioBlob = async (blob: string | undefined, filename: string): transcriptionModel[] => {
-const postAudio = (audioData: string | undefined) => {
-  // const ts = await getTranscriptionsFromAbair(blob, filename);
+const postAudio = (audioData: string | undefined, filename: string) => {
   axios({
     method: 'post',
     url: recognitionURL,
@@ -15,7 +14,7 @@ const postAudio = (audioData: string | undefined) => {
     data: {
       recogniseBlob: audioData,
       userID: 0,
-      sessionID: 'string',
+      sessionID: filename,
       developer: true,
     },
   })

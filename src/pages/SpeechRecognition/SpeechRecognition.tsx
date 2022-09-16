@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useReactMediaRecorder } from 'react-media-recorder';
 import { useRecoilValue } from 'recoil';
 
@@ -8,7 +7,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-// import Moment from 'moment';
+import Moment from 'moment';
+
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbIconButton from '@/components/AbIconButton';
 import AbInfoHeader from '@/components/AbInfoHeader';
@@ -16,15 +16,14 @@ import AbTranscription from '@/components/AbTranscription';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { transcriptionModel } from '@/models/transcription';
-// import postAudioData from '@/services/abair/recognition';
+import postAudio from '@/services/abair/recognition';
 import { postCorrection } from '@/services/supabase/transcriptions';
-import getTranscriptions from '@/services/supabase/transcriptions/getTranscriptions';
 import { useSession } from '@/store/auth';
 import { isRecognitionAudioEmpty, useRecognitionAudio, useRecording } from '@/store/recognition';
 import { useTranscriptions } from '@/store/transcriptions';
 import { updateTranscriptions } from '@/store/transcriptions/utils';
 
-// import convertBlobToBase64 from './utils';
+import convertBlobToBase64 from './utils';
 
 function SpeechRecognition() {
   const { recording, setRecording } = useRecording();
@@ -33,35 +32,23 @@ function SpeechRecognition() {
   const { status, startRecording, stopRecording } = useReactMediaRecorder({
     audio: true,
     video: false,
-    // onStop: async (blobUrl: string, blob: Blob) => {
-    onStop: async (blobUrl: string) => {
-      console.log('blobUrl:', blobUrl);
+    onStop: async (blobUrl: string, blob: Blob) => {
       setRecognitionAudio(blobUrl);
-      // const audioDataInBase64 = await convertBlobToBase64(blob);
-      // console.log(audioDataInBase64);
-      // const username = session === null ? 'anon' : session.user.id;
-      // const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
-      // const filename = `${filenamePrefix}_${username}`;
-      // postAudioData(audioDataInBase64, filename);
+      const audioDataInBase64 = await convertBlobToBase64(blob);
+      console.log(audioDataInBase64);
+      const username = session === null ? 'anon' : session.user.id;
+      const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
+      const filename = `${filenamePrefix}_${username}`;
+      postAudio(audioDataInBase64, filename);
     },
   });
   const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
   const { session } = useSession();
-
   const { transcriptions, setTranscriptions } = useTranscriptions();
-
   const toggleRecording = () => {
     recording ? stopRecording() : startRecording();
     setRecording((recording: boolean) => !recording);
   };
-
-  useEffect(() => {
-    const userID = session ? session.user.id : 'anonymous';
-    getTranscriptions(userID).then((res) => {
-      setTranscriptions(res);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleCorrection = (
     transcription: transcriptionModel,
@@ -82,7 +69,6 @@ function SpeechRecognition() {
         : alert('postCorrection failed');
     });
   };
-
   return (
     <>
       <CenteredFlexBox>
@@ -105,7 +91,6 @@ function SpeechRecognition() {
           ))}
         </Box>
       </CenteredFlexBox>
-
       <CenteredFlexBox
         sx={{
           width: '100%',
@@ -132,5 +117,4 @@ function SpeechRecognition() {
     </>
   );
 }
-
 export default SpeechRecognition;
