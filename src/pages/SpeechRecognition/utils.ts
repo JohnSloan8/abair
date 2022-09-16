@@ -1,5 +1,4 @@
 const convertBlobToBase64 = async (blob: Blob) => {
-  // blob data
   return await blobToBase64(blob);
 };
 

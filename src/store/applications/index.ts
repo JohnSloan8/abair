@@ -40,7 +40,7 @@ const filteredApplicationsState = selector({
     const list = get(applicationsState);
     const categoryState = get(applicationCategoryFilterState);
 
-    const filterCategory = (l) => {
+    const filterCategory = (l: ApplicationModel[]) => {
       switch (categoryState) {
         case 1:
           return l.filter((item) => item.category === 1);

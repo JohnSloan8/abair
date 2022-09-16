@@ -11,23 +11,28 @@ const updateProfile = async (
 ) => {
   try {
     // setLoading(true);
-    const { user } = sess;
+    if (sess) {
+      const { user } = sess;
 
-    const updates = {
-      id: user.id,
-      username: profile.username,
-      dialect: updatedDialect.id,
-      gender: updatedGender.id,
-      year: profile.year,
-      updated_at: new Date(),
-    };
+      const updates = {
+        id: user.id,
+        username: profile.username,
+        dialect: updatedDialect.id,
+        gender: updatedGender.id,
+        year: profile.year,
+        updated_at: new Date(),
+      };
 
-    const { error } = await supabase.from('profiles').upsert(updates);
+      const { error } = await supabase.from('profiles').upsert(updates);
 
-    if (error) {
-      throw error;
+      if (error) {
+        throw error;
+      }
+    } else {
+      alert('no session');
     }
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     alert(error.message);
   }
 };

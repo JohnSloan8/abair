@@ -108,40 +108,40 @@ const filteredSynthesisVoiceOptionsState = selector({
     const genderState = get(synthesisGenderFilterState);
     const modeState = get(synthesisModeFilterState);
 
-    const filterMap = (l) => {
+    const filterMap = (l: synthesisVoiceModel[]) => {
       switch (mapState) {
         case 'Donegal':
-          return l.filter((item) => item.locale === 'Ulster');
+          return l.filter((item: synthesisVoiceModel) => item.locale === 'Ulster');
         case 'Galway':
-          return l.filter((item) => item.locale === 'Connemara');
+          return l.filter((item: synthesisVoiceModel) => item.locale === 'Connemara');
         case 'Kerry':
-          return l.filter((item) => item.locale === 'Munster');
+          return l.filter((item: synthesisVoiceModel) => item.locale === 'Munster');
         default:
           return l;
       }
     };
 
-    const filterGender = (l) => {
+    const filterGender = (l: synthesisVoiceModel[]) => {
       switch (genderState) {
         case 'male':
-          return l.filter((item) => item.gender === 'male');
+          return l.filter((item: synthesisVoiceModel) => item.gender === 'male');
         case 'female':
-          return l.filter((item) => item.gender === 'female');
+          return l.filter((item: synthesisVoiceModel) => item.gender === 'female');
         case 'neutral':
-          return l.filter((item) => item.gender === 'neutral');
+          return l.filter((item: synthesisVoiceModel) => item.gender === 'neutral');
         default:
           return l;
       }
     };
 
-    const filterMode = (l) => {
+    const filterMode = (l: synthesisVoiceModel[]) => {
       switch (modeState) {
         case 'HTS':
-          return l.filter((item) => item.mode === 'HTS');
+          return l.filter((item: synthesisVoiceModel) => item.mode === 'HTS');
         case 'DNN':
-          return l.filter((item) => item.mode === 'DNN');
+          return l.filter((item: synthesisVoiceModel) => item.mode === 'DNN');
         case 'neutral':
-          return l.filter((item) => item.mode === 'neutral');
+          return l.filter((item: synthesisVoiceModel) => item.mode === 'neutral');
         default:
           return l;
       }
