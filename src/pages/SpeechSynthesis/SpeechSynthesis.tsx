@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import GraphicEqIcon from '@mui/icons-material/GraphicEq';
-import SpeedIcon from '@mui/icons-material/Speed';
+// import GraphicEqIcon from '@mui/icons-material/GraphicEq';
+// import SpeedIcon from '@mui/icons-material/Speed';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -88,7 +88,7 @@ function SpeechSynthesis() {
                   setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))
                 }
                 step={0.1}
-                icon={SpeedIcon}
+                // icon={SpeedIcon}
                 control="speed"
                 color="secondary.main"
               />
@@ -101,7 +101,7 @@ function SpeechSynthesis() {
                   setSynthesisPitch(parseFloat((e.target as HTMLInputElement).value))
                 }
                 step={0.1}
-                icon={GraphicEqIcon}
+                // icon={GraphicEqIcon}
                 control="pitch"
                 color="secondary.main"
               />
