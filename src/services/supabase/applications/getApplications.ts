@@ -21,7 +21,8 @@ const getApplications = async (dataSetter: SetterOrUpdater<ApplicationModel[]>) 
       console.log('applications data:', data);
       dataSetter(data);
     }
-  } catch (e) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
     alert(e.message);
   }
 };

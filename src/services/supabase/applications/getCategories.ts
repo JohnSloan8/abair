@@ -20,7 +20,8 @@ const getCategories = async (dataSetter: SetterOrUpdater<ApplicationCategoryMode
       console.log('categories:', data);
       dataSetter(data);
     }
-  } catch (e) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
     alert(e.message);
   }
 };

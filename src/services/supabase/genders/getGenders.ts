@@ -18,7 +18,8 @@ const getGenders = async (dataSetter: SetterOrUpdater<GenderModel[]>) => {
       console.log('data:', data);
       dataSetter(data);
     }
-  } catch (e) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
     alert(e.message);
   }
 };

@@ -84,7 +84,9 @@ function SpeechSynthesis() {
                 min={synthesisVoiceSelected.speedRange[0]}
                 value={synthesisSpeed}
                 max={synthesisVoiceSelected.speedRange[1]}
-                handleSliderChange={(e) => setSynthesisSpeed(parseFloat(e.target.value))}
+                handleSliderChange={(e) =>
+                  setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))
+                }
                 step={0.1}
                 icon={SpeedIcon}
                 control="speed"
@@ -95,7 +97,9 @@ function SpeechSynthesis() {
                 min={synthesisVoiceSelected.pitchRange[0]}
                 value={synthesisPitch}
                 max={synthesisVoiceSelected.pitchRange[1]}
-                handleSliderChange={(e) => setSynthesisPitch(parseFloat(e.target.value))}
+                handleSliderChange={(e) =>
+                  setSynthesisPitch(parseFloat((e.target as HTMLInputElement).value))
+                }
                 step={0.1}
                 icon={GraphicEqIcon}
                 control="pitch"

@@ -10,9 +10,9 @@ interface GenderModel {
 
 interface ProfileModel {
   username: string;
-  dialect: string;
-  gender: string;
-  year: number;
+  dialect?: string;
+  gender?: string;
+  year?: number;
 }
 
 export type { ProfileModel, DialectModel, GenderModel };

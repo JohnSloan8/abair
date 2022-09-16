@@ -15,7 +15,7 @@ const returnDialectCode = (dialect: string) => {
   }
 };
 
-const getVoiceType = (cV) => {
+const getVoiceType = (cV: synthesisVoiceModel) => {
   if (cV.voices.includes('NEMO')) {
     return 'nemo';
   } else if (cV.voices.includes('DNN')) {
