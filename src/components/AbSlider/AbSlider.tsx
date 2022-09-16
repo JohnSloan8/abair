@@ -21,7 +21,7 @@ const AbSlider = ({
   value,
   step,
   handleSliderChange,
-  // icon: Icon,
+  icon: Icon,
   color,
 }: AbSliderProps) => {
   return (
@@ -33,7 +33,7 @@ const AbSlider = ({
       alignItems="center"
       justifyContent="center"
     >
-      {/* <Icon sx={{ color: color }} /> */}
+      <Icon sx={{ color: color }} />
       <Slider
         aria-label="Speed"
         valueLabelDisplay="auto"
