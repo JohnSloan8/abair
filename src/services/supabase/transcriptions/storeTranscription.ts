@@ -1,17 +1,19 @@
-import { transcriptionModel } from '@/models/transcription';
+// import { transcriptionModel } from '@/models/transcription';
 import { supabase } from '@/services/supabase';
 
-const storeTranscriptions = async (
-  username: string,
-  transcriptions: transcriptionModel[],
+const storeTranscription = async (
+  userID: string,
+  text: string,
   filenamePrefix: string,
+  model: string,
 ) => {
   try {
     const { error, status } = await supabase.from('transcriptions').insert([
       {
-        user: username,
-        transcription_data: transcriptions,
+        user: userID,
+        text: text,
         filename_prefix: filenamePrefix,
+        model: model,
       },
     ]);
 
@@ -26,4 +28,4 @@ const storeTranscriptions = async (
   }
 };
 
-export default storeTranscriptions;
+export default storeTranscription;

@@ -12,6 +12,8 @@ const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
 const recognitionURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise';
 
+const recognitionTimeLimit = 5;
+
 const messages = {
   app: {
     crash: {
@@ -58,4 +60,5 @@ export {
   synthesisURL,
   synthesisMetadataURL,
   recognitionURL,
+  recognitionTimeLimit,
 };

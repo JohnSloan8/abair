@@ -30,6 +30,7 @@
     "@supabase/supabase-js": "^2.0.0-rc.8",
     "abair-component-library": "^1.0.26",
     "axios": "^0.27.2",
+    "gsap": "^3.11.1",
     "is-mobile": "^3.1.1",
     "moment": "^2.29.4",
     "mui-image": "^1.0.7",

@@ -4,7 +4,9 @@ import axios from 'axios';
 import { recognitionURL } from '@/config';
 
 // const postAudioBlob = async (blob: string | undefined, filename: string): transcriptionModel[] => {
-const postAudio = (audioData: string | undefined, filename: string) => {
+const postAudio = (audioData: string, filename: string) => {
+  console.log('audioData:', audioData);
+  console.log('filename:', filename);
   axios({
     method: 'post',
     url: recognitionURL,
@@ -13,7 +15,7 @@ const postAudio = (audioData: string | undefined, filename: string) => {
     },
     data: {
       recogniseBlob: audioData,
-      userID: 0,
+      userID: 1,
       sessionID: filename,
       developer: true,
     },

@@ -10,15 +10,28 @@ const useRecognitionText = () => {
   return { recognitionText, setRecognitionText };
 };
 
-const recordingState = atom<boolean>({
-  key: 'recording-state',
+const voiceRecordingState = atom<boolean>({
+  key: 'voice-recording-state',
   default: false,
 });
 
-const useRecording = () => {
-  const [recording, setRecording] = useRecoilState(recordingState);
+const useVoiceRecording = () => {
+  const [voiceRecording, setVoiceRecording] = useRecoilState(voiceRecordingState);
 
-  return { recording, setRecording };
+  return { voiceRecording, setVoiceRecording };
+};
+
+const awaitingTranscriptionState = atom<boolean>({
+  key: 'awaiting-transcription-state',
+  default: false,
+});
+
+const useAwaitingTranscription = () => {
+  const [awaitingTranscription, setAwaitingTranscription] = useRecoilState(
+    awaitingTranscriptionState,
+  );
+
+  return { awaitingTranscription, setAwaitingTranscription };
 };
 
 const isRecognitionTextEmptyString = selector({
@@ -53,8 +66,9 @@ const isRecognitionAudioEmpty = selector({
 
 export {
   useRecognitionText,
-  useRecording,
+  useVoiceRecording,
   isRecognitionTextEmptyString,
   useRecognitionAudio,
   isRecognitionAudioEmpty,
+  useAwaitingTranscription,
 };
