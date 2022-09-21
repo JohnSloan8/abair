@@ -12,4 +12,14 @@ const useSession = () => {
   return { session, setSession };
 };
 
-export { useSession };
+const sessionStartState = atom<string>({
+  key: 'session-start',
+  default: undefined,
+});
+
+const useSessionStart = () => {
+  const [sessionStart, setSessionStart] = useRecoilState(sessionStartState);
+  return { sessionStart, setSessionStart };
+};
+
+export { useSession, useSessionStart };

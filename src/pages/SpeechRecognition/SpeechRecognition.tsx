@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useReactMediaRecorder } from 'react-media-recorder';
 import { useRecoilValue } from 'recoil';
 
-// import { CollectionsOutlined } from '@mui/icons-material';
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import StopIcon from '@mui/icons-material/Stop';
 import Box from '@mui/material/Box';
@@ -10,7 +9,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import { gsap } from 'gsap';
-import Moment from 'moment';
 
 import AbAudioPlayer from '@/components/AbAudioPlayer';
 import AbIconButton from '@/components/AbIconButton';
@@ -20,19 +18,19 @@ import Loading from '@/components/Loading';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
 import { recognitionTimeLimit } from '@/config';
-import { transcriptionModel } from '@/models/transcription';
-// import postAudio from '@/services/abair/recognition';
-import { postCorrection } from '@/services/supabase/transcriptions';
-import storeTranscription from '@/services/supabase/transcriptions/storeTranscription';
-import { useSession } from '@/store/auth';
+// import { transcriptionModel } from '@/models/transcription';
+import postAudio from '@/services/abair/recognition';
+// import { postCorrection } from '@/services/supabase/transcriptions';
+import postTranscription from '@/services/supabase/transcriptions/postTranscription';
+import { useSession, useSessionStart } from '@/store/auth';
 import {
   isRecognitionAudioEmpty,
   useAwaitingTranscription,
+  useRecognition,
   useRecognitionAudio,
   useVoiceRecording,
 } from '@/store/recognition';
-import { useTranscriptions } from '@/store/transcriptions';
-import { updateTranscriptions } from '@/store/transcriptions/utils';
+import { useTranscription } from '@/store/transcriptions';
 
 import convertBlobToBase64 from './utils';
 
@@ -41,9 +39,15 @@ function SpeechRecognition() {
   const recognitionProgressTimer = useRef(null);
   const tl = useRef();
 
+  const { sessionStart } = useSessionStart();
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription, setAwaitingTranscription } = useAwaitingTranscription();
+  const { transcription, setTranscription } = useTranscription();
   const { recognitionAudio, setRecognitionAudio } = useRecognitionAudio();
+  const { recognition, setRecognition } = useRecognition();
+  const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
+  const { session } = useSession();
+  // const { transcriptions, setTranscriptions } = useTranscriptions();
 
   useEffect(() => {
     tl.current && tl.current.progress(0).kill();
@@ -70,25 +74,28 @@ function SpeechRecognition() {
       setAwaitingTranscription(true);
       setRecognitionAudio(blobUrl);
       const audioDataInBase64 = await convertBlobToBase64(blob);
-      // console.log(audioDataInBase64);
-      const username = session === null ? 'anon' : session.user.id;
-      const filenamePrefix = Moment().format('YYYY-MM-DD-HH-mm-ss');
-      // const filename = `${filenamePrefix}_${username}`;
+      const userID = session === null ? null : session.user.id;
       if (typeof audioDataInBase64 === 'string') {
-        // postAudio(audioDataInBase64, filename);
-        setTimeout(() => {
-          setAwaitingTranscription(false);
-          console.log('data returned');
-          storeTranscription(username, 'cad é sin', filenamePrefix, 'model101');
-        }, 2000);
+        await postAudio(audioDataInBase64.slice(22), userID, sessionStart, setRecognition);
+        setAwaitingTranscription(false);
+        // postTranscription(userID, 'cad é sin', filenamePrefix, 'model101', sessionStart);
       } else {
         alert('problem with audioDataInBase64');
       }
     },
   });
-  const emptyAudio = useRecoilValue(isRecognitionAudioEmpty);
-  const { session } = useSession();
-  const { transcriptions, setTranscriptions } = useTranscriptions();
+
+  useEffect(() => {
+    recognition !== undefined ? postTranscription(recognition, setTranscription) : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recognition]);
+
+  // useEffect(() => {
+  //   transcription !== undefined
+  //     ? appendTranscription(transcription, transcriptions, setTranscriptions)
+  //     : null;
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [transcription]);
 
   useEffect(() => {
     console.log('in effect');
@@ -99,30 +106,32 @@ function SpeechRecognition() {
     } else {
       console.log('pausing');
       tl.current.pause(0);
+
       stopRecording();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceRecording]);
 
-  const handleCorrection = (
-    transcription: transcriptionModel,
-    correct: boolean | null,
-    correction: string | null,
-    corrected: boolean,
-  ) => {
-    postCorrection(transcription, correct, correction, corrected).then((res) => {
-      res
-        ? updateTranscriptions(
-            transcription.id,
-            correct,
-            correction,
-            corrected,
-            transcriptions,
-            setTranscriptions,
-          )
-        : alert('postCorrection failed');
-    });
-  };
+  const handleCorrection = () =>
+    // transcription: transcriptionModel,
+    // correct: boolean | null,
+    // correction: string | null,
+    // corrected: boolean,
+    {
+      // postCorrection(transcription, correct, correction, corrected).then((res) => {
+      //   res
+      //     ? updateTranscriptions(
+      //         transcription.id,
+      //         correct,
+      //         correction,
+      //         corrected,
+      //         transcriptions,
+      //         setTranscriptions,
+      //       )
+      //     : alert('postCorrection failed');
+      // });
+      console.log('handling correction');
+    };
   return (
     <>
       <CenteredFlexBox>
@@ -133,16 +142,16 @@ function SpeechRecognition() {
             {status}
           </Typography>
           <CenteredFlexBox pt={4}></CenteredFlexBox>
-          {!emptyAudio && (
-            <CenteredFlexBox>
-              <AbAudioPlayer audioURL={recognitionAudio} />
-            </CenteredFlexBox>
-          )}
-          {transcriptions.map((t, i) => (
-            <AbTranscription transcription={t} key={i} handleCorrection={handleCorrection}>
-              <p>audio test</p>
+
+          {transcription !== undefined && (
+            <AbTranscription t={transcription} handleCorrection={handleCorrection}>
+              {!emptyAudio && (
+                <CenteredFlexBox mb={2}>
+                  <AbAudioPlayer audioURL={recognitionAudio} />
+                </CenteredFlexBox>
+              )}
             </AbTranscription>
-          ))}
+          )}
         </Box>
       </CenteredFlexBox>
       <CenteredFlexBox

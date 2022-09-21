@@ -1,19 +1,19 @@
 // import { transcriptionModel } from '@/models/transcription';
 import { supabase } from '@/services/supabase';
 
-const storeTranscription = async (
-  userID: string,
-  text: string,
-  filenamePrefix: string,
-  model: string,
+const patchTranscription = async (
+  id: number,
+  correct: boolean | null,
+  correction: string | null,
+  corrected: boolean,
 ) => {
   try {
-    const { error, status } = await supabase.from('transcriptions').insert([
+    const { error, status } = await supabase.from('transcriptions').upsert([
       {
-        user: userID,
-        text: text,
-        filename_prefix: filenamePrefix,
-        model: model,
+        id: id,
+        correct: correct,
+        correction: correction,
+        corrected: corrected,
       },
     ]);
 
@@ -28,4 +28,4 @@ const storeTranscription = async (
   }
 };
 
-export default storeTranscription;
+export default patchTranscription;

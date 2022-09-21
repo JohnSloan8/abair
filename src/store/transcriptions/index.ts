@@ -12,4 +12,14 @@ const useTranscriptions = () => {
   return { transcriptions, setTranscriptions };
 };
 
-export { useTranscriptions };
+const transcriptionState = atom<transcriptionModel>({
+  key: 'transcription',
+  default: undefined,
+});
+
+const useTranscription = () => {
+  const [transcription, setTranscription] = useRecoilState(transcriptionState);
+  return { transcription, setTranscription };
+};
+
+export { useTranscription, useTranscriptions };

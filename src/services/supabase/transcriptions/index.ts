@@ -1,5 +1,5 @@
 import getTranscriptions from './getTranscriptions';
 import postCorrection from './postCorrection';
-import storeTranscription from './storeTranscription';
+import postTranscription from './postTranscription';
 
-export { storeTranscription, getTranscriptions, postCorrection };
+export { postTranscription, getTranscriptions, postCorrection };

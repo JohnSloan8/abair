@@ -13,25 +13,25 @@ import AbIconButton from '@/components/AbIconButton';
 import { transcriptionModel } from '@/models/transcription';
 
 interface AbTranscriptionProps {
-  transcription: transcriptionModel;
-  handleCorrection: (
-    transcription: transcriptionModel,
-    correct: boolean | null,
-    correction: string | null,
-    corrected: boolean,
-  ) => void;
+  t: transcriptionModel;
+  handleCorrection: () => // transcription: transcriptionModel,
+  // correct: boolean | null,
+  // correction: string | null,
+  // corrected: boolean,
+  void;
   children: React.ReactNode;
   // setTranscriptions: SetterOrUpdater<transcriptionModel[]>;
 }
 
-const AbTranscription = ({ transcription, handleCorrection, children }: AbTranscriptionProps) => {
+const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps) => {
   const [correctionText, setCorrectionText] = useState<string | null>(null);
 
   useEffect(() => {
-    transcription.corrected
-      ? setCorrectionText(transcription.correction)
-      : setCorrectionText(transcription.text);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log('t:', t);
+    // t.corrected
+    //   ? setCorrectionText(t.correction)
+    //   : setCorrectionText(t.text);
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -42,31 +42,30 @@ const AbTranscription = ({ transcription, handleCorrection, children }: AbTransc
       borderRadius={2}
       sx={{
         backgroundColor:
-          transcription.correct === null
-            ? 'secondary.wafer'
-            : transcription.correct
-            ? 'primary.wafer'
-            : 'warning.wafer',
+          t.correct === null ? 'secondary.wafer' : t.correct ? 'primary.wafer' : 'warning.wafer',
         borderColor:
-          transcription.correct === null
+          t.correct === null
             ? 'secondary.light'
-            : transcription.correct
+            : t.correct
             ? 'primary.wafer'
-            : transcription.correction === null
+            : t.correction === null
             ? 'warning.main'
             : 'warning.wafer',
       }}
     >
       {children}
-      {transcription.correct === null ? (
+      {t.correct === null ? (
         <>
-          <Typography variant="body1">{transcription.text}</Typography>
+          <Typography variant="body1">
+            {t.recognition_response.test_model.hypotheses[0].utterence}
+          </Typography>
           <Grid container direction="row" justifyContent="space-evenly" alignItems="center" mt={1}>
             <Grid item>
               <AbIconButton
                 variation="incorrect"
                 handleClick={() => {
-                  handleCorrection(transcription, false, null, false);
+                  // handleCorrection(t, false, null, false);
+                  handleCorrection();
                 }}
                 icon={CloseIcon}
               />
@@ -75,27 +74,31 @@ const AbTranscription = ({ transcription, handleCorrection, children }: AbTransc
               <AbIconButton
                 variation="correct"
                 handleClick={() => {
-                  handleCorrection(transcription, true, null, false);
+                  // handleCorrection(t, true, null, false);
+                  handleCorrection();
                 }}
                 icon={DoneIcon}
               />
             </Grid>
           </Grid>
         </>
-      ) : transcription.correct ? (
+      ) : t.correct ? (
         <Box sx={{ position: 'relative' }}>
-          <Typography variant="body1">{transcription.text}</Typography>
+          <Typography variant="body1">
+            {t.recognition_response.test_model.hypotheses[0].utterence}
+          </Typography>
           <Box sx={{ position: 'absolute', top: -80, right: -20 }}>
             <AbIconButton
               variation="editGreen"
               handleClick={() => {
-                handleCorrection(transcription, null, null, false);
+                // handleCorrection(t, null, null, false);
+                handleCorrection();
               }}
               icon={EditIcon}
             />
           </Box>
         </Box>
-      ) : !transcription.corrected ? (
+      ) : !t.corrected ? (
         <>
           <TextField
             sx={{ backgroundColor: 'white', mt: 0 }}
@@ -115,7 +118,8 @@ const AbTranscription = ({ transcription, handleCorrection, children }: AbTransc
               disabled={false}
               variant="contained"
               color="primary"
-              onClick={() => handleCorrection(transcription, false, correctionText, true)}
+              // onClick={() => handleCorrection(t, false, correctionText, true)}
+              onClick={() => handleCorrection()}
             >
               Save
             </Button>
@@ -123,12 +127,13 @@ const AbTranscription = ({ transcription, handleCorrection, children }: AbTransc
         </>
       ) : (
         <Box sx={{ position: 'relative' }}>
-          <Typography variant="body1">{transcription.correction}</Typography>
+          <Typography variant="body1">{t.correction}</Typography>
           <Box sx={{ position: 'absolute', top: -80, right: -20 }}>
             <AbIconButton
               variation="editRed"
               handleClick={() => {
-                handleCorrection(transcription, false, transcription.correction, false);
+                // handleCorrection(t, false, t.correction, false);
+                handleCorrection();
               }}
               icon={EditIcon}
             />

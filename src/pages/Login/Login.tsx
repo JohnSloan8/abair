@@ -2,6 +2,9 @@
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 import { Box } from '@mui/system';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
@@ -68,58 +71,83 @@ function Login() {
           ) : confirmationEmailSent ? (
             <></>
           ) : (
-            <form
+            <Box
+              component="form"
+              noValidate
               onSubmit={(e) => {
                 handleSubmit(e);
               }}
+              sx={{ mt: 3 }}
             >
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                className="inputField"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <br />
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                className="inputField"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <br />
-              {showSignupPage ? (
-                <>
-                  <label htmlFor="password">Confirm Password</label>
-                  <input
-                    id="confirmPassword"
-                    className="inputField"
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+              <Grid container spacing={0}>
+                <Grid item xs={12} my={1}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    type="email"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  <br />
-                  <button className="button block" aria-live="polite">
-                    sign up
-                  </button>
-                  <br />
-                  <button onClick={toggleSignupPage}>I already have an account</button>
-                </>
-              ) : (
-                <>
-                  <button className="button block" aria-live="polite">
-                    login
-                  </button>
-                  <br />
-                  <button onClick={toggleSignupPage}>Create an Abair account</button>
-                </>
-              )}
-              <br />
-            </form>
+                </Grid>
+                <Grid item xs={12} my={1}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Grid>
+                {showSignupPage ? (
+                  <>
+                    <Grid item xs={12} my={1}>
+                      <TextField
+                        required
+                        fullWidth
+                        name="confirm password"
+                        label="Confirm Password"
+                        type="password"
+                        id="password"
+                        autoComplete="new-password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                      />
+                    </Grid>
+                    <CenteredFlexBox sx={{ width: '100%' }}>
+                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                        Sign Up
+                      </Button>
+                    </CenteredFlexBox>
+
+                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
+                      I already have an account
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <CenteredFlexBox sx={{ width: '100%' }}>
+                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                        login
+                      </Button>
+                    </CenteredFlexBox>
+
+                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
+                      Create an Abair account
+                    </Button>
+                  </>
+                )}
+              </Grid>
+              {/* </form> */}
+            </Box>
           )}
         </CenteredFlexBox>
       </Box>

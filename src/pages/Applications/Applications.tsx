@@ -46,8 +46,9 @@ function Applications() {
       <CenteredFlexBox>
         {categories ? (
           <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
-            <Tab label={'education'} />
-            <Tab label={'accessibility'} />
+            {categories.map((c, i) => (
+              <Tab key={i} label={c.name} />
+            ))}
           </Tabs>
         ) : null}
       </CenteredFlexBox>

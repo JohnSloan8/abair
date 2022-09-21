@@ -1,4 +1,4 @@
-import { useRecognitionText, useRecording } from '@/store/recognition';
+import { useRecognitionText, useVoiceRecording } from '@/store/recognition';
 import { useSynthesisText } from '@/store/synthesis';
 
 import { TextFieldItem } from './types';
@@ -6,7 +6,7 @@ import { TextFieldItem } from './types';
 const CreateItem = () => {
   const { recognitionText, setRecognitionText } = useRecognitionText();
   const { synthesisText, setSynthesisText } = useSynthesisText();
-  const { recording } = useRecording();
+  const { voiceRecording } = useVoiceRecording();
 
   const styles: { [name: string]: TextFieldItem } = {
     synthesis: {
@@ -18,7 +18,9 @@ const CreateItem = () => {
       autoFocus: true,
     },
     recognition: {
-      label: recording ? 'tap the stop button to end recording' : 'tap the microphone and speak',
+      label: voiceRecording
+        ? 'tap the stop button to end recording'
+        : 'tap the microphone and speak',
       rows: 6,
       getter: recognitionText,
       setter: setRecognitionText,

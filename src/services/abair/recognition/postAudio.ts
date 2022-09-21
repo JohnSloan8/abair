@@ -1,13 +1,18 @@
-// import { transcriptionModel } from '@/models/transcription';
+import { SetterOrUpdater } from 'recoil';
+
 import axios from 'axios';
 
 import { recognitionURL } from '@/config';
+import { transcriptionModel } from '@/models/transcription';
 
 // const postAudioBlob = async (blob: string | undefined, filename: string): transcriptionModel[] => {
-const postAudio = (audioData: string, filename: string) => {
-  console.log('audioData:', audioData);
-  console.log('filename:', filename);
-  axios({
+const postAudio = async (
+  audioData: string,
+  userID: string | null,
+  sessStart: string,
+  setter: SetterOrUpdater<transcriptionModel>,
+) => {
+  await axios({
     method: 'post',
     url: recognitionURL,
     headers: {
@@ -16,12 +21,19 @@ const postAudio = (audioData: string, filename: string) => {
     data: {
       recogniseBlob: audioData,
       userID: 1,
-      sessionID: filename,
+      sessionID: 1,
       developer: true,
     },
   })
-    .then(function (response) {
-      console.log('response.data:', response.data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .then(function (response: any) {
+      setter({
+        user: userID,
+        session_start: sessStart,
+        audio_file_path: response.data.audioFilePath,
+        duration: parseFloat(response.data.duration),
+        recognition_response: response.data.transcriptions,
+      });
     })
     .catch(function (error) {
       alert('error:' + error);

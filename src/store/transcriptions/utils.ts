@@ -19,4 +19,12 @@ const updateTranscriptions = (
   );
 };
 
-export { updateTranscriptions };
+const appendTranscription = (
+  transcription: transcriptionModel,
+  transcriptions: transcriptionModel[],
+  setter: SetterOrUpdater<transcriptionModel[]>,
+) => {
+  setter([...transcriptions, transcription]);
+};
+
+export { updateTranscriptions, appendTranscription };
