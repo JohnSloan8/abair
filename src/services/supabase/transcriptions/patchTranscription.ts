@@ -6,7 +6,7 @@ import { supabase } from '@/services/supabase';
 const patchTranscription = async (
   id: number,
   correct: boolean | null,
-  correction: string | null,
+  correction: string,
   corrected: boolean,
   setter: SetterOrUpdater<transcriptionModel>,
 ) => {

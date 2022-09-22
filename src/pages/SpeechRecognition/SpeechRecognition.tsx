@@ -149,7 +149,7 @@ function SpeechRecognition() {
           {transcription !== undefined && (
             <AbTranscription t={transcription} handleCorrection={handleCorrection}>
               {!emptyAudio && (
-                <CenteredFlexBox mb={2}>
+                <CenteredFlexBox mt={2} mb={4}>
                   <AbAudioPlayer audioURL={recognitionAudio} />
                 </CenteredFlexBox>
               )}
