@@ -56,16 +56,16 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
       {children}
       {t.correct === null ? (
         <>
-          <Typography variant="body1">
-            {t.recognition_response.test_model.hypotheses[0].utterence}
+          <Typography align="center" variant="body1">
+            {t.recognition_response.test_model.hypotheses[0].utterance}
           </Typography>
           <Grid container direction="row" justifyContent="space-evenly" alignItems="center" mt={1}>
             <Grid item>
               <AbIconButton
                 variation="incorrect"
                 handleClick={() => {
-                  // handleCorrection(t, false, null, false);
-                  handleCorrection();
+                  handleCorrection(false, null, false);
+                  // handleCorrection();
                 }}
                 icon={CloseIcon}
               />
@@ -74,8 +74,8 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
               <AbIconButton
                 variation="correct"
                 handleClick={() => {
-                  // handleCorrection(t, true, null, false);
-                  handleCorrection();
+                  handleCorrection(true, null, false);
+                  // handleCorrection();
                 }}
                 icon={DoneIcon}
               />
@@ -85,14 +85,14 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
       ) : t.correct ? (
         <Box sx={{ position: 'relative' }}>
           <Typography variant="body1">
-            {t.recognition_response.test_model.hypotheses[0].utterence}
+            {t.recognition_response.test_model.hypotheses[0].utterance}
           </Typography>
           <Box sx={{ position: 'absolute', top: -80, right: -20 }}>
             <AbIconButton
               variation="editGreen"
               handleClick={() => {
-                // handleCorrection(t, null, null, false);
-                handleCorrection();
+                handleCorrection(null, null, false);
+                // handleCorrection();
               }}
               icon={EditIcon}
             />
@@ -118,8 +118,8 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
               disabled={false}
               variant="contained"
               color="primary"
-              // onClick={() => handleCorrection(t, false, correctionText, true)}
-              onClick={() => handleCorrection()}
+              onClick={() => handleCorrection(false, correctionText, true)}
+              // onClick={() => handleCorrection()}
             >
               Save
             </Button>
@@ -132,8 +132,8 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
             <AbIconButton
               variation="editRed"
               handleClick={() => {
-                // handleCorrection(t, false, t.correction, false);
-                handleCorrection();
+                handleCorrection(false, t.correction, false);
+                // handleCorrection();
               }}
               icon={EditIcon}
             />

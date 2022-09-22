@@ -90,13 +90,6 @@ function SpeechRecognition() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recognition]);
 
-  // useEffect(() => {
-  //   transcription !== undefined
-  //     ? appendTranscription(transcription, transcriptions, setTranscriptions)
-  //     : null;
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [transcription]);
-
   useEffect(() => {
     console.log('in effect');
     if (voiceRecording) {
@@ -112,26 +105,36 @@ function SpeechRecognition() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceRecording]);
 
-  const handleCorrection = () =>
-    // transcription: transcriptionModel,
-    // correct: boolean | null,
-    // correction: string | null,
-    // corrected: boolean,
-    {
-      // postCorrection(transcription, correct, correction, corrected).then((res) => {
-      //   res
-      //     ? updateTranscriptions(
-      //         transcription.id,
-      //         correct,
-      //         correction,
-      //         corrected,
-      //         transcriptions,
-      //         setTranscriptions,
-      //       )
-      //     : alert('postCorrection failed');
-      // });
-      console.log('handling correction');
-    };
+  const handleCorrection = (
+    correct: boolean | null,
+    correction: string | null,
+    corrected: boolean,
+  ) => {
+    setTranscription({
+      ...transcription,
+      correct: correct,
+      correction: correction,
+      corrected: corrected,
+    });
+    // postCorrection(transcription).then((res) => {
+    //   res
+    //     ? updateTranscriptions(
+    //         transcription.id,
+    //         correct,
+    //         correction,
+    //         corrected,
+    //         transcriptions,
+    //         setTranscriptions,
+    //       )
+    //     : alert('postCorrection failed');
+    // });
+    console.log('handling correction');
+  };
+
+  useEffect(() => {
+    console.log('transcription:', transcription);
+  }, [transcription]);
+
   return (
     <>
       <CenteredFlexBox>

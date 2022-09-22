@@ -23,7 +23,7 @@ interface recognitionModel {
 }
 
 interface hypothesesModel {
-  utterence: string;
+  utterance: string;
 }
 
 export type { transcriptionModel };
