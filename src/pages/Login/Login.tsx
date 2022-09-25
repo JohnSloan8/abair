@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 function Login() {
   const [loading, setLoading] = useState(false);

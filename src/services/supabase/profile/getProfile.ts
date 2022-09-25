@@ -4,7 +4,7 @@ import { SetterOrUpdater } from 'recoil';
 import { Session } from '@supabase/supabase-js';
 
 import { ProfileModel } from '@/models/profile';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getProfile = async (
   sess: Session,

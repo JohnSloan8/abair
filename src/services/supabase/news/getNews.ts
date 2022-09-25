@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
   try {

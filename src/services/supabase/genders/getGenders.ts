@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 import { GenderModel } from '@/models/profile';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getGenders = async (dataSetter: SetterOrUpdater<GenderModel[]>) => {
   console.log('in getGenders');
