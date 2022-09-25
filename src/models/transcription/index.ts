@@ -4,7 +4,7 @@ interface transcriptionModel {
   user: string | null;
   session_start: string;
   correct?: boolean | null;
-  correction?: string | null;
+  correction: string;
   corrected?: boolean;
   audio_file_path: string;
   duration: number;
@@ -23,7 +23,7 @@ interface recognitionModel {
 }
 
 interface hypothesesModel {
-  utterence: string;
+  utterance: string;
 }
 
 export type { transcriptionModel };
