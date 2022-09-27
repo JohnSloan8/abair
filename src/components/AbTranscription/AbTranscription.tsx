@@ -26,7 +26,7 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
     console.log('t:', t);
     t.corrected
       ? setCorrectionText(t.correction)
-      : setCorrectionText(t.recognition_response.test_model.hypotheses[0].utterance);
+      : setCorrectionText(t.recognition_response[0].utterance);
     //eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/exhaustive-deps
   }, []);
 
@@ -53,7 +53,7 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
       {t.correct === null ? (
         <>
           <Typography variant="body1" p={1}>
-            {t.recognition_response.test_model.hypotheses[0].utterance}
+            {t.recognition_response[0].utterance}
           </Typography>
           <Grid container direction="row" justifyContent="space-evenly" alignItems="center" mt={4}>
             <Grid item>
@@ -79,7 +79,7 @@ const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps
       ) : t.correct ? (
         <Box sx={{ position: 'relative' }}>
           <Typography m={2} variant="body1" align="center">
-            {t.recognition_response.test_model.hypotheses[0].utterance}
+            {t.recognition_response[0].utterance}
           </Typography>
           <Box sx={{ position: 'absolute', top: -110, right: -20 }}>
             <AbIconButton

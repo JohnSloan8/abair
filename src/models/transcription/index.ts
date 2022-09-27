@@ -8,18 +8,7 @@ interface transcriptionModel {
   corrected?: boolean;
   audio_file_path: string;
   duration: number;
-  recognition_response: recognitionTranscriptionModel;
-}
-
-interface recognitionTranscriptionModel {
-  id: string;
-  test_model: recognitionModel;
-}
-
-interface recognitionModel {
-  id: string;
-  status: number;
-  hypotheses: hypothesesModel[];
+  recognition_response: hypothesesModel[];
 }
 
 interface hypothesesModel {

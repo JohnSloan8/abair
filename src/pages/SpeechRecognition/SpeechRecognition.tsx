@@ -86,6 +86,7 @@ function SpeechRecognition() {
   });
 
   useEffect(() => {
+    console.log('recognition:', recognition);
     recognition !== undefined ? postTranscription(recognition, setTranscription) : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recognition]);
