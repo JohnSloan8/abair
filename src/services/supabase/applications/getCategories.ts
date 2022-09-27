@@ -2,7 +2,7 @@ import { SetterOrUpdater } from 'recoil';
 
 import { ApplicationCategoryModel } from '@/components/AbApplicationCard/types';
 // import { ApplicationModel } from '@/components/AbApplicationCard/types';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getCategories = async (dataSetter: SetterOrUpdater<ApplicationCategoryModel[]>) => {
   try {

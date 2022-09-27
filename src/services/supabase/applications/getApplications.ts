@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 import { ApplicationModel } from '@/components/AbApplicationCard/types';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getApplications = async (dataSetter: SetterOrUpdater<ApplicationModel[]>) => {
   try {

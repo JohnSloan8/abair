@@ -14,7 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 
 // import Typography from '@mui/material/Typography';
 import { FlexBox } from '@/components/styled';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 import { useSession } from '@/store/auth';
 import useSidebar from '@/store/sidebar';
 

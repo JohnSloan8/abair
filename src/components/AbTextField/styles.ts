@@ -1,9 +1,12 @@
+// import { useVoiceRecording } from '@/store/recognition';
 import { useSynthesisText } from '@/store/synthesis';
 
 import { TextFieldItem } from './types';
 
 const CreateItem = () => {
+  // const { recognitionText, setRecognitionText } = useRecognitionText();
   const { synthesisText, setSynthesisText } = useSynthesisText();
+  // const { voiceRecording } = useVoiceRecording();
 
   const styles: { [name: string]: TextFieldItem } = {
     synthesis: {

@@ -1,7 +1,7 @@
 import { Session } from '@supabase/supabase-js';
 
 import { DialectModel, GenderModel, ProfileModel } from '@/models/profile';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const updateProfile = async (
   sess: Session | null,

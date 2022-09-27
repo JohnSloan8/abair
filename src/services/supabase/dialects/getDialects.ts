@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 import { DialectModel } from '@/models/profile';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getDialects = async (dataSetter: SetterOrUpdater<DialectModel[]>) => {
   console.log('in getDialects');

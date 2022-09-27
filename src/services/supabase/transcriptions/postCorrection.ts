@@ -1,5 +1,5 @@
 import { transcriptionModel } from '@/models/transcription';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const postCorrection = async (
   transcription: transcriptionModel,

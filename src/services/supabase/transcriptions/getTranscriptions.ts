@@ -1,4 +1,4 @@
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const getTranscriptions = async (userID: string) => {
   try {

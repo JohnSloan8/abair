@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 import { transcriptionModel } from '@/models/transcription';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 const patchTranscription = async (
   id: number,

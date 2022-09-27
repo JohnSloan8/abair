@@ -13,7 +13,7 @@ import Pages from '@/routes/Pages';
 // import Footer from '@/sections/Footer';
 import Header from '@/sections/Header';
 import Sidebar from '@/sections/Sidebar';
-import { supabase } from '@/services/supabase';
+import supabase from '@/services/supabase';
 
 import { useSession, useSessionStart } from './store/auth';
 
@@ -29,6 +29,7 @@ function App() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       storeSessionStart(session);
+      console.log('session:', session);
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
