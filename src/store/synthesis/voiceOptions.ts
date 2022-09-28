@@ -42,10 +42,10 @@ const synthesisVoiceSelectedState = selector<synthesisVoiceModel>({
     const voiceOptions = get(synthesisVoiceOptionsState);
     if (selectedVoiceIndex === -1) {
       return {
-        name: '',
+        name: 'Áine',
         gender: 'all',
         locale: 'all',
-        shortCode: '',
+        shortCode: 'anb',
         voices: [],
         pitchRange: [0.5, 1.5],
         speedRange: [0.5, 1.5],

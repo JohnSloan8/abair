@@ -14,6 +14,7 @@ const getSynthesisMetadata = async (setter: SetterOrUpdater<synthesisVoiceModel[
         v.pitchRange = [0.5, 1.5];
       });
       setter(res.data.data);
+      // console.log('voices:', res.data.data);
     })
     .catch((error) => {
       alert('error:' + error);

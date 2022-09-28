@@ -52,8 +52,10 @@ function SpeechSynthesis() {
   const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
 
   useEffect(() => {
-    synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
-  }, []);
+    synthesisVoiceOptions.length === 0
+      ? getSynthesisMetadata(setSynthesisVoiceOptions)
+      : setSynthesisVoiceIndex(3);
+  }, [synthesisVoiceOptions]);
 
   return (
     <CenteredFlexBox>
