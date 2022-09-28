@@ -7,6 +7,7 @@ interface IconButtonItem {
   hoverColor: string;
   border: number;
   fontSize: string;
+  padding: number;
 }
 
 export type { IconButtonItem };

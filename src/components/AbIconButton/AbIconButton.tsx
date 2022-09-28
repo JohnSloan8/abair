@@ -34,6 +34,7 @@ const AbIconButton = ({ variation, handleClick, icon: Icon }: AbIconButtonProps)
         backgroundColor: style.backgroundColor,
         '&:hover': { backgroundColor: style.backgroundHoverColor, color: style.hoverColor },
         m: { sm: style.marginSmall, xs: style.marginXSmall },
+        p: style.padding,
       }}
       onClick={handleClick}
     >

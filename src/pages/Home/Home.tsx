@@ -1,27 +1,33 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Grid from '@mui/material/Grid';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
 import Image from 'mui-image';
 // import { AbClickableCard } from 'abair-component-library';
 import { SwiperSlide } from 'swiper/react';
 
-import AbClickableCard from '@/components/AbClickableCard';
-import AbInfoHeader from '@/components/AbInfoHeader';
+import AbAudioPlayer from '@/components/AbAudioPlayer';
+import AbMap from '@/components/AbMap';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
+import RecognitionRecord from '@/sections/RecognitionRecord';
+import SynthesisTextSubmit from '@/sections/SynthesisTextSubmit';
 import { getNews } from '@/services/supabase/news';
+import { useFrontPageAudio } from '@/store/audio';
 import { useNewsStories } from '@/store/news';
 
 function Home() {
   const { newsStories, setNewsStories } = useNewsStories();
+  const [mainTab, setMainTab] = useState(1);
+  const { frontPageAudio, setFrontPageAudio } = useFrontPageAudio();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -29,50 +35,45 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleChangeMainTab = (event: React.SyntheticEvent, newValue: number) => {
+    setMainTab(newValue);
+  };
+
   return (
     <>
       <Meta title="home" />
-      <Box>
-        <AbInfoHeader
-          title="Speech and Language Technology for Irish"
-          description="Abair hosts a wide range of state-of-the-art speech and language technologies for use in"
-        />
+      <CenteredFlexBox pt={{ sm: 4, xs: 2 }} sx={{ border: '1px solid black' }}>
+        <Box sx={{ minWidth: 300, maxWidth: 450 }}>
+          <AbMap />
+        </Box>
+      </CenteredFlexBox>
+      <CenteredFlexBox sx={{ border: '1px solid red' }}>
+        <Tabs
+          value={mainTab}
+          onChange={handleChangeMainTab}
+          aria-label="main tabs"
+          textColor="secondary"
+          indicatorColor="secondary"
+        >
+          <Tab key={0} label={'abair'} />
+          <Tab key={1} label={'éist'} />
+        </Tabs>
+      </CenteredFlexBox>
 
-        <CenteredFlexBox>
-          <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
-            <Typography gutterBottom variant="h5" m={2} align="center">
-              Core Technologies
-            </Typography>
-            <Grid
-              container
-              direction="row"
-              px={1}
-              py={{ sm: 2, xs: 1 }}
-              spacing={{ sm: 4, xs: 1 }}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item>
-                <AbClickableCard
-                  handleClickEvent={() => navigate('/speech-synthesis')}
-                  title="Speech Synthesis"
-                  description="Listen to our voices in the 3 main Irish dialects"
-                  variation="main"
-                />
-              </Grid>
-              <Grid item>
-                <AbClickableCard
-                  handleClickEvent={() => navigate('/speech-recognition')}
-                  title="Speech Recognition"
-                  description="Speak in Irish and see your words as text"
-                  variation="main"
-                />
-              </Grid>
-            </Grid>
-          </Box>
-        </CenteredFlexBox>
-      </Box>
+      <CenteredFlexBox
+        sx={{ height: 240, border: '2px dashed green', backgroundColor: 'secondary.wafer' }}
+      >
+        <Box p={1} sx={{ border: '1px solid blue', width: 500 }}>
+          {mainTab === 0 && <SynthesisTextSubmit />}
 
+          {mainTab === 1 && <RecognitionRecord setter={setFrontPageAudio} />}
+        </Box>
+      </CenteredFlexBox>
+      <CenteredFlexBox sx={{ border: '2px solid red' }}>
+        <Box>
+          <AbAudioPlayer audioURL={frontPageAudio} />
+        </Box>
+      </CenteredFlexBox>
       <CenteredFlexBox>
         <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">

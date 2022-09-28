@@ -34,6 +34,7 @@ const postAudio = async (
         duration: parseFloat(response.data.duration),
         recognition_response: response.data.transcriptions,
       });
+      return true;
     })
     .catch(function (error) {
       alert('error:' + error);
