@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -61,7 +61,7 @@ function Profile() {
               <Box
                 component="form"
                 noValidate
-                onSubmit={(e) => {
+                onSubmit={(e: FormEvent<HTMLFormElement>) => {
                   prepareToUpdateProfile(e);
                 }}
                 sx={{ mt: 3 }}

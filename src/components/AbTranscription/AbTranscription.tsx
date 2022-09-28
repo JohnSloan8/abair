@@ -14,13 +14,17 @@ import { transcriptionModel } from '@/models/transcription';
 
 interface AbTranscriptionProps {
   t: transcriptionModel;
-  handleCorrection: (correct: boolean | null, correction: string, corrected: boolean) => void;
+  handleCorrection: (
+    correct: boolean | null,
+    correction: string | null | undefined,
+    corrected: boolean,
+  ) => void;
   children: React.ReactNode;
   // setTranscriptions: SetterOrUpdater<transcriptionModel[]>;
 }
 
 const AbTranscription = ({ t, handleCorrection, children }: AbTranscriptionProps) => {
-  const [correctionText, setCorrectionText] = useState<string>('');
+  const [correctionText, setCorrectionText] = useState<string | null | undefined>('');
 
   useEffect(() => {
     console.log('t:', t);

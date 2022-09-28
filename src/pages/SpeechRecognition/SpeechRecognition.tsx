@@ -37,7 +37,7 @@ import convertBlobToBase64 from './utils';
 function SpeechRecognition() {
   console.log('in speech recognition');
   const recognitionProgressTimer = useRef(null);
-  const tl = useRef();
+  const tl = useRef(gsap.timeline());
 
   const { sessionStart } = useSessionStart();
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
@@ -108,7 +108,7 @@ function SpeechRecognition() {
 
   const handleCorrection = (
     correct: boolean | null,
-    correction: string | null,
+    correction: string | null | undefined,
     corrected: boolean,
   ) => {
     setTranscription({

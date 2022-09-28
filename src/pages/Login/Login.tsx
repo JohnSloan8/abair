@@ -74,7 +74,7 @@ function Login() {
             <Box
               component="form"
               noValidate
-              onSubmit={(e) => {
+              onSubmit={(e: FormEvent<HTMLFormElement>) => {
                 handleSubmit(e);
               }}
               sx={{ mt: 3 }}
