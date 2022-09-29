@@ -6,12 +6,12 @@ import { gsap } from 'gsap';
 
 interface AbProgressBarProps {
   running: boolean;
-  color?: 'primary' | 'secondary' | 'warning';
+  color?: 'warning.light';
   timeLimit: number;
   handleComplete: () => void;
 }
 
-const AbProgressBar = ({ running, timeLimit, handleComplete }: AbProgressBarProps) => {
+const AbProgressBar = ({ running, color, timeLimit, handleComplete }: AbProgressBarProps) => {
   const recognitionProgressTimer = useRef(null);
   const tl = useRef(gsap.timeline());
 
@@ -25,8 +25,6 @@ const AbProgressBar = ({ running, timeLimit, handleComplete }: AbProgressBarProp
         ease: 'none',
         duration: timeLimit,
         onComplete: () => {
-          console.log('done');
-          // setVoiceRecording(false);
           handleComplete();
         },
       },
@@ -54,7 +52,7 @@ const AbProgressBar = ({ running, timeLimit, handleComplete }: AbProgressBarProp
         bottom: 0,
         width: 0,
         height: '100%',
-        backgroundColor: 'warning.wafer',
+        backgroundColor: color,
         left: '0',
         zIndex: 0,
       }}

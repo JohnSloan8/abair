@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 
 import Image from 'mui-image';
 // import { AbClickableCard } from 'abair-component-library';
 import { SwiperSlide } from 'swiper/react';
 
-import AbAudioPlayer from '@/components/AbAudioPlayer';
-import AbMap from '@/components/AbMap';
+// import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import RecognitionRecord from '@/sections/RecognitionRecord';
-import SynthesisTextSubmit from '@/sections/SynthesisTextSubmit';
+import AbMapCtrl from '@/sections/AbMapCtrl';
+import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
+import AbSynthesisRecognitionCtrl from '@/sections/AbSynthesisRecognitionCtrl';
+import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import { getNews } from '@/services/supabase/news';
-import { useFrontPageAudio } from '@/store/audio';
 import { useNewsStories } from '@/store/news';
 
 function Home() {
   const { newsStories, setNewsStories } = useNewsStories();
-  const [mainTab, setMainTab] = useState(1);
-  const { frontPageAudio, setFrontPageAudio } = useFrontPageAudio();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,45 +31,30 @@ function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChangeMainTab = (event: React.SyntheticEvent, newValue: number) => {
-    setMainTab(newValue);
-  };
-
   return (
     <>
       <Meta title="home" />
-      <CenteredFlexBox pt={{ sm: 4, xs: 2 }} sx={{ border: '1px solid black' }}>
-        <Box sx={{ minWidth: 300, maxWidth: 450 }}>
-          <AbMap />
-        </Box>
-      </CenteredFlexBox>
-      <CenteredFlexBox sx={{ border: '1px solid red' }}>
-        <Tabs
-          value={mainTab}
-          onChange={handleChangeMainTab}
-          aria-label="main tabs"
-          textColor="secondary"
-          indicatorColor="secondary"
-        >
-          <Tab key={0} label={'abair'} />
-          <Tab key={1} label={'éist'} />
-        </Tabs>
-      </CenteredFlexBox>
+      {/* <AbInfoHeader title="Irish Speech and Language Technologies" /> */}
+      <Box sx={{ backgroundColor: '#fff' }}>
+        <CenteredFlexBox pt={{ sm: 4, xs: 2 }}>
+          <Box sx={{ minWidth: 300, maxWidth: 450 }}>
+            <AbMapCtrl />
+          </Box>
+        </CenteredFlexBox>
 
-      <CenteredFlexBox
-        sx={{ height: 240, border: '2px dashed green', backgroundColor: 'secondary.wafer' }}
-      >
-        <Box p={1} sx={{ border: '1px solid blue', width: 500 }}>
-          {mainTab === 0 && <SynthesisTextSubmit />}
+        <CenteredFlexBox>
+          <AbTabsCtrl variation="frontpage" />
+        </CenteredFlexBox>
 
-          {mainTab === 1 && <RecognitionRecord setter={setFrontPageAudio} />}
-        </Box>
-      </CenteredFlexBox>
-      <CenteredFlexBox sx={{ border: '2px solid red' }}>
-        <Box>
-          <AbAudioPlayer audioURL={frontPageAudio} />
-        </Box>
-      </CenteredFlexBox>
+        <CenteredFlexBox sx={{ backgroundColor: 'secondary.wafer' }}>
+          <Box p={1} pt={3} sx={{ width: 500 }}>
+            <AbSynthesisRecognitionCtrl />
+          </Box>
+        </CenteredFlexBox>
+
+        <AbRecognitionMediaCtrl />
+      </Box>
+      <Box sx={{ height: 500 }}></Box>
       <CenteredFlexBox>
         <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">

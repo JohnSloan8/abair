@@ -12,6 +12,16 @@ const useRecognition = () => {
   return { recognition, setRecognition };
 };
 
+const recognitionTextState = atom<string>({
+  key: 'recognition-text-state',
+  default: undefined,
+});
+
+const useRecognitionText = () => {
+  const [recognitionText, setRecognitionText] = useRecoilState(recognitionTextState);
+  return { recognitionText, setRecognitionText };
+};
+
 const voiceRecordingState = atom<boolean>({
   key: 'voice-recording-state',
   default: false,
@@ -69,6 +79,7 @@ const isRecognitionAudioEmpty = selector({
 export {
   useRecognition,
   useVoiceRecording,
+  useRecognitionText,
   // isRecognitionTextEmptyString,
   useRecognitionAudio,
   isRecognitionAudioEmpty,

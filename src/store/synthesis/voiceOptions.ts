@@ -80,7 +80,7 @@ const useSynthesisSpeed = () => {
 
 const synthesisMapFilterState = atom({
   key: 'synthesis-map-filter',
-  default: 'all',
+  default: 'Galway',
 });
 
 const useSynthesisMapFilter = () => {

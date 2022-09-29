@@ -1,26 +1,34 @@
 import TextField from '@mui/material/TextField';
 
-import CreateItem from './styles';
-
 interface AbTextFieldProps {
-  variation: 'synthesis' | 'recognition';
+  label: string;
+
+  rows: number;
+  disabled: boolean;
+  autoFocus: boolean;
+  getter: string;
+  onChangeHandler: (text: string) => void;
 }
 
-const AbTextField = ({ variation }: AbTextFieldProps) => {
-  const styles = CreateItem();
-  const style = styles[variation];
-
+const AbTextField = ({
+  label,
+  rows,
+  disabled,
+  autoFocus,
+  getter,
+  onChangeHandler,
+}: AbTextFieldProps) => {
   return (
     <TextField
-      sx={{ backgroundColor: 'white', mt: 0 }}
-      onChange={(e) => style.setter(e.target.value)}
-      id="outlined-multiline-static"
-      label={style.label}
+      sx={{ backgroundColor: 'background.default' }}
+      onChange={(e) => onChangeHandler(e.target.value)}
+      id={label}
+      label={label}
       multiline
-      rows={style.rows}
-      value={style.getter}
-      autoFocus={style.autoFocus}
-      disabled={style.disabled}
+      rows={rows}
+      value={getter}
+      autoFocus={autoFocus}
+      disabled={disabled}
       fullWidth
     />
   );

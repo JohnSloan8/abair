@@ -17,16 +17,23 @@ interface AbIconButtonProps {
     | 'editGreen'
     | 'editRed';
   handleClick: () => void;
+  disabled?: boolean;
   icon: FC<SvgIconProps>;
 }
 
-const AbIconButton = ({ variation, handleClick, icon: Icon }: AbIconButtonProps) => {
+const AbIconButton = ({
+  variation,
+  handleClick,
+  icon: Icon,
+  disabled = false,
+}: AbIconButtonProps) => {
   const styles = CreateItem();
   const style = styles[variation];
 
   return (
     <IconButton
       aria-label={variation}
+      disabled={disabled}
       sx={{
         color: style.iconColour,
         border: style.border,

@@ -9,7 +9,6 @@ import Grid from '@mui/material/Grid';
 
 import AbIconButton from '@/components/AbIconButton';
 import AbProgressBar from '@/components/AbProgressBar';
-import AbTranscription from '@/components/AbTranscription';
 import Loading from '@/components/Loading';
 import { recognitionTimeLimit } from '@/config';
 // import { transcriptionModel } from '@/models/transcription';
@@ -19,8 +18,7 @@ import postTranscription from '@/services/supabase/transcriptions/postTranscript
 import { useSession, useSessionStart } from '@/store/auth';
 import { useAwaitingTranscription, useRecognition, useVoiceRecording } from '@/store/recognition';
 import { useTranscription } from '@/store/transcriptions';
-
-import convertBlobToBase64 from './utils';
+import convertBlobToBase64 from '@/utils/convertBlobToBase64';
 
 interface RecognitionRecordProps {
   setter: SetterOrUpdater<string>;
@@ -69,31 +67,31 @@ const RecognitionRecord = ({ setter }: RecognitionRecordProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceRecording]);
 
-  const handleCorrection = (
-    correct: boolean | null,
-    correction: string | null | undefined,
-    corrected: boolean,
-  ) => {
-    setTranscription({
-      ...transcription,
-      correct: correct,
-      correction: correction,
-      corrected: corrected,
-    });
-    // postCorrection(transcription).then((res) => {
-    //   res
-    //     ? updateTranscriptions(
-    //         transcription.id,
-    //         correct,
-    //         correction,
-    //         corrected,
-    //         transcriptions,
-    //         setTranscriptions,
-    //       )
-    //     : alert('postCorrection failed');
-    // });
-    console.log('handling correction');
-  };
+  // const handleCorrection = (
+  //   correct: boolean | null,
+  //   correction: string | null | undefined,
+  //   corrected: boolean,
+  // ) => {
+  //   setTranscription({
+  //     ...transcription,
+  //     correct: correct,
+  //     correction: correction,
+  //     corrected: corrected,
+  //   });
+  // postCorrection(transcription).then((res) => {
+  //   res
+  //     ? updateTranscriptions(
+  //         transcription.id,
+  //         correct,
+  //         correction,
+  //         corrected,
+  //         transcriptions,
+  //         setTranscriptions,
+  //       )
+  //     : alert('postCorrection failed');
+  // });
+  //   console.log('handling correction');
+  // };
 
   useEffect(() => {
     console.log('transcription:', transcription);
@@ -103,11 +101,11 @@ const RecognitionRecord = ({ setter }: RecognitionRecordProps) => {
 
   return (
     <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
-      <AbTranscription
+      {/* <AbTranscription
         t={transcription}
         handleCorrection={handleCorrection}
         transcriptionBoxHeight={150}
-      ></AbTranscription>
+      ></AbTranscription> */}
       <AbProgressBar
         running={voiceRecording}
         color="warning"
