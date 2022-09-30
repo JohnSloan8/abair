@@ -34,7 +34,7 @@ const AbRecognitionMediaCtrl = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       convertBlobToBase64(blob).then((result: any) => {
         //eslint-disable-next-line @typescript-eslint/no-explicit-any
-        postAudio(result.slice(22), userID, sessionStart).then((data: any) => {
+        postAudio(result.slice(22)).then((data: any) => {
           setRecognition({
             user: userID,
             session_start: sessionStart,

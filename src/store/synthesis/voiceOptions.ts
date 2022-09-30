@@ -24,7 +24,7 @@ const useSynthesisVoiceIndex = () => {
 };
 
 const synthesisVoiceOptionsState = atom<synthesisVoiceModel[]>({
-  key: 'synthesis-voice-options',
+  key: 'synthesis-voice-options-state',
   default: [],
 });
 
@@ -35,7 +35,7 @@ const useSynthesisVoiceOptions = () => {
   return { synthesisVoiceOptions, setSynthesisVoiceOptions };
 };
 
-const synthesisVoiceSelectedState = selector<synthesisVoiceModel>({
+const synthesisVoiceSelected = selector<synthesisVoiceModel>({
   key: 'synthesis-voice-selected',
   get: ({ get }) => {
     const selectedVoiceIndex = get(synthesisVoiceIndexState);
@@ -78,43 +78,41 @@ const useSynthesisSpeed = () => {
   return { synthesisSpeed, setSynthesisSpeed };
 };
 
-const synthesisMapFilterState = atom({
-  key: 'synthesis-map-filter',
+const synthesisCountyState = atom<string>({
+  key: 'synthesis-county',
   default: 'Galway',
 });
 
-const useSynthesisMapFilter = () => {
-  const [synthesisMapFilter, setSynthesisMapFilter] = useRecoilState(synthesisMapFilterState);
-  return { synthesisMapFilter, setSynthesisMapFilter };
+const useSynthesisCounty = () => {
+  const [synthesisCounty, setSynthesisCounty] = useRecoilState(synthesisCountyState);
+  return { synthesisCounty, setSynthesisCounty };
 };
 
-const synthesisModeFilterState = atom({
-  key: 'synthesis-mode-filter',
+const synthesisGenderState = atom<string>({
+  key: 'synthesis-gender',
+  default: 'female',
+});
+
+const synthesisModeState = atom<string>({
+  key: 'synthesis-mode',
   default: 'all',
 });
 
-const synthesisGenderFilterState = atom({
-  key: 'synthesis-gender-filter',
-  default: 'all',
-});
-
-const useSynthesisGenderFilter = () => {
-  const [synthesisGenderFilter, setSynthesisGenderFilter] = useRecoilState(
-    synthesisGenderFilterState,
-  );
-  return { synthesisGenderFilter, setSynthesisGenderFilter };
+const useSynthesisGender = () => {
+  const [synthesisGender, setSynthesisGender] = useRecoilState(synthesisGenderState);
+  return { synthesisGender, setSynthesisGender };
 };
 
-const filteredSynthesisVoiceOptionsState = selector({
-  key: 'filtered-synthesis-voice-options',
+const filteredSynthesisVoiceOptions = selector({
+  key: 'synthesis-voice-options',
   get: ({ get }) => {
     const list = get(synthesisVoiceOptionsState);
-    const mapState = get(synthesisMapFilterState);
-    const genderState = get(synthesisGenderFilterState);
-    const modeState = get(synthesisModeFilterState);
+    const countyState = get(synthesisCountyState);
+    const genderState = get(synthesisGenderState);
+    const modeState = get(synthesisModeState);
 
-    const filterMap = (l: synthesisVoiceModel[]) => {
-      switch (mapState) {
+    const countyFilter = (l: synthesisVoiceModel[]) => {
+      switch (countyState) {
         case 'Donegal':
           return l.filter((item: synthesisVoiceModel) => item.locale === 'Ulster');
         case 'Galway':
@@ -126,7 +124,7 @@ const filteredSynthesisVoiceOptionsState = selector({
       }
     };
 
-    const filterGender = (l: synthesisVoiceModel[]) => {
+    const genderFilter = (l: synthesisVoiceModel[]) => {
       switch (genderState) {
         case 'male':
           return l.filter((item: synthesisVoiceModel) => item.gender === 'male');
@@ -139,7 +137,7 @@ const filteredSynthesisVoiceOptionsState = selector({
       }
     };
 
-    const filterMode = (l: synthesisVoiceModel[]) => {
+    const modeFilter = (l: synthesisVoiceModel[]) => {
       switch (modeState) {
         case 'HTS':
           return l.filter((item: synthesisVoiceModel) => item.mode === 'HTS');
@@ -152,23 +150,24 @@ const filteredSynthesisVoiceOptionsState = selector({
       }
     };
 
-    const filteredMap = filterMap(list);
-    const filteredGender = filterGender(filteredMap);
-    const filteredMode = filterMode(filteredGender);
+    console.log('list:', list);
+    const filteredCounty = countyFilter(list);
+    const filteredGender = genderFilter(filteredCounty);
+    const filteredMode = modeFilter(filteredGender);
     return filteredMode;
   },
 });
 
 export {
-  filteredSynthesisVoiceOptionsState,
+  filteredSynthesisVoiceOptions,
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
-  useSynthesisMapFilter,
-  synthesisMapFilterState,
-  useSynthesisGenderFilter,
+  useSynthesisCounty,
+  synthesisCountyState,
+  useSynthesisGender,
   useSynthesisPitch,
   useSynthesisSpeed,
-  synthesisVoiceSelectedState,
+  synthesisVoiceSelected,
   synthesisVoiceIndexState,
 };
 

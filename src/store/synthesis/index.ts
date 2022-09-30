@@ -18,6 +18,17 @@ const isSynthesisTextEmptyString = selector({
   },
 });
 
+const awaitingSynthesisState = atom<boolean>({
+  key: 'awaiting-synthesis-state',
+  default: false,
+});
+
+const useAwaitingSynthesis = () => {
+  const [awaitingSynthesis, setAwaitingSynthesis] = useRecoilState(awaitingSynthesisState);
+
+  return { awaitingSynthesis, setAwaitingSynthesis };
+};
+
 const synthesisAudioState = atom<string>({
   key: 'synthesis-audio-state',
   default: '',
@@ -37,4 +48,10 @@ const isSynthesisAudioEmpty = selector({
   },
 });
 
-export { useSynthesisText, isSynthesisTextEmptyString, useSynthesisAudio, isSynthesisAudioEmpty };
+export {
+  useSynthesisText,
+  isSynthesisTextEmptyString,
+  useAwaitingSynthesis,
+  useSynthesisAudio,
+  isSynthesisAudioEmpty,
+};

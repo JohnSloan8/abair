@@ -1,38 +1,42 @@
 import Box from '@mui/material/Box';
 
 import AbTextField from '@/components/AbTextField';
-import { CenteredFlexBox } from '@/components/styled';
-import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import { useRecognitionText } from '@/store/recognition';
-import { useSynthesisText } from '@/store/synthesis';
+import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
 import { useFrontPageTabs } from '@/store/tabs';
 
 const AbSynthesisRecognitionCtrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
   const { recognitionText, setRecognitionText } = useRecognitionText();
   const { synthesisText, setSynthesisText } = useSynthesisText();
-
+  const { awaitingSynthesis } = useAwaitingSynthesis();
   return (
     <>
       {frontPageTabs === 0 ? (
-        <Box>
+        <Box
+          px={{ sm: 4, xs: 1 }}
+          pt={3}
+          sx={{
+            width: 550,
+            backgroundColor: 'secondary.wafer',
+            borderRadius: 3,
+          }}
+        >
           <AbTextField
             key={frontPageTabs}
             label="synthesis text"
             rows={4}
-            disabled={false}
+            disabled={awaitingSynthesis ? true : false}
             autoFocus={false}
             getter={synthesisText}
             onChangeHandler={(text) => {
               setSynthesisText(text);
             }}
           />
-          <CenteredFlexBox m={2}>
-            <AbAudioPlayerCtrl variant="synthesis" />
-          </CenteredFlexBox>
-          <Box sx={{ width: '100%', height: 60 }}>
+
+          <Box sx={{ width: '100%' }}>
             <AbSynthesisButtonsCtrl />
           </Box>
         </Box>
@@ -49,9 +53,7 @@ const AbSynthesisRecognitionCtrl = () => {
               setRecognitionText(text);
             }}
           />
-          <CenteredFlexBox m={2}>
-            <AbAudioPlayerCtrl variant="recognition" />
-          </CenteredFlexBox>
+
           <Box sx={{ width: '100%', height: 60 }}>
             <AbRecognitionButtonsCtrl />
           </Box>

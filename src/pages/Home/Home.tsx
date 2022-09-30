@@ -15,9 +15,12 @@ import { SwiperSlide } from 'swiper/react';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
+import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
+import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
 import AbSynthesisRecognitionCtrl from '@/sections/AbSynthesisRecognitionCtrl';
+import AbSynthesisVoiceInfoCtrl from '@/sections/AbSynthesisVoiceInfoCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
@@ -35,21 +38,33 @@ function Home() {
     <>
       <Meta title="home" />
       {/* <AbInfoHeader title="Irish Speech and Language Technologies" /> */}
-      <Box sx={{ backgroundColor: '#fff' }}>
+      <Box sx={{ backgroundColor: 'background.default' }}>
         <CenteredFlexBox pt={{ sm: 4, xs: 2 }}>
           <Box sx={{ minWidth: 300, maxWidth: 450 }}>
             <AbMapCtrl />
           </Box>
+        </CenteredFlexBox>
+        <CenteredFlexBox>
+          <AbGenderChoicesCtrl />
+        </CenteredFlexBox>
+
+        <CenteredFlexBox>
+          <AbSynthesisVoiceInfoCtrl />
         </CenteredFlexBox>
 
         <CenteredFlexBox>
           <AbTabsCtrl variation="frontpage" />
         </CenteredFlexBox>
 
-        <CenteredFlexBox sx={{ backgroundColor: 'secondary.wafer' }}>
-          <Box p={1} pt={3} sx={{ width: 500 }}>
-            <AbSynthesisRecognitionCtrl />
-          </Box>
+        <CenteredFlexBox>
+          <AbSynthesisRecognitionCtrl />
+        </CenteredFlexBox>
+
+        <CenteredFlexBox m={2}>
+          <AbAudioPlayerCtrl variant="synthesis" />
+        </CenteredFlexBox>
+        <CenteredFlexBox m={2}>
+          <AbAudioPlayerCtrl variant="recognition" />
         </CenteredFlexBox>
 
         <AbRecognitionMediaCtrl />

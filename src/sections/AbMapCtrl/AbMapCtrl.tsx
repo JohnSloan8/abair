@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import AbMap from '@/components/AbMap';
 import {
-  synthesisMapFilterState,
+  synthesisCountyState,
   synthesisVoiceIndexState,
-  synthesisVoiceSelectedState,
-  useSynthesisMapFilter,
+  synthesisVoiceSelected,
+  useSynthesisCounty,
 } from '@/store/synthesis/voiceOptions';
 
-import irelandMapData from './data';
+import irelandMapData from './simpleData';
 import localeToCounty from './utils';
 
 const AbMapCtrl = () => {
-  const { synthesisMapFilter, setSynthesisMapFilter } = useSynthesisMapFilter();
+  const { synthesisCounty, setSynthesisCounty } = useSynthesisCounty();
   const [hoveringCounty, setHoveringCounty] = useState('');
   const gaeltachts = ['Donegal', 'Galway', 'Kerry'];
-  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
+  const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
-  const resetMapFilter = useResetRecoilState(synthesisMapFilterState);
+  const resetCounty = useResetRecoilState(synthesisCountyState);
 
   const handleMouseEnter = (county: string) => {
     gaeltachts.includes(county) ? setHoveringCounty(county) : setHoveringCounty('');
@@ -30,25 +30,28 @@ const AbMapCtrl = () => {
   };
 
   const handleClick = (county: string) => {
-    if (county === synthesisMapFilter) {
-      resetMapFilter();
+    if (county === synthesisCounty) {
+      resetCounty();
     } else {
-      setSynthesisMapFilter(county);
+      setSynthesisCounty(county);
       gaeltachts.includes(county)
-        ? localeToCounty(synthesisVoiceSelected.locale) !== county
+        ? localeToCounty(synthesisVoiceSelectedValue.locale) !== county
           ? resetSynthesisVoiceIndex()
           : null
         : null;
     }
   };
 
+  useEffect(() => {
+    console.log('synthesisCounty:', synthesisCounty);
+  }, [synthesisCounty]);
+
   return (
     <AbMap
       irelandMapData={irelandMapData}
       gaeltachts={gaeltachts}
       hoveringCounty={hoveringCounty}
-      selectedCounty={localeToCounty(synthesisVoiceSelected.locale)}
-      synthesisMapFilter={synthesisMapFilter}
+      selectedCounty={synthesisCounty}
       handleMouseEnter={handleMouseEnter}
       handleMouseLeave={handleMouseLeave}
       handleClick={handleClick}

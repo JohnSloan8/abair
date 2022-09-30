@@ -11,7 +11,6 @@ interface AbMapProps {
   gaeltachts: string[];
   hoveringCounty: string;
   selectedCounty: string;
-  synthesisMapFilter: string;
   handleMouseEnter: (name: string) => void;
   handleMouseLeave: () => void;
   handleClick: (name: string) => void;
@@ -22,30 +21,29 @@ const AbMap = ({
   gaeltachts,
   hoveringCounty,
   selectedCounty,
-  synthesisMapFilter,
   handleMouseEnter,
   handleMouseLeave,
   handleClick,
 }: AbMapProps) => {
+  const getMapColor = (c) => {
+    return gaeltachts.includes(c.name)
+      ? c.name === hoveringCounty
+        ? [blue[900], blue[900]]
+        : c.name === selectedCounty
+        ? [blue[800], blue[800]]
+        : [blue[200], blue[200]]
+      : [green[100], green[100]];
+  };
+
   return (
     <Box m={{ xs: 4, sm: 1 }} my={{ xs: 0 }}>
-      <svg viewBox="-100 0 800 800">
-        <g onMouseLeave={() => handleMouseLeave()}>
+      <svg viewBox="-60 575 600 500">
+        <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
           {irelandMapData.map((c, i) => (
             <g
               key={i}
-              fill={
-                gaeltachts.includes(c.name)
-                  ? c.name === hoveringCounty
-                    ? blue[900]
-                    : c.name === selectedCounty
-                    ? blue[800]
-                    : synthesisMapFilter === c.name
-                    ? blue[700]
-                    : blue[400]
-                  : green[400]
-              }
-              stroke={!gaeltachts.includes(c.name) ? green[400] : blue[400]}
+              fill={getMapColor(c)[0]}
+              stroke={getMapColor(c)[1]}
               onMouseEnter={() => handleMouseEnter(c.name)}
               onClick={() => {
                 handleClick(c.name);

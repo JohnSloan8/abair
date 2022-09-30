@@ -1,6 +1,5 @@
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import StopIcon from '@mui/icons-material/Stop';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import AbIconButton from '@/components/AbIconButton';
@@ -27,9 +26,7 @@ const AbSynthesisButtonsCtrl = () => {
 
       <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
         {awaitingTranscription ? (
-          <Box>
-            <Loading />
-          </Box>
+          <Loading />
         ) : !voiceRecording ? (
           <AbIconButton
             variation="record"

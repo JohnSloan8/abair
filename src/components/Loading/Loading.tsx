@@ -5,7 +5,7 @@ import { FullSizeCenteredFlexBox } from '@/components/styled';
 function Loading() {
   return (
     <FullSizeCenteredFlexBox>
-      <CircularProgress />
+      <CircularProgress color="secondary" />
     </FullSizeCenteredFlexBox>
   );
 }
