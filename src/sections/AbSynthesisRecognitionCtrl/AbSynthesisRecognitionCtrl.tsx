@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 
 import AbTextField from '@/components/AbTextField';
+import { CenteredFlexBox } from '@/components/styled';
+import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import { useRecognitionText } from '@/store/recognition';
@@ -13,17 +15,20 @@ const AbSynthesisRecognitionCtrl = () => {
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { awaitingSynthesis } = useAwaitingSynthesis();
   return (
-    <>
+    <Box
+      px={{ sm: 4, xs: 1 }}
+      pt={1}
+      sx={{
+        width: 550,
+        backgroundColor: 'secondary.wafer',
+        borderRadius: 3,
+      }}
+    >
       {frontPageTabs === 0 ? (
-        <Box
-          px={{ sm: 4, xs: 1 }}
-          pt={3}
-          sx={{
-            width: 550,
-            backgroundColor: 'secondary.wafer',
-            borderRadius: 3,
-          }}
-        >
+        <Box sx={{ position: 'relative' }}>
+          <CenteredFlexBox py={1}>
+            <AbAudioPlayerCtrl variant="synthesis" />
+          </CenteredFlexBox>
           <AbTextField
             key={frontPageTabs}
             label="synthesis text"
@@ -36,12 +41,15 @@ const AbSynthesisRecognitionCtrl = () => {
             }}
           />
 
-          <Box sx={{ width: '100%' }}>
+          <Box sx={{ width: '100%', height: 85 }}>
             <AbSynthesisButtonsCtrl />
           </Box>
         </Box>
       ) : frontPageTabs === 1 ? (
         <Box>
+          <CenteredFlexBox py={1}>
+            <AbAudioPlayerCtrl variant="recognition" />
+          </CenteredFlexBox>
           <AbTextField
             key={frontPageTabs}
             label="recognition text"
@@ -54,12 +62,12 @@ const AbSynthesisRecognitionCtrl = () => {
             }}
           />
 
-          <Box sx={{ width: '100%', height: 60 }}>
+          <Box sx={{ width: '100%', height: 85 }}>
             <AbRecognitionButtonsCtrl />
           </Box>
         </Box>
       ) : null}
-    </>
+    </Box>
   );
 };
 

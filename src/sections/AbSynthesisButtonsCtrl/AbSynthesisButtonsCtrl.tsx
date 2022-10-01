@@ -51,6 +51,7 @@ const AbSynthesisButtonsCtrl = () => {
 
   const initGetSynthesis = () => {
     setAwaitingSynthesis(true);
+    setSynthesisAudio('');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getSynthesis(synthesisText, synthesisVoiceSelectedValue).then((data: any) => {
       setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
@@ -59,8 +60,8 @@ const AbSynthesisButtonsCtrl = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Grid container direction="row">
+    <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
+      <Grid container direction="row" height="100%">
         <Grid item xs={5}></Grid>
         <Grid item xs={2}>
           {!awaitingSynthesis ? (

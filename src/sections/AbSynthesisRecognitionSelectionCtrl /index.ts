@@ -1,0 +1,3 @@
+import AbSynthesisRecognitionSelectionCtrl from './AbSynthesisRecognitionSelectionCtrl';
+
+export default AbSynthesisRecognitionSelectionCtrl;
