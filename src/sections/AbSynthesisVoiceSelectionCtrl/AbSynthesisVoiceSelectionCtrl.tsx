@@ -11,9 +11,6 @@ const AbSynthesisVoiceSelectionCtrl = () => {
 
   return (
     <Box sx={{ position: 'relative', opacity: frontPageTabs === 0 ? 1 : 0 }}>
-      <Box pt={2}>
-        <AbSynthesisVoiceInfoCtrl />
-      </Box>
       <CenteredFlexBox>
         <Box sx={{ minWidth: 300, maxWidth: 450 }}>
           <AbMapCtrl />
@@ -22,6 +19,9 @@ const AbSynthesisVoiceSelectionCtrl = () => {
       <CenteredFlexBox>
         <AbGenderChoicesCtrl />
       </CenteredFlexBox>
+      <Box pt={0}>
+        <AbSynthesisVoiceInfoCtrl />
+      </Box>
     </Box>
   );
 };

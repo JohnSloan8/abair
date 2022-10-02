@@ -15,10 +15,7 @@ import { SwiperSlide } from 'swiper/react';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
-import AbSynthesisRecognitionCtrl from '@/sections/AbSynthesisRecognitionCtrl';
-import AbSynthesisRecognitionSelectionCtrl from '@/sections/AbSynthesisRecognitionSelectionCtrl ';
-import AbTabsCtrl from '@/sections/AbTabsCtrl';
+import AbHomePageSection1 from '@/sections/AbHomePageSection1';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
@@ -35,16 +32,7 @@ function Home() {
     <>
       <Meta title="home" />
       {/* <AbInfoHeader title="Irish Speech and Language Technologies" /> */}
-      <Box sx={{ backgroundColor: 'background.default' }}>
-        <AbSynthesisRecognitionSelectionCtrl />
-        <CenteredFlexBox>
-          <AbTabsCtrl variation="frontpage" />
-        </CenteredFlexBox>
-        <CenteredFlexBox>
-          <AbSynthesisRecognitionCtrl />
-        </CenteredFlexBox>
-        <AbRecognitionMediaCtrl />
-      </Box>
+      <AbHomePageSection1 />
       <Box sx={{ height: 500 }}></Box>
       <CenteredFlexBox>
         <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">

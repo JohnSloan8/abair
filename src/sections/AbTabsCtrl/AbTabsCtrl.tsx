@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box';
+
 import AbTabs from '@/components/AbTabs';
 import { useFrontPageTabs } from '@/store/tabs';
 
@@ -10,13 +12,22 @@ const AbTabsCtrl = ({ variation = 'frontpage' }: AbTabsCtrlProps) => {
 
   if (variation === 'frontpage') {
     return (
-      <AbTabs
-        label="frontpage tabs"
-        color="secondary"
-        getter={frontPageTabs}
-        setter={setFrontPageTabs}
-        items={['abair', 'éist']}
-      />
+      <Box
+        sx={{
+          backgroundColor: 'background.default',
+          borderTopLeftRadius: 5,
+          borderTopRightRadius: 5,
+          boxShadow: 4,
+        }}
+      >
+        <AbTabs
+          label="frontpage tabs"
+          color="secondary"
+          getter={frontPageTabs}
+          setter={setFrontPageTabs}
+          items={['abair', 'éist']}
+        />
+      </Box>
     );
   }
 

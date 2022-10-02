@@ -41,10 +41,10 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
       <AppBar
         color="inherit"
         elevation={0}
-        position="static"
+        position="fixed"
         sx={{ borderBottom: 1, borderColor: 'primary.light' }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', minHeight: '64px' }}>
           <FlexBox>
             <IconButton
               onClick={sidebarActions.toggle}

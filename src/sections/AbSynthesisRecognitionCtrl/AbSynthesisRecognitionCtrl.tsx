@@ -18,10 +18,12 @@ const AbSynthesisRecognitionCtrl = () => {
     <Box
       px={{ sm: 4, xs: 1 }}
       pt={1}
+      mx={1}
       sx={{
         width: 550,
         backgroundColor: 'secondary.wafer',
         borderRadius: 3,
+        boxShadow: 4,
       }}
     >
       {frontPageTabs === 0 ? (

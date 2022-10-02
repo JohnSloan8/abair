@@ -1,14 +1,30 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
+import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
+
 import routes from '..';
 
-// import { getPageHeight } from './utils';
-
 function Pages() {
+  const { setViewHeight } = useViewHeight();
+  const { setViewWidth } = useViewWidth();
+
+  const handleResize = () => {
+    setViewHeight(window.innerHeight);
+    setViewWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box sx={{ width: '100%' }} justifyContent="center">
+      <Box border={1} sx={{ height: '64px' }}></Box>
       <Routes>
         {Object.values(routes).map(({ path, component: Component }) => {
           return <Route key={path} path={path} element={<Component />} />;
