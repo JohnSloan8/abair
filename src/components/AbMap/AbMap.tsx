@@ -30,9 +30,9 @@ const AbMap = ({
       ? c.name === hoveringCounty
         ? [blue[900], blue[900]]
         : c.name === selectedCounty
-        ? [blue[800], blue[800]]
-        : [blue[200], blue[200]]
-      : [green[100], green[100]];
+        ? [blue[800], blue[900]]
+        : [blue[200], blue[400]]
+      : [green[100], green[400]];
   };
 
   return (

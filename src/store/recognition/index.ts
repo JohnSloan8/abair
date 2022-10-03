@@ -2,7 +2,7 @@ import { atom, selector, useRecoilState } from 'recoil';
 
 import { transcriptionModel } from '@/models/transcription';
 
-const recognitionState = atom<transcriptionModel>({
+const recognitionState = atom<transcriptionModel | undefined>({
   key: 'recognition-state',
   default: undefined,
 });
@@ -14,7 +14,7 @@ const useRecognition = () => {
 
 const recognitionTextState = atom<string>({
   key: 'recognition-text-state',
-  default: undefined,
+  default: '',
 });
 
 const useRecognitionText = () => {

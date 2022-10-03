@@ -3,7 +3,7 @@ interface AbAudioPlayerProps {
 }
 
 const AbAudioPlayer = ({ audioURL }: AbAudioPlayerProps) => {
-  return <audio src={audioURL} autoPlay controls />;
+  return <audio src={audioURL} controls />;
 };
 
 export default AbAudioPlayer;

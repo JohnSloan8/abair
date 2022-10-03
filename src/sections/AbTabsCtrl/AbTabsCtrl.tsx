@@ -12,14 +12,7 @@ const AbTabsCtrl = ({ variation = 'frontpage' }: AbTabsCtrlProps) => {
 
   if (variation === 'frontpage') {
     return (
-      <Box
-        sx={{
-          backgroundColor: 'background.default',
-          borderTopLeftRadius: 5,
-          borderTopRightRadius: 5,
-          boxShadow: 4,
-        }}
-      >
+      <Box>
         <AbTabs
           label="frontpage tabs"
           color="secondary"

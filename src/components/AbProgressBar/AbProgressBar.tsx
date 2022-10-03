@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 
 interface AbProgressBarProps {
   running: boolean;
-  color?: 'warning.light';
+  color?: 'warning.main';
   timeLimit: number;
   handleComplete: () => void;
 }
@@ -49,9 +49,9 @@ const AbProgressBar = ({ running, color, timeLimit, handleComplete }: AbProgress
       ref={recognitionProgressTimer}
       sx={{
         position: 'absolute',
-        bottom: 0,
+        top: 0,
         width: 0,
-        height: '100%',
+        height: '5%',
         backgroundColor: color,
         left: '0',
         zIndex: 0,

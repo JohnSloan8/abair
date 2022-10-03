@@ -8,7 +8,7 @@ import { useFrontPageTabs } from '@/store/tabs';
 const AbSynthesisRecognitionSelectionCtrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
   return (
-    <Box>
+    <Box height={'100%'} width={'100%'}>
       <CenteredFlexBox>
         {frontPageTabs === 0 ? (
           <AbSynthesisVoiceSelectionCtrl />

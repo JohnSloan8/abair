@@ -8,10 +8,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 import Image from 'mui-image';
-// import { AbClickableCard } from 'abair-component-library';
 import { SwiperSlide } from 'swiper/react';
 
-// import AbInfoHeader from '@/components/AbInfoHeader';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
@@ -31,9 +30,11 @@ function Home() {
   return (
     <>
       <Meta title="home" />
-      {/* <AbInfoHeader title="Irish Speech and Language Technologies" /> */}
+      <AbInfoHeader
+        title="Irish Speech and Language Technologies"
+        description="We develop state-of-the art speech synthesis and recognition for the Irish language."
+      />
       <AbHomePageSection1 />
-      <Box sx={{ height: 500 }}></Box>
       <CenteredFlexBox>
         <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">
@@ -56,7 +57,7 @@ function Home() {
       </CenteredFlexBox>
 
       <CenteredFlexBox>
-        <Box mt={{ xs: 2, sm: 6 }} maxWidth="md">
+        <Box mt={{ xs: 2, sm: 6, backgroundColor: 'primary.wafer' }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">
             Latest News
           </Typography>

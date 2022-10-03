@@ -17,7 +17,7 @@ const AbSynthesisButtonsCtrl = () => {
     <CenteredFlexBox sx={{ width: '100%', height: '100%', position: 'relative' }}>
       <AbProgressBar
         running={voiceRecording}
-        color="warning.light"
+        color="warning.main"
         timeLimit={recognitionTimeLimit}
         handleComplete={() => {
           setVoiceRecording(false);
@@ -29,7 +29,7 @@ const AbSynthesisButtonsCtrl = () => {
           <Loading />
         ) : !voiceRecording ? (
           <AbIconButton
-            variation="record"
+            variation="stop"
             handleClick={() => {
               setVoiceRecording(true);
               console.log('recording click');

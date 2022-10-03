@@ -1,8 +1,6 @@
 import Box from '@mui/material/Box';
 
 import AbTextField from '@/components/AbTextField';
-import { CenteredFlexBox } from '@/components/styled';
-import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import { useRecognitionText } from '@/store/recognition';
@@ -17,23 +15,20 @@ const AbSynthesisRecognitionCtrl = () => {
   return (
     <Box
       px={{ sm: 4, xs: 1 }}
-      pt={1}
+      pt={2}
       mx={1}
       sx={{
         width: 550,
-        backgroundColor: 'secondary.wafer',
+        backgroundColor: frontPageTabs === 0 ? 'secondary.light' : 'warning.light',
         borderRadius: 3,
         boxShadow: 4,
       }}
     >
       {frontPageTabs === 0 ? (
         <Box sx={{ position: 'relative' }}>
-          <CenteredFlexBox py={1}>
-            <AbAudioPlayerCtrl variant="synthesis" />
-          </CenteredFlexBox>
           <AbTextField
             key={frontPageTabs}
-            label="synthesis text"
+            label="scríobh anseo"
             rows={4}
             disabled={awaitingSynthesis ? true : false}
             autoFocus={false}
@@ -43,18 +38,15 @@ const AbSynthesisRecognitionCtrl = () => {
             }}
           />
 
-          <Box sx={{ width: '100%', height: 85 }}>
+          <Box sx={{ width: '100%', height: 50 }}>
             <AbSynthesisButtonsCtrl />
           </Box>
         </Box>
       ) : frontPageTabs === 1 ? (
         <Box>
-          <CenteredFlexBox py={1}>
-            <AbAudioPlayerCtrl variant="recognition" />
-          </CenteredFlexBox>
           <AbTextField
             key={frontPageTabs}
-            label="recognition text"
+            label=""
             rows={4}
             disabled={false}
             autoFocus={false}
@@ -64,7 +56,7 @@ const AbSynthesisRecognitionCtrl = () => {
             }}
           />
 
-          <Box sx={{ width: '100%', height: 85 }}>
+          <Box sx={{ width: '100%', height: 50 }}>
             <AbRecognitionButtonsCtrl />
           </Box>
         </Box>

@@ -12,7 +12,7 @@ const useTranscriptions = () => {
   return { transcriptions, setTranscriptions };
 };
 
-const transcriptionState = atom<transcriptionModel>({
+const transcriptionState = atom<transcriptionModel | undefined>({
   key: 'transcription',
   default: undefined,
 });
