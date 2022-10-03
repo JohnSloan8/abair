@@ -29,9 +29,9 @@ import {
   useSynthesisText,
 } from '@/store/synthesis';
 import {
-  filteredSynthesisVoiceOptionsState,
+  filteredSynthesisVoiceOptions,
   synthesisVoiceModel,
-  synthesisVoiceSelectedState,
+  synthesisVoiceSelected,
   useSynthesisPitch,
   useSynthesisSpeed,
   useSynthesisVoiceIndex,
@@ -48,8 +48,8 @@ function SpeechSynthesis() {
   const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const emptyAudio = useRecoilValue(isSynthesisAudioEmpty);
-  const filteredSynthesisVoiceOptions = useRecoilValue(filteredSynthesisVoiceOptionsState);
-  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
+  const filteredSynthesisVoiceOptionsValue = useRecoilValue(filteredSynthesisVoiceOptions);
+  const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
 
   useEffect(() => {
     synthesisVoiceOptions.length === 0
@@ -79,9 +79,9 @@ function SpeechSynthesis() {
               <AbGenderChoices />
 
               <AbSlider
-                min={synthesisVoiceSelected.speedRange[0]}
+                min={synthesisVoiceSelectedValue.speedRange[0]}
                 value={synthesisSpeed}
-                max={synthesisVoiceSelected.speedRange[1]}
+                max={synthesisVoiceSelectedValue.speedRange[1]}
                 handleSliderChange={(e) =>
                   setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))
                 }
@@ -92,9 +92,9 @@ function SpeechSynthesis() {
               />
 
               <AbSlider
-                min={synthesisVoiceSelected.pitchRange[0]}
+                min={synthesisVoiceSelectedValue.pitchRange[0]}
                 value={synthesisPitch}
-                max={synthesisVoiceSelected.pitchRange[1]}
+                max={synthesisVoiceSelectedValue.pitchRange[1]}
                 handleSliderChange={(e) =>
                   setSynthesisPitch(parseFloat((e.target as HTMLInputElement).value))
                 }
@@ -113,7 +113,7 @@ function SpeechSynthesis() {
           justifyContent="center"
           mb={{ sm: 2, xs: 1 }}
         >
-          {filteredSynthesisVoiceOptions.map((k: synthesisVoiceModel, i: number) => (
+          {filteredSynthesisVoiceOptionsValue.map((k: synthesisVoiceModel, i: number) => (
             <AbButton
               label={k.name}
               onClick={() =>
@@ -122,7 +122,7 @@ function SpeechSynthesis() {
                   : setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))
               }
               key={i}
-              selected={k === synthesisVoiceSelected ? true : false}
+              selected={k === synthesisVoiceSelectedValue ? true : false}
               variation="voice"
               color={''}
             />
@@ -135,7 +135,9 @@ function SpeechSynthesis() {
               disabled={emptyString}
               variant="contained"
               color="primary"
-              onClick={() => getSynthesis(synthesisText, synthesisVoiceSelected, setSynthesisAudio)}
+              onClick={() =>
+                getSynthesis(synthesisText, synthesisVoiceSelectedValue, setSynthesisAudio)
+              }
             >
               Synthesise
             </Button>

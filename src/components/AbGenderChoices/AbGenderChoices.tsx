@@ -7,15 +7,15 @@ import { Grid } from '@mui/material';
 
 import {
   synthesisVoiceIndexState,
-  synthesisVoiceSelectedState,
-  useSynthesisGenderFilter,
+  synthesisVoiceSelected,
+  useSynthesisGender,
 } from '@/store/synthesis/voiceOptions';
 
 import AbIconButton from '../AbIconButton';
 
 const AbGenderChoices = () => {
-  const synthesisVoiceSelected = useRecoilValue(synthesisVoiceSelectedState);
-  const { synthesisGenderFilter, setSynthesisGenderFilter } = useSynthesisGenderFilter();
+  const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
+  const { synthesisGender, setSynthesisGender } = useSynthesisGender();
   const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
 
   const genders = [
@@ -24,17 +24,17 @@ const AbGenderChoices = () => {
   ];
   const toggleGender = (gender: string) => {
     console.log('toggling gender:', gender);
-    if (gender === synthesisGenderFilter) {
-      setSynthesisGenderFilter('all');
+    if (gender === synthesisGender) {
+      setSynthesisGender('all');
     } else {
-      setSynthesisGenderFilter(gender);
+      setSynthesisGender(gender);
       resetSynthesisVoiceIndex();
     }
   };
 
   useEffect(() => {
-    console.log('synthesisGenderFilter:', synthesisGenderFilter);
-  }, [synthesisGenderFilter]);
+    console.log('synthesisGender:', synthesisGender);
+  }, [synthesisGender]);
 
   return (
     <Grid container direction="row" id="genderGridContainer" justifyContent="center">
@@ -43,9 +43,9 @@ const AbGenderChoices = () => {
         <AbIconButton
           key={g.name}
           variation={
-            synthesisGenderFilter === g.name
+            synthesisGender === g.name
               ? 'genderSelected'
-              : synthesisVoiceSelected.gender === g.name
+              : synthesisVoiceSelectedValue.gender === g.name
               ? 'genderHighlighted'
               : 'genderUnselected'
           }
