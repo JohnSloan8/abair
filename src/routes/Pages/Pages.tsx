@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
+import { FullSizeBox } from '@/components/styled';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
 
 import routes from '..';
@@ -23,14 +24,14 @@ function Pages() {
   }, []);
 
   return (
-    <Box sx={{ width: '100%' }} justifyContent="center">
+    <FullSizeBox justifyContent="center">
       <Box border={1} sx={{ height: '64px' }}></Box>
       <Routes>
         {Object.values(routes).map(({ path, component: Component }) => {
           return <Route key={path} path={path} element={<Component />} />;
         })}
       </Routes>
-    </Box>
+    </FullSizeBox>
   );
 }
 

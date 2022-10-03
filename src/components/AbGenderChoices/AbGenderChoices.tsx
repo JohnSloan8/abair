@@ -39,7 +39,6 @@ const AbGenderChoices = () => {
   return (
     <Grid container direction="row" id="genderGridContainer" justifyContent="center">
       {genders.map((g) => (
-        // <Grid item xs={3} key={g.name} direction="row" justifyContent="center">
         <AbIconButton
           key={g.name}
           variation={
@@ -54,7 +53,6 @@ const AbGenderChoices = () => {
           }}
           icon={g.icon}
         />
-        // </Grid>
       ))}
     </Grid>
   );

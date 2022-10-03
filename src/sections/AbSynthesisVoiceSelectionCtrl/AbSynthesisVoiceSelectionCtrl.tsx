@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import { CenteredFlexBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
-import AbSynthesisVoiceInfoCtrl from '@/sections/AbSynthesisVoiceInfoCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
 
 const AbSynthesisVoiceSelectionCtrl = () => {
@@ -19,9 +18,6 @@ const AbSynthesisVoiceSelectionCtrl = () => {
       <CenteredFlexBox mt={-3} mb={-1}>
         <AbGenderChoicesCtrl />
       </CenteredFlexBox>
-      <Box pt={0}>
-        <AbSynthesisVoiceInfoCtrl />
-      </Box>
     </Box>
   );
 };

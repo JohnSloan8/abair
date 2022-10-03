@@ -4,9 +4,8 @@ import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 import { Box } from '@mui/material';
 
+import AbIconButton from '@/components/AbIconButton';
 import { useSynthesisGender } from '@/store/synthesis/voiceOptions';
-
-import AbIconButton from '../../components/AbIconButton';
 
 const AbGenderChoicesCtrl = () => {
   const { synthesisGender, setSynthesisGender } = useSynthesisGender();

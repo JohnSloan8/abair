@@ -14,7 +14,8 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
-import AbHomePageSection1 from '@/sections/AbHomePageSection1';
+import AbHomePageCoreTechnologiesCtrl from '@/sections/AbHomePageCoreTechnologiesCtrl';
+import AbHomePageSection1Ctrl from '@/sections/AbHomePageSection1Ctrl';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
@@ -34,7 +35,8 @@ function Home() {
         title="Irish Speech and Language Technologies"
         description="We develop state-of-the art speech synthesis and recognition for the Irish language."
       />
-      <AbHomePageSection1 />
+      <AbHomePageSection1Ctrl />
+      <AbHomePageCoreTechnologiesCtrl />
       <CenteredFlexBox>
         <Box mt={{ xs: 2, sm: 4 }} maxWidth="md">
           <Typography gutterBottom variant="h5" m={2} align="center">

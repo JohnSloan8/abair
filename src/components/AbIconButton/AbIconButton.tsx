@@ -29,7 +29,6 @@ const AbIconButton = ({
 }: AbIconButtonProps) => {
   const styles = CreateItem();
   const style = styles[variation];
-
   return (
     <IconButton
       aria-label={variation}

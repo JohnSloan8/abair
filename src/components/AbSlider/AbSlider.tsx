@@ -1,12 +1,12 @@
-// import { FC } from 'react';
+import { FC } from 'react';
+
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
-
-// import type { SvgIconProps } from '@mui/material/SvgIcon';
+import type { SvgIconProps } from '@mui/material/SvgIcon';
 
 interface AbSliderProps {
   handleSliderChange: (e: Event) => void;
-  // icon?: FC<SvgIconProps>;
+  icon: FC<SvgIconProps>;
   value: number;
   control: string;
   min: number;
@@ -21,7 +21,7 @@ const AbSlider = ({
   value,
   step,
   handleSliderChange,
-  // icon: Icon,
+  icon: Icon,
   color,
 }: AbSliderProps) => {
   return (
@@ -33,7 +33,7 @@ const AbSlider = ({
       alignItems="center"
       justifyContent="center"
     >
-      {/* <Icon sx={{ color: color }} /> */}
+      {Icon !== undefined && <Icon sx={{ color: color }} fontSize={'medium'} />}
       <Slider
         aria-label="Speed"
         valueLabelDisplay="auto"
