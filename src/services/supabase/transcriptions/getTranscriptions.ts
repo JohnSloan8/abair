@@ -2,11 +2,10 @@ import supabase from '@/services/supabase';
 
 const getTranscriptions = async (userID: string) => {
   try {
-    const { data, error, status } = await supabase
+    const { data, error } = await supabase
       .from('transcriptions')
-      .select(`id, created_at, model, text, correct, correction, corrected`)
+      .select(`id, created_at, recognition_response, correction, corrected`)
       .eq('user', userID);
-    console.log('transcription status:', status);
 
     if (data) {
       console.log('transcriptions:', data);

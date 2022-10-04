@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 import { gsap } from 'gsap';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
 import AbRecognitionInstructionsCtrl from '@/sections/AbRecognitionInstructionsCtrl ';
@@ -65,7 +66,7 @@ const AbHomePageSection1Ctrl = () => {
   }, [viewHeight]);
 
   return (
-    <Box
+    <FullSizeBox
       sx={{
         width: '100%',
         position: 'relative',
@@ -73,18 +74,19 @@ const AbHomePageSection1Ctrl = () => {
       }}
     >
       <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
-      <CenteredFlexBox mt={-1}>
+      <CenteredFlexBox mt={{ sm: 1, xs: -2 }}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
       <Box
+        border={1}
         sx={{
           width: '100%',
+          height: '50%',
           position: 'relative',
 
           zIndex: 1,
         }}
-        pb={14}
       >
         <CenteredFlexBox
           ref={mainSelectionBox}
@@ -96,27 +98,34 @@ const AbHomePageSection1Ctrl = () => {
         </CenteredFlexBox>
       </Box>
 
-      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2 }}>
-        <CenteredFlexBox mt={-15} ref={mainControlBox}>
-          {frontPageTabs === 0 ? <AbSynthesisCtrl /> : <AbRecognitionCtrl />}
+      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 80, xs: 45 } }}>
+        <CenteredFlexBox ref={mainControlBox}>
+          {frontPageTabs === 0 ? (
+            <AbSynthesisCtrl />
+          ) : (
+            <AbRecognitionCtrl>
+              <AbRecognitionButtonsCtrl />
+            </AbRecognitionCtrl>
+          )}
         </CenteredFlexBox>
       </Box>
       <Box
-        pt={10}
+        pt={{ sm: 12, xs: 10 }}
         sx={{
           width: '100%',
-          position: 'relative',
+          position: 'absolute',
+          bottom: 0,
           backgroundColor: frontPageTabs === 0 ? 'secondary.dark' : 'warning.dark',
           color: 'background.default',
           zIndex: 1,
         }}
       >
-        <Box pb={1} pt={1} minHeight={50} ref={mainAudioBox}>
+        <Box pt={{ sm: 0, xs: 2 }} minHeight={50} ref={mainAudioBox}>
           {frontPageTabs === 0 ? <AbSynthesisVoiceInfoCtrl /> : <AbRecognitionInstructionsCtrl />}
         </Box>
         <AbRecognitionMediaCtrl />
       </Box>
-    </Box>
+    </FullSizeBox>
   );
 };
 

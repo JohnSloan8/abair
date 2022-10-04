@@ -8,11 +8,11 @@ interface AbButtonProps {
   disabled?: boolean;
   label: string;
   selected: boolean;
-  variation: 'voice';
+  variation: 'voice' | 'alert';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const AbButton = ({ onClick, label, selected, disabled, variation = 'voice' }: AbButtonProps) => {
+const AbButton = ({ onClick, label, selected, disabled = false, variation }: AbButtonProps) => {
   const style = styles[variation];
 
   return (

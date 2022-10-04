@@ -12,13 +12,13 @@ const CenteredFlexBox = styled(FlexBox)({
 
 const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
   width: '100%',
-  height: '100%',
+  height: 'calc(100vh - 64px)',
 });
 
 const FullSizeBox = styled(Box)({
   position: 'absolute',
   width: '100%',
-  height: '100%',
+  height: 'calc(100vh - 64px)',
 });
 
 export { FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox, FullSizeBox };

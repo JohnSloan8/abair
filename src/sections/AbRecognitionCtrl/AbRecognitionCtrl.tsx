@@ -1,10 +1,13 @@
 import Box from '@mui/material/Box';
 
 import AbTextField from '@/components/AbTextField';
-import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import { useEditableTranscriptionText } from '@/store/transcriptions';
 
-const AbRecognitionCtrl = () => {
+interface AbRecognitionCtrlProps {
+  children: React.ReactNode;
+}
+
+const AbRecognitionCtrl = ({ children }: AbRecognitionCtrlProps) => {
   const { editableTranscriptionText, setEditableTranscriptionText } =
     useEditableTranscriptionText();
 
@@ -33,9 +36,7 @@ const AbRecognitionCtrl = () => {
         }}
       />
 
-      <Box sx={{ width: '100%', height: 50 }}>
-        <AbRecognitionButtonsCtrl />
-      </Box>
+      <Box sx={{ width: '100%', height: 50 }}>{children}</Box>
     </Box>
   );
 };
