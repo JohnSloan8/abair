@@ -6,7 +6,6 @@ import postTranscription from '@/services/supabase/transcriptions/postTranscript
 import { useSession, useSessionStart } from '@/store/auth';
 import {
   useAwaitingTranscription,
-  useRecognition,
   useRecognitionAudio,
   useVoiceRecording,
 } from '@/store/recognition';
@@ -19,7 +18,7 @@ const AbRecognitionMediaCtrl = () => {
   const { setAwaitingTranscription } = useAwaitingTranscription();
   const { transcription, setTranscription } = useTranscription();
   const { setRecognitionAudio } = useRecognitionAudio();
-  const { recognition, setRecognition } = useRecognition();
+
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
 
   const { session } = useSession();
@@ -36,43 +35,33 @@ const AbRecognitionMediaCtrl = () => {
       convertBlobToBase64(blob).then((result: any) => {
         //eslint-disable-next-line @typescript-eslint/no-explicit-any
         postAudio(result.slice(22)).then((data: any) => {
-          setRecognition({
+          postTranscription({
             user: userID,
             session_start: sessionStart,
             audio_file_path: data.audioFilePath,
             duration: parseFloat(data.duration),
             recognition_response: data.transcriptions,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          }).then((data: any) => {
+            setTranscription({
+              id: data.id,
+              user: data.user,
+              session_start: data.session_start,
+              audio_file_path: data.audio_file_path,
+              duration: data.duration,
+              recognition_response: data.recognition_response,
+              correct: data.correct,
+              correction: data.correction,
+              corrected: data.corrected,
+            });
           });
         });
       });
     },
   });
 
-  useEffect(() => {
-    if (recognition !== undefined) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      postTranscription(recognition).then((data: any) => {
-        setTranscription({
-          id: data.id,
-          user: data.user,
-          session_start: data.session_start,
-          audio_file_path: data.audio_file_path,
-          duration: data.duration,
-          recognition_response: data.recognition_response,
-          correct: data.correct,
-          correction: data.correction,
-          corrected: data.corrected,
-        });
-      });
-    } else {
-      null;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [recognition]);
-
   const resetRecognitionTranscriptionStates = () => {
     setRecognitionAudio('');
-    setRecognition(undefined);
     setEditableTranscriptionText('');
     setTranscription(undefined);
   };

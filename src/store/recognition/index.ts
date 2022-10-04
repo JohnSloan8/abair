@@ -1,17 +1,5 @@
 import { atom, selector, useRecoilState } from 'recoil';
 
-import { transcriptionModel } from '@/models/transcription';
-
-const recognitionState = atom<transcriptionModel | undefined>({
-  key: 'recognition-state',
-  default: undefined,
-});
-
-const useRecognition = () => {
-  const [recognition, setRecognition] = useRecoilState(recognitionState);
-  return { recognition, setRecognition };
-};
-
 const voiceRecordingState = atom<boolean>({
   key: 'voice-recording-state',
   default: false,
@@ -72,7 +60,6 @@ const isRecognitionAudioEmpty = selector({
 });
 
 export {
-  useRecognition,
   useVoiceRecording,
   useRecognitionAudio,
   isRecognitionAudioEmpty,

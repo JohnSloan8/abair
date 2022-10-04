@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
-import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
@@ -42,9 +41,6 @@ function SpeechSynthesis() {
           <AbSynthesisVoiceButtonsCtrl />
           <CenteredFlexBox>
             <AbSynthesisCtrl />
-          </CenteredFlexBox>
-          <CenteredFlexBox p={4}>
-            <AbAudioPlayerCtrl variant="synthesis" />
           </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
