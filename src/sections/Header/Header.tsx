@@ -42,7 +42,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
         color="inherit"
         elevation={0}
         position="fixed"
-        sx={{ borderBottom: 1, borderColor: 'primary.light' }}
+        // sx={{ borderBottom: 1, borderColor: 'primary.light' }}
       >
         <Toolbar sx={{ justifyContent: 'space-between', minHeight: '64px' }}>
           <FlexBox>

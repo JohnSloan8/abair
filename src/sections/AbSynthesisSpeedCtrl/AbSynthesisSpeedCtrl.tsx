@@ -20,7 +20,7 @@ const AbSynthesisPitchCtrl = () => {
       step={0.1}
       icon={GraphicEqIcon}
       control="pitch"
-      color="primary.main"
+      color="secondary.main"
     />
   );
 };

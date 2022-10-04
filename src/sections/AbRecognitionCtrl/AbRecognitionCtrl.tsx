@@ -3,10 +3,8 @@ import Box from '@mui/material/Box';
 import AbTextField from '@/components/AbTextField';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import { useRecognitionText } from '@/store/recognition';
-import { useFrontPageTabs } from '@/store/tabs';
 
-const AbSynthesisRecognitionCtrl = () => {
-  const { frontPageTabs } = useFrontPageTabs();
+const AbRecognitionCtrl = () => {
   const { recognitionText, setRecognitionText } = useRecognitionText();
 
   return (
@@ -16,14 +14,14 @@ const AbSynthesisRecognitionCtrl = () => {
       mx={1}
       sx={{
         width: 550,
-        backgroundColor: frontPageTabs === 0 ? 'secondary.light' : 'primary.light',
+        backgroundColor: 'warning.light',
         borderRadius: 3,
         boxShadow: 6,
         position: 'relative',
       }}
     >
       <AbTextField
-        key={frontPageTabs}
+        key={'recognition'}
         label=""
         rows={4}
         disabled={false}
@@ -41,4 +39,4 @@ const AbSynthesisRecognitionCtrl = () => {
   );
 };
 
-export default AbSynthesisRecognitionCtrl;
+export default AbRecognitionCtrl;

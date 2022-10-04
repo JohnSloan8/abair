@@ -20,7 +20,7 @@ const AbSynthesisSpeedCtrl = () => {
       step={0.1}
       icon={SpeedIcon}
       control="speed"
-      color="primary.main"
+      color="secondary.main"
     />
   );
 };

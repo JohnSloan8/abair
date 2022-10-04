@@ -7,9 +7,8 @@ import { Themes } from './types';
 const sharedTheme = {
   palette: {
     background: {
-      default: '#fff',
-      paper: '#fafafa',
-      main: '#fff',
+      default: '#fafafa',
+      paper: '#fff',
     },
     primary: {
       wafer: green[50],

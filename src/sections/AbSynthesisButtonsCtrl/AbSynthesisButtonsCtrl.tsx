@@ -4,10 +4,10 @@ import { useRecoilValue } from 'recoil';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
 import AbIconButton from '@/components/AbIconButton';
 import Loading from '@/components/Loading';
+import { CenteredFlexBox } from '@/components/styled';
 import getSynthesis from '@/services/abair/synthesis';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import {
@@ -22,6 +22,8 @@ import {
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
+
+import AbSynthesisAudioPlayerCtrl from '../AbSynthesisAudioPlayerCtrl';
 
 const AbSynthesisButtonsCtrl = () => {
   const { synthesisText } = useSynthesisText();
@@ -39,7 +41,6 @@ const AbSynthesisButtonsCtrl = () => {
   }, []);
 
   useEffect(() => {
-    console.log('filteredSynthesisVoiceOptionsValue:', filteredSynthesisVoiceOptionsValue);
     filteredSynthesisVoiceOptionsValue.length === 0
       ? setSynthesisVoiceIndex(-1)
       : setSynthesisVoiceIndex(
@@ -62,20 +63,27 @@ const AbSynthesisButtonsCtrl = () => {
   return (
     <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
       <Grid container direction="row" height="100%">
-        <Grid item xs={5}></Grid>
-        <Grid item xs={2}>
-          {!awaitingSynthesis ? (
-            <Typography align="center" sx={{ height: '100%' }}>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={4}>
+          <CenteredFlexBox>
+            {!awaitingSynthesis ? (
+              // <Typography align="center" sx={{ height: '100%' }}>
               <AbIconButton
                 disabled={emptyString || synthesisVoiceIndex === -1}
                 variation="record"
                 handleClick={initGetSynthesis}
                 icon={RecordVoiceOverIcon}
               />
-            </Typography>
-          ) : (
-            <Loading />
-          )}
+            ) : (
+              // </Typography>
+              <Loading />
+            )}
+          </CenteredFlexBox>
+        </Grid>
+        <Grid item xs={4}>
+          <CenteredFlexBox>
+            <AbSynthesisAudioPlayerCtrl />
+          </CenteredFlexBox>
         </Grid>
       </Grid>
     </Box>

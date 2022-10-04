@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 
 import { gsap } from 'gsap';
 
+import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox } from '@/components/styled';
 import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
@@ -70,10 +71,14 @@ const AbHomePageSection1Ctrl = () => {
       sx={{
         width: '100%',
         position: 'relative',
-        backgroundColor: 'background.default',
+        backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <CenteredFlexBox>
+      <AbInfoHeader
+        title="Irish Speech and Language Technologies"
+        description="We develop state-of-the art speech synthesis and recognition for the Irish language."
+      />
+      <CenteredFlexBox mt={-1}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
@@ -81,7 +86,7 @@ const AbHomePageSection1Ctrl = () => {
         sx={{
           width: '100%',
           position: 'relative',
-          backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'primary.wafer',
+
           zIndex: 1,
         }}
         pb={14}
@@ -106,7 +111,7 @@ const AbHomePageSection1Ctrl = () => {
         sx={{
           width: '100%',
           position: 'relative',
-          backgroundColor: frontPageTabs === 0 ? 'secondary.dark' : 'primary.dark',
+          backgroundColor: frontPageTabs === 0 ? 'secondary.dark' : 'warning.dark',
           color: 'background.default',
           zIndex: 1,
         }}

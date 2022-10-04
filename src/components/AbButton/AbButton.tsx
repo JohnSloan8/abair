@@ -20,11 +20,7 @@ const AbButton = ({ onClick, label, selected, disabled, variation = 'voice' }: A
       variant={selected ? 'contained' : 'outlined'}
       disabled={disabled}
       onClick={onClick}
-      sx={{
-        borderColor: !selected && disabled ? 'rgba(0,0,0,0)' : null,
-        backgroundColor: style.color,
-        boxShadow: style.boxShadow,
-      }}
+      color={style.color}
     >
       {label}
     </Button>

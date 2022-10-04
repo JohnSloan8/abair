@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import { green } from '@mui/material/colors';
+import { blue, green } from '@mui/material/colors';
 
 interface mapInfoModel {
   name: string;
@@ -28,10 +28,10 @@ const AbMap = ({
   const getMapColor = (c) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoveringCounty
-        ? [green[900], green[900]]
+        ? [blue[900], blue[900]]
         : c.name === selectedCounty
-        ? [green[800], green[900]]
-        : [green[200], green[400]]
+        ? [blue[800], blue[900]]
+        : [blue[200], blue[400]]
       : [green[100], green[400]];
   };
 

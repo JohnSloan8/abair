@@ -150,7 +150,6 @@ const filteredSynthesisVoiceOptions = selector({
       }
     };
 
-    console.log('list:', list);
     const filteredCounty = countyFilter(list);
     const filteredGender = genderFilter(filteredCounty);
     const filteredMode = modeFilter(filteredGender);

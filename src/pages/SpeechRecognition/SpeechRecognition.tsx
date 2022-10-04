@@ -2,58 +2,26 @@ import Box from '@mui/material/Box';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
-
-// import { transcriptionModel } from '@/models/transcription';
-// import { postCorrection } from '@/services/supabase/transcriptions';
-// import { useSession, useSessionStart } from '@/store/auth';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
+import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
+import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
 
 function SpeechRecognition() {
-  console.log('in speech recognition');
-
-  // const { session } = useSession();
-  // const { transcriptions, setTranscriptions } = useTranscriptions();
-
-  // const handleCorrection = (
-  //   correct: boolean | null,
-  //   correction: string | null | undefined,
-  //   corrected: boolean,
-  // ) => {
-  //   setTranscription({
-  //     ...transcription,
-  //     correct: correct,
-  //     correction: correction,
-  //     corrected: corrected,
-  //   });
-  //   // postCorrection(transcription).then((res) => {
-  //   //   res
-  //   //     ? updateTranscriptions(
-  //   //         transcription.id,
-  //   //         correct,
-  //   //         correction,
-  //   //         corrected,
-  //   //         transcriptions,
-  //   //         setTranscriptions,
-  //   //       )
-  //   //     : alert('postCorrection failed');
-  //   // });
-  //   console.log('handling correction');
-  // };
-
   return (
-    <>
+    <FullSizeBox sx={{ backgroundColor: 'warning.wafer' }}>
       <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
           <Meta title="speech recognition" />
           <AbInfoHeader title="Speech Recognition" />
-          {/* <Typography variant="body1" align="center">
-            {status}
-          </Typography> */}
-          <CenteredFlexBox pt={4}></CenteredFlexBox>
+          <CenteredFlexBox sx={{ boxShadow: 5, borderRadius: 2 }}>
+            <AbRecognitionButtonsCtrl />
+          </CenteredFlexBox>
+          <AbAudioPlayerCtrl variant="recognition" />
+          <AbRecognitionMediaCtrl />
         </Box>
       </CenteredFlexBox>
-      {/* {transcription !== undefined && <AbTranscription t={transcription}></AbTranscription>} */}
-    </>
+    </FullSizeBox>
   );
 }
 export default SpeechRecognition;

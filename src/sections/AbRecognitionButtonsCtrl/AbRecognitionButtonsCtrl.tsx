@@ -9,6 +9,8 @@ import { CenteredFlexBox } from '@/components/styled';
 import { recognitionTimeLimit } from '@/config';
 import { useAwaitingTranscription, useVoiceRecording } from '@/store/recognition';
 
+import AbRecognitionAudioPlayerCtrl from '../AbRecognitionAudioPlayerCtrl';
+
 const AbSynthesisButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
@@ -17,34 +19,46 @@ const AbSynthesisButtonsCtrl = () => {
     <CenteredFlexBox sx={{ width: '100%', height: '100%', position: 'relative' }}>
       <AbProgressBar
         running={voiceRecording}
-        color="secondary.main"
+        color="warning.main"
         timeLimit={recognitionTimeLimit}
         handleComplete={() => {
           setVoiceRecording(false);
         }}
       />
 
-      <Grid container direction="row" justifyContent="space-evenly" alignItems="center">
-        {awaitingTranscription ? (
-          <Loading />
-        ) : !voiceRecording ? (
-          <AbIconButton
-            variation="stop"
-            handleClick={() => {
-              setVoiceRecording(true);
-              console.log('recording click');
-            }}
-            icon={KeyboardVoiceIcon}
-          />
-        ) : (
-          <AbIconButton
-            variation="stop"
-            handleClick={() => {
-              setVoiceRecording(false);
-            }}
-            icon={StopIcon}
-          />
-        )}
+      <Grid container direction="row" justifyContent="center" alignItems="center">
+        <Grid item xs={4}>
+          {' '}
+        </Grid>
+        <Grid item xs={4}>
+          <CenteredFlexBox>
+            {awaitingTranscription ? (
+              <Loading />
+            ) : !voiceRecording ? (
+              <AbIconButton
+                variation="stop"
+                handleClick={() => {
+                  setVoiceRecording(true);
+                  console.log('recording click');
+                }}
+                icon={KeyboardVoiceIcon}
+              />
+            ) : (
+              <AbIconButton
+                variation="stop"
+                handleClick={() => {
+                  setVoiceRecording(false);
+                }}
+                icon={StopIcon}
+              />
+            )}
+          </CenteredFlexBox>
+        </Grid>
+        <Grid item xs={4}>
+          <CenteredFlexBox>
+            <AbRecognitionAudioPlayerCtrl />
+          </CenteredFlexBox>
+        </Grid>
       </Grid>
     </CenteredFlexBox>
   );

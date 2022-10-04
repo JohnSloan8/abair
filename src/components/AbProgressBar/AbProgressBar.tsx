@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 
 interface AbProgressBarProps {
   running: boolean;
-  color?: 'secondary.main';
+  color?: 'warning.main';
   timeLimit: number;
   handleComplete: () => void;
 }

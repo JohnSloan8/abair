@@ -46,14 +46,6 @@ const useAwaitingTranscription = () => {
   return { awaitingTranscription, setAwaitingTranscription };
 };
 
-// const isRecognitionTextEmptyString = selector({
-//   key: 'recognitionTextEmptyStringState',
-//   get: ({ get }) => {
-//     const text = get(recognitionState);
-//     return text.length > 0 ? false : true;
-//   },
-// });
-
 const recognitionAudioState = atom<string | undefined>({
   key: 'recognition-audio-state',
   default: '',
@@ -63,6 +55,19 @@ const useRecognitionAudio = () => {
   const [recognitionAudio, setRecognitionAudio] = useRecoilState(recognitionAudioState);
 
   return { recognitionAudio, setRecognitionAudio };
+};
+
+const recognitionAudioPlayingState = atom<boolean>({
+  key: 'recognition-audio-playing-state',
+  default: false,
+});
+
+const useRecognitionAudioPlaying = () => {
+  const [recognitionAudioPlaying, setRecognitionAudioPlaying] = useRecoilState(
+    recognitionAudioPlayingState,
+  );
+
+  return { recognitionAudioPlaying, setRecognitionAudioPlaying };
 };
 
 const isRecognitionAudioEmpty = selector({
@@ -80,8 +85,8 @@ export {
   useRecognition,
   useVoiceRecording,
   useRecognitionText,
-  // isRecognitionTextEmptyString,
   useRecognitionAudio,
   isRecognitionAudioEmpty,
   useAwaitingTranscription,
+  useRecognitionAudioPlaying,
 };

@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Image from 'mui-image';
 import { SwiperSlide } from 'swiper/react';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
@@ -31,10 +30,7 @@ function Home() {
   return (
     <>
       <Meta title="home" />
-      <AbInfoHeader
-        title="Irish Speech and Language Technologies"
-        description="We develop state-of-the art speech synthesis and recognition for the Irish language."
-      />
+
       <AbHomePageSection1Ctrl />
       <AbHomePageCoreTechnologiesCtrl />
       <CenteredFlexBox>
