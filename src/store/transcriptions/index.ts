@@ -1,4 +1,4 @@
-import { atom, useRecoilState } from 'recoil';
+import { atom, selector, useRecoilState } from 'recoil';
 
 import { transcriptionModel } from '@/models/transcription';
 
@@ -22,4 +22,36 @@ const useTranscription = () => {
   return { transcription, setTranscription };
 };
 
-export { useTranscription, useTranscriptions };
+const editableTranscriptionTextState = atom<string>({
+  key: 'recognition-text-state',
+  default: '',
+});
+
+const useEditableTranscriptionText = () => {
+  const [editableTranscriptionText, setEditableTranscriptionText] = useRecoilState(
+    editableTranscriptionTextState,
+  );
+  return { editableTranscriptionText, setEditableTranscriptionText };
+};
+
+const editableTranscriptionTextEdited = selector({
+  key: 'transcription-edited-state',
+  get: ({ get }) => {
+    const transcription = get(transcriptionState);
+    const editableTranscriptionText = get(editableTranscriptionTextState);
+    if (transcription === undefined) {
+      return false;
+    } else if (transcription.correction !== '') {
+      return editableTranscriptionText !== transcription.correction;
+    } else {
+      return editableTranscriptionText !== transcription.recognition_response[0].utterance;
+    }
+  },
+});
+
+export {
+  useTranscription,
+  useTranscriptions,
+  useEditableTranscriptionText,
+  editableTranscriptionTextEdited,
+};

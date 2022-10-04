@@ -7,11 +7,11 @@ import AbProgressBar from '@/components/AbProgressBar';
 import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
 import { recognitionTimeLimit } from '@/config';
+import AbRecognitionAudioPlayerCtrl from '@/sections/AbRecognitionAudioPlayerCtrl';
+import AbRecognitionCorrectionCtrl from '@/sections/AbRecognitionCorrectionCtrl';
 import { useAwaitingTranscription, useVoiceRecording } from '@/store/recognition';
 
-import AbRecognitionAudioPlayerCtrl from '../AbRecognitionAudioPlayerCtrl';
-
-const AbSynthesisButtonsCtrl = () => {
+const AbRecognitionButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
 
@@ -28,7 +28,9 @@ const AbSynthesisButtonsCtrl = () => {
 
       <Grid container direction="row" justifyContent="center" alignItems="center">
         <Grid item xs={4}>
-          {' '}
+          <CenteredFlexBox>
+            <AbRecognitionCorrectionCtrl />
+          </CenteredFlexBox>
         </Grid>
         <Grid item xs={4}>
           <CenteredFlexBox>
@@ -64,4 +66,4 @@ const AbSynthesisButtonsCtrl = () => {
   );
 };
 
-export default AbSynthesisButtonsCtrl;
+export default AbRecognitionButtonsCtrl;

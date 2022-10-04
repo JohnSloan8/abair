@@ -6,7 +6,6 @@ import { gsap } from 'gsap';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox } from '@/components/styled';
-import AbAudioPlayerCtrl from '@/sections/AbAudioPlayerCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
 import AbRecognitionInstructionsCtrl from '@/sections/AbRecognitionInstructionsCtrl ';
@@ -28,7 +27,6 @@ const AbHomePageSection1Ctrl = () => {
   const inputBoxTl = useRef(gsap.timeline());
 
   useEffect(() => {
-    inputBoxTl.current && inputBoxTl.current.progress(0).kill();
     inputBoxTl.current = gsap.timeline().fromTo(
       mainSelectionBox.current,
       { opacity: '0%' },
@@ -74,10 +72,7 @@ const AbHomePageSection1Ctrl = () => {
         backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <AbInfoHeader
-        title="Irish Speech and Language Technologies"
-        description="We develop state-of-the art speech synthesis and recognition for the Irish language."
-      />
+      <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
       <CenteredFlexBox mt={-1}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
@@ -107,7 +102,7 @@ const AbHomePageSection1Ctrl = () => {
         </CenteredFlexBox>
       </Box>
       <Box
-        pt={9}
+        pt={10}
         sx={{
           width: '100%',
           position: 'relative',
@@ -116,17 +111,9 @@ const AbHomePageSection1Ctrl = () => {
           zIndex: 1,
         }}
       >
-        <Box pt={1} minHeight={60} ref={mainAudioBox}>
+        <Box pb={1} pt={1} minHeight={50} ref={mainAudioBox}>
           {frontPageTabs === 0 ? <AbSynthesisVoiceInfoCtrl /> : <AbRecognitionInstructionsCtrl />}
         </Box>
-
-        <CenteredFlexBox pt={3}>
-          {frontPageTabs === 0 ? (
-            <AbAudioPlayerCtrl variant="synthesis" />
-          ) : (
-            <AbAudioPlayerCtrl variant="recognition" />
-          )}
-        </CenteredFlexBox>
         <AbRecognitionMediaCtrl />
       </Box>
     </Box>

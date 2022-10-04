@@ -2,10 +2,11 @@ import Box from '@mui/material/Box';
 
 import AbTextField from '@/components/AbTextField';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
-import { useRecognitionText } from '@/store/recognition';
+import { useEditableTranscriptionText } from '@/store/transcriptions';
 
 const AbRecognitionCtrl = () => {
-  const { recognitionText, setRecognitionText } = useRecognitionText();
+  const { editableTranscriptionText, setEditableTranscriptionText } =
+    useEditableTranscriptionText();
 
   return (
     <Box
@@ -26,9 +27,9 @@ const AbRecognitionCtrl = () => {
         rows={4}
         disabled={false}
         autoFocus={false}
-        getter={recognitionText}
+        getter={editableTranscriptionText}
         onChangeHandler={(text) => {
-          setRecognitionText(text);
+          setEditableTranscriptionText(text);
         }}
       />
 

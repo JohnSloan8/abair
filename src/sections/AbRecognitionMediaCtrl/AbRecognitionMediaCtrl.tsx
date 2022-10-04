@@ -8,10 +8,9 @@ import {
   useAwaitingTranscription,
   useRecognition,
   useRecognitionAudio,
-  useRecognitionText,
   useVoiceRecording,
 } from '@/store/recognition';
-import { useTranscription } from '@/store/transcriptions';
+import { useEditableTranscriptionText, useTranscription } from '@/store/transcriptions';
 import convertBlobToBase64 from '@/utils/convertBlobToBase64';
 
 const AbRecognitionMediaCtrl = () => {
@@ -21,7 +20,7 @@ const AbRecognitionMediaCtrl = () => {
   const { transcription, setTranscription } = useTranscription();
   const { setRecognitionAudio } = useRecognitionAudio();
   const { recognition, setRecognition } = useRecognition();
-  const { setRecognitionText } = useRecognitionText();
+  const { setEditableTranscriptionText } = useEditableTranscriptionText();
 
   const { session } = useSession();
 
@@ -74,7 +73,7 @@ const AbRecognitionMediaCtrl = () => {
   const resetRecognitionTranscriptionStates = () => {
     setRecognitionAudio('');
     setRecognition(undefined);
-    setRecognitionText('');
+    setEditableTranscriptionText('');
     setTranscription(undefined);
   };
 
@@ -92,8 +91,8 @@ const AbRecognitionMediaCtrl = () => {
 
   useEffect(() => {
     setAwaitingTranscription(false);
-    transcription !== undefined
-      ? setRecognitionText(transcription.recognition_response[0].utterance)
+    transcription !== undefined && !transcription.corrected
+      ? setEditableTranscriptionText(transcription.recognition_response[0].utterance)
       : null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transcription]);

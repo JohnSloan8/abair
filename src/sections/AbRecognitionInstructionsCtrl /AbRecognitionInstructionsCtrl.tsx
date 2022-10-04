@@ -1,13 +1,14 @@
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+
+import { CenteredFlexBox } from '@/components/styled';
 
 const AbRecognitionInstructionsCtrl = () => {
   return (
-    <Box sx={{ height: '100%', width: '100%', position: 'relative' }}>
-      <Typography align="center" variant="body1">
-        Please go to a quiet space and speak clearly into the microphone
+    <CenteredFlexBox>
+      <Typography px={1} variant="body1" align="center" color="default">
+        Choose a quiet space &nbsp;{'>'}&nbsp; Tap Microphone &nbsp;{'>'}&nbsp; Speak clearly
       </Typography>
-    </Box>
+    </CenteredFlexBox>
   );
 };
 

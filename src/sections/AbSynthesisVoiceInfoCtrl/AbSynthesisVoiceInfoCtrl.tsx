@@ -1,24 +1,14 @@
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { useSynthesisVoiceIndex, useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
+import { CenteredFlexBox } from '@/components/styled';
 
 const AbSynthesisVoiceInfoCtrl = () => {
-  const { synthesisVoiceIndex } = useSynthesisVoiceIndex();
-  const { synthesisVoiceOptions } = useSynthesisVoiceOptions();
-
   return (
-    <Box>
-      {synthesisVoiceIndex === -1 ? (
-        <Typography variant="body1" align="center" color="warning.main">
-          no voice
-        </Typography>
-      ) : (
-        <Typography variant="body1" align="center" color="default">
-          {`Voice: ${synthesisVoiceOptions[synthesisVoiceIndex].name}`}
-        </Typography>
-      )}
-    </Box>
+    <CenteredFlexBox>
+      <Typography px={1} variant="body1" align="center" color="default">
+        Select dialect and gender &nbsp;{'>'}&nbsp; Type &nbsp;{'>'}&nbsp; Synthesise voice
+      </Typography>
+    </CenteredFlexBox>
   );
 };
 
