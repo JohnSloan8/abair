@@ -20,7 +20,7 @@ const AbTextField = ({
 }: AbTextFieldProps) => {
   return (
     <TextField
-      sx={{ backgroundColor: 'background.default' }}
+      sx={{ backgroundColor: 'background.paper' }}
       onChange={(e) => onChangeHandler(e.target.value)}
       id={label}
       label={label}

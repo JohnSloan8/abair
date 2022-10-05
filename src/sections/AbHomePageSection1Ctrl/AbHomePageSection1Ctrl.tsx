@@ -99,7 +99,7 @@ const AbHomePageSection1Ctrl = () => {
           position: 'absolute',
           bottom: 0,
           backgroundColor: frontPageTabs === 0 ? 'secondary.dark' : 'warning.dark',
-          color: 'background.default',
+          color: 'background.paper',
           zIndex: 1,
         }}
       >

@@ -33,7 +33,7 @@ const AbAccordion = ({ label, children }: AbAccordionProps) => {
       disableGutters
       elevation={0}
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: 'background.paper',
         '&:before': { display: 'none' },
       }}
     >

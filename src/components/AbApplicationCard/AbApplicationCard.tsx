@@ -2,16 +2,17 @@ import { Card, CardActionArea, CardContent } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { ApplicationModel } from './types';
+interface AbApplicationCardProps {
+  name: string;
+  handleClick: () => void;
+  image: string;
+  description: string;
+}
 
-function AbApplicationCard({ name, url, description, image }: ApplicationModel) {
+const AbApplicationCard = ({ name, handleClick, description, image }: AbApplicationCardProps) => {
   return (
     <Box m={{ sm: 2, xs: 1 }}>
-      <CardActionArea
-        onClick={() => {
-          window.location.replace(url);
-        }}
-      >
+      <CardActionArea onClick={handleClick}>
         <Card sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: '1 0 auto' }}>
             <Typography variant="h5" gutterBottom>
@@ -24,6 +25,6 @@ function AbApplicationCard({ name, url, description, image }: ApplicationModel) 
       </CardActionArea>
     </Box>
   );
-}
+};
 
 export default AbApplicationCard;

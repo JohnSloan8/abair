@@ -1,24 +1,15 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { ApplicationCategoryModel } from '@/components/AbApplicationCard/types';
-// import { ApplicationModel } from '@/components/AbApplicationCard/types';
 import supabase from '@/services/supabase';
 
-const getCategories = async (dataSetter: SetterOrUpdater<ApplicationCategoryModel[]>) => {
+const getCategories = async () => {
   try {
-    const { data, error, status } = await supabase
-      .from('application_categories')
-      .select(`id, name`);
+    const { data, error } = await supabase.from('application_categories').select(`id, name`);
 
-    if (error && status !== 406) {
+    if (error) {
       throw error;
-    } else {
-      console.log('error:', error);
     }
 
     if (data) {
-      console.log('categories:', data);
-      dataSetter(data);
+      return data;
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {

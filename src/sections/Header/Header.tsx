@@ -37,7 +37,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} color="background">
       <AppBar
         color="inherit"
         elevation={0}

@@ -14,7 +14,7 @@ function AbAlert({ description, handleClick }: AbAlertProps) {
     <Box
       width={300}
       border={3}
-      sx={{ backgroundColor: 'background.default', borderColor: 'warning.medium', borderRadius: 3 }}
+      sx={{ backgroundColor: 'background.paper', borderColor: 'warning.medium', borderRadius: 3 }}
     >
       <Typography variant={'body1'} py={6} color="text.main" align="center">
         {description}

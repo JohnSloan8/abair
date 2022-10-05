@@ -1,25 +1,17 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { ApplicationModel } from '@/components/AbApplicationCard/types';
 import supabase from '@/services/supabase';
 
-const getApplications = async (dataSetter: SetterOrUpdater<ApplicationModel[]>) => {
+const getApplications = async () => {
   try {
-    // setLoading(true);
-
-    const { data, error, status } = await supabase
+    const { data, error } = await supabase
       .from('applications')
       .select(`name, url, category, description, image`);
 
-    if (error && status !== 406) {
+    if (error) {
       throw error;
-    } else {
-      console.log('error:', error);
     }
 
     if (data) {
-      console.log('applications data:', data);
-      dataSetter(data);
+      return data;
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {

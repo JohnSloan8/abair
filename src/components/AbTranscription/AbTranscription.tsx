@@ -52,7 +52,7 @@ const AbTranscription = ({ t, handleCorrection, transcriptionBoxHeight }: AbTran
           sx={{
             backgroundColor:
               t.correct === null
-                ? 'background.default'
+                ? 'background.paper'
                 : t.correct
                 ? 'primary.wafer'
                 : 'warning.wafer',

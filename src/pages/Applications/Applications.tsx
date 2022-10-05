@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
@@ -24,6 +25,7 @@ function Applications() {
   const { applications, setApplications } = useApplications();
   const { categories, setCategories } = useCategories();
   const filteredApplications = useRecoilValue(filteredApplicationsState);
+  const navigate = useNavigate();
   const { setApplicationCategoryFilter } = useApplicationCategoryFilter();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -33,10 +35,29 @@ function Applications() {
   };
 
   useEffect(() => {
-    applications.length === 0 ? getApplications(setApplications) : null;
-    categories.length === 0 ? getCategories(setCategories) : null;
+    console.log('in useEffect on Applications');
+    if (applications.length === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getApplications().then((res: any) => {
+        setApplications(res);
+      });
+    }
+    if (categories.length === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getCategories().then((res: any) => {
+        setCategories(res);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleClick = (url: string) => {
+    if (url[0] === '/') {
+      navigate(url);
+    } else {
+      window.location.replace(url);
+    }
+  };
 
   return (
     <>
@@ -57,11 +78,10 @@ function Applications() {
           {filteredApplications.map((a: ApplicationModel, i: number) => (
             <AbApplicationCard
               key={i}
-              url={a.url}
+              handleClick={() => handleClick(a.url)}
               name={a.name}
               description={a.description}
               image={a.image}
-              category={a.category}
             />
           ))}
         </Box>
