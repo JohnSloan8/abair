@@ -53,6 +53,7 @@ const routes: Routes = {
     component: asyncComponentLoader(() => import('@/pages/AAC')),
     path: '/aac',
     title: 'AAC',
+    showInSidebar: false,
   },
   [Pages.Team]: {
     component: asyncComponentLoader(() => import('@/pages/Team')),
