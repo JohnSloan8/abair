@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box';
+
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,23 +14,25 @@ interface AbSwiperModel {
 
 function AbNewsSwiper({ children }: AbSwiperModel) {
   return (
-    <Swiper
-      slidesPerView={3}
-      loop={true}
-      spaceBetween={30}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
-      pagination={{
-        clickable: true,
-      }}
-      navigation={false}
-      modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
-    >
-      {children}
-    </Swiper>
+    <Box width={'100%'}>
+      <Swiper
+        slidesPerView={3}
+        loop={true}
+        spaceBetween={30}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={false}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {children}
+      </Swiper>
+    </Box>
   );
 }
 

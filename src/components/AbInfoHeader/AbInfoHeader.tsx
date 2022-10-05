@@ -9,7 +9,7 @@ interface AbInfoHeaderProps {
 
 function AbInfoHeader({ title, description, color = '#000' }: AbInfoHeaderProps) {
   return (
-    <Box pt={{ sm: 2, xs: 1 }} pb={{ sm: 2, xs: 0 }}>
+    <Box width="100%">
       <Typography
         color={color}
         sx={{ typography: { sm: 'h5', xs: 'h6' } }}

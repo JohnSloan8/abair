@@ -11,6 +11,7 @@ import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
 import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
+import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
@@ -23,7 +24,9 @@ const AbHomePageSection1Ctrl = () => {
 
   const mainSelectionBox = useRef(null);
   const mainControlBox = useRef(null);
-  const mainAudioBox = useRef(null);
+  const instructions1 = useRef(null);
+  const instructions2 = useRef(null);
+  const instructions3 = useRef(null);
   const inputBoxTl = useRef(gsap.timeline());
 
   useEffect(() => {
@@ -49,14 +52,34 @@ const AbHomePageSection1Ctrl = () => {
       '+=0.25',
     );
     inputBoxTl.current = gsap.timeline().fromTo(
-      mainAudioBox.current,
+      instructions1.current,
       { opacity: '0%' },
       {
         opacity: '100%',
         ease: 'none',
-        duration: 0.75,
+        duration: 0.5,
       },
       '+=1',
+    );
+    inputBoxTl.current = gsap.timeline().fromTo(
+      instructions2.current,
+      { opacity: '0%' },
+      {
+        opacity: '100%',
+        ease: 'none',
+        duration: 0.5,
+      },
+      '+=2.5',
+    );
+    inputBoxTl.current = gsap.timeline().fromTo(
+      instructions3.current,
+      { opacity: '0%' },
+      {
+        opacity: '100%',
+        ease: 'none',
+        duration: 0.5,
+      },
+      '+=4',
     );
   }, [frontPageTabs]);
 
@@ -72,7 +95,9 @@ const AbHomePageSection1Ctrl = () => {
         backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
+      <CenteredFlexBox pt={{ sm: 2, xs: 1 }}>
+        <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
+      </CenteredFlexBox>
       <CenteredFlexBox mt={{ sm: 0, xs: -2 }}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
@@ -84,7 +109,9 @@ const AbHomePageSection1Ctrl = () => {
       <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: '8%', xs: '6%' } }}>
         <CenteredFlexBox ref={mainControlBox}>
           {frontPageTabs === 0 ? (
-            <AbSynthesisCtrl />
+            <AbSynthesisCtrl>
+              <AbSynthesisButtonsCtrl />
+            </AbSynthesisCtrl>
           ) : (
             <AbRecognitionCtrl>
               <AbRecognitionButtonsCtrl />
@@ -103,12 +130,7 @@ const AbHomePageSection1Ctrl = () => {
           zIndex: 1,
         }}
       >
-        <Box
-          ref={mainAudioBox}
-          pb={{ xs: 1, sm: 2 }}
-          width={'100%'}
-          sx={{ position: 'absolute', bottom: 0 }}
-        >
+        <Box pb={{ xs: 1, sm: 2 }} width={'100%'} sx={{ position: 'absolute', bottom: 0 }}>
           <CenteredFlexBox>
             {frontPageTabs === 0 ? (
               <Typography
@@ -117,7 +139,9 @@ const AbHomePageSection1Ctrl = () => {
                 align="center"
                 color="default"
               >
-                Dialect {'&'} Gender &nbsp;{'>'}&nbsp; Type &nbsp;{'>'}&nbsp; Synthesise
+                <span ref={instructions1}>Choose dialect {'&'} gender</span>
+                <span ref={instructions2}> &nbsp;{'>'}&nbsp; Type</span>
+                <span ref={instructions3}> &nbsp;{'>'}&nbsp; Synthesise</span>
               </Typography>
             ) : (
               <Typography
@@ -126,7 +150,9 @@ const AbHomePageSection1Ctrl = () => {
                 align="center"
                 color="default"
               >
-                Quiet space &nbsp;{'>'}&nbsp; Tap Microphone &nbsp;{'>'}&nbsp; Speak clearly
+                <span ref={instructions1}>Go to a quiet space</span>
+                <span ref={instructions2}> &nbsp;{'>'}&nbsp; Tap Microphone</span>
+                <span ref={instructions3}> &nbsp;{'>'}&nbsp; Speak</span>
               </Typography>
             )}
           </CenteredFlexBox>

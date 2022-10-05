@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
 
+import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import AbTextField from '@/components/AbTextField';
-import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
 import { useSynthesisVoiceIndex, useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
 
-const AbSynthesisCtrl = () => {
+interface AbRecognitionCtrlProps {
+  children: React.ReactNode;
+}
+
+const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
   const { frontPageTabs } = useFrontPageTabs();
 
   const { synthesisText, setSynthesisText } = useSynthesisText();
@@ -17,6 +22,9 @@ const AbSynthesisCtrl = () => {
 
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
+
+  const theme = useTheme();
+  const small = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     synthesisVoiceOptions.length === 0
@@ -41,17 +49,15 @@ const AbSynthesisCtrl = () => {
       <AbTextField
         key={frontPageTabs}
         label="scríobh anseo"
-        rows={4}
+        rows={small ? 3 : 4}
         disabled={awaitingSynthesis ? true : false}
-        autoFocus={false}
+        autoFocus={true}
         getter={synthesisText}
         onChangeHandler={(text) => {
           setSynthesisText(text);
         }}
       />
-      <Box sx={{ width: '100%', height: 50 }}>
-        <AbSynthesisButtonsCtrl />
-      </Box>
+      <Box sx={{ width: '100%', height: 50 }}>{children}</Box>
     </Box>
   );
 };

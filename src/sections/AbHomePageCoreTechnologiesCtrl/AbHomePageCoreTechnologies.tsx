@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 
 import AbClickableCard from '@/components/AbClickableCard';
+import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox } from '@/components/styled';
 
 const AbHomePageCoreTechnologiesCtrl = () => {
@@ -18,15 +18,16 @@ const AbHomePageCoreTechnologiesCtrl = () => {
       }}
     >
       <CenteredFlexBox>
-        <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
-          <Typography gutterBottom variant="h5" m={2} align="center">
-            Core Technologies
-          </Typography>
+        <Box>
+          <AbInfoHeader
+            title="Core Technologies"
+            description="Get fine-grained control over parameters for our speech synthesis, and view the output for a range of recognition models."
+          />
           <Grid
             container
             direction="row"
             px={1}
-            py={{ sm: 2, xs: 1 }}
+            py={6}
             spacing={{ sm: 4, xs: 1 }}
             justifyContent="center"
             alignItems="center"
