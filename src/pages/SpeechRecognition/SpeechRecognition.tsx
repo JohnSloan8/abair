@@ -23,8 +23,8 @@ function SpeechRecognition() {
 
   useEffect(() => {
     if (session) {
-      console.log('userID:', session.user.id);
-      getTranscriptions(session.user.id).then((res) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getTranscriptions(session.user.id).then((res: any) => {
         console.log('res:', res);
         setTranscriptions(res);
       });

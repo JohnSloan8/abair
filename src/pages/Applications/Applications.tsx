@@ -7,10 +7,10 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
 import AbApplicationCard from '@/components/AbApplicationCard';
-import { ApplicationModel } from '@/components/AbApplicationCard/types';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox } from '@/components/styled';
+import { ApplicationModel } from '@/models/application';
 import { getApplications } from '@/services/supabase/applications';
 import getCategories from '@/services/supabase/applications/getCategories';
 import {

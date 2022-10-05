@@ -25,7 +25,7 @@ const AbMap = ({
   handleMouseLeave,
   handleClick,
 }: AbMapProps) => {
-  const getMapColor = (c) => {
+  const getMapColor = (c: mapInfoModel) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoveringCounty
         ? [blue[900], blue[900]]

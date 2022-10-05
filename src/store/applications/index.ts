@@ -1,6 +1,6 @@
 import { atom, selector, useRecoilState } from 'recoil';
 
-import { ApplicationCategoryModel, ApplicationModel } from '@/components/AbApplicationCard/types';
+import { ApplicationCategoryModel, ApplicationModel } from '@/models/application';
 
 const applicationsState = atom<ApplicationModel[]>({
   key: 'applications',

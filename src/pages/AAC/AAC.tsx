@@ -8,7 +8,7 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 
-function Applications() {
+function AAC() {
   return (
     <FullSizeBox>
       <Meta title="AAC" />
@@ -107,4 +107,4 @@ function Applications() {
   );
 }
 
-export default Applications;
+export default AAC;

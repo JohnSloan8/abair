@@ -8,5 +8,6 @@ interface ApplicationModel {
   url: string;
   image: string;
   description: string;
+  category: number;
 }
 export type { ApplicationModel, ApplicationCategoryModel };
