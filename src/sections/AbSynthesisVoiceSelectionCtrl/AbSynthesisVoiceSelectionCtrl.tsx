@@ -9,13 +9,18 @@ const AbSynthesisVoiceSelectionCtrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
 
   return (
-    <Box sx={{ position: 'relative', opacity: frontPageTabs === 0 ? 1 : 0 }}>
+    <Box
+      width={'100%'}
+      sx={{
+        opacity: frontPageTabs === 0 ? 1 : 0,
+      }}
+    >
       <CenteredFlexBox>
-        <Box sx={{ minWidth: 280, maxWidth: 380 }}>
+        <Box width={'100%'} sx={{ minWidth: 240, maxWidth: { sm: 440, xs: 240 } }}>
           <AbMapCtrl />
         </Box>
       </CenteredFlexBox>
-      <CenteredFlexBox mt={-3} mb={-1}>
+      <CenteredFlexBox mt={-2} mb={-2}>
         <AbGenderChoicesCtrl />
       </CenteredFlexBox>
     </Box>

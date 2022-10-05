@@ -10,7 +10,7 @@ const AbRecognitionImageCtrl = () => {
   return (
     <Box sx={{ height: '100%', width: '100%', position: 'relative' }}>
       <CenteredFlexBox mt={0} mb={4}>
-        <Box mb={-4} mt={0} height={{ sm: 360, xs: 300 }}>
+        <Box mb={-4} mt={2} width={'100%'} sx={{ minWidth: 240, maxWidth: { sm: 440, xs: 240 } }}>
           <Image
             duration={0}
             height={'100%'}

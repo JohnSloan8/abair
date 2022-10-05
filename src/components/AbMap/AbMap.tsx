@@ -36,7 +36,7 @@ const AbMap = ({
   };
 
   return (
-    <Box m={{ xs: 4, sm: 1 }} my={{ xs: 0 }}>
+    <Box>
       <svg viewBox="-60 575 600 500">
         <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
           {irelandMapData.map((c, i) => (

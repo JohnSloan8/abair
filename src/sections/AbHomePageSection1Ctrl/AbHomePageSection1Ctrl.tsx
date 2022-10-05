@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 import { gsap } from 'gsap';
 
@@ -9,10 +10,8 @@ import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
-import AbRecognitionInstructionsCtrl from '@/sections/AbRecognitionInstructionsCtrl ';
 import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
-import AbSynthesisVoiceInfoCtrl from '@/sections/AbSynthesisVoiceInfoCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
@@ -74,31 +73,15 @@ const AbHomePageSection1Ctrl = () => {
       }}
     >
       <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
-      <CenteredFlexBox mt={{ sm: 1, xs: -2 }}>
+      <CenteredFlexBox mt={{ sm: 0, xs: -2 }}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
-      <Box
-        border={1}
-        sx={{
-          width: '100%',
-          height: '50%',
-          position: 'relative',
+      <CenteredFlexBox ref={mainSelectionBox} height={'calc(100vh - 64px - 360px)'} width={'100%'}>
+        {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
+      </CenteredFlexBox>
 
-          zIndex: 1,
-        }}
-      >
-        <CenteredFlexBox
-          ref={mainSelectionBox}
-          minHeight={{ sm: 380, xs: 310 }}
-          height={'100%'}
-          width={'100%'}
-        >
-          {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
-        </CenteredFlexBox>
-      </Box>
-
-      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 80, xs: 45 } }}>
+      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: '8%', xs: '6%' } }}>
         <CenteredFlexBox ref={mainControlBox}>
           {frontPageTabs === 0 ? (
             <AbSynthesisCtrl />
@@ -110,9 +93,9 @@ const AbHomePageSection1Ctrl = () => {
         </CenteredFlexBox>
       </Box>
       <Box
-        pt={{ sm: 12, xs: 10 }}
+        width="100%"
+        height="18%"
         sx={{
-          width: '100%',
           position: 'absolute',
           bottom: 0,
           backgroundColor: frontPageTabs === 0 ? 'secondary.dark' : 'warning.dark',
@@ -120,8 +103,33 @@ const AbHomePageSection1Ctrl = () => {
           zIndex: 1,
         }}
       >
-        <Box pt={{ sm: 0, xs: 2 }} minHeight={50} ref={mainAudioBox}>
-          {frontPageTabs === 0 ? <AbSynthesisVoiceInfoCtrl /> : <AbRecognitionInstructionsCtrl />}
+        <Box
+          ref={mainAudioBox}
+          pb={{ xs: 1, sm: 2 }}
+          width={'100%'}
+          sx={{ position: 'absolute', bottom: 0 }}
+        >
+          <CenteredFlexBox>
+            {frontPageTabs === 0 ? (
+              <Typography
+                px={1}
+                sx={{ typography: { sm: 'body1', xs: 'body2' } }}
+                align="center"
+                color="default"
+              >
+                Dialect {'&'} Gender &nbsp;{'>'}&nbsp; Type &nbsp;{'>'}&nbsp; Synthesise
+              </Typography>
+            ) : (
+              <Typography
+                px={1}
+                sx={{ typography: { sm: 'body1', xs: 'body2' } }}
+                align="center"
+                color="default"
+              >
+                Quiet space &nbsp;{'>'}&nbsp; Tap Microphone &nbsp;{'>'}&nbsp; Speak clearly
+              </Typography>
+            )}
+          </CenteredFlexBox>
         </Box>
         <AbRecognitionMediaCtrl />
       </Box>
