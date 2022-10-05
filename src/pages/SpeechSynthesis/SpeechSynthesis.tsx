@@ -6,6 +6,7 @@ import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
+import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
@@ -40,7 +41,9 @@ function SpeechSynthesis() {
           </CenteredFlexBox>
           <AbSynthesisVoiceButtonsCtrl />
           <CenteredFlexBox>
-            <AbSynthesisCtrl />
+            <AbSynthesisCtrl>
+              <AbSynthesisButtonsCtrl />
+            </AbSynthesisCtrl>
           </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
