@@ -91,7 +91,7 @@ function Applications() {
       <Box py={4} sx={{ backgroundColor: 'primary.wafer' }}>
         <CenteredFlexBox>
           <Typography variant={'h5'} align="center">
-            Contact
+            Contact Details
           </Typography>
         </CenteredFlexBox>
         <CenteredFlexBox mt={4}>
