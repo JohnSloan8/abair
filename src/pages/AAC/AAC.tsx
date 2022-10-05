@@ -97,7 +97,9 @@ function Applications() {
         <CenteredFlexBox mt={4}>
           <Box maxWidth="md">
             <Typography align="center">Julie Mhic Con Iomaire</Typography>
-            <Typography align="center">juliemhicconiomaire@gmail.com</Typography>
+            <Typography variant="body2" align="center">
+              juliemhicconiomaire@gmail.com
+            </Typography>
           </Box>
         </CenteredFlexBox>
       </Box>
