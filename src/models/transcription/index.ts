@@ -1,5 +1,5 @@
 interface transcriptionModel {
-  id?: number | undefined;
+  id?: number;
   created_at?: string;
   user: string | null;
   session_start: string;

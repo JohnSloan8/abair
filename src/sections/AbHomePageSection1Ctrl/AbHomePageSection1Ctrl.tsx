@@ -15,6 +15,7 @@ import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
+import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useViewHeight } from '@/store/viewDimensions';
 
@@ -159,6 +160,7 @@ const AbHomePageSection1Ctrl = () => {
           </CenteredFlexBox>
         </Box>
         <AbRecognitionMediaCtrl />
+        <AbTranscriptionsCtrl />
       </Box>
     </FullSizeBox>
   );

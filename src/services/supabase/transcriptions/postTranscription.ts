@@ -13,7 +13,6 @@ const postTranscription = async (transcriptionData: transcriptionModel) => {
     }
 
     if (data) {
-      console.log('data:', data);
       return data[0];
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

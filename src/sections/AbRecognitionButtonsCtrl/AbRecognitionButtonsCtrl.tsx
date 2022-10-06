@@ -1,19 +1,15 @@
-import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import StopIcon from '@mui/icons-material/Stop';
 import Grid from '@mui/material/Grid';
 
-import AbIconButton from '@/components/AbIconButton';
 import AbProgressBar from '@/components/AbProgressBar';
-import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
 import { recognitionTimeLimit } from '@/config';
 import AbRecognitionAudioPlayerCtrl from '@/sections/AbRecognitionAudioPlayerCtrl';
 import AbRecognitionCorrectionCtrl from '@/sections/AbRecognitionCorrectionCtrl';
-import { useAwaitingTranscription, useVoiceRecording } from '@/store/recognition';
+import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
+import { useVoiceRecording } from '@/store/recognition';
 
 const AbRecognitionButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
-  const { awaitingTranscription } = useAwaitingTranscription();
 
   return (
     <CenteredFlexBox sx={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -33,28 +29,7 @@ const AbRecognitionButtonsCtrl = () => {
           </CenteredFlexBox>
         </Grid>
         <Grid item xs={4}>
-          <CenteredFlexBox>
-            {awaitingTranscription ? (
-              <Loading />
-            ) : !voiceRecording ? (
-              <AbIconButton
-                variation="stop"
-                handleClick={() => {
-                  setVoiceRecording(true);
-                  console.log('recording click');
-                }}
-                icon={KeyboardVoiceIcon}
-              />
-            ) : (
-              <AbIconButton
-                variation="stop"
-                handleClick={() => {
-                  setVoiceRecording(false);
-                }}
-                icon={StopIcon}
-              />
-            )}
-          </CenteredFlexBox>
+          <AbRecognitionRecordStopButtonsCtrl />
         </Grid>
         <Grid item xs={4}>
           <CenteredFlexBox>

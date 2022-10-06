@@ -20,6 +20,8 @@ const getVoiceType = (cV: synthesisVoiceModel) => {
     return 'nnmnkwii';
   } else if (cV.voices.includes('HTS')) {
     return 'exthts';
+  } else if (cV.voices.includes('HTS-WORLD')) {
+    return 'exthts-WORLD';
   } else {
     return '';
   }

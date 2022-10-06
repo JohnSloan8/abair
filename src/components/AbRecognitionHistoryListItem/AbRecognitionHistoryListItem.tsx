@@ -11,7 +11,7 @@ interface AbRecognitionHistoryListItemProps {
   handleClick: () => void;
 }
 
-const AbRecognitionHistoryButtonsCtrl = ({
+const AbRecognitionHistoryListItemCtrl = ({
   transcriptions,
   handleClick,
 }: AbRecognitionHistoryListItemProps) => {
@@ -23,11 +23,15 @@ const AbRecognitionHistoryButtonsCtrl = ({
         boxShadow={3}
         p={1}
         borderRadius={3}
-        sx={{ backgroundColor: 'warning.medium', position: 'relative' }}
+        sx={{
+          backgroundColor: 'warning.medium',
+          position: 'relative',
+          '&:hover': { backgroundColor: 'warning.main', color: '#fff', cursor: 'pointer' },
+        }}
       >
         {transcriptions.map((t, i) => (
           <Box key={i}>
-            <Typography>
+            <Typography color="inherit">
               model {i + 1}. &quot;<i>{t}</i>&quot;
             </Typography>
           </Box>
@@ -41,4 +45,4 @@ const AbRecognitionHistoryButtonsCtrl = ({
   );
 };
 
-export default AbRecognitionHistoryButtonsCtrl;
+export default AbRecognitionHistoryListItemCtrl;

@@ -16,7 +16,7 @@ const AbRecognitionMediaCtrl = () => {
   const { sessionStart } = useSessionStart();
   const { voiceRecording } = useVoiceRecording();
   const { setAwaitingTranscription } = useAwaitingTranscription();
-  const { transcription, setTranscription } = useTranscription();
+  const { setTranscription } = useTranscription();
   const { setRecognitionAudio } = useRecognitionAudio();
 
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
@@ -43,6 +43,7 @@ const AbRecognitionMediaCtrl = () => {
             recognition_response: data.transcriptions,
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
           }).then((data: any) => {
+            console.log('data from postTranscription:', data);
             setTranscription({
               id: data.id,
               user: data.user,
@@ -77,14 +78,6 @@ const AbRecognitionMediaCtrl = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceRecording]);
-
-  useEffect(() => {
-    setAwaitingTranscription(false);
-    transcription !== undefined && !transcription.corrected
-      ? setEditableTranscriptionText(transcription.recognition_response[0].utterance)
-      : null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [transcription]);
 
   return null;
 };
