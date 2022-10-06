@@ -1,11 +1,11 @@
 import supabase from '@/services/supabase';
 
-const getTranscriptions = async (userID: string) => {
+const getThisSessionTranscriptions = async (sessionStart: string) => {
   try {
     const { data, error } = await supabase
       .from('transcriptions')
       .select(`id, created_at, recognition_response, correction, corrected`)
-      .eq('user', userID);
+      .eq('session_start', sessionStart);
 
     if (data) {
       return data;
@@ -20,4 +20,4 @@ const getTranscriptions = async (userID: string) => {
   }
 };
 
-export default getTranscriptions;
+export default getThisSessionTranscriptions;

@@ -15,7 +15,8 @@ interface AbIconButtonProps {
     | 'correct'
     | 'incorrect'
     | 'editGreen'
-    | 'editRed';
+    | 'editRed'
+    | 'editWhite';
   handleClick: () => void;
   disabled?: boolean;
   icon: FC<SvgIconProps>;

@@ -103,6 +103,17 @@ const CreateItem = () => {
       fontSize: 'medium',
       padding: 0,
     },
+    editWhite: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundHoverColor: 'rgba(0,0,0,0)',
+      hoverColor: 'background.paper',
+      iconColour: 'background.paper',
+      marginSmall: 1,
+      marginXSmall: 1,
+      border: 0,
+      fontSize: 'medium',
+      padding: 0,
+    },
   };
 
   return styles;

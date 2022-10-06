@@ -30,6 +30,10 @@ const AbHomePageSection1Ctrl = () => {
   const inputBoxTl = useRef(gsap.timeline());
 
   useEffect(() => {
+    inputBoxTl.current && inputBoxTl.current.kill();
+    instructions1.current.style.opacity = 0;
+    instructions2.current.style.opacity = 0;
+    instructions3.current.style.opacity = 0;
     inputBoxTl.current = gsap.timeline().fromTo(
       mainSelectionBox.current,
       { opacity: '0%' },

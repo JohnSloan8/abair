@@ -16,7 +16,7 @@ const AbProgressBar = ({ running, color, timeLimit, handleComplete }: AbProgress
   const tl = useRef(gsap.timeline());
 
   useLayoutEffect(() => {
-    // tl.current && tl.current.progress(0).kill();
+    tl.current && tl.current.progress(0).kill();
     tl.current = gsap.timeline().fromTo(
       recognitionProgressTimer.current,
       { width: '0%' },

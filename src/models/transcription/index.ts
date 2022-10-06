@@ -15,4 +15,4 @@ interface hypothesesModel {
   utterance: string;
 }
 
-export type { transcriptionModel };
+export type { transcriptionModel, hypothesesModel };
