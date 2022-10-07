@@ -8,7 +8,7 @@ import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtr
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
 
 interface AbRecognitionButtonsCtrlProps {
-  showRecord: boolean;
+  showRecord?: boolean;
 }
 
 const AbRecognitionButtonsCtrl = ({ showRecord = true }: AbRecognitionButtonsCtrlProps) => {

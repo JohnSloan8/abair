@@ -10,13 +10,13 @@ import { AbAccordionProps } from './types';
 const AbAccordion = ({ label, children }: AbAccordionProps) => {
   return (
     <Accordion
-      onChange={handleChange}
-      // disableGutters
-      // elevation={0}
-      // sx={{
-      //   backgroundColor: 'background.paper',
-      //   '&:before': { display: 'none' },
-      // }}
+    // onChange={handleChange}
+    // disableGutters
+    // elevation={0}
+    // sx={{
+    //   backgroundColor: 'background.paper',
+    //   '&:before': { display: 'none' },
+    // }}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
