@@ -48,13 +48,9 @@ const AbProgressBar = ({ running, color, timeLimit, handleComplete }: AbProgress
       id="progressBar"
       ref={recognitionProgressTimer}
       sx={{
-        position: 'absolute',
-        top: 0,
         width: 0,
-        height: '5%',
+        height: '100%',
         backgroundColor: color,
-        left: '0',
-        zIndex: 0,
       }}
     ></Box>
   );

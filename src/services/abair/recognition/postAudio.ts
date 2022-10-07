@@ -34,7 +34,7 @@ const postAudio = async (
     //   console.log('postAudio response:', response.data);
     //   // setter({
     //   //   user: userID,
-    //   //   session_start: sessStart,
+    //   //   session_ID: sessStart,
     //   //   audio_file_path: response.data.audioFilePath,
     //   //   duration: parseFloat(response.data.duration),
     //   //   recognition_response: response.data.transcriptions,

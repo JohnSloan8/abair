@@ -3,7 +3,7 @@ import { useReactMediaRecorder } from 'react-media-recorder';
 
 import postAudio from '@/services/abair/recognition';
 import postTranscription from '@/services/supabase/transcriptions/postTranscription';
-import { useSession, useSessionStart } from '@/store/auth';
+import { useSession, useSessionID } from '@/store/auth';
 import {
   useAwaitingTranscription,
   useRecognitionAudio,
@@ -13,7 +13,7 @@ import { useEditableTranscriptionText, useTranscription } from '@/store/transcri
 import convertBlobToBase64 from '@/utils/convertBlobToBase64';
 
 const AbRecognitionMediaCtrl = () => {
-  const { sessionStart } = useSessionStart();
+  const { sessionID } = useSessionID();
   const { voiceRecording } = useVoiceRecording();
   const { setAwaitingTranscription } = useAwaitingTranscription();
   const { setTranscription } = useTranscription();
@@ -37,8 +37,8 @@ const AbRecognitionMediaCtrl = () => {
         postAudio(result.slice(22)).then((data: any) => {
           postTranscription({
             user: userID,
-            session_start: sessionStart,
-            audio_file_path: data.audioFilePath,
+            session_ID: sessionID,
+            audio_file_path: data.audioFilePath.slice(5, data.audioFilePath.length - 4), // trim the /tmp and .wav
             duration: parseFloat(data.duration),
             recognition_response: data.transcriptions,
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,7 +47,7 @@ const AbRecognitionMediaCtrl = () => {
             setTranscription({
               id: data.id,
               user: data.user,
-              session_start: data.session_start,
+              session_ID: data.session_ID,
               audio_file_path: data.audio_file_path,
               duration: data.duration,
               recognition_response: data.recognition_response,

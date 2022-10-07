@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
+import getAudio from '@/services/abair/recognition/getAudio';
 import { getTranscriptions } from '@/services/supabase/transcriptions';
 import getThisSessionTranscriptions from '@/services/supabase/transcriptions/getThisSessionTranscriptions';
-import { useSession, useSessionStart } from '@/store/auth';
-import { useAwaitingTranscription } from '@/store/recognition';
+import { useSession, useSessionID } from '@/store/auth';
+import { useAwaitingTranscription, useRecognitionAudio } from '@/store/recognition';
 import {
   useEditableTranscriptionText,
   useTranscription,
@@ -12,11 +13,12 @@ import {
 
 const AbTranscriptionsCtrl = () => {
   const { session } = useSession();
-  const { setTranscriptions } = useTranscriptions();
-  const { sessionStart } = useSessionStart();
+  const { transcriptions, setTranscriptions } = useTranscriptions();
+  const { sessionID } = useSessionID();
   const { transcription } = useTranscription();
   const { setAwaitingTranscription } = useAwaitingTranscription();
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
+  const { setRecognitionAudio } = useRecognitionAudio();
 
   useEffect(() => {
     updateTranscriptions();
@@ -24,12 +26,23 @@ const AbTranscriptionsCtrl = () => {
   }, []);
 
   useEffect(() => {
+    console.log('transcriptions:', transcriptions);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transcriptions]);
+
+  useEffect(() => {
     console.log('in transcription:', transcription);
     updateTranscriptions();
     setAwaitingTranscription(false);
-    transcription !== undefined && !transcription.corrected
-      ? setEditableTranscriptionText(transcription.recognition_response[0].utterance)
-      : null;
+    if (transcription !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getAudio(transcription.audio_file_path).then((res: any) => {
+        setRecognitionAudio(`data:audio/wav;base64,${res.audio}`);
+      });
+      if (!transcription.corrected) {
+        setEditableTranscriptionText(transcription.recognition_response[0].utterance);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transcription]);
 
@@ -42,7 +55,7 @@ const AbTranscriptionsCtrl = () => {
       });
     } else {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      getThisSessionTranscriptions(sessionStart).then((res: any) => {
+      getThisSessionTranscriptions(sessionID).then((res: any) => {
         console.log('getThisSessionTranscriptions:', res);
         setTranscriptions(res);
       });

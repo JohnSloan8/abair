@@ -1,11 +1,12 @@
 import supabase from '@/services/supabase';
 
-const getThisSessionTranscriptions = async (sessionStart: string) => {
+const getThisSessionTranscriptions = async (sessionID: string) => {
   try {
     const { data, error } = await supabase
       .from('transcriptions')
-      .select(`id, created_at, recognition_response, correction, corrected`)
-      .eq('session_start', sessionStart);
+      .select(`id, created_at, recognition_response, audio_file_path, correction, corrected`)
+      .order('id', { ascending: false })
+      .eq('session_ID', sessionID);
 
     if (data) {
       return data;

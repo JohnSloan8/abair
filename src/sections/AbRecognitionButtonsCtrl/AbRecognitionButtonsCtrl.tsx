@@ -1,27 +1,24 @@
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import AbProgressBar from '@/components/AbProgressBar';
 import { CenteredFlexBox } from '@/components/styled';
-import { recognitionTimeLimit } from '@/config';
 import AbRecognitionAudioPlayerCtrl from '@/sections/AbRecognitionAudioPlayerCtrl';
 import AbRecognitionCorrectionCtrl from '@/sections/AbRecognitionCorrectionCtrl';
+import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
-import { useVoiceRecording } from '@/store/recognition';
 
-const AbRecognitionButtonsCtrl = () => {
-  const { voiceRecording, setVoiceRecording } = useVoiceRecording();
+interface AbRecognitionButtonsCtrlProps {
+  showRecord: boolean;
+}
 
+const AbRecognitionButtonsCtrl = ({ showRecord = true }: AbRecognitionButtonsCtrlProps) => {
   return (
     <CenteredFlexBox sx={{ width: '100%', height: '100%', position: 'relative' }}>
-      <AbProgressBar
-        running={voiceRecording}
-        color="warning.main"
-        timeLimit={recognitionTimeLimit}
-        handleComplete={() => {
-          setVoiceRecording(false);
-        }}
-      />
-
+      {showRecord && (
+        <Box height={'3px'} width={'100%'} sx={{ position: 'absolute', top: 0 }}>
+          <AbRecognitionProgressBarCtrl />
+        </Box>
+      )}
       <Grid container direction="row" justifyContent="center" alignItems="center">
         <Grid item xs={4}>
           <CenteredFlexBox>
@@ -29,7 +26,7 @@ const AbRecognitionButtonsCtrl = () => {
           </CenteredFlexBox>
         </Grid>
         <Grid item xs={4}>
-          <AbRecognitionRecordStopButtonsCtrl />
+          {showRecord && <AbRecognitionRecordStopButtonsCtrl />}
         </Grid>
         <Grid item xs={4}>
           <CenteredFlexBox>
