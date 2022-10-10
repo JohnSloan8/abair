@@ -13,7 +13,7 @@ import {
 
 const AbTranscriptionsCtrl = () => {
   const { session } = useSession();
-  const { transcriptions, setTranscriptions } = useTranscriptions();
+  const { setTranscriptions } = useTranscriptions();
   const { sessionID } = useSessionID();
   const { transcription } = useTranscription();
   const { setAwaitingTranscription } = useAwaitingTranscription();
@@ -25,13 +25,12 @@ const AbTranscriptionsCtrl = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    console.log('transcriptions:', transcriptions);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [transcriptions]);
+  // useEffect(() => {
+  //   console.log('transcriptions:', transcriptions);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [transcriptions]);
 
   useEffect(() => {
-    console.log('in transcription:', transcription);
     updateTranscriptions();
     setAwaitingTranscription(false);
     if (transcription !== undefined) {

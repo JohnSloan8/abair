@@ -24,7 +24,12 @@ function Home() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    newsStories.length === 0 ? getNews(setNewsStories) : null;
+    if (newsStories.length === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getNews().then((res: any) => {
+        setNewsStories(res);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -108,6 +113,11 @@ function Home() {
             title="Knowledge Base"
             description="Learn about the linguistic research being carried out which informs the technological development"
           />
+          <Box component={Link} to={'/knowledge'}>
+            <Typography variant="body1" m={2} align="center">
+              Read Publications
+            </Typography>
+          </Box>
         </Box>
       </CenteredFlexBox>
     </>

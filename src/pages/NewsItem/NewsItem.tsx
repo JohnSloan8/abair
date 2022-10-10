@@ -20,10 +20,17 @@ function NewsItem() {
   console.log('params:', params);
 
   useEffect(() => {
-    newsStories.length === 0 ||
-    newsStories.filter((nS) => nS.id.toString() === params.newsID).length === 0
-      ? getNews(setNewsStories)
-      : setNewsStory(newsStories.filter((nS) => nS.id.toString() === params.newsID)[0]);
+    if (
+      newsStories.length === 0 ||
+      newsStories.filter((nS) => nS.id.toString() === params.newsID).length === 0
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getNews().then((res: any) => {
+        setNewsStories(res);
+      });
+    } else {
+      setNewsStory(newsStories.filter((nS) => nS.id.toString() === params.newsID)[0]);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newsStories]);
 

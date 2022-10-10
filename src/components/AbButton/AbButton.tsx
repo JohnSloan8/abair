@@ -7,12 +7,18 @@ import styles from './styles';
 interface AbButtonProps {
   disabled?: boolean;
   label: string;
-  selected: boolean;
+  selected?: boolean;
   variation: 'voice' | 'alert';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const AbButton = ({ onClick, label, selected, disabled = false, variation }: AbButtonProps) => {
+const AbButton = ({
+  onClick,
+  label,
+  selected = true,
+  disabled = false,
+  variation,
+}: AbButtonProps) => {
   const style = styles[variation];
 
   return (

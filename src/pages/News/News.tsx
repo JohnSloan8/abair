@@ -12,10 +12,16 @@ import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
 function News() {
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { newsStories, setNewsStories } = useNewsStories();
   useEffect(() => {
-    newsStories.length < 4 ? getNews(setNewsStories) : null;
+    if (newsStories.length < 4) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getNews().then((res: any) => {
+        setLoading(false);
+        setNewsStories(res);
+      });
+    }
   }, []);
 
   return (

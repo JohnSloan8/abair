@@ -1,9 +1,6 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import supabase from '@/services/supabase';
 
-const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
+const getNews = async () => {
   try {
     // setLoading(true);
 
@@ -18,8 +15,7 @@ const getNews = async (dataSetter: SetterOrUpdater<AbNewsStoryModel[]>) => {
     }
 
     if (data) {
-      console.log('data:', data);
-      dataSetter(data);
+      return data;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
