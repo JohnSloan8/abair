@@ -22,7 +22,7 @@ const useTranscription = () => {
   return { transcription, setTranscription };
 };
 
-const editableTranscriptionTextState = atom<string>({
+const editableTranscriptionTextState = atom<string | undefined | null>({
   key: 'recognition-text-state',
   default: '',
 });

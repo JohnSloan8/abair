@@ -41,6 +41,8 @@ const AbTranscriptionsCtrl = () => {
       });
       if (!transcription.corrected) {
         setEditableTranscriptionText(transcription.recognition_response[0].utterance);
+      } else {
+        setEditableTranscriptionText(transcription.correction);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

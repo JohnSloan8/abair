@@ -11,6 +11,7 @@ import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
 import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
+import AbRecognitionTextFieldCtrl from '@/sections/AbRecognitionTextFieldCtrl/AbRecognitionTextFieldCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
@@ -110,15 +111,18 @@ const AbHomePageSection1Ctrl = () => {
 
       <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: '8%', xs: '6%' } }}>
         <CenteredFlexBox ref={mainControlBox}>
-          {frontPageTabs === 0 ? (
-            <AbSynthesisCtrl>
-              <AbSynthesisButtonsCtrl />
-            </AbSynthesisCtrl>
-          ) : (
-            <AbRecognitionCtrl>
-              <AbRecognitionButtonsCtrl />
-            </AbRecognitionCtrl>
-          )}
+          <Box width={'100%'} maxWidth={550} minWidth={250}>
+            {frontPageTabs === 0 ? (
+              <AbSynthesisCtrl>
+                <AbSynthesisButtonsCtrl />
+              </AbSynthesisCtrl>
+            ) : (
+              <AbRecognitionCtrl
+                textbox={<AbRecognitionTextFieldCtrl rows={4} />}
+                buttons={<AbRecognitionButtonsCtrl />}
+              />
+            )}
+          </Box>
         </CenteredFlexBox>
       </Box>
       <Box

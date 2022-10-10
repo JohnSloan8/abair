@@ -37,9 +37,8 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
     <Box
       px={{ sm: 4, xs: 1 }}
       pt={2}
-      mx={1}
       sx={{
-        width: 550,
+        width: '100%',
         backgroundColor: frontPageTabs === 0 ? 'secondary.light' : 'primary.light',
         borderRadius: 3,
         boxShadow: 6,

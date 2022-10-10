@@ -12,8 +12,8 @@ import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
 
 function SpeechRecognition() {
   return (
-    <FullSizeBox>
-      <CenteredFlexBox sx={{ backgroundColor: 'warning.wafer' }}>
+    <FullSizeBox sx={{ backgroundColor: 'warning.wafer' }}>
+      <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
           <Meta title="speech recognition" />
           <AbInfoHeader title="Speech Recognition" />

@@ -114,6 +114,17 @@ const CreateItem = () => {
       fontSize: 'medium',
       padding: 0,
     },
+    gray: {
+      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundHoverColor: 'rgba(0,0,0,0)',
+      hoverColor: 'gray',
+      iconColour: 'lightgray',
+      marginSmall: 1,
+      marginXSmall: 1,
+      border: 0,
+      fontSize: 'medium',
+      padding: 0,
+    },
   };
 
   return styles;
