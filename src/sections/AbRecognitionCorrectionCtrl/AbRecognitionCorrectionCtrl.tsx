@@ -20,7 +20,11 @@ const AbRecognitionCorrectionCtrl = () => {
 
   const saveEditableTranscription = () => {
     console.log('in editable transcription');
-    if (transcription !== undefined && typeof transcription.id === 'number') {
+    if (
+      transcription !== undefined &&
+      typeof transcription.id === 'number' &&
+      typeof editableTranscriptionText === 'string'
+    ) {
       patchTranscription(transcription.id, editableTranscriptionText, true).then((res) => {
         res
           ? setTranscription({

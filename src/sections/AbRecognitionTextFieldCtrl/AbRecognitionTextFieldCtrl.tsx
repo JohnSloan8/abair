@@ -16,7 +16,7 @@ const AbRecognitionCtrlTextFieldCtrl = ({ rows = 4 }: AbRecognitionCtrlTextField
       rows={rows}
       disabled={false}
       autoFocus={false}
-      getter={editableTranscriptionText}
+      getter={typeof editableTranscriptionText === 'string' ? editableTranscriptionText : ''}
       onChangeHandler={(text) => {
         setEditableTranscriptionText(text);
       }}
