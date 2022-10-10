@@ -6,7 +6,7 @@ const getTranscriptions = async (userID: string) => {
       .from('transcriptions')
       .select(`id, created_at, recognition_response, audio_file_path, correction, corrected`)
       .order('id', { ascending: false })
-      .eq('user', userID);
+      .eq('user_id', userID);
 
     if (data) {
       return data;

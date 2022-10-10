@@ -36,7 +36,7 @@ const AbRecognitionMediaCtrl = () => {
         //eslint-disable-next-line @typescript-eslint/no-explicit-any
         postAudio(result.slice(22)).then((data: any) => {
           postTranscription({
-            user: userID,
+            user_id: userID,
             session_ID: sessionID,
             audio_file_path: data.audioFilePath.slice(5, data.audioFilePath.length - 4), // trim the /tmp and .wav
             duration: parseFloat(data.duration),
@@ -46,7 +46,7 @@ const AbRecognitionMediaCtrl = () => {
             console.log('data from postTranscription:', data);
             setTranscription({
               id: data.id,
-              user: data.user,
+              user_id: data.user,
               session_ID: data.session_ID,
               audio_file_path: data.audio_file_path,
               duration: data.duration,

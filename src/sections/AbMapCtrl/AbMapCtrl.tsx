@@ -16,7 +16,7 @@ import localeToCounty from './utils';
 const AbMapCtrl = () => {
   const { synthesisCounty, setSynthesisCounty } = useSynthesisCounty();
   const [hoveringCounty, setHoveringCounty] = useState('');
-  const gaeltachts = ['Donegal', 'Galway', 'Kerry'];
+  const gaeltachts = ['Donegal', 'Galway', 'Kerry', 'Rathcairn'];
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
   const resetCounty = useResetRecoilState(synthesisCountyState);

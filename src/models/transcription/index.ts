@@ -1,7 +1,7 @@
 interface transcriptionModel {
   id?: number;
   created_at?: string;
-  user: string | null;
+  user_id: string | null;
   session_ID: string;
   correct?: boolean | null;
   correction?: string | null | undefined;
