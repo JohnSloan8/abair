@@ -7,6 +7,7 @@ interface mapInfoModel {
 }
 
 interface AbMapProps {
+  height: number;
   irelandMapData: mapInfoModel[];
   gaeltachts: string[];
   hoveringCounty: string;
@@ -17,6 +18,7 @@ interface AbMapProps {
 }
 
 const AbMap = ({
+  height,
   irelandMapData,
   gaeltachts,
   hoveringCounty,
@@ -36,8 +38,8 @@ const AbMap = ({
   };
 
   return (
-    <Box>
-      <svg viewBox="-60 575 600 500">
+    <Box sx={{ position: 'relative' }}>
+      <svg viewBox="0 550 450 550" height={height * 0.9}>
         <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
           {irelandMapData.map((c, i) => (
             <g

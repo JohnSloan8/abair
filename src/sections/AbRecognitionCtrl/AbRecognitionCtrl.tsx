@@ -13,8 +13,8 @@ const AbRecognitionCtrl = ({ buttons, textbox }: AbRecognitionCtrlProps) => {
       sx={{
         width: '100%',
         backgroundColor: 'warning.light',
-        borderRadius: 3,
-        boxShadow: 6,
+        borderRadius: { sm: 3, xs: 0 },
+        boxShadow: { sm: 6, xs: 3 },
         position: 'relative',
       }}
     >

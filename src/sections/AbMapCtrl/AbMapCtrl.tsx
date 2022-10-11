@@ -9,6 +9,7 @@ import {
   synthesisVoiceSelected,
   useSynthesisCounty,
 } from '@/store/synthesis/voiceOptions';
+import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 import irelandMapData from './simpleData';
 import localeToCounty from './utils';
@@ -20,6 +21,8 @@ const AbMapCtrl = () => {
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
   const resetCounty = useResetRecoilState(synthesisCountyState);
+  const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
+  const { breakpointSize } = useBreakpointSize();
 
   const handleMouseEnter = (county: string) => {
     gaeltachts.includes(county) ? setHoveringCounty(county) : setHoveringCounty('');
@@ -48,6 +51,11 @@ const AbMapCtrl = () => {
 
   return (
     <AbMap
+      height={
+        breakpointSize === 'xs'
+          ? frontPageSelectionBoxSizeValue - 55
+          : frontPageSelectionBoxSizeValue - 85
+      }
       irelandMapData={irelandMapData}
       gaeltachts={gaeltachts}
       hoveringCounty={hoveringCounty}

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -14,6 +14,7 @@ import {
 } from '@/store/synthesis';
 
 const AbSynthesisAudioPlayerCtrl = () => {
+  const [firstLoad, setFirstLoad] = useState(true);
   const { synthesisAudio } = useSynthesisAudio();
   const emptySynthesisAudio = useRecoilValue(isSynthesisAudioEmpty);
   const { awaitingSynthesis } = useAwaitingSynthesis();
@@ -46,6 +47,11 @@ const AbSynthesisAudioPlayerCtrl = () => {
       console.log('audio.current === undefined');
     }
   };
+
+  useEffect(() => {
+    firstLoad ? setFirstLoad(false) : playSynthesisAudio();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [synthesisAudio]);
 
   return (
     <Box

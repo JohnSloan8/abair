@@ -17,17 +17,22 @@ function SpeechRecognition() {
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
           <Meta title="speech recognition" />
           <AbInfoHeader title="Speech Recognition" />
+          <Box
+            my={4}
+            mx={3}
+            borderRadius={2}
+            boxShadow={3}
+            sx={{ backgroundColor: 'warning.light' }}
+          >
+            <CenteredFlexBox sx={{ position: 'relative', height: 50 }}>
+              <AbRecognitionRecordStopButtonsCtrl />
+              <Box height={'3px'} width={'100%'} sx={{ position: 'absolute', bottom: 0 }}>
+                <AbRecognitionProgressBarCtrl />
+              </Box>
+            </CenteredFlexBox>
 
-          <CenteredFlexBox>
-            <AbRecognitionRecordStopButtonsCtrl />
-          </CenteredFlexBox>
-
-          <CenteredFlexBox sx={{ position: 'relative' }}>
-            <Box height={'3px'} width={'90%'} sx={{ position: 'absolute', top: 0 }}>
-              <AbRecognitionProgressBarCtrl />
-            </Box>
-          </CenteredFlexBox>
-
+            <CenteredFlexBox sx={{ position: 'relative' }}></CenteredFlexBox>
+          </Box>
           <CenteredFlexBox>
             <Grid container direction="column">
               <AbTranscriptionsListCtrl />

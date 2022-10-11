@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 
-import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 import AbTextField from '@/components/AbTextField';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
 import { useSynthesisVoiceIndex, useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 interface AbRecognitionCtrlProps {
   children: React.ReactNode;
@@ -16,15 +15,12 @@ interface AbRecognitionCtrlProps {
 
 const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
   const { frontPageTabs } = useFrontPageTabs();
-
+  const { breakpointSize } = useBreakpointSize();
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { awaitingSynthesis } = useAwaitingSynthesis();
 
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
-
-  const theme = useTheme();
-  const small = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     synthesisVoiceOptions.length === 0
@@ -40,15 +36,15 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
       sx={{
         width: '100%',
         backgroundColor: frontPageTabs === 0 ? 'secondary.light' : 'primary.light',
-        borderRadius: 3,
-        boxShadow: 6,
+        borderRadius: { sm: 3, xs: 0 },
+        boxShadow: { sm: 6, xs: 3 },
         position: 'relative',
       }}
     >
       <AbTextField
         key={frontPageTabs}
         label="scríobh anseo"
-        rows={small ? 3 : 4}
+        rows={breakpointSize === 'xs' ? 3 : 4}
         disabled={awaitingSynthesis ? true : false}
         autoFocus={true}
         getter={synthesisText}

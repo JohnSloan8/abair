@@ -13,7 +13,7 @@ import { SwiperSlide } from 'swiper/react';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import AbHomePageCoreTechnologiesCtrl from '@/sections/AbHomePageCoreTechnologiesCtrl';
 import AbHomePageSection1Ctrl from '@/sections/AbHomePageSection1Ctrl';
 import { getNews } from '@/services/supabase/news';
@@ -39,87 +39,91 @@ function Home() {
 
       <AbHomePageSection1Ctrl />
 
-      <CenteredFlexBox py={6}>
+      <FullSizeBox py={6}>
         <AbHomePageCoreTechnologiesCtrl />
-      </CenteredFlexBox>
-      <CenteredFlexBox py={6} sx={{ backgroundColor: 'primary.wafer' }}>
-        <Box maxWidth="md">
-          <AbInfoHeader
-            title="Applications"
-            description="Access a wide range of applications developed using our core technologies for public, education, and accessibility."
-          />
-          <CenteredFlexBox py={4}>
-            <Link to="/applications">
-              <Image
-                duration={1000}
-                width={500}
-                easing="ease-out"
-                alt="Abair Applications"
-                src="/assets/images/misc/abair-applications.png"
-                showLoading
-              />
-            </Link>
-          </CenteredFlexBox>
-        </Box>
-      </CenteredFlexBox>
-
-      <CenteredFlexBox py={6}>
-        <Box maxWidth="md">
-          <AbInfoHeader
-            title="Latest News"
-            description="Check out what's been going on recently in the world of Abair."
-          />
-          <Box component={Link} to={'/news'}>
-            <Typography variant="body1" m={2} align="center">
-              See all
-            </Typography>
+      </FullSizeBox>
+      <FullSizeBox py={6} sx={{ backgroundColor: 'primary.wafer' }}>
+        <CenteredFlexBox>
+          <Box maxWidth="md">
+            <AbInfoHeader
+              title="Applications"
+              description="Access a wide range of applications developed using our core technologies for public, education, and accessibility."
+            />
+            <CenteredFlexBox py={4}>
+              <Link to="/applications">
+                <Image
+                  duration={1000}
+                  width={500}
+                  easing="ease-out"
+                  alt="Abair Applications"
+                  src="/assets/images/misc/abair-applications.png"
+                  showLoading
+                />
+              </Link>
+            </CenteredFlexBox>
           </Box>
-          <Box py={4} maxWidth="md">
-            <AbNewsSwiper>
-              {newsStories.map((nS, i) => (
-                <SwiperSlide key={i}>
-                  <Card>
-                    <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                      <Image
-                        duration={1000}
-                        height={200}
-                        easing="ease-out"
-                        alt={`${nS.title + i}`}
-                        src={nS.images ? nS.images[0].url : ''}
-                        bgColor="#fff"
-                        showLoading
-                      />
-                      <CardContent>
-                        <Typography variant="body2">{nS.date}</Typography>
-                        <Typography gutterBottom variant="h5">
-                          {nS.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary" align="left">
-                          {nS.blurb}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </SwiperSlide>
-              ))}
-            </AbNewsSwiper>
+        </CenteredFlexBox>
+      </FullSizeBox>
+      <FullSizeBox py={6}>
+        <CenteredFlexBox>
+          <Box maxWidth="md">
+            <AbInfoHeader
+              title="Latest News"
+              description="Check out what's been going on recently in the world of Abair."
+            />
+            <Box component={Link} to={'/news'}>
+              <Typography variant="body1" m={2} align="center">
+                See all
+              </Typography>
+            </Box>
+            <Box py={4} maxWidth="md">
+              <AbNewsSwiper>
+                {newsStories.map((nS, i) => (
+                  <SwiperSlide key={i}>
+                    <Card>
+                      <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
+                        <Image
+                          duration={1000}
+                          height={200}
+                          easing="ease-out"
+                          alt={`${nS.title + i}`}
+                          src={nS.images ? nS.images[0].url : ''}
+                          bgColor="#fff"
+                          showLoading
+                        />
+                        <CardContent>
+                          <Typography variant="body2">{nS.date}</Typography>
+                          <Typography gutterBottom variant="h5">
+                            {nS.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary" align="left">
+                            {nS.blurb}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </SwiperSlide>
+                ))}
+              </AbNewsSwiper>
+            </Box>
           </Box>
-        </Box>
-      </CenteredFlexBox>
-
-      <CenteredFlexBox sx={{ backgroundColor: 'primary.wafer' }}>
-        <Box mt={{ xs: 2, sm: 6 }} mb={24} maxWidth="md">
-          <AbInfoHeader
-            title="Knowledge Base"
-            description="Learn about the linguistic research being carried out which informs the technological development"
-          />
-          <Box component={Link} to={'/knowledge'}>
-            <Typography variant="body1" m={2} align="center">
-              Read Publications
-            </Typography>
+        </CenteredFlexBox>
+      </FullSizeBox>
+      <FullSizeBox py={6} sx={{ backgroundColor: 'primary.wafer' }}>
+        <CenteredFlexBox>
+          <Box mt={{ xs: 2, sm: 6 }} maxWidth="md">
+            <AbInfoHeader
+              title="Knowledge Base"
+              description="Learn about the linguistic research being carried out which informs the technological development"
+            />
+            <Box component={Link} to={'/knowledge'}>
+              <Typography variant="body1" m={2} align="center">
+                Read Publications
+              </Typography>
+            </Box>
           </Box>
-        </Box>
-      </CenteredFlexBox>
+        </CenteredFlexBox>
+      </FullSizeBox>
     </>
   );
 }

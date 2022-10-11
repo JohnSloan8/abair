@@ -62,7 +62,12 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Box>
+        <Box>{`"${
+          trans.correction ? trans.correction : trans.recognition_response[0].utterance
+        }"`}</Box>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Box mt={-1} mb={2}>
           {trans.recognition_response
             .map(({ utterance }) => utterance)
             .map((t, i) => (
@@ -73,11 +78,9 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
               </Box>
             ))}
         </Box>
-      </AccordionSummary>
-      <AccordionDetails>
         <AbRecognitionCtrl
           textbox={<AbRecognitionTextFieldCtrl rows={4} />}
-          buttons={<AbRecognitionButtonsCtrl />}
+          buttons={<AbRecognitionButtonsCtrl showRecord={false} />}
         />
       </AccordionDetails>
       <CenteredFlexBox>

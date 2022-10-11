@@ -16,7 +16,7 @@ const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
 });
 
 const FullSizeBox = styled(Box)({
-  position: 'absolute',
+  position: 'relative',
   width: '100%',
   height: 'calc(100vh - 64px)',
 });

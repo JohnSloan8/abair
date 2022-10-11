@@ -19,6 +19,7 @@ const AbTabs = ({ label, color, getter, setter, items }: AbTabsProps) => {
       aria-label={label}
       textColor={color}
       indicatorColor={color}
+      sx={{ fontStyle: 'none' }}
     >
       {items.map((t, i) => (
         <Tab key={i} label={t} />

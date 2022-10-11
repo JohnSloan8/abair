@@ -5,6 +5,21 @@ import { deepmerge } from '@mui/utils';
 import { Themes } from './types';
 
 const sharedTheme = {
+  typography: {
+    fontFamily: ['Montserrat', 'Roboto', 'Arial', 'Helvetica', 'sans-serif'].join(','),
+    h4: {
+      fontWeight: 400,
+    },
+    h5: {
+      fontWeight: 400,
+    },
+    h6: {
+      fontWeight: 400,
+    },
+    button: {
+      fontStyle: 'italic',
+    },
+  },
   palette: {
     background: {
       default: '#fafafa',

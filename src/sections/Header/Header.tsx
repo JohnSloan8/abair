@@ -38,12 +38,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
 
   return (
     <Box sx={{ flexGrow: 1 }} color="background">
-      <AppBar
-        color="inherit"
-        elevation={0}
-        position="fixed"
-        // sx={{ borderBottom: 1, borderColor: 'primary.light' }}
-      >
+      <AppBar color="inherit" elevation={0} position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between', minHeight: '64px' }}>
           <FlexBox>
             <IconButton

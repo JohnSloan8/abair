@@ -1,26 +1,40 @@
+import { useRecoilValue } from 'recoil';
+
 import Box from '@mui/material/Box';
 
 import { CenteredFlexBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
+import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
 
 const AbSynthesisVoiceSelectionCtrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
-
+  const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   return (
     <Box
       width={'100%'}
+      height={frontPageSelectionBoxSizeValue}
       sx={{
         opacity: frontPageTabs === 0 ? 1 : 0,
+        position: 'relative',
       }}
     >
       <CenteredFlexBox>
-        <Box width={'100%'} sx={{ minWidth: 240, maxWidth: { sm: 440, xs: 240 } }}>
-          <AbMapCtrl />
+        <Box
+          height={{
+            sm: frontPageSelectionBoxSizeValue - 85,
+            xs: frontPageSelectionBoxSizeValue - 55,
+          }}
+          minWidth={300}
+          maxWidth={600}
+        >
+          <CenteredFlexBox height={'100%'} width={'100%'} sx={{ position: 'relative' }}>
+            <AbMapCtrl />
+          </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
-      <CenteredFlexBox mt={-2} mb={-2}>
+      <CenteredFlexBox height={{ sm: 85, xs: 55 }}>
         <AbGenderChoicesCtrl />
       </CenteredFlexBox>
     </Box>

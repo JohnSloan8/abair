@@ -10,6 +10,8 @@ import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
 import getSynthesis from '@/services/abair/synthesis';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
+import { postSynthesisRequest } from '@/services/supabase/synthesis-requests';
+import { useSession, useSessionID } from '@/store/auth';
 import {
   isSynthesisTextEmptyString,
   useAwaitingSynthesis,
@@ -26,6 +28,8 @@ import {
 import AbSynthesisAudioPlayerCtrl from '../AbSynthesisAudioPlayerCtrl';
 
 const AbSynthesisButtonsCtrl = () => {
+  const { sessionID } = useSessionID();
+  const { session } = useSession();
   const { synthesisText } = useSynthesisText();
   const { setSynthesisAudio } = useSynthesisAudio();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
@@ -57,6 +61,11 @@ const AbSynthesisButtonsCtrl = () => {
     getSynthesis(synthesisText, synthesisVoiceSelectedValue).then((data: any) => {
       setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
       setAwaitingSynthesis(false);
+      postSynthesisRequest({
+        user_id: session === null ? null : session.user.id,
+        session_ID: sessionID,
+        text: synthesisText,
+      });
     });
   };
 

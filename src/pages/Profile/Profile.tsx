@@ -115,7 +115,7 @@ function Profile() {
                                 {d.name}
                               </MenuItem>
                             ))
-                          : null}
+                          : ''}
                       </Select>
                     </FormControl>
                   </Grid>

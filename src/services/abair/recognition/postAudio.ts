@@ -6,12 +6,7 @@ import { recognitionURL } from '@/config';
 // import { transcriptionModel } from '@/models/transcription';
 
 // const postAudioBlob = async (blob: string | undefined, filename: string): transcriptionModel[] => {
-const postAudio = async (
-  audioData: string,
-  // userID: string | null,
-  // sessStart: string,
-  // setter: SetterOrUpdater<transcriptionModel>,
-) => {
+const postAudio = async (audioData: string) => {
   try {
     const { data } = await axios({
       method: 'post',
@@ -21,30 +16,13 @@ const postAudio = async (
       },
       data: {
         recogniseBlob: audioData,
-        userID: 1,
-        sessionID: 1,
         developer: true,
       },
     });
     if (data) {
       return data;
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // .then((response: any) => {
-    //   console.log('postAudio response:', response.data);
-    //   // setter({
-    //   //   user: userID,
-    //   //   session_ID: sessStart,
-    //   //   audio_file_path: response.data.audioFilePath,
-    //   //   duration: parseFloat(response.data.duration),
-    //   //   recognition_response: response.data.transcriptions,
-    //   // });
-    //   return response.data;
-    // })
-    // .catch(function (error) {
-    //   alert('error:' + error);
-    //   return 'problem';
-    // });
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     alert(error.message);

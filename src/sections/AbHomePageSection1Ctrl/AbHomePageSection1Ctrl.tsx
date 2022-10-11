@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -18,12 +19,12 @@ import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionC
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
-import { useViewHeight } from '@/store/viewDimensions';
+import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 const AbHomePageSection1Ctrl = () => {
-  const { viewHeight } = useViewHeight();
+  const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { frontPageTabs } = useFrontPageTabs();
-
+  const { breakpointSize } = useBreakpointSize();
   const mainSelectionBox = useRef(null);
   const mainControlBox = useRef(null);
   const instructions1 = useRef(null);
@@ -87,8 +88,8 @@ const AbHomePageSection1Ctrl = () => {
   }, [frontPageTabs]);
 
   useEffect(() => {
-    console.log('viewHeight', viewHeight);
-  }, [viewHeight]);
+    console.log('frontPage:', frontPageSelectionBoxSizeValue);
+  }, [frontPageSelectionBoxSizeValue]);
 
   return (
     <FullSizeBox
@@ -98,18 +99,21 @@ const AbHomePageSection1Ctrl = () => {
         backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <CenteredFlexBox pt={{ sm: 2, xs: 1 }}>
-        <AbInfoHeader title="State-of-the-art Speech and Language Technologies for Irish" />
+      <CenteredFlexBox>
+        <AbInfoHeader
+          variant="front"
+          title="State-of-the-art Speech and Language Technologies for Irish"
+        />
       </CenteredFlexBox>
-      <CenteredFlexBox mt={{ sm: 0, xs: -2 }}>
+      <CenteredFlexBox height={{ sm: '64px', xs: '48px' }}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
-      <CenteredFlexBox ref={mainSelectionBox} height={'calc(100vh - 64px - 360px)'} width={'100%'}>
+      <CenteredFlexBox ref={mainSelectionBox} height={frontPageSelectionBoxSizeValue}>
         {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
       </CenteredFlexBox>
 
-      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: '8%', xs: '6%' } }}>
+      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 55, xs: 40 } }}>
         <CenteredFlexBox ref={mainControlBox}>
           <Box width={'100%'} maxWidth={550} minWidth={250}>
             {frontPageTabs === 0 ? (
@@ -118,7 +122,7 @@ const AbHomePageSection1Ctrl = () => {
               </AbSynthesisCtrl>
             ) : (
               <AbRecognitionCtrl
-                textbox={<AbRecognitionTextFieldCtrl rows={4} />}
+                textbox={<AbRecognitionTextFieldCtrl rows={breakpointSize === 'xs' ? 3 : 4} />}
                 buttons={<AbRecognitionButtonsCtrl />}
               />
             )}
@@ -127,7 +131,7 @@ const AbHomePageSection1Ctrl = () => {
       </Box>
       <Box
         width="100%"
-        height="18%"
+        height={breakpointSize === 'xs' ? '150px' : '180px'}
         sx={{
           position: 'absolute',
           bottom: 0,

@@ -9,8 +9,8 @@ import womanSpeakingIntoPhoneImg from '/assets/images/misc/woman-speaking-into-p
 const AbRecognitionImageCtrl = () => {
   return (
     <Box sx={{ height: '100%', width: '100%', position: 'relative' }}>
-      <CenteredFlexBox mt={0} mb={4}>
-        <Box mb={-4} mt={2} width={'100%'} sx={{ minWidth: 240, maxWidth: { sm: 440, xs: 240 } }}>
+      <CenteredFlexBox>
+        <Box sx={{ position: 'absolute', bottom: 0, height: '95%' }}>
           <Image
             duration={0}
             height={'100%'}

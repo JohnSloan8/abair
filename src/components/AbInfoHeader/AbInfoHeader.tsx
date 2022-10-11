@@ -1,32 +1,58 @@
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import { CenteredFlexBox } from '../styled';
+import styles from './styles';
+
 interface AbInfoHeaderProps {
+  variant?: 'front' | 'main';
   title: string;
-  color?: '#000' | 'background.paper';
+  color?: 'text.main' | 'background.paper';
   description?: string;
 }
 
-function AbInfoHeader({ title, description, color = '#000' }: AbInfoHeaderProps) {
+function AbInfoHeader({
+  variant = 'main',
+  title,
+  description,
+  color = 'text.main',
+}: AbInfoHeaderProps) {
+  const variation = styles[variant];
   return (
-    <Box width="100%">
-      <Typography
-        color={color}
-        sx={{ typography: { sm: 'h5', xs: 'h6' } }}
-        mb={{ sm: 1, xs: 1 }}
-        align="center"
-      >
-        {title}
-      </Typography>
-      <Typography
-        sx={{ typography: { sm: 'body1', xs: 'body2' } }}
-        mb={0}
-        color={color}
-        align="center"
-      >
-        {description}
-      </Typography>
-    </Box>
+    <CenteredFlexBox
+      width="100%"
+      maxWidth="md"
+      height={{ sm: variation.heights[0], xs: variation.heights[1] }}
+      px={1}
+    >
+      <Grid container direction={'column'}>
+        <Typography
+          color={color}
+          sx={{
+            typography: {
+              sm: variation.titleFonts[0],
+              xs: variation.titleFonts[1],
+            },
+          }}
+          align="center"
+        >
+          {title}
+        </Typography>
+
+        <Typography
+          sx={{
+            typography: {
+              sm: variation.descriptionFonts[0],
+              xs: variation.descriptionFonts[1],
+            },
+          }}
+          color={color}
+          align="center"
+        >
+          {description}
+        </Typography>
+      </Grid>
+    </CenteredFlexBox>
   );
 }
 
