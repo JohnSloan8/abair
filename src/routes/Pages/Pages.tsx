@@ -28,7 +28,7 @@ function Pages() {
 
   return (
     <Box>
-      <TrueFullSizeBox justifyContent="center" border={1}>
+      <TrueFullSizeBox justifyContent="center">
         <Box sx={{ height: '64px' }}></Box>
         <ScrollToTop>
           <Routes>
