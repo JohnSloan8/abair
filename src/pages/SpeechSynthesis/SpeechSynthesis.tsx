@@ -18,7 +18,7 @@ function SpeechSynthesis() {
       <CenteredFlexBox>
         <Box sx={{ maxWidth: 'sm', width: '100%' }}>
           <Meta title="speech synthesis" />
-          <AbInfoHeader title="Speech Synthesis" />
+          <AbInfoHeader title="Speech Synthesis" variant="front" />
           <CenteredFlexBox m={2}>
             <Grid container spacing={0}>
               <Grid item xs={12} sm={6}>

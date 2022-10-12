@@ -9,7 +9,6 @@ import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import Pages from '@/routes/Pages';
 import AbSizingCtrl from '@/sections/AbSizingCtrl';
-// import Footer from '@/sections/Footer';
 import Header from '@/sections/Header';
 import Sidebar from '@/sections/Sidebar';
 import supabase from '@/services/supabase';
@@ -42,7 +41,6 @@ function App() {
         <Header />
         <Sidebar />
         <Pages />
-        {/* <Footer /> */}
         <AbSizingCtrl />
       </BrowserRouter>
     </Fragment>

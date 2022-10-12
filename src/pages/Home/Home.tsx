@@ -1,128 +1,27 @@
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-
-import Image from 'mui-image';
-import { SwiperSlide } from 'swiper/react';
-
-import AbInfoHeader from '@/components/AbInfoHeader';
-import AbNewsSwiper from '@/components/AbNewsSwiper';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { FullSizeBox } from '@/components/styled';
+import AbHomePageApplicationsCtrl from '@/sections/AbHomePageApplicationsCtrl';
 import AbHomePageCoreTechnologiesCtrl from '@/sections/AbHomePageCoreTechnologiesCtrl';
+import AbHomePageKnowledgeCtrl from '@/sections/AbHomePageKnowledgeCtrl';
+import AbHomePageNewsCtrl from '@/sections/AbHomePageNewsCtrl';
 import AbHomePageSection1Ctrl from '@/sections/AbHomePageSection1Ctrl';
-import { getNews } from '@/services/supabase/news';
-import { useNewsStories } from '@/store/news';
 
 function Home() {
-  const { newsStories, setNewsStories } = useNewsStories();
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (newsStories.length === 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      getNews().then((res: any) => {
-        setNewsStories(res);
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
       <Meta title="home" />
-
       <AbHomePageSection1Ctrl />
-
-      <FullSizeBox py={6}>
+      <FullSizeBox py={{ xs: 4, sm: 8 }}>
         <AbHomePageCoreTechnologiesCtrl />
       </FullSizeBox>
-      <FullSizeBox py={6} sx={{ backgroundColor: 'primary.wafer' }}>
-        <CenteredFlexBox>
-          <Box maxWidth="md">
-            <AbInfoHeader
-              title="Applications"
-              description="Access a wide range of applications developed using our core technologies for public, education, and accessibility."
-            />
-            <CenteredFlexBox py={4}>
-              <Link to="/applications">
-                <Image
-                  duration={1000}
-                  width={500}
-                  easing="ease-out"
-                  alt="Abair Applications"
-                  src="/assets/images/misc/abair-applications.png"
-                  showLoading
-                />
-              </Link>
-            </CenteredFlexBox>
-          </Box>
-        </CenteredFlexBox>
+      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+        <AbHomePageApplicationsCtrl />
       </FullSizeBox>
-      <FullSizeBox py={6}>
-        <CenteredFlexBox>
-          <Box maxWidth="md">
-            <AbInfoHeader
-              title="Latest News"
-              description="Check out what's been going on recently in the world of Abair."
-            />
-            <Box component={Link} to={'/news'}>
-              <Typography variant="body1" m={2} align="center">
-                See all
-              </Typography>
-            </Box>
-            <Box py={4} maxWidth="md">
-              <AbNewsSwiper>
-                {newsStories.map((nS, i) => (
-                  <SwiperSlide key={i}>
-                    <Card>
-                      <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                        <Image
-                          duration={1000}
-                          height={200}
-                          easing="ease-out"
-                          alt={`${nS.title + i}`}
-                          src={nS.images ? nS.images[0].url : ''}
-                          bgColor="#fff"
-                          showLoading
-                        />
-                        <CardContent>
-                          <Typography variant="body2">{nS.date}</Typography>
-                          <Typography gutterBottom variant="h5">
-                            {nS.title}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary" align="left">
-                            {nS.blurb}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </SwiperSlide>
-                ))}
-              </AbNewsSwiper>
-            </Box>
-          </Box>
-        </CenteredFlexBox>
+      <FullSizeBox py={{ xs: 4, sm: 8 }}>
+        <AbHomePageNewsCtrl />
       </FullSizeBox>
-      <FullSizeBox py={6} sx={{ backgroundColor: 'primary.wafer' }}>
-        <CenteredFlexBox>
-          <Box mt={{ xs: 2, sm: 6 }} maxWidth="md">
-            <AbInfoHeader
-              title="Knowledge Base"
-              description="Learn about the linguistic research being carried out which informs the technological development"
-            />
-            <Box component={Link} to={'/knowledge'}>
-              <Typography variant="body1" m={2} align="center">
-                Read Publications
-              </Typography>
-            </Box>
-          </Box>
-        </CenteredFlexBox>
+      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+        <AbHomePageKnowledgeCtrl />
       </FullSizeBox>
     </>
   );

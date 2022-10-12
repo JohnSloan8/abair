@@ -14,7 +14,7 @@ interface AbSwiperModel {
 
 function AbNewsSwiper({ children }: AbSwiperModel) {
   return (
-    <Box width={'100%'}>
+    <Box width={920}>
       <Swiper
         slidesPerView={3}
         loop={true}

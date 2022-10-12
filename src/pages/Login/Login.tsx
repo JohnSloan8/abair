@@ -9,7 +9,7 @@ import { Box } from '@mui/system';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import supabase from '@/services/supabase';
 
 function Login() {
@@ -52,106 +52,108 @@ function Login() {
   };
 
   return (
-    <CenteredFlexBox>
-      <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-        <Meta title="log in" />
-        {confirmationEmailSent ? (
-          <AbInfoHeader
-            title="Confirmation Email sent"
-            description="Please check your email to confirm your accout. Then you can login to Abair."
-          />
-        ) : showSignupPage ? (
-          <AbInfoHeader title="Sign Up" />
-        ) : (
-          <AbInfoHeader title="Log In" />
-        )}
-        <CenteredFlexBox m={2}>
-          {loading ? (
-            'Processing...'
-          ) : confirmationEmailSent ? (
-            <></>
+    <FullSizeBox>
+      <CenteredFlexBox>
+        <Box sx={{ maxWidth: 'sm', width: '100%' }}>
+          <Meta title="log in" />
+          {confirmationEmailSent ? (
+            <AbInfoHeader
+              title="Confirmation Email sent"
+              description="Please check your email to confirm your accout. Then you can login to Abair."
+            />
+          ) : showSignupPage ? (
+            <AbInfoHeader title="Sign Up" />
           ) : (
-            <Box
-              component="form"
-              noValidate
-              onSubmit={(e: FormEvent<HTMLFormElement>) => {
-                handleSubmit(e);
-              }}
-              sx={{ mt: 3 }}
-            >
-              <Grid container spacing={0}>
-                <Grid item xs={12} my={1}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    type="email"
-                    placeholder="Your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} my={1}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </Grid>
-                {showSignupPage ? (
-                  <>
-                    <Grid item xs={12} my={1}>
-                      <TextField
-                        required
-                        fullWidth
-                        name="confirm password"
-                        label="Confirm Password"
-                        type="password"
-                        id="password"
-                        autoComplete="new-password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </Grid>
-                    <CenteredFlexBox sx={{ width: '100%' }}>
-                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        Sign Up
-                      </Button>
-                    </CenteredFlexBox>
-
-                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                      I already have an account
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <CenteredFlexBox sx={{ width: '100%' }}>
-                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        login
-                      </Button>
-                    </CenteredFlexBox>
-
-                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                      Create an Abair account
-                    </Button>
-                  </>
-                )}
-              </Grid>
-              {/* </form> */}
-            </Box>
+            <AbInfoHeader title="Log In" />
           )}
-        </CenteredFlexBox>
-      </Box>
-    </CenteredFlexBox>
+          <CenteredFlexBox m={2}>
+            {loading ? (
+              'Processing...'
+            ) : confirmationEmailSent ? (
+              <></>
+            ) : (
+              <Box
+                component="form"
+                noValidate
+                onSubmit={(e: FormEvent<HTMLFormElement>) => {
+                  handleSubmit(e);
+                }}
+                sx={{ mt: 3 }}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={12} my={1}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      type="email"
+                      placeholder="Your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} my={1}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      autoComplete="new-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Grid>
+                  {showSignupPage ? (
+                    <>
+                      <Grid item xs={12} my={1}>
+                        <TextField
+                          required
+                          fullWidth
+                          name="confirm password"
+                          label="Confirm Password"
+                          type="password"
+                          id="password"
+                          autoComplete="new-password"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                      </Grid>
+                      <CenteredFlexBox sx={{ width: '100%' }}>
+                        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                          Sign Up
+                        </Button>
+                      </CenteredFlexBox>
+
+                      <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
+                        I already have an account
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <CenteredFlexBox sx={{ width: '100%' }}>
+                        <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                          login
+                        </Button>
+                      </CenteredFlexBox>
+
+                      <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
+                        Create an Abair account
+                      </Button>
+                    </>
+                  )}
+                </Grid>
+                {/* </form> */}
+              </Box>
+            )}
+          </CenteredFlexBox>
+        </Box>
+      </CenteredFlexBox>
+    </FullSizeBox>
   );
 }
 

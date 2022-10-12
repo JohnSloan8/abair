@@ -18,7 +18,7 @@ const AbClickableCard = ({
 }: AbClickableCardProps) => {
   const style = styles[variation];
   return (
-    <Card sx={{ minWidth: style.minWidth, maxWidth: style.maxWidth }}>
+    <Card sx={{ height: style.height, width: style.width }}>
       <CardActionArea onClick={handleClickEvent}>
         <CardContent
           sx={{

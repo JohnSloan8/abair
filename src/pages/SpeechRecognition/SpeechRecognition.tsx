@@ -16,7 +16,7 @@ function SpeechRecognition() {
       <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
           <Meta title="speech recognition" />
-          <AbInfoHeader title="Speech Recognition" />
+          <AbInfoHeader title="Speech Recognition" variant="front" />
           <Box
             my={4}
             mx={3}

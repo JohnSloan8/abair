@@ -4,8 +4,8 @@ const styles: { [name: string]: AbClickableCardStyles } = {
     color: 'gray',
     padding: 2,
     bottom: 0,
-    minWidth: 280,
-    maxWidth: 280,
+    width: 390,
+    height: 260,
     image: 'assets/images/misc/400x600_fallbackAbairImage.jpg',
   },
   app: {
@@ -13,8 +13,8 @@ const styles: { [name: string]: AbClickableCardStyles } = {
     color: 'info.main',
     padding: 1,
     bottom: undefined,
-    minWidth: 120,
-    maxWidth: 164,
+    width: 276,
+    height: 184,
     image: 'assets/images/misc/400x400_fallbackAbairImage.jpg',
   },
 };
@@ -24,8 +24,8 @@ interface AbClickableCardStyles {
   color: string;
   padding: number;
   bottom?: number;
-  minWidth: number;
-  maxWidth: number;
+  width: number;
+  height: number;
   image: string;
 }
 

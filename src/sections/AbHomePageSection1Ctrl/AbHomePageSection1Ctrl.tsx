@@ -27,9 +27,7 @@ const AbHomePageSection1Ctrl = () => {
   const { breakpointSize } = useBreakpointSize();
   const mainSelectionBox = useRef(null);
   const mainControlBox = useRef(null);
-  const instructions1 = useRef(null);
-  const instructions2 = useRef(null);
-  const instructions3 = useRef(null);
+  const instructions = useRef(null);
   const inputBoxTl = useRef(gsap.timeline());
 
   useEffect(() => {
@@ -56,34 +54,14 @@ const AbHomePageSection1Ctrl = () => {
       '+=0.25',
     );
     inputBoxTl.current = gsap.timeline().fromTo(
-      instructions1.current,
+      instructions.current,
       { opacity: '0%' },
       {
         opacity: '100%',
         ease: 'none',
-        duration: 0.5,
+        duration: 1,
       },
       '+=1',
-    );
-    inputBoxTl.current = gsap.timeline().fromTo(
-      instructions2.current,
-      { opacity: '0%' },
-      {
-        opacity: '100%',
-        ease: 'none',
-        duration: 0.5,
-      },
-      '+=2.5',
-    );
-    inputBoxTl.current = gsap.timeline().fromTo(
-      instructions3.current,
-      { opacity: '0%' },
-      {
-        opacity: '100%',
-        ease: 'none',
-        duration: 0.5,
-      },
-      '+=4',
     );
   }, [frontPageTabs]);
 
@@ -148,10 +126,11 @@ const AbHomePageSection1Ctrl = () => {
                 sx={{ typography: { sm: 'body1', xs: 'body2' } }}
                 align="center"
                 color="default"
+                ref={instructions}
               >
-                <span ref={instructions1}>Choose dialect {'&'} gender</span>
-                <span ref={instructions2}> &nbsp;{'>'}&nbsp; Type</span>
-                <span ref={instructions3}> &nbsp;{'>'}&nbsp; Synthesise</span>
+                <span>Choose dialect {'&'} gender</span>
+                <span> &nbsp;{'>'}&nbsp; Type</span>
+                <span> &nbsp;{'>'}&nbsp; Synthesise</span>
               </Typography>
             ) : (
               <Typography
@@ -159,10 +138,11 @@ const AbHomePageSection1Ctrl = () => {
                 sx={{ typography: { sm: 'body1', xs: 'body2' } }}
                 align="center"
                 color="default"
+                ref={instructions}
               >
-                <span ref={instructions1}>Go to a quiet space</span>
-                <span ref={instructions2}> &nbsp;{'>'}&nbsp; Tap Microphone</span>
-                <span ref={instructions3}> &nbsp;{'>'}&nbsp; Speak</span>
+                <span>Go to a quiet space</span>
+                <span> &nbsp;{'>'}&nbsp; Tap Microphone</span>
+                <span> &nbsp;{'>'}&nbsp; Speak</span>
               </Typography>
             )}
           </CenteredFlexBox>

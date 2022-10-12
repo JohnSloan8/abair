@@ -12,7 +12,7 @@ const CenteredFlexBox = styled(FlexBox)({
 
 const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
   width: '100%',
-  height: 'calc(100vh - 64px)',
+  height: '100%',
 });
 
 const FullSizeBox = styled(Box)({
@@ -21,4 +21,10 @@ const FullSizeBox = styled(Box)({
   height: 'calc(100vh - 64px)',
 });
 
-export { FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox, FullSizeBox };
+const TrueFullSizeBox = styled(Box)({
+  position: 'relative',
+  width: '100%',
+  minHeight: '100vh',
+});
+
+export { TrueFullSizeBox, FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox, FullSizeBox };

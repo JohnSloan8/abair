@@ -7,7 +7,7 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsStory from '@/components/AbNewsStory';
 import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
@@ -25,29 +25,33 @@ function News() {
   }, []);
 
   return (
-    <>
+    <FullSizeBox>
       <Meta title="news" />
-      <AbInfoHeader title="News" />
       <CenteredFlexBox>
-        <Box sx={{ width: '100%', maxWidth: 'md' }}>
-          {loading ? (
-            <p>loading...</p>
-          ) : (
-            newsStories.map((nS: AbNewsStoryModel, i: number) => (
-              <AbNewsStory
-                key={i}
-                id={nS.id}
-                title={nS.title}
-                date={nS.date}
-                blurb={nS.blurb}
-                body={nS.body}
-                images={nS.images}
-              />
-            ))
-          )}
+        <Box sx={{ maxWidth: 'md', width: '100%' }}>
+          <AbInfoHeader title="News" variant="front" />
+          <CenteredFlexBox>
+            <Box sx={{ width: '100%', maxWidth: 'md' }}>
+              {loading ? (
+                <p>loading...</p>
+              ) : (
+                newsStories.map((nS: AbNewsStoryModel, i: number) => (
+                  <AbNewsStory
+                    key={i}
+                    id={nS.id}
+                    title={nS.title}
+                    date={nS.date}
+                    blurb={nS.blurb}
+                    body={nS.body}
+                    images={nS.images}
+                  />
+                ))
+              )}
+            </Box>
+          </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
-    </>
+    </FullSizeBox>
   );
 }
 

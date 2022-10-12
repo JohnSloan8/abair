@@ -38,19 +38,21 @@ function AbInfoHeader({
         >
           {title}
         </Typography>
-
-        <Typography
-          sx={{
-            typography: {
-              sm: variation.descriptionFonts[0],
-              xs: variation.descriptionFonts[1],
-            },
-          }}
-          color={color}
-          align="center"
-        >
-          {description}
-        </Typography>
+        {description ? (
+          <Typography
+            pt={{ sm: 4, xs: 2 }}
+            sx={{
+              typography: {
+                sm: variation.descriptionFonts[0],
+                xs: variation.descriptionFonts[1],
+              },
+            }}
+            color={color}
+            align="center"
+          >
+            {description}
+          </Typography>
+        ) : null}
       </Grid>
     </CenteredFlexBox>
   );

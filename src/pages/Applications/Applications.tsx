@@ -9,7 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import AbApplicationCard from '@/components/AbApplicationCard';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import { ApplicationModel } from '@/models/application';
 import { getApplications } from '@/services/supabase/applications';
 import getCategories from '@/services/supabase/applications/getCategories';
@@ -60,33 +60,40 @@ function Applications() {
   };
 
   return (
-    <>
-      <Meta title="applications" />
-      <AbInfoHeader title="Applications" />
-
+    <FullSizeBox>
       <CenteredFlexBox>
-        {categories ? (
-          <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
-            {categories.map((c, i) => (
-              <Tab key={i} label={c.name} />
-            ))}
-          </Tabs>
-        ) : null}
-      </CenteredFlexBox>
-      <CenteredFlexBox mt={2}>
-        <Box sx={{ maxWidth: 'md', width: '100%' }}>
-          {filteredApplications.map((a: ApplicationModel, i: number) => (
-            <AbApplicationCard
-              key={i}
-              handleClick={() => handleClick(a.url)}
-              name={a.name}
-              description={a.description}
-              image={a.image}
-            />
-          ))}
+        <Box sx={{ width: '100%', maxWidth: 'md' }}>
+          <Meta title="applications" />
+          <CenteredFlexBox>
+            <Box sx={{ maxWidth: 'md', width: '100%' }}>
+              <AbInfoHeader title="Applications" variant="front" />
+            </Box>
+          </CenteredFlexBox>
+          <CenteredFlexBox>
+            {categories ? (
+              <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
+                {categories.map((c, i) => (
+                  <Tab key={i} label={c.name} />
+                ))}
+              </Tabs>
+            ) : null}
+          </CenteredFlexBox>
+          <CenteredFlexBox mt={2}>
+            <Box sx={{ maxWidth: 'md', width: '100%' }}>
+              {filteredApplications.map((a: ApplicationModel, i: number) => (
+                <AbApplicationCard
+                  key={i}
+                  handleClick={() => handleClick(a.url)}
+                  name={a.name}
+                  description={a.description}
+                  image={a.image}
+                />
+              ))}
+            </Box>
+          </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
-    </>
+    </FullSizeBox>
   );
 }
 

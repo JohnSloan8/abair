@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 
 import getAudio from '@/services/abair/recognition/getAudio';
@@ -22,19 +25,12 @@ const AbTranscriptionsCtrl = () => {
 
   useEffect(() => {
     updateTranscriptions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(() => {
-  //   console.log('transcriptions:', transcriptions);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [transcriptions]);
 
   useEffect(() => {
     updateTranscriptions();
     setAwaitingTranscription(false);
     if (transcription !== undefined) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       getAudio(transcription.audio_file_path).then((res: any) => {
         setRecognitionAudio(`data:audio/wav;base64,${res.audio}`);
       });
@@ -44,18 +40,15 @@ const AbTranscriptionsCtrl = () => {
         setEditableTranscriptionText(transcription.correction);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transcription]);
 
   const updateTranscriptions = () => {
     if (session) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       getTranscriptions(session.user.id).then((res: any) => {
         console.log('getTranscriptions:', res);
         setTranscriptions(res);
       });
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       getThisSessionTranscriptions(sessionID).then((res: any) => {
         console.log('getThisSessionTranscriptions:', res);
         setTranscriptions(res);

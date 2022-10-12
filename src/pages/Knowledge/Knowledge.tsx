@@ -11,7 +11,7 @@ function Knowledge() {
       <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'md' }}>
           <Meta title="knowledge" />
-          <AbInfoHeader title="Knowledge" />
+          <AbInfoHeader title="Knowledge" variant="front" />
           <AbKnowledgeCtrl />
         </Box>
       </CenteredFlexBox>
