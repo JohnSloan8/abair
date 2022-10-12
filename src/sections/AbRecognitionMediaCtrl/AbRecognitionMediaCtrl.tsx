@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
 import { useReactMediaRecorder } from 'react-media-recorder';
 
@@ -29,10 +32,9 @@ const AbRecognitionMediaCtrl = () => {
     onStop: async (blobUrl: string, blob: Blob) => {
       setAwaitingTranscription(true);
       setRecognitionAudio(blobUrl);
+      console.log('blob:', blob);
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       convertBlobToBase64(blob).then((result: any) => {
-        //eslint-disable-next-line @typescript-eslint/no-explicit-any
         postAudio(result.slice(22)).then((data: any) => {
           postTranscription({
             user_id: session === null ? null : session.user.id,
@@ -40,9 +42,7 @@ const AbRecognitionMediaCtrl = () => {
             audio_file_path: data.audioFilePath.slice(5, data.audioFilePath.length - 4), // trim the /tmp and .wav
             duration: parseFloat(data.duration),
             recognition_response: data.transcriptions,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           }).then((data: any) => {
-            console.log('data from postTranscription:', data);
             setTranscription({
               id: data.id,
               user_id: data.user,
@@ -75,7 +75,6 @@ const AbRecognitionMediaCtrl = () => {
       console.log('stopping recording');
       stopRecording();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceRecording]);
 
   return null;
