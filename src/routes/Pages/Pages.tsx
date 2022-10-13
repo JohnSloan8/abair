@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 import { TrueFullSizeBox } from '@/components/styled';
-import Footer from '@/sections/Footer';
+// import Footer from '@/sections/Footer';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
 import ScrollToTop from '@/utils/scrollToTop';
 
@@ -22,13 +22,12 @@ function Pages() {
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Box>
-      <TrueFullSizeBox justifyContent="center">
+      <TrueFullSizeBox sx={{ position: 'relative' }} justifyContent="center">
         <Box sx={{ height: '64px' }}></Box>
         <ScrollToTop>
           <Routes>
@@ -38,7 +37,7 @@ function Pages() {
           </Routes>
         </ScrollToTop>
       </TrueFullSizeBox>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 }

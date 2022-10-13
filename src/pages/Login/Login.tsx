@@ -14,7 +14,7 @@ import supabase from '@/services/supabase';
 
 function Login() {
   const [loading, setLoading] = useState(false);
-  const [confirmationEmailSent, setConfirmationEmailSent] = useState(false);
+  const [confirmationEmailSent] = useState(false);
   const [showSignupPage, setShowSignupPage] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,8 +38,9 @@ function Login() {
         console.log(error);
       } else {
         console.log(data.user);
-        setConfirmationEmailSent(true);
+        // setConfirmationEmailSent(true);
         setShowSignupPage(false);
+        navigate('/profile', { replace: true });
       }
     } else {
       setLoading(true);

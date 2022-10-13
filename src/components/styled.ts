@@ -25,6 +25,7 @@ const TrueFullSizeBox = styled(Box)({
   position: 'relative',
   width: '100%',
   minHeight: '100vh',
+  height: '100%',
 });
 
 export { TrueFullSizeBox, FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox, FullSizeBox };
