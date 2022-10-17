@@ -8,10 +8,12 @@ import { gsap } from 'gsap';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+// import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
+import AbMediaCtrl from '@/sections/AbMediaCtrl';
+// import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
-import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
 import AbRecognitionTextFieldCtrl from '@/sections/AbRecognitionTextFieldCtrl/AbRecognitionTextFieldCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
@@ -20,6 +22,8 @@ import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
+
+// import initMediaRecorder from './utils';
 
 const AbHomePageSection1Ctrl = () => {
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
@@ -68,6 +72,12 @@ const AbHomePageSection1Ctrl = () => {
   useEffect(() => {
     console.log('frontPage:', frontPageSelectionBoxSizeValue);
   }, [frontPageSelectionBoxSizeValue]);
+
+  // useEffect(() => {
+  //   initMediaRecorder().then((res) => {
+  //     console.log('res:', res);
+  //   });
+  // }, []);
 
   return (
     <FullSizeBox
@@ -147,7 +157,8 @@ const AbHomePageSection1Ctrl = () => {
             )}
           </CenteredFlexBox>
         </Box>
-        <AbRecognitionMediaCtrl />
+        {/* <AbRecognitionMediaCtrl /> */}
+        <AbMediaCtrl />
         <AbTranscriptionsCtrl />
       </Box>
     </FullSizeBox>
