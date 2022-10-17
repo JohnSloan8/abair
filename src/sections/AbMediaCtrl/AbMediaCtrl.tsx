@@ -8,6 +8,7 @@ import postTranscription from '@/services/supabase/transcriptions/postTranscript
 import { useSession, useSessionID } from '@/store/auth';
 import {
   useAwaitingTranscription,
+  useMediaRecorderReady,
   useRecognitionAudio,
   useStream,
   useVoiceRecording,
@@ -26,6 +27,7 @@ const AbMediaCtrl = () => {
   const { setRecognitionAudio } = useRecognitionAudio();
   const { stream, setStream } = useStream();
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
+  const { setMediaRecorderReady } = useMediaRecorderReady();
 
   const { session } = useSession();
 
@@ -51,17 +53,14 @@ const AbMediaCtrl = () => {
   useEffect(() => {
     if (stream === undefined) {
       initStream().then((res: any) => {
-        console.log('res:', res);
         setStream(res);
       });
     }
   }, []);
 
   useEffect(() => {
-    console.log('stream:', stream);
     if (stream !== undefined) {
       initMediaRecorder(stream).then((res: any) => {
-        console.log('res:', res);
         setMediaRecorder(res);
       });
     }
@@ -69,8 +68,8 @@ const AbMediaCtrl = () => {
 
   let chunks: any[] = [];
   useEffect(() => {
-    console.log('mediaRecorder:', mediaRecorder);
     if (mediaRecorder !== undefined) {
+      setMediaRecorderReady(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       mediaRecorder.onstop = (e: any) => {
         console.log('data available after MediaRecorder.stop() called.');

@@ -9,7 +9,6 @@ import { gsap } from 'gsap';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 // import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
-import AbMediaCtrl from '@/sections/AbMediaCtrl';
 // import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
@@ -23,12 +22,15 @@ import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
+import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
+
 // import initMediaRecorder from './utils';
 
 const AbHomePageSection1Ctrl = () => {
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
+
   const mainSelectionBox = useRef(null);
   const mainControlBox = useRef(null);
   const instructions = useRef(null);
@@ -69,16 +71,6 @@ const AbHomePageSection1Ctrl = () => {
     );
   }, [frontPageTabs]);
 
-  useEffect(() => {
-    console.log('frontPage:', frontPageSelectionBoxSizeValue);
-  }, [frontPageSelectionBoxSizeValue]);
-
-  // useEffect(() => {
-  //   initMediaRecorder().then((res) => {
-  //     console.log('res:', res);
-  //   });
-  // }, []);
-
   return (
     <FullSizeBox
       sx={{
@@ -111,6 +103,7 @@ const AbHomePageSection1Ctrl = () => {
             ) : (
               <AbRecognitionCtrl
                 textbox={<AbRecognitionTextFieldCtrl rows={breakpointSize === 'xs' ? 3 : 4} />}
+                visualisation={<AbRecognitionVisualisationCtrl />}
                 buttons={<AbRecognitionButtonsCtrl />}
               />
             )}
@@ -157,8 +150,7 @@ const AbHomePageSection1Ctrl = () => {
             )}
           </CenteredFlexBox>
         </Box>
-        {/* <AbRecognitionMediaCtrl /> */}
-        <AbMediaCtrl />
+
         <AbTranscriptionsCtrl />
       </Box>
     </FullSizeBox>

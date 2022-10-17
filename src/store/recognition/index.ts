@@ -48,6 +48,17 @@ const useRecognitionAudioPlaying = () => {
   return { recognitionAudioPlaying, setRecognitionAudioPlaying };
 };
 
+const mediaRecorderReadyState = atom<boolean>({
+  key: 'media-recorder-ready-state',
+  default: false,
+});
+
+const useMediaRecorderReady = () => {
+  const [mediaRecorderReady, setMediaRecorderReady] = useRecoilState(mediaRecorderReadyState);
+
+  return { mediaRecorderReady, setMediaRecorderReady };
+};
+
 const isRecognitionAudioEmpty = selector({
   key: 'recognition-audio-empty-state',
   get: ({ get }) => {
@@ -77,4 +88,5 @@ export {
   useAwaitingTranscription,
   useRecognitionAudioPlaying,
   useStream,
+  useMediaRecorderReady,
 };

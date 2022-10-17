@@ -35,7 +35,10 @@ const AbTranscriptionsCtrl = () => {
         setRecognitionAudio(`data:audio/wav;base64,${res.audio}`);
       });
       if (!transcription.corrected) {
-        setEditableTranscriptionText(transcription.recognition_response[0].utterance);
+        const transcriptionChunks = transcription.recognition_response[0].utterance.split('\n');
+        console.log('transcriptionChuks:', transcriptionChunks);
+        const nonEmptyTc = transcriptionChunks.filter((tC) => tC !== '');
+        setEditableTranscriptionText(nonEmptyTc[nonEmptyTc.length - 1]);
       } else {
         setEditableTranscriptionText(transcription.correction);
       }

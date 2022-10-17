@@ -1,11 +1,18 @@
 import Box from '@mui/material/Box';
 
+import { CenteredFlexBox } from '@/components/styled';
+import AbMediaCtrl from '@/sections/AbMediaCtrl';
+import { useVoiceRecording } from '@/store/recognition';
+
 interface AbRecognitionCtrlProps {
   buttons: React.ReactNode;
   textbox: React.ReactNode;
+  visualisation?: React.ReactNode;
 }
 
-const AbRecognitionCtrl = ({ buttons, textbox }: AbRecognitionCtrlProps) => {
+const AbRecognitionCtrl = ({ buttons, textbox, visualisation }: AbRecognitionCtrlProps) => {
+  const { voiceRecording } = useVoiceRecording();
+
   return (
     <Box
       px={{ sm: 4, xs: 1 }}
@@ -19,8 +26,13 @@ const AbRecognitionCtrl = ({ buttons, textbox }: AbRecognitionCtrlProps) => {
       }}
     >
       {textbox}
-
+      {voiceRecording && (
+        <CenteredFlexBox sx={{ width: '100%', position: 'relative' }}>
+          <Box sx={{ position: 'absolute', bottom: { sm: 16, xs: -5 } }}>{visualisation}</Box>
+        </CenteredFlexBox>
+      )}
       <Box sx={{ width: '100%', height: 50 }}>{buttons}</Box>
+      <AbMediaCtrl />
     </Box>
   );
 };
