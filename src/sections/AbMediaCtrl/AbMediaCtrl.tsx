@@ -9,12 +9,13 @@ import { useSession, useSessionID } from '@/store/auth';
 import {
   useAwaitingTranscription,
   useRecognitionAudio,
+  useStream,
   useVoiceRecording,
 } from '@/store/recognition';
 import { useEditableTranscriptionText, useTranscription } from '@/store/transcriptions';
 import convertBlobToBase64 from '@/utils/convertBlobToBase64';
 
-import initMediaRecorder from './utils';
+import { initMediaRecorder, initStream } from './utils';
 
 const AbMediaCtrl = () => {
   const [mediaRecorder, setMediaRecorder] = useState<any>();
@@ -23,7 +24,7 @@ const AbMediaCtrl = () => {
   const { setAwaitingTranscription } = useAwaitingTranscription();
   const { setTranscription } = useTranscription();
   const { setRecognitionAudio } = useRecognitionAudio();
-
+  const { stream, setStream } = useStream();
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
 
   const { session } = useSession();
@@ -48,11 +49,23 @@ const AbMediaCtrl = () => {
   }, [voiceRecording]);
 
   useEffect(() => {
-    initMediaRecorder().then((res) => {
-      console.log('res:', res);
-      setMediaRecorder(res);
-    });
+    if (stream === undefined) {
+      initStream().then((res: any) => {
+        console.log('res:', res);
+        setStream(res);
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    console.log('stream:', stream);
+    if (stream !== undefined) {
+      initMediaRecorder(stream).then((res: any) => {
+        console.log('res:', res);
+        setMediaRecorder(res);
+      });
+    }
+  }, [stream]);
 
   let chunks: any[] = [];
   useEffect(() => {

@@ -59,10 +59,22 @@ const isRecognitionAudioEmpty = selector({
   },
 });
 
+const streamState = atom<MediaStream | undefined>({
+  key: 'stream-state',
+  default: undefined,
+});
+
+const useStream = () => {
+  const [stream, setStream] = useRecoilState(streamState);
+
+  return { stream, setStream };
+};
+
 export {
   useVoiceRecording,
   useRecognitionAudio,
   isRecognitionAudioEmpty,
   useAwaitingTranscription,
   useRecognitionAudioPlaying,
+  useStream,
 };
