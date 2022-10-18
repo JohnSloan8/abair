@@ -13,24 +13,33 @@ const returnDialectCode = (dialect: string) => {
   }
 };
 
-const getVoiceType = (cV: synthesisVoiceModel) => {
-  if (cV.voices.includes('NEMO')) {
+const getVoiceType = (model: string) => {
+  if (model === 'NEMO') {
     return 'nemo';
-  } else if (cV.voices.includes('DNN')) {
+  } else if (model === 'DNN') {
     return 'nnmnkwii';
-  } else if (cV.voices.includes('HTS')) {
+  } else if (model === 'HTS') {
     return 'exthts';
-  } else if (cV.voices.includes('HTS-WORLD')) {
+  } else if (model === 'HTS-WORLD') {
     return 'exthts-WORLD';
   } else {
     return '';
   }
 };
 
-const getSynthesis = async (text: string, currentVoice: synthesisVoiceModel) => {
-  const voiceType = getVoiceType(currentVoice);
+const getSynthesis = async (
+  text: string,
+  currentVoice: synthesisVoiceModel,
+  model: string,
+  pitch: number,
+  speed: number,
+) => {
+  console.log('currentVoice:', currentVoice);
+  console.log('pitch:', pitch);
+  const voiceType = getVoiceType(model);
   const voiceName =
     returnDialectCode(currentVoice.locale) + '_' + currentVoice.shortCode + '_' + voiceType;
+  console.log('voiceName:', voiceName);
   try {
     const { data } = await axios({
       method: 'post',
@@ -50,8 +59,8 @@ const getSynthesis = async (text: string, currentVoice: synthesisVoiceModel) => 
         },
         audioconfig: {
           audioEncoding: 'LINEAR16',
-          speakingRate: currentVoice.speed,
-          pitch: currentVoice.pitch,
+          speakingRate: speed,
+          pitch: pitch,
           volumeGainDb: 1,
           htsParams: 'string',
           sampleRateHertz: 0,

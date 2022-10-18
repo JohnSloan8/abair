@@ -1,24 +1,21 @@
-import { SetterOrUpdater } from 'recoil';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 
 import { synthesisMetadataURL } from '@/config';
-import { synthesisVoiceModel } from '@/store/synthesis/voiceOptions';
 
-const getSynthesisMetadata = async (setter: SetterOrUpdater<synthesisVoiceModel[]>) => {
-  await axios
-    .get(synthesisMetadataURL)
-    .then((res) => {
-      res.data.data.map((v: synthesisVoiceModel) => {
-        v.speedRange = [0.5, 1.5];
-        v.pitchRange = [0.5, 1.5];
-      });
-      setter(res.data.data);
-      // console.log('voices:', res.data.data);
-    })
-    .catch((error) => {
-      alert('error:' + error);
+const getSynthesisMetadata = async () => {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: synthesisMetadataURL,
     });
+
+    if (data) {
+      return data.data;
+    }
+  } catch (error: any) {
+    alert('error:' + error);
+  }
 };
 
 export default getSynthesisMetadata;

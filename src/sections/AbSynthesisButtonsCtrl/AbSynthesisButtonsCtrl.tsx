@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
@@ -21,6 +24,9 @@ import {
 import {
   filteredSynthesisVoiceOptions,
   synthesisVoiceSelected,
+  useSynthesisModel,
+  useSynthesisPitch,
+  useSynthesisSpeed,
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
@@ -38,35 +44,59 @@ const AbSynthesisButtonsCtrl = () => {
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
   const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { awaitingSynthesis, setAwaitingSynthesis } = useAwaitingSynthesis();
+  const { synthesisModel, setSynthesisModel } = useSynthesisModel();
+  const { synthesisPitch } = useSynthesisPitch();
+  const { synthesisSpeed } = useSynthesisSpeed();
 
   useEffect(() => {
-    synthesisVoiceOptions.length === 0 ? getSynthesisMetadata(setSynthesisVoiceOptions) : null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (synthesisVoiceOptions.length === 0) {
+      getSynthesisMetadata().then((res) => {
+        setSynthesisVoiceOptions(res);
+      });
+    } else {
+      null;
+    }
   }, []);
 
   useEffect(() => {
-    filteredSynthesisVoiceOptionsValue.length === 0
-      ? setSynthesisVoiceIndex(-1)
-      : setSynthesisVoiceIndex(
-          synthesisVoiceOptions.indexOf(filteredSynthesisVoiceOptionsValue[0]),
-        );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    filteredSynthesisVoiceOptionsValue !== undefined
+      ? filteredSynthesisVoiceOptionsValue.length === 0
+        ? setSynthesisVoiceIndex(-1)
+        : setSynthesisVoiceIndex(
+            synthesisVoiceOptions.indexOf(filteredSynthesisVoiceOptionsValue[0]),
+          )
+      : null;
   }, [filteredSynthesisVoiceOptionsValue]);
+
+  useEffect(() => {
+    if (synthesisVoiceSelectedValue !== undefined) {
+      setSynthesisModel(
+        synthesisVoiceSelectedValue.voices[synthesisVoiceSelectedValue.voices.length - 1],
+      );
+    }
+  }, [synthesisVoiceSelectedValue]);
 
   const initGetSynthesis = () => {
     setAwaitingSynthesis(true);
     setSynthesisAudio('');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    getSynthesis(synthesisText, synthesisVoiceSelectedValue).then((data: any) => {
-      setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
-      setAwaitingSynthesis(false);
-      postSynthesisRequest({
-        user_id: session === null ? null : session.user.id,
-        session_ID: sessionID,
-        text: synthesisText,
+    if (synthesisVoiceSelectedValue !== undefined) {
+      getSynthesis(
+        synthesisText,
+        synthesisVoiceSelectedValue,
+        synthesisModel,
+        synthesisPitch,
+        synthesisSpeed,
+      ).then((data: any) => {
+        console.log('synthesisData:', data);
+        setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
+        setAwaitingSynthesis(false);
+        postSynthesisRequest({
+          user_id: session === null ? null : session.user.id,
+          session_ID: sessionID,
+          text: synthesisText,
+        });
       });
-    });
+    }
   };
 
   return (
@@ -76,7 +106,6 @@ const AbSynthesisButtonsCtrl = () => {
         <Grid item xs={4}>
           <CenteredFlexBox>
             {!awaitingSynthesis ? (
-              // <Typography align="center" sx={{ height: '100%' }}>
               <AbIconButton
                 disabled={emptyString || synthesisVoiceIndex === -1}
                 variation="record"
@@ -84,7 +113,6 @@ const AbSynthesisButtonsCtrl = () => {
                 icon={RecordVoiceOverIcon}
               />
             ) : (
-              // </Typography>
               <Loading />
             )}
           </CenteredFlexBox>

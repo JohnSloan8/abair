@@ -5,6 +5,10 @@ const styles: { [name: string]: AbButtonStyles } = {
     color: 'secondary',
     boxShadow: 3,
   },
+  model: {
+    color: 'primary',
+    boxShadow: 3,
+  },
   alert: {
     color: 'warning',
     boxShadow: 0,

@@ -14,30 +14,27 @@ import {
 const AbSynthesisPitchCtrl = () => {
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const filteredSynthesisVoiceOptionsValue = useRecoilValue(filteredSynthesisVoiceOptions);
-  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
+  const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { synthesisVoiceOptions } = useSynthesisVoiceOptions();
 
   return (
     <Stack
       direction="row"
-      spacing={{ sm: 1, xs: 0.25 }}
+      spacing={{ sm: 1, xs: 0.5 }}
       sx={{ flexWrap: 'wrap' }}
       justifyContent="center"
-      mb={{ sm: 2, xs: 1 }}
+      my={{ sm: 2, xs: 1 }}
     >
-      {filteredSynthesisVoiceOptionsValue.map((k: synthesisVoiceModel, i: number) => (
-        <AbButton
-          label={k.name}
-          onClick={() =>
-            synthesisVoiceIndex === i
-              ? setSynthesisVoiceIndex(-1)
-              : setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))
-          }
-          key={i}
-          selected={k === synthesisVoiceSelectedValue ? true : false}
-          variation="voice"
-        />
-      ))}
+      {filteredSynthesisVoiceOptionsValue !== undefined &&
+        filteredSynthesisVoiceOptionsValue.map((k: synthesisVoiceModel, i: number) => (
+          <AbButton
+            label={k.name}
+            onClick={() => setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))}
+            key={i}
+            selected={k === synthesisVoiceSelectedValue ? true : false}
+            variation="voice"
+          />
+        ))}
     </Stack>
   );
 };

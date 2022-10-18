@@ -1,19 +1,16 @@
-import { useRecoilValue } from 'recoil';
-
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
 import AbSlider from '@/components/AbSlider';
-import { synthesisVoiceSelected, useSynthesisPitch } from '@/store/synthesis/voiceOptions';
+import { useSynthesisPitch } from '@/store/synthesis/voiceOptions';
 
 const AbSynthesisPitchCtrl = () => {
   const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
-  const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
 
   return (
     <AbSlider
-      min={synthesisVoiceSelectedValue.pitchRange[0]}
+      min={0.5}
       value={synthesisPitch}
-      max={synthesisVoiceSelectedValue.pitchRange[1]}
+      max={1.5}
       handleSliderChange={(e) =>
         setSynthesisPitch(parseFloat((e.target as HTMLInputElement).value))
       }

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import AbMap from '@/components/AbMap';
@@ -23,6 +24,7 @@ const AbMapCtrl = () => {
   const resetCounty = useResetRecoilState(synthesisCountyState);
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { breakpointSize } = useBreakpointSize();
+  const location = useLocation();
 
   const handleMouseEnter = (county: string) => {
     gaeltachts.includes(county) ? setHoveringCounty(county) : setHoveringCounty('');
@@ -33,26 +35,30 @@ const AbMapCtrl = () => {
   };
 
   const handleClick = (county: string) => {
-    if (county === synthesisCounty) {
-      resetCounty();
+    if (synthesisVoiceSelectedValue !== undefined) {
+      if (county === synthesisCounty) {
+        resetCounty();
+      } else {
+        setSynthesisCounty(county);
+        gaeltachts.includes(county)
+          ? localeToCounty(synthesisVoiceSelectedValue.locale) !== county
+            ? resetSynthesisVoiceIndex()
+            : null
+          : null;
+      }
     } else {
-      setSynthesisCounty(county);
-      gaeltachts.includes(county)
-        ? localeToCounty(synthesisVoiceSelectedValue.locale) !== county
-          ? resetSynthesisVoiceIndex()
-          : null
-        : null;
+      alert('no voice selected');
     }
   };
-
-  useEffect(() => {
-    console.log('synthesisCounty:', synthesisCounty);
-  }, [synthesisCounty]);
 
   return (
     <AbMap
       height={
-        breakpointSize === 'xs'
+        location.pathname === '/speech-synthesis'
+          ? breakpointSize === 'xs'
+            ? frontPageSelectionBoxSizeValue - 105
+            : frontPageSelectionBoxSizeValue - 85
+          : breakpointSize === 'xs'
           ? frontPageSelectionBoxSizeValue - 55
           : frontPageSelectionBoxSizeValue - 85
       }
@@ -65,8 +71,6 @@ const AbMapCtrl = () => {
       handleClick={handleClick}
     />
   );
-
-  return null;
 };
 
 export default AbMapCtrl;

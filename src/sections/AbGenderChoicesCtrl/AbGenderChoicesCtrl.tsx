@@ -25,7 +25,7 @@ const AbGenderChoicesCtrl = () => {
   }, [synthesisGender]);
 
   return (
-    <Box>
+    <Box my={-2}>
       {genders.map((g) => (
         <AbIconButton
           key={g.name}

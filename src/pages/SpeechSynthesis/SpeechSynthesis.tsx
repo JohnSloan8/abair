@@ -8,6 +8,7 @@ import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
+import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
@@ -19,10 +20,14 @@ function SpeechSynthesis() {
         <Box sx={{ maxWidth: 'sm', width: '100%' }}>
           <Meta title="speech synthesis" />
           <AbInfoHeader title="Speech Synthesis" variant="front" />
-          <CenteredFlexBox m={2}>
+          <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
             <Grid container spacing={0}>
               <Grid item xs={12} sm={6}>
-                <AbMapCtrl />
+                <CenteredFlexBox>
+                  <Box>
+                    <AbMapCtrl />
+                  </Box>
+                </CenteredFlexBox>
               </Grid>
               <Grid
                 container
@@ -34,12 +39,20 @@ function SpeechSynthesis() {
                 justifyContent="center"
               >
                 <AbGenderChoicesCtrl />
-                <AbSynthesisSpeedCtrl />
-                <AbSynthesisPitchCtrl />
+                <Box height={'48px'}>
+                  <AbSynthesisVoiceButtonsCtrl />
+                </Box>
+                <Box width={'90%'}>
+                  <AbSynthesisSpeedCtrl />
+                  <AbSynthesisPitchCtrl />
+                </Box>
+                <Box height={'54px'}>
+                  <AbSynthesisModelCtrl />
+                </Box>
               </Grid>
             </Grid>
           </CenteredFlexBox>
-          <AbSynthesisVoiceButtonsCtrl />
+
           <CenteredFlexBox>
             <AbSynthesisCtrl>
               <AbSynthesisButtonsCtrl />

@@ -35,25 +35,27 @@ const useSynthesisVoiceOptions = () => {
   return { synthesisVoiceOptions, setSynthesisVoiceOptions };
 };
 
-const synthesisVoiceSelected = selector<synthesisVoiceModel>({
+const synthesisVoiceSelected = selector<synthesisVoiceModel | undefined>({
   key: 'synthesis-voice-selected',
   get: ({ get }) => {
     const selectedVoiceIndex = get(synthesisVoiceIndexState);
     const voiceOptions = get(synthesisVoiceOptionsState);
     if (selectedVoiceIndex === -1) {
-      return {
-        name: 'Áine',
-        gender: 'all',
-        locale: 'all',
-        shortCode: 'anb',
-        voices: [],
-        pitchRange: [0.5, 1.5],
-        speedRange: [0.5, 1.5],
-        speed: 1,
-        pitch: 1,
-      };
+      return undefined;
     } else {
       return voiceOptions[selectedVoiceIndex];
+    }
+  },
+});
+
+const synthesisModelOptions = selector<string[]>({
+  key: 'synthesis-model-options',
+  get: ({ get }) => {
+    const synthesisVoiceSelectedValue = get(synthesisVoiceSelected);
+    if (synthesisVoiceSelectedValue !== undefined) {
+      return synthesisVoiceSelectedValue.voices;
+    } else {
+      return [];
     }
   },
 });
@@ -93,10 +95,15 @@ const synthesisGenderState = atom<string>({
   default: 'female',
 });
 
-const synthesisModeState = atom<string>({
-  key: 'synthesis-mode',
-  default: 'all',
+const synthesisModelState = atom<string>({
+  key: 'synthesis-Model',
+  default: '',
 });
+
+const useSynthesisModel = () => {
+  const [synthesisModel, setSynthesisModel] = useRecoilState(synthesisModelState);
+  return { synthesisModel, setSynthesisModel };
+};
 
 const useSynthesisGender = () => {
   const [synthesisGender, setSynthesisGender] = useRecoilState(synthesisGenderState);
@@ -109,7 +116,7 @@ const filteredSynthesisVoiceOptions = selector({
     const list = get(synthesisVoiceOptionsState);
     const countyState = get(synthesisCountyState);
     const genderState = get(synthesisGenderState);
-    const modeState = get(synthesisModeState);
+    const modelState = get(synthesisModelState);
 
     const countyFilter = (l: synthesisVoiceModel[]) => {
       switch (countyState) {
@@ -130,30 +137,34 @@ const filteredSynthesisVoiceOptions = selector({
           return l.filter((item: synthesisVoiceModel) => item.gender === 'male');
         case 'female':
           return l.filter((item: synthesisVoiceModel) => item.gender === 'female');
-        case 'neutral':
-          return l.filter((item: synthesisVoiceModel) => item.gender === 'neutral');
         default:
           return l;
       }
     };
 
-    const modeFilter = (l: synthesisVoiceModel[]) => {
-      switch (modeState) {
+    const modelFilter = (l: synthesisVoiceModel[]) => {
+      switch (modelState) {
         case 'HTS':
-          return l.filter((item: synthesisVoiceModel) => item.mode === 'HTS');
+          return l.filter((item: synthesisVoiceModel) => item.voices.includes('HTS'));
         case 'DNN':
-          return l.filter((item: synthesisVoiceModel) => item.mode === 'DNN');
-        case 'neutral':
-          return l.filter((item: synthesisVoiceModel) => item.mode === 'neutral');
+          return l.filter((item: synthesisVoiceModel) => item.voices.includes('DNN'));
+        case 'HTS-WORLD':
+          return l.filter((item: synthesisVoiceModel) => item.voices.includes('HTS-WORLD'));
+        case 'NEMO':
+          return l.filter((item: synthesisVoiceModel) => item.voices.includes('NEMO'));
         default:
           return l;
       }
     };
 
-    const filteredCounty = countyFilter(list);
-    const filteredGender = genderFilter(filteredCounty);
-    const filteredMode = modeFilter(filteredGender);
-    return filteredMode;
+    if (list !== undefined && list.length !== 0) {
+      const filteredCounty = countyFilter(list);
+      const filteredGender = genderFilter(filteredCounty);
+      const filteredModel = modelFilter(filteredGender);
+      return filteredModel;
+    } else {
+      return undefined;
+    }
   },
 });
 
@@ -166,8 +177,10 @@ export {
   useSynthesisGender,
   useSynthesisPitch,
   useSynthesisSpeed,
+  useSynthesisModel,
   synthesisVoiceSelected,
   synthesisVoiceIndexState,
+  synthesisModelOptions,
 };
 
 export type { synthesisVoiceModel };
