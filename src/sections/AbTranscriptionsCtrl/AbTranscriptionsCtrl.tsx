@@ -2,6 +2,7 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import getAudio from '@/services/abair/recognition/getAudio';
 import { getTranscriptions } from '@/services/supabase/transcriptions';
@@ -9,6 +10,7 @@ import getThisSessionTranscriptions from '@/services/supabase/transcriptions/get
 import { useSession, useSessionID } from '@/store/auth';
 import { useAwaitingTranscription, useRecognitionAudio } from '@/store/recognition';
 import {
+  transcriptionText,
   useEditableTranscriptionText,
   useTranscription,
   useTranscriptions,
@@ -22,6 +24,7 @@ const AbTranscriptionsCtrl = () => {
   const { setAwaitingTranscription } = useAwaitingTranscription();
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
   const { setRecognitionAudio } = useRecognitionAudio();
+  const transcriptionTextValue = useRecoilValue(transcriptionText);
 
   useEffect(() => {
     updateTranscriptions();
@@ -35,10 +38,7 @@ const AbTranscriptionsCtrl = () => {
         setRecognitionAudio(`data:audio/wav;base64,${res.audio}`);
       });
       if (!transcription.corrected) {
-        const transcriptionChunks = transcription.recognition_response[0].utterance.split('\n');
-        console.log('transcriptionChuks:', transcriptionChunks);
-        const nonEmptyTc = transcriptionChunks.filter((tC) => tC !== '');
-        setEditableTranscriptionText(nonEmptyTc[nonEmptyTc.length - 1]);
+        setEditableTranscriptionText(transcriptionTextValue);
       } else {
         setEditableTranscriptionText(transcription.correction);
       }

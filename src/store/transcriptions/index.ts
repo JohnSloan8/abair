@@ -22,6 +22,24 @@ const useTranscription = () => {
   return { transcription, setTranscription };
 };
 
+const transcriptionText = selector({
+  key: 'transcription-text',
+  get: ({ get }) => {
+    const transcription = get(transcriptionState);
+    try {
+      if (transcription !== undefined) {
+        const transcriptionChunks = transcription.recognition_response[0].utterance.split('\n');
+        const nonEmptyTc = transcriptionChunks.filter((tC) => tC !== '');
+        return nonEmptyTc[nonEmptyTc.length - 1].trim();
+      } else {
+        return undefined;
+      }
+    } catch {
+      return undefined;
+    }
+  },
+});
+
 const editableTranscriptionTextState = atom<string | undefined | null>({
   key: 'recognition-text-state',
   default: '',
@@ -38,13 +56,14 @@ const editableTranscriptionTextEdited = selector({
   key: 'transcription-edited-state',
   get: ({ get }) => {
     const transcription = get(transcriptionState);
+    const transcriptionTextValue = get(transcriptionText);
     const editableTranscriptionText = get(editableTranscriptionTextState);
     if (transcription === undefined) {
       return false;
     } else if (transcription.correction !== '') {
       return editableTranscriptionText !== transcription.correction;
     } else {
-      return editableTranscriptionText !== transcription.recognition_response[0].utterance;
+      return editableTranscriptionText !== transcriptionTextValue;
     }
   },
 });
@@ -54,4 +73,5 @@ export {
   useTranscriptions,
   useEditableTranscriptionText,
   editableTranscriptionTextEdited,
+  transcriptionText,
 };
