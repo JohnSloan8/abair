@@ -38,22 +38,25 @@ const AbGenderChoices = () => {
 
   return (
     <Grid container direction="row" id="genderGridContainer" justifyContent="center">
-      {genders.map((g) => (
-        <AbIconButton
-          key={g.name}
-          variation={
-            synthesisGender === g.name
-              ? 'genderSelected'
-              : synthesisVoiceSelectedValue.gender === g.name
-              ? 'genderHighlighted'
-              : 'genderUnselected'
-          }
-          handleClick={() => {
-            toggleGender(g.name);
-          }}
-          icon={g.icon}
-        />
-      ))}
+      {genders.map(
+        (g) =>
+          synthesisVoiceSelectedValue !== undefined && (
+            <AbIconButton
+              key={g.name}
+              variation={
+                synthesisGender === g.name
+                  ? 'genderSelected'
+                  : synthesisVoiceSelectedValue.gender === g.name
+                  ? 'genderHighlighted'
+                  : 'genderUnselected'
+              }
+              handleClick={() => {
+                toggleGender(g.name);
+              }}
+              icon={g.icon}
+            />
+          ),
+      )}
     </Grid>
   );
 };
