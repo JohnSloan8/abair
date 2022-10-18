@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
-import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
+import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
@@ -38,7 +38,7 @@ function SpeechRecognition() {
               <AbTranscriptionsListCtrl />
             </Grid>
           </CenteredFlexBox>
-          <AbRecognitionMediaCtrl />
+          <AbMediaCtrl />
         </Box>
       </CenteredFlexBox>
       <AbTranscriptionsCtrl />
