@@ -63,7 +63,9 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
         id="panel1a-header"
       >
         <Box>{`"${
-          trans.correction ? trans.correction : trans.recognition_response[0].utterance
+          trans.correction
+            ? trans.correction
+            : trans.recognition_response[0].utterance.replaceAll('\n', ' - ')
         }"`}</Box>
       </AccordionSummary>
       <AccordionDetails>
@@ -73,7 +75,7 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
             .map((t, i) => (
               <Box key={i}>
                 <Typography>
-                  model {i + 1}. &quot;<i>{t}</i>&quot;
+                  model {i + 1}. &quot;<i>{t.replaceAll('\n', ' - ')}</i>&quot;
                 </Typography>
               </Box>
             ))}

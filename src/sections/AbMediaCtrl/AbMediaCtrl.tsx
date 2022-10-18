@@ -27,7 +27,7 @@ const AbMediaCtrl = () => {
   const { setRecognitionAudio } = useRecognitionAudio();
   const { stream, setStream } = useStream();
   const { setEditableTranscriptionText } = useEditableTranscriptionText();
-  const { setMediaRecorderReady } = useMediaRecorderReady();
+  const { mediaRecorderReady, setMediaRecorderReady } = useMediaRecorderReady();
 
   const { session } = useSession();
 
@@ -68,7 +68,7 @@ const AbMediaCtrl = () => {
 
   let chunks: any[] = [];
   useEffect(() => {
-    if (mediaRecorder !== undefined) {
+    if (mediaRecorder !== undefined && !mediaRecorderReady) {
       setMediaRecorderReady(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       mediaRecorder.onstop = (e: any) => {
