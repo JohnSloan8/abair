@@ -5,14 +5,23 @@ import AbIconButton from '@/components/AbIconButton';
 import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
 import AbMediaCtrl from '@/sections/AbMediaCtrl';
-import { useAwaitingTranscription, useVoiceRecording } from '@/store/recognition';
+import {
+  useAwaitingTranscription,
+  useMediaRecorderExists,
+  useVoiceRecording,
+} from '@/store/recognition';
 
 const AbRecognitionRecordStopButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
+  const { mediaRecorderExists } = useMediaRecorderExists();
 
   const handleClick = () => {
-    setVoiceRecording(true);
+    if (mediaRecorderExists) {
+      setVoiceRecording(true);
+    } else {
+      alert('you must log in or give permission for this site to use your microphone.');
+    }
   };
 
   return (

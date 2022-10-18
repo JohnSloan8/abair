@@ -9,7 +9,6 @@ const initStream = async () => {
 
 const initMediaRecorder = async (stream: MediaStream) => {
   const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/wav' });
-  console.log('mediaRecorder:', mediaRecorder);
   return mediaRecorder;
 };
 

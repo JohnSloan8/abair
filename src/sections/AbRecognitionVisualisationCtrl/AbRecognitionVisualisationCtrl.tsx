@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useStream } from '@/store/recognition';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
 const AbRecognitionVisualisationCtrl = () => {
+  const location = useLocation();
   const [audioCtx, setAudioCtx] = useState<AudioContext>();
   const { stream } = useStream();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,6 +20,7 @@ const AbRecognitionVisualisationCtrl = () => {
         setAudioCtx(new AudioContext());
       }
     }
+    console.log('location:', location.pathname);
   }, [stream]);
 
   useEffect(() => {
@@ -32,14 +35,18 @@ const AbRecognitionVisualisationCtrl = () => {
 
   useEffect(() => {
     if (audioCtx) {
-      visualize(stream);
+      if (location.pathname === '/speech-recognition') {
+        visualize(stream, 'rgb(255, 235, 238)');
+      } else {
+        visualize(stream, 'rgb(255, 255, 255)');
+      }
     }
   }, [audioCtx]);
 
-  const visualize = (stream: MediaStream | undefined) => {
+  const visualize = (stream: MediaStream | undefined, fillColor: string) => {
     if (stream && audioCtx && canvasRef.current !== null) {
       const source = audioCtx.createMediaStreamSource(stream);
-
+      console.log('fillColor:', fillColor);
       const analyser = audioCtx.createAnalyser();
       analyser.fftSize = 2048;
       const bufferLength = analyser.frequencyBinCount;
@@ -49,15 +56,14 @@ const AbRecognitionVisualisationCtrl = () => {
       //analyser.connect(audioCtx.destination);
 
       const draw = () => {
-        requestAnimationFrame(draw);
         if (canvasCtx !== null) {
           analyser.getByteTimeDomainData(dataArray);
 
-          canvasCtx.fillStyle = 'rgb(256, 256, 256)';
+          canvasCtx.fillStyle = fillColor;
           canvasCtx.fillRect(0, 0, width, height);
 
           canvasCtx.lineWidth = 1.5;
-          canvasCtx.strokeStyle = 'rgb(256, 0, 0)';
+          canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
 
           canvasCtx.beginPath();
 
@@ -81,6 +87,7 @@ const AbRecognitionVisualisationCtrl = () => {
             canvasCtx.stroke();
           }
         }
+        requestAnimationFrame(draw);
       };
       draw();
     }

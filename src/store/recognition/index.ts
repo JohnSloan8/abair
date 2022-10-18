@@ -70,6 +70,17 @@ const useStream = () => {
   return { stream, setStream };
 };
 
+const mediaRecorderExistsState = atom<boolean>({
+  key: 'media-recorder-exists-state',
+  default: false,
+});
+
+const useMediaRecorderExists = () => {
+  const [mediaRecorderExists, setMediaRecorderExists] = useRecoilState(mediaRecorderExistsState);
+
+  return { mediaRecorderExists, setMediaRecorderExists };
+};
+
 export {
   useVoiceRecording,
   useRecognitionAudio,
@@ -77,4 +88,5 @@ export {
   useAwaitingTranscription,
   useRecognitionAudioPlaying,
   useStream,
+  useMediaRecorderExists,
 };

@@ -6,6 +6,7 @@ import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
+import AbRecognitionVisualisationCtrl from '@/sections/AbRecognitionVisualisationCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
 
@@ -16,22 +17,30 @@ function SpeechRecognition() {
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
           <Meta title="speech recognition" />
           <AbInfoHeader title="Speech Recognition" variant="front" />
-          <Box
-            my={4}
-            mx={3}
-            borderRadius={2}
-            boxShadow={3}
-            sx={{ backgroundColor: 'warning.light' }}
-          >
-            <CenteredFlexBox sx={{ position: 'relative', height: 50 }}>
+          <CenteredFlexBox sx={{ width: '100%', position: 'relative' }}>
+            <Box sx={{ position: 'relative' }}>
+              <AbRecognitionVisualisationCtrl />
+            </Box>
+          </CenteredFlexBox>
+          <CenteredFlexBox sx={{ position: 'relative', height: 70 }}>
+            <Box
+              my={4}
+              mx={3}
+              borderRadius={2}
+              boxShadow={3}
+              width={52}
+              height={52}
+              sx={{ backgroundColor: 'warning.light' }}
+            >
               <AbRecognitionRecordStopButtonsCtrl />
-              <Box height={'3px'} width={'100%'} sx={{ position: 'absolute', bottom: 0 }}>
-                <AbRecognitionProgressBarCtrl />
-              </Box>
-            </CenteredFlexBox>
+            </Box>
+          </CenteredFlexBox>
+          <CenteredFlexBox>
+            <Box height={'3px'} width={'97.5%'} sx={{ position: 'relative' }}>
+              <AbRecognitionProgressBarCtrl />
+            </Box>
+          </CenteredFlexBox>
 
-            <CenteredFlexBox sx={{ position: 'relative' }}></CenteredFlexBox>
-          </Box>
           <CenteredFlexBox>
             <Grid container direction="column">
               <AbTranscriptionsListCtrl />
