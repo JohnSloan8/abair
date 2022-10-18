@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 
 import { CenteredFlexBox } from '@/components/styled';
-import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import { useVoiceRecording } from '@/store/recognition';
 
 interface AbRecognitionCtrlProps {
@@ -32,7 +31,6 @@ const AbRecognitionCtrl = ({ buttons, textbox, visualisation }: AbRecognitionCtr
         </CenteredFlexBox>
       )}
       <Box sx={{ width: '100%', height: 50 }}>{buttons}</Box>
-      <AbMediaCtrl />
     </Box>
   );
 };

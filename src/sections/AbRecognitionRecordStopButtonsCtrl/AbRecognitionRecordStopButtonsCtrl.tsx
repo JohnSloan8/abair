@@ -4,23 +4,15 @@ import StopIcon from '@mui/icons-material/Stop';
 import AbIconButton from '@/components/AbIconButton';
 import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
-import {
-  useAwaitingTranscription,
-  useMediaRecorderReady,
-  useVoiceRecording,
-} from '@/store/recognition';
+import AbMediaCtrl from '@/sections/AbMediaCtrl';
+import { useAwaitingTranscription, useVoiceRecording } from '@/store/recognition';
 
 const AbRecognitionRecordStopButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
-  const { mediaRecorderReady } = useMediaRecorderReady();
 
   const handleClick = () => {
-    if (mediaRecorderReady) {
-      setVoiceRecording(true);
-    } else {
-      alert('you need to allow permission for the microphone on this website and refresh');
-    }
+    setVoiceRecording(true);
   };
 
   return (
@@ -38,6 +30,7 @@ const AbRecognitionRecordStopButtonsCtrl = () => {
           icon={StopIcon}
         />
       )}
+      <AbMediaCtrl />
     </CenteredFlexBox>
   );
 };

@@ -8,8 +8,6 @@ import { gsap } from 'gsap';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
-// import AbRecognitionMediaCtrl from '@/sections/AbRecognitionMediaCtrl';
-// import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
@@ -23,8 +21,6 @@ import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
-
-// import initMediaRecorder from './utils';
 
 const AbHomePageSection1Ctrl = () => {
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
