@@ -1,5 +1,5 @@
 interface AbButtonStyles {
-  color: 'primary' | 'secondary' | 'warning' | 'background';
+  color: 'primary' | 'secondary' | 'warning';
   boxShadow: number;
 }
 

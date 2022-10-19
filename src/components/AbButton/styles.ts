@@ -6,7 +6,7 @@ const styles: { [name: string]: AbButtonStyles } = {
     boxShadow: 3,
   },
   model: {
-    color: 'background',
+    color: 'primary',
     boxShadow: 3,
   },
   alert: {

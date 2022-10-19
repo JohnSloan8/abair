@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -7,17 +8,19 @@ import Typography from '@mui/material/Typography';
 import Image from 'mui-image';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
-import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { AbNewsStoryModel } from '@/models/news';
+import { ImageDataModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
 function NewsItem() {
+  const { t, i18n } = useTranslation();
+
   const { newsStories, setNewsStories } = useNewsStories();
   const [newsStory, setNewsStory] = useState<AbNewsStoryModel>();
   const params = useParams();
-  console.log('params:', params);
 
   useEffect(() => {
     if (
@@ -34,44 +37,45 @@ function NewsItem() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newsStories]);
 
-  useEffect(() => {
-    console.log('newsStory:', newsStory);
-  }, [newsStory]);
   return (
-    <>
-      <Meta title="news item" />
+    <FullSizeBox>
+      <Meta title={t('pageTitles.news')} />
+      <CenteredFlexBox>
+        {newsStory !== undefined ? (
+          <Box sx={{ maxWidth: 'md', width: '100%' }}>
+            <AbInfoHeader
+              title={i18n.language === 'en' ? newsStory.title_en : newsStory.title_ga}
+              variant="front"
+            />
 
-      {newsStory !== undefined ? (
-        <>
-          <AbInfoHeader title={newsStory.title} description={newsStory.blurb} />
-
-          <CenteredFlexBox>
-            <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
-              <Typography align="center">
-                {newsStory.images.map(
-                  (image, i) =>
-                    image !== null && (
-                      <Image
-                        key={i}
-                        duration={1000}
-                        height={200}
-                        easing="ease-out"
-                        alt={`${newsStory.title + i}`}
-                        src={image.url}
-                        bgColor="#fff"
-                        showLoading
-                      />
-                    ),
-                )}
-              </Typography>
-              <Typography gutterBottom variant="body1" m={2} align="left">
-                {newsStory.body}
-              </Typography>
-            </Box>
-          </CenteredFlexBox>
-        </>
-      ) : null}
-    </>
+            <CenteredFlexBox>
+              <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
+                <Typography align="center">
+                  {newsStory.images.map(
+                    (image: ImageDataModel, i: number) =>
+                      image !== null && (
+                        <Image
+                          key={i}
+                          duration={1000}
+                          height={200}
+                          easing="ease-out"
+                          alt={`news item image`}
+                          src={image.url}
+                          bgColor="#fff"
+                          showLoading
+                        />
+                      ),
+                  )}
+                </Typography>
+                <Typography gutterBottom variant="body1" m={2} align="left">
+                  {i18n.language === 'en' ? newsStory.body_en : newsStory.body_ga}
+                </Typography>
+              </Box>
+            </CenteredFlexBox>
+          </Box>
+        ) : null}
+      </CenteredFlexBox>
+    </FullSizeBox>
   );
 }
 

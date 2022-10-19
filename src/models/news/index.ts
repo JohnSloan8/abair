@@ -14,4 +14,4 @@ interface AbNewsStoryModel {
   images: ImageDataModel[];
 }
 
-export type { AbNewsStoryModel };
+export type { AbNewsStoryModel, ImageDataModel };
