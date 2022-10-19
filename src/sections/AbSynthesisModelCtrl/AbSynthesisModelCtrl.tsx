@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
 
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
 import AbButton from '@/components/AbButton';
@@ -19,13 +20,14 @@ const AbSynthesisPitchCtrl = () => {
       my={{ sm: 2, xs: 1 }}
     >
       {synthesisModelOptionsValue.map((m, i) => (
-        <AbButton
-          label={m}
-          onClick={() => setSynthesisModel(m)}
-          key={i}
-          selected={m === synthesisModel ? true : false}
-          variation="voice"
-        />
+        <Box mb={{ sm: 1, xs: 0.5 }} key={i}>
+          <AbButton
+            label={m}
+            onClick={() => setSynthesisModel(m)}
+            selected={m === synthesisModel ? true : false}
+            variation="voice"
+          />
+        </Box>
       ))}
     </Stack>
   );

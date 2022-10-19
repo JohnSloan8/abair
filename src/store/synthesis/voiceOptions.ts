@@ -82,7 +82,7 @@ const useSynthesisSpeed = () => {
 
 const synthesisCountyState = atom<string>({
   key: 'synthesis-county',
-  default: 'Galway',
+  default: 'Connemara',
 });
 
 const useSynthesisCounty = () => {
@@ -120,11 +120,11 @@ const filteredSynthesisVoiceOptions = selector({
 
     const countyFilter = (l: synthesisVoiceModel[]) => {
       switch (countyState) {
-        case 'Donegal':
+        case 'Ulster':
           return l.filter((item: synthesisVoiceModel) => item.locale === 'Ulster');
-        case 'Galway':
+        case 'Connemara':
           return l.filter((item: synthesisVoiceModel) => item.locale === 'Connemara');
-        case 'Kerry':
+        case 'Munster':
           return l.filter((item: synthesisVoiceModel) => item.locale === 'Munster');
         default:
           return l;

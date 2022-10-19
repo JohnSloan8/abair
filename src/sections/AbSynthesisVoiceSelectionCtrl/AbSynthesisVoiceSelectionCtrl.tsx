@@ -23,8 +23,8 @@ const AbSynthesisVoiceSelectionCtrl = () => {
       <CenteredFlexBox>
         <Box
           height={{
-            sm: frontPageSelectionBoxSizeValue - 85,
-            xs: frontPageSelectionBoxSizeValue - 55,
+            sm: frontPageSelectionBoxSizeValue - 125,
+            xs: frontPageSelectionBoxSizeValue - 105,
           }}
           minWidth={300}
           maxWidth={600}

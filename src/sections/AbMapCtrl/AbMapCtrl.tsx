@@ -5,7 +5,6 @@ import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import AbMap from '@/components/AbMap';
 import {
-  synthesisCountyState,
   synthesisVoiceIndexState,
   synthesisVoiceSelected,
   useSynthesisCounty,
@@ -13,15 +12,15 @@ import {
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 import irelandMapData from './simpleData';
-import localeToCounty from './utils';
+
+// import localeToCounty from './utils';
 
 const AbMapCtrl = () => {
   const { synthesisCounty, setSynthesisCounty } = useSynthesisCounty();
   const [hoveringCounty, setHoveringCounty] = useState('');
-  const gaeltachts = ['Donegal', 'Galway', 'Kerry'];
+  const gaeltachts = ['Ulster', 'Connemara', 'Munster'];
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
-  const resetCounty = useResetRecoilState(synthesisCountyState);
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { breakpointSize } = useBreakpointSize();
   const location = useLocation();
@@ -35,16 +34,18 @@ const AbMapCtrl = () => {
   };
 
   const handleClick = (county: string) => {
-    if (synthesisVoiceSelectedValue !== undefined) {
-      if (county === synthesisCounty) {
-        resetCounty();
-      } else {
+    console.log('county:', county);
+    if (county !== synthesisCounty) {
+      if (synthesisVoiceSelectedValue !== undefined) {
         setSynthesisCounty(county);
         gaeltachts.includes(county)
-          ? localeToCounty(synthesisVoiceSelectedValue.locale) !== county
+          ? synthesisVoiceSelectedValue.locale !== county
             ? resetSynthesisVoiceIndex()
             : null
           : null;
+      } else {
+        setSynthesisCounty(county);
+        resetSynthesisVoiceIndex();
       }
     } else {
       alert('no voice selected');
@@ -56,11 +57,11 @@ const AbMapCtrl = () => {
       height={
         location.pathname === '/speech-synthesis'
           ? breakpointSize === 'xs'
-            ? frontPageSelectionBoxSizeValue - 105
+            ? frontPageSelectionBoxSizeValue - 125
             : frontPageSelectionBoxSizeValue - 85
           : breakpointSize === 'xs'
-          ? frontPageSelectionBoxSizeValue - 55
-          : frontPageSelectionBoxSizeValue - 85
+          ? frontPageSelectionBoxSizeValue - 85
+          : frontPageSelectionBoxSizeValue - 65
       }
       irelandMapData={irelandMapData}
       gaeltachts={gaeltachts}

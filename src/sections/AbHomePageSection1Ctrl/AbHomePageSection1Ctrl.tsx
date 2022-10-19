@@ -77,7 +77,7 @@ const AbHomePageSection1Ctrl = () => {
         backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <CenteredFlexBox>
+      <CenteredFlexBox height={100}>
         <AbInfoHeader variant="front" title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>
       <CenteredFlexBox height={{ sm: '64px', xs: '48px' }}>

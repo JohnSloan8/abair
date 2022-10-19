@@ -46,13 +46,14 @@ const AbMap = ({
               key={i}
               fill={getMapColor(c)[0]}
               stroke={getMapColor(c)[1]}
+              opacity={gaeltachts.includes(c.name) ? 0.7 : 1}
               onMouseEnter={() => handleMouseEnter(c.name)}
               onClick={() => {
                 handleClick(c.name);
               }}
               style={{ cursor: 'pointer' }}
             >
-              <path d={c.coordinates} strokeWidth="1" />
+              <path d={c.coordinates} strokeWidth={gaeltachts.includes(c.name) ? '2.5' : '0.5'} />
             </g>
           ))}
         </g>

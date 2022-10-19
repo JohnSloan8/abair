@@ -25,7 +25,7 @@ function SpeechSynthesis() {
           <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
           <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
             <Grid container spacing={0}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} my={-2}>
                 <CenteredFlexBox>
                   <Box>
                     <AbMapCtrl />
@@ -41,15 +41,15 @@ function SpeechSynthesis() {
                 alignItems="center"
                 justifyContent="center"
               >
-                <AbGenderChoicesCtrl />
-                <Box height={'48px'}>
+                <Box minHeight={'56px'}>
                   <AbSynthesisVoiceButtonsCtrl />
                 </Box>
+                <AbGenderChoicesCtrl />
                 <Box width={'90%'}>
                   <AbSynthesisSpeedCtrl />
                   <AbSynthesisPitchCtrl />
                 </Box>
-                <Box height={'54px'}>
+                <Box minHeight={'56px'}>
                   <AbSynthesisModelCtrl />
                 </Box>
               </Grid>
