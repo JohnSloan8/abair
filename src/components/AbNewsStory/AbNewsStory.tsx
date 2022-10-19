@@ -4,9 +4,20 @@ import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { AbNewsStoryModel } from './types';
+interface ImageDataModel {
+  url: string;
+}
 
-function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryModel) {
+interface AbNewsStoryProps {
+  id: number;
+  title: string;
+  date: string;
+  blurb: string;
+  body: string;
+  images: ImageDataModel[];
+}
+
+function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryProps) {
   const navigate = useNavigate();
 
   return (

@@ -2,7 +2,9 @@ import supabase from '@/services/supabase';
 
 const getCategories = async () => {
   try {
-    const { data, error } = await supabase.from('application_categories').select(`id, name`);
+    const { data, error } = await supabase
+      .from('application_categories')
+      .select(`id, name_en, name_ga`);
 
     if (error) {
       throw error;

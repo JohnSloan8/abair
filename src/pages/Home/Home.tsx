@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Meta from '@/components/Meta';
 import { FullSizeBox } from '@/components/styled';
 import AbHomePageApplicationsCtrl from '@/sections/AbHomePageApplicationsCtrl';
@@ -7,9 +9,11 @@ import AbHomePageNewsCtrl from '@/sections/AbHomePageNewsCtrl';
 import AbHomePageSection1Ctrl from '@/sections/AbHomePageSection1Ctrl';
 
 function Home() {
+  const { t } = useTranslation();
   return (
     <>
-      <Meta title="home" />
+      {/* <Meta title="home" /> */}
+      <Meta title={t('pages.home')} />
       <AbHomePageSection1Ctrl />
       <FullSizeBox py={{ xs: 4, sm: 8 }}>
         <AbHomePageCoreTechnologiesCtrl />

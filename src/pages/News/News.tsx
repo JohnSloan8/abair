@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsStory from '@/components/AbNewsStory';
-import { AbNewsStoryModel } from '@/components/AbNewsStory/types';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
 
 function News() {
+  const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const { newsStories, setNewsStories } = useNewsStories();
   useEffect(() => {
@@ -26,10 +28,10 @@ function News() {
 
   return (
     <FullSizeBox>
-      <Meta title="news" />
+      <Meta title={t('pageTitles.news')} />
       <CenteredFlexBox>
         <Box sx={{ maxWidth: 'md', width: '100%' }}>
-          <AbInfoHeader title="News" variant="front" />
+          <AbInfoHeader title={t('pageTitles.news')} variant="front" />
           <CenteredFlexBox>
             <Box sx={{ width: '100%', maxWidth: 'md' }}>
               {loading ? (
@@ -39,10 +41,10 @@ function News() {
                   <AbNewsStory
                     key={i}
                     id={nS.id}
-                    title={nS.title}
+                    title={i18n.language === 'en' ? nS.title_en : nS.title_ga}
                     date={nS.date}
-                    blurb={nS.blurb}
-                    body={nS.body}
+                    blurb={i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
+                    body={i18n.language === 'en' ? nS.body_en : nS.body_ga}
                     images={nS.images}
                   />
                 ))

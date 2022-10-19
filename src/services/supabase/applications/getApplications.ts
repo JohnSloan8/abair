@@ -4,7 +4,7 @@ const getApplications = async () => {
   try {
     const { data, error } = await supabase
       .from('applications')
-      .select(`name, url, category, description, image`);
+      .select(`name, url, category, description_en, description_ga, image`);
 
     if (error) {
       throw error;

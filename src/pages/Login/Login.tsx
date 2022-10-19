@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
@@ -13,6 +14,7 @@ import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import supabase from '@/services/supabase';
 
 function Login() {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [confirmationEmailSent] = useState(false);
   const [showSignupPage, setShowSignupPage] = useState(false);
@@ -56,16 +58,16 @@ function Login() {
     <FullSizeBox>
       <CenteredFlexBox>
         <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-          <Meta title="log in" />
+          <Meta title={t('pageTitles.loginSignup')} />
           {confirmationEmailSent ? (
             <AbInfoHeader
               title="Confirmation Email sent"
               description="Please check your email to confirm your accout. Then you can login to Abair."
             />
           ) : showSignupPage ? (
-            <AbInfoHeader title="Sign Up" />
+            <AbInfoHeader title={t('pages.auth.signup')} />
           ) : (
-            <AbInfoHeader title="Log In" />
+            <AbInfoHeader title={t('pages.auth.login')} />
           )}
           <CenteredFlexBox m={2}>
             {loading ? (
@@ -87,11 +89,11 @@ function Login() {
                       required
                       fullWidth
                       id="email"
-                      label="Email Address"
+                      label={t('pages.auth.emailAddress')}
                       name="email"
                       autoComplete="email"
                       type="email"
-                      placeholder="Your email"
+                      placeholder={t('pages.auth.emailAddress')}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -101,7 +103,7 @@ function Login() {
                       required
                       fullWidth
                       name="password"
-                      label="Password"
+                      label={t('pages.auth.password')}
                       type="password"
                       id="password"
                       autoComplete="new-password"
@@ -116,7 +118,7 @@ function Login() {
                           required
                           fullWidth
                           name="confirm password"
-                          label="Confirm Password"
+                          label={t('pages.auth.confirmPassword')}
                           type="password"
                           id="password"
                           autoComplete="new-password"
@@ -126,24 +128,24 @@ function Login() {
                       </Grid>
                       <CenteredFlexBox sx={{ width: '100%' }}>
                         <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                          Sign Up
+                          {t('pages.auth.signup')}
                         </Button>
                       </CenteredFlexBox>
 
                       <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                        I already have an account
+                        {t('pages.auth.haveAccount')}
                       </Button>
                     </>
                   ) : (
                     <>
                       <CenteredFlexBox sx={{ width: '100%' }}>
                         <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                          login
+                          {t('pages.auth.login')}
                         </Button>
                       </CenteredFlexBox>
 
                       <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                        Create an Abair account
+                        {t('pages.auth.createAccount')}
                       </Button>
                     </>
                   )}

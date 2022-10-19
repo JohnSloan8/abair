@@ -8,7 +8,7 @@ interface AbButtonProps {
   disabled?: boolean;
   label: string;
   selected?: boolean;
-  variation: 'voice' | 'alert';
+  variation: 'voice' | 'alert' | 'model';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 

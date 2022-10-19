@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ import { useNewsStories } from '@/store/news';
 const AbHomePageNewsCtrl = () => {
   const { newsStories, setNewsStories } = useNewsStories();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     if (newsStories.length === 0) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,8 +35,8 @@ const AbHomePageNewsCtrl = () => {
     <Box height={'100%'}>
       <CenteredFlexBox height={'20%'}>
         <AbInfoHeader
-          title="Latest News"
-          description="Check out what's been going on recently in the world of Abair."
+          title={t('infoHeader.home.news.title')}
+          description={t('infoHeader.home.news.description')}
           variant="front"
         />
       </CenteredFlexBox>
@@ -53,7 +55,8 @@ const AbHomePageNewsCtrl = () => {
                       duration={1000}
                       height={180}
                       easing="ease-out"
-                      alt={`${nS.title + i}`}
+                      // alt={`${nS.title + i}`}
+                      alt={`${i}`}
                       src={nS.images ? nS.images[0].url : ''}
                       bgColor="#fff"
                       showLoading
@@ -62,10 +65,10 @@ const AbHomePageNewsCtrl = () => {
                       <Box height={110}>
                         <Typography variant="body2">{nS.date}</Typography>
                         <Typography gutterBottom variant="h5">
-                          {nS.title}
+                          {i18n.language === 'en' ? nS.title_en : nS.title_ga}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" align="center">
-                          {nS.blurb}
+                          {i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
                         </Typography>
                       </Box>
                     </CardContent>
@@ -79,7 +82,7 @@ const AbHomePageNewsCtrl = () => {
       <CenteredFlexBox height={'10%'}>
         <Box component={Link} to={'/news'}>
           <Typography variant="body1" m={2} align="center">
-            See all
+            {t('pages.home.seeAll')}
           </Typography>
         </Box>
       </CenteredFlexBox>

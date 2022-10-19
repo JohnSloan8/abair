@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
@@ -21,6 +22,7 @@ import {
 } from '@/store/applications';
 
 function Applications() {
+  const { t, i18n } = useTranslation();
   const [tab, setTab] = useState(0);
   const { applications, setApplications } = useApplications();
   const { categories, setCategories } = useCategories();
@@ -63,17 +65,17 @@ function Applications() {
     <FullSizeBox>
       <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'md' }}>
-          <Meta title="applications" />
+          <Meta title={t('pageTitles.applications')} />
           <CenteredFlexBox>
             <Box sx={{ maxWidth: 'md', width: '100%' }}>
-              <AbInfoHeader title="Applications" variant="front" />
+              <AbInfoHeader title={t('pageTitles.applications')} variant="front" />
             </Box>
           </CenteredFlexBox>
           <CenteredFlexBox>
             {categories ? (
               <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
                 {categories.map((c, i) => (
-                  <Tab key={i} label={c.name} />
+                  <Tab key={i} label={i18n.language === 'en' ? c.name_en : c.name_ga} />
                 ))}
               </Tabs>
             ) : null}
@@ -85,7 +87,7 @@ function Applications() {
                   key={i}
                   handleClick={() => handleClick(a.url)}
                   name={a.name}
-                  description={a.description}
+                  description={i18n.language === 'en' ? a.description_en : a.description_ga}
                   image={a.image}
                 />
               ))}

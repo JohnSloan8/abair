@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
 
 import AbTabs from '@/components/AbTabs';
@@ -9,6 +11,7 @@ interface AbTabsCtrlProps {
 
 const AbTabsCtrl = ({ variation = 'frontpage' }: AbTabsCtrlProps) => {
   const { frontPageTabs, setFrontPageTabs } = useFrontPageTabs();
+  const { t } = useTranslation();
 
   if (variation === 'frontpage') {
     return (
@@ -18,7 +21,7 @@ const AbTabsCtrl = ({ variation = 'frontpage' }: AbTabsCtrlProps) => {
           color="secondary"
           getter={frontPageTabs}
           setter={setFrontPageTabs}
-          items={['abair', 'éist']}
+          items={[t('pages.home.speak'), t('pages.home.listen')]}
         />
       </Box>
     );

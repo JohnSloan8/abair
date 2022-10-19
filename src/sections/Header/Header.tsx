@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,8 +12,8 @@ import Button from '@mui/material/Button';
 // import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-// import Typography from '@mui/material/Typography';
 import { FlexBox } from '@/components/styled';
 import supabase from '@/services/supabase';
 import { useSession } from '@/store/auth';
@@ -28,12 +29,17 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
   const [, sidebarActions] = useSidebar();
   const { session } = useSession();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   const logOut = async () => {
     console.log('logout called');
     const { error } = await supabase.auth.signOut();
     console.log('error:', error);
     navigate('/login', { replace: true });
+  };
+
+  const changeLang = () => {
+    i18n.language === 'en' ? i18n.changeLanguage('ga') : i18n.changeLanguage('en');
   };
 
   return (
@@ -57,6 +63,18 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
             </Button>
           </FlexBox>
           <FlexBox>
+            <Box sx={{ position: 'absolute', right: { xs: 50, sm: 70 }, top: 14 }}>
+              <Typography color={'primary.dark'}>
+                <Button onClick={changeLang}>
+                  <Typography color={i18n.language === 'ga' ? 'primary.dark' : 'primary.medium'}>
+                    ga
+                  </Typography>
+                  <Typography color={i18n.language === 'en' ? 'primary.dark' : 'primary.medium'}>
+                    /en
+                  </Typography>
+                </Button>
+              </Typography>
+            </Box>
             {session ? (
               //   <Chip icon={<FaceIcon />} label="" variant="outlined" />
               // ) : (

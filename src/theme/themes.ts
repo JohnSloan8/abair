@@ -16,9 +16,6 @@ const sharedTheme = {
     h6: {
       fontWeight: 400,
     },
-    button: {
-      fontStyle: 'italic',
-    },
   },
   palette: {
     background: {

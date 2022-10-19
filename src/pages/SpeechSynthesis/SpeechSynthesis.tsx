@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -14,12 +16,13 @@ import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
 
 function SpeechSynthesis() {
+  const { t } = useTranslation();
   return (
     <FullSizeBox sx={{ backgroundColor: 'secondary.wafer' }}>
       <CenteredFlexBox>
         <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-          <Meta title="speech synthesis" />
-          <AbInfoHeader title="Speech Synthesis" variant="front" />
+          <Meta title={t('pageTitles.synthesis')} />
+          <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
           <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
             <Grid container spacing={0}>
               <Grid item xs={12} sm={6}>

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
@@ -19,6 +20,7 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
   const { breakpointSize } = useBreakpointSize();
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { awaitingSynthesis } = useAwaitingSynthesis();
+  const { t } = useTranslation();
 
   const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
 
@@ -46,7 +48,7 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
     >
       <AbTextField
         key={frontPageTabs}
-        label="scríobh anseo"
+        label={t('pages.home.writeHere')}
         rows={breakpointSize === 'xs' ? 3 : 4}
         disabled={awaitingSynthesis ? true : false}
         autoFocus={true}

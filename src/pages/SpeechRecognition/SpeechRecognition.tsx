@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -11,12 +13,14 @@ import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
 
 function SpeechRecognition() {
+  const { t } = useTranslation();
+
   return (
     <FullSizeBox sx={{ backgroundColor: 'warning.wafer' }}>
       <CenteredFlexBox>
         <Box sx={{ width: '100%', maxWidth: 'sm' }}>
-          <Meta title="speech recognition" />
-          <AbInfoHeader title="Speech Recognition" variant="front" />
+          <Meta title={t('pageTitles.recognition')} />
+          <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
           <CenteredFlexBox sx={{ width: '100%', position: 'relative' }}>
             <Box sx={{ position: 'relative' }}>
               <AbRecognitionVisualisationCtrl />

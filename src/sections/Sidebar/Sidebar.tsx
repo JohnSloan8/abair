@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import DefaultIcon from '@mui/icons-material/Deblur';
@@ -13,6 +14,8 @@ import useSidebar from '@/store/sidebar';
 
 function Sidebar() {
   const [isSidebarOpen, sidebarActions] = useSidebar();
+  const { t } = useTranslation();
+
   return (
     <SwipeableDrawer
       anchor="left"
@@ -37,7 +40,9 @@ function Sidebar() {
                 <ListItemIcon sx={{ color: 'primary.dark' }}>
                   {Icon ? <Icon /> : <DefaultIcon />}
                 </ListItemIcon>
-                <ListItemText sx={{ color: 'secondary.main' }}>{title}</ListItemText>
+                <ListItemText sx={{ color: 'secondary.main' }}>
+                  {t(`pageTitles.${title}`)}
+                </ListItemText>
               </ListItemButton>
             </ListItem>
           ))}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -10,13 +11,14 @@ import { useBreakpointSize } from '@/store/viewDimensions';
 
 const AbHomePageApplicationsCtrl = () => {
   const { breakpointSize } = useBreakpointSize();
+  const { t } = useTranslation();
 
   return (
     <Box height={'100%'}>
       <CenteredFlexBox height={'15%'}>
         <AbInfoHeader
-          title="Applications"
-          description="Access a wide range of applications developed using our core technologies for public, education, and accessibility."
+          title={t('infoHeader.home.applications.title')}
+          description={t('infoHeader.home.applications.description')}
           variant="front"
         />
       </CenteredFlexBox>

@@ -6,7 +6,7 @@ const getNews = async () => {
 
     const { data, error, status } = await supabase
       .from('news_stories')
-      .select(`id, date, title, blurb, body, images`);
+      .select(`id, date, title_en, title_ga, blurb_en, blurb_ga, body_en, body_ga, images`);
 
     if (error && status !== 406) {
       throw error;

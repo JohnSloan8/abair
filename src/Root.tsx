@@ -8,6 +8,8 @@ import { RecoilRoot } from 'recoil';
 
 import ThemeProvider from '@/theme/Provider';
 
+import './translations';
+
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
 

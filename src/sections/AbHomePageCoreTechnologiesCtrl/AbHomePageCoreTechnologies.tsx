@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -11,12 +12,14 @@ import { useBreakpointSize } from '@/store/viewDimensions';
 const AbHomePageCoreTechnologiesCtrl = () => {
   const { breakpointSize } = useBreakpointSize();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <Box height={'100%'}>
       <CenteredFlexBox height={'15%'}>
         <AbInfoHeader
-          title="Core Technologies"
-          description="Get fine-grained control over parameters for our speech synthesis, and view the output for a range of recognition models."
+          title={t('infoHeader.home.core.title')}
+          description={t('infoHeader.home.core.description')}
           variant="front"
         />
       </CenteredFlexBox>
@@ -32,16 +35,16 @@ const AbHomePageCoreTechnologiesCtrl = () => {
           <Grid item>
             <AbClickableCard
               handleClickEvent={() => navigate('/speech-synthesis')}
-              title="Speech Synthesis"
-              description="Listen to our voices in the 3 main Irish dialects"
+              title={t('pageTitles.synthesis')}
+              description={t('pages.home.technologyCards.synthesis.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
             />
           </Grid>
           <Grid item>
             <AbClickableCard
               handleClickEvent={() => navigate('/speech-recognition')}
-              title="Speech Recognition"
-              description="Speak in Irish and see your words as text"
+              title={t('pageTitles.recognition')}
+              description={t('pages.home.technologyCards.recognition.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
             />
           </Grid>

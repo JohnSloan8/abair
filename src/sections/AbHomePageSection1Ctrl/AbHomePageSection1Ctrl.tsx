@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
@@ -31,6 +32,7 @@ const AbHomePageSection1Ctrl = () => {
   const mainControlBox = useRef(null);
   const instructions = useRef(null);
   const inputBoxTl = useRef(gsap.timeline());
+  const { t } = useTranslation();
 
   useEffect(() => {
     inputBoxTl.current && inputBoxTl.current.kill();
@@ -76,10 +78,7 @@ const AbHomePageSection1Ctrl = () => {
       }}
     >
       <CenteredFlexBox>
-        <AbInfoHeader
-          variant="front"
-          title="State-of-the-art Speech and Language Technologies for Irish"
-        />
+        <AbInfoHeader variant="front" title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>
       <CenteredFlexBox height={{ sm: '64px', xs: '48px' }}>
         <AbTabsCtrl variation="frontpage" />
@@ -127,9 +126,7 @@ const AbHomePageSection1Ctrl = () => {
                 color="default"
                 ref={instructions}
               >
-                <span>Choose dialect {'&'} gender</span>
-                <span> &nbsp;{'>'}&nbsp; Type</span>
-                <span> &nbsp;{'>'}&nbsp; Synthesise</span>
+                {t('pages.home.speakInstructions')}
               </Typography>
             ) : (
               <Typography
@@ -139,9 +136,7 @@ const AbHomePageSection1Ctrl = () => {
                 color="default"
                 ref={instructions}
               >
-                <span>Go to a quiet space</span>
-                <span> &nbsp;{'>'}&nbsp; Tap Microphone</span>
-                <span> &nbsp;{'>'}&nbsp; Speak</span>
+                {t('pages.home.listenInstructions')}
               </Typography>
             )}
           </CenteredFlexBox>
