@@ -10,6 +10,7 @@ const getAudio = async (audioID: string) => {
       params: {
         path: audioID,
       },
+      timeout: 10000,
     });
     if (data) {
       return data;
@@ -17,6 +18,7 @@ const getAudio = async (audioID: string) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     alert(error.message);
+    return false;
   }
 };
 

@@ -87,7 +87,6 @@ const AbSynthesisButtonsCtrl = () => {
         synthesisPitch,
         synthesisSpeed,
       ).then((data: any) => {
-        console.log('synthesisData:', data);
         setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
         setAwaitingSynthesis(false);
         postSynthesisRequest({

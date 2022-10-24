@@ -104,7 +104,7 @@ i18n
         translation: {
           pageTitles: {
             home: 'Baile',
-            synthesis: 'Sintéis Urlabhra',
+            synthesis: 'Guthanna ‘Sintéiseacha',
             recognition: 'Aithint Chainte',
             knowledge: 'Eolas',
             applications: 'Iarratais',
@@ -117,26 +117,27 @@ i18n
           infoHeader: {
             home: {
               main: {
-                title: 'Teicneolaíocht Úrscothach Urlabhra agus Teanga don Ghaeilge',
+                title: 'Teicneolaíocht Urlabhra agus Teanga don Ghaeilge',
               },
               core: {
-                title: 'Croítheicneolaíochtaí',
+                title: 'Bonnteicneolaíochtaí',
                 description:
-                  'Faigh smacht mín ar pharaiméadair dár sintéis cainte, agus féach ar an aschur do raon samhlacha aitheantais.',
+                  'Faigh grinnsmacht ar ghuthanna sintéiseacha ABAIR, agus faigh an t-aschur ó chóras aitheanta cainte ÉIST.',
               },
               applications: {
-                title: 'Iarratais',
+                title: 'Feidhmchláir',
                 description:
-                  'Rochtain a fháil ar raon leathan feidhmchlár a fhorbraítear ag baint úsáide as ár bpríomhtheicneolaíochtaí don phobal, don oideachas agus don inrochtaineacht.',
+                  'Tá teacht anseo ar réimse leathan feidhmchlár atá bunaithe ar bhonnteicneolaíochtaí ABAIR i réimsí oiriúnaithe don phobal i gcoitinne, don oideachas agus don inrochtaineacht.',
               },
               news: {
                 title: 'An Nuacht is Déanaí',
-                description: 'Seiceáil cad atá ar siúl le déanaí i saol Abair',
+                description:
+                  'Lean na scéalta is déanaí ón tSaotharlann Foghraíochta agus Urlabhra, Coláiste na Tríonóide',
               },
               knowledge: {
-                title: 'Eolas Cúlra',
+                title: 'Cillín na Saíochta',
                 description:
-                  'Foghlaim faoin taighde teangeolaíoch atá á dhéanamh a thugann eolas don fhorbairt teicneolaíochta',
+                  'Féach anseo ar an taighde teangeolaíochta atá á dhéanamh sa tSaotharlann Foghraíochta agus Urlabhra, agus atá ina chrann taca do na forbairtí teicneolaíochta',
               },
             },
           },
@@ -145,26 +146,26 @@ i18n
               speak: 'abair',
               listen: 'éist',
               writeHere: 'scríobh anseo',
-              speakInstructions: 'roghnaigh canúint & inscne > clóscríobh > sintéis',
-              listenInstructions: 'téigh go dtí spás ciúin > tapáil micreafón > labhair',
-              seeAll: 'gach rud a fheicáil',
-              readPublications: 'foilseacháin a léamh',
+              speakInstructions: 'roghnaigh canúint & inscne > scríobh rud éigin > déan sintéis',
+              listenInstructions: 'téigh go háit chiúin > cliceáil ar an micreafón > labhair amach',
+              seeAll: 'féach gach scéal',
+              readPublications: 'foilseacháin',
               technologyCards: {
                 synthesis: {
                   description:
-                    'Faigh rochtain ar ár nguthanna go léir agus ár múnlaí rialaithe, luas agus tuinairde',
+                    'Cliceáil anseo chun triail a bhaint as guthanna sintéiseacha ABAIR. Tá teacht ar ár múnlaí rialaithe, socruithe luais agus tuinairde',
                 },
                 recognition: {
-                  description: 'Féach ar gach iarratas aitheantais cainte',
+                  description: 'Bain triail as córas ÉIST agus féach siar ar do chuid iarrachtaí',
                 },
               },
             },
             auth: {
               login: 'Logáil isteach',
-              signup: 'Clarú',
+              signup: 'Cláraigh',
               emailAddress: 'Seoladh ríomhphoist',
               password: 'Pasfhocal',
-              confirmPassword: 'Deimhnigh Pasfhocal',
+              confirmPassword: 'Deimhnigh an Pasfhocal',
               createAccount: 'Cruthaigh Cuntas Abair',
               haveAccount: 'Tá cuntas agam cheana féin',
             },

@@ -68,13 +68,15 @@ const getSynthesis = async (
         },
         outputType: 'JSON',
       },
+      timeout: 10000,
     });
     if (data) {
       return data;
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    alert(error.message);
+    alert('error:' + error);
+    return false;
   }
 };
 

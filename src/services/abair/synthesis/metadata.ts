@@ -8,6 +8,7 @@ const getSynthesisMetadata = async () => {
     const { data } = await axios({
       method: 'get',
       url: synthesisMetadataURL,
+      timeout: 10000,
     });
 
     if (data) {
@@ -15,6 +16,7 @@ const getSynthesisMetadata = async () => {
     }
   } catch (error: any) {
     alert('error:' + error);
+    return false;
   }
 };
 

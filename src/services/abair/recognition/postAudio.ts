@@ -19,6 +19,7 @@ const postAudio = async (audioData: string) => {
         developer: true,
         method: 'online2bin',
       },
+      timeout: 10000,
     });
     if (data) {
       return data;
@@ -27,6 +28,7 @@ const postAudio = async (audioData: string) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     alert(error.message);
+    return false;
   }
 };
 
