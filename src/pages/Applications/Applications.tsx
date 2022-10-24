@@ -10,7 +10,7 @@ import Tabs from '@mui/material/Tabs';
 import AbApplicationCard from '@/components/AbApplicationCard';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { ApplicationModel } from '@/models/application';
 import { getApplications } from '@/services/supabase/applications';
 import getCategories from '@/services/supabase/applications/getCategories';
@@ -62,7 +62,7 @@ function Applications() {
   };
 
   return (
-    <CenteredFlexBox>
+    <HorizontallyCenteredFlexBox>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.applications')} />
         <CenteredFlexBox>
@@ -93,7 +93,7 @@ function Applications() {
           </Box>
         </CenteredFlexBox>
       </Box>
-    </CenteredFlexBox>
+    </HorizontallyCenteredFlexBox>
   );
 }
 

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsStory from '@/components/AbNewsStory';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
@@ -27,7 +27,7 @@ function News() {
   }, []);
 
   return (
-    <CenteredFlexBox>
+    <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'md', width: '100%' }}>
         <Meta title={t('pageTitles.news')} />
         <AbInfoHeader title={t('pageTitles.news')} variant="front" />
@@ -51,7 +51,7 @@ function News() {
           </Box>
         </CenteredFlexBox>
       </Box>
-    </CenteredFlexBox>
+    </HorizontallyCenteredFlexBox>
   );
 }
 

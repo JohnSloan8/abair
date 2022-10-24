@@ -9,7 +9,7 @@ enum Pages {
   SpeechRecognition,
   Knowledge,
   Applications,
-  AAC,
+  Geabaire,
   Team,
   News,
   NewsItem,

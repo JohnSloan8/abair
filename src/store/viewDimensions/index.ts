@@ -36,7 +36,7 @@ const frontPageSelectionBoxSize = selector({
     const breakpointSize = get(breakpointSizeState);
     const viewHeight = get(viewHeightState);
     if (breakpointSize === 'xs') {
-      return viewHeight - (64 + 168 + 40 + 48 + 60);
+      return viewHeight - (48 + 168 + 40 + 48 + 60);
     }
     return viewHeight - (64 + 191 + 55 + 64 + 80);
   },

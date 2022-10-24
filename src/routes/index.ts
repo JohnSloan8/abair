@@ -49,10 +49,10 @@ const routes: Routes = {
     icon: AppsIcon,
     showInSidebar: true,
   },
-  [Pages.AAC]: {
-    component: asyncComponentLoader(() => import('@/pages/AAC')),
-    path: '/aac',
-    title: 'aac',
+  [Pages.Geabaire]: {
+    component: asyncComponentLoader(() => import('@/pages/Geabaire')),
+    path: '/geabaire',
+    title: 'geabaire',
     showInSidebar: false,
   },
   [Pages.Team]: {

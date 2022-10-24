@@ -86,6 +86,17 @@ i18n
               createAccount: 'Create an Abair Account',
               haveAccount: 'I already have an account',
             },
+            geabaire: {
+              description: 'Providing Irish voices to AAC users',
+              whatIsAACQuestion: 'What is AAC?',
+              whatIsAACAnswer:
+                'Augmentative and Alternative Communication (AAC) offers life changing access to communication for those with speech related disabilities.  AAC is a variety of strategies, tools and devices that supplement or replace speech including, no-tech methods such as gesture or sign language, low-tech systems including pictures and letterboards and high-tech options which use voice technology, often combining symbols and a keyboard, to offer a full robust vocabulary which afford the user the ability to communicate and engage fully with society.',
+              exampleVideo: 'Example Video',
+              projectDetailsTitle: 'Project Details',
+              projectDetailsDescription:
+                'AAC don Ghaeilge aims to make the Irish language available to AAC users.  This project builds on an initial prototype using CoughDrop and previous accessibility projects by the ABAIR group. It is supported by An Chomhairle um Oideachas Gaeltachta agus Gaelscolaíochta (COGG). Lack of access to high-tech AAC in Irish is a particular problem for those in Irish speaking families both in the Gaeltacht and outside the Gaeltacht and can be a major roadblock in AAC using children’s’ education particularly for those attending gaelscoileanna. The speech output will feature synthetic children’s voices developed within ABAIR for the main dialects of Irish.  We aim for the AAC system to be bilingual with the ability to toggle between Irish and English midsentence, to have built in grammar correctors and to use culturally appropriate language i.e., words specific to Ireland e.g., the GAA, Irish geography etc. A crucial element to this project is a training package for teachers in how to use and integrate AAC don Ghaeilge into their teaching. ',
+              contactDetailsTitle: 'Contact Details',
+            },
           },
         },
       },
@@ -156,6 +167,17 @@ i18n
               confirmPassword: 'Deimhnigh Pasfhocal',
               createAccount: 'Cruthaigh Cuntas Abair',
               haveAccount: 'Tá cuntas agam cheana féin',
+            },
+            geabaire: {
+              description: 'Córas cumarsáide AAC le Gaeilge',
+              whatIsAACQuestion: 'Céard atá i gceist le AAC?',
+              whatIsAACAnswer:
+                'Séard atá i gceist le AAC ná córas cumarsáide a ligeann do dhaoine atá faoi mhíchumas urlabhra cumarsáid a dhéanamh. Tá réimse mhór córas AAC ar fáil; cuid acu– cosúil le gothaí agus an teanga comharthaíochta - nach bhfuil gá le hacmhainn ar bith len iad a úsáid, cuid eile ina mbaintear úsáid as acmhainní bunúsacha cosúil le pictiúir nó clár litreacha agus cuid eile atá ag brath ar acmhainní teicneolaíochta agus a bhaineann úsáid as teicneolaíocht na hurlabhra le siombail agus méarchlár. Is acmhainn teicneolaíochta é an córas AAC – Geabaire - atá á fhorbairt sa tSaotharlann Foghraíochta agus Urlabhra, ina gcuirtear foclóir leathan ar fáil agus a fhágann gur féidir le daoine bheith páirteach i ngach réimse den saol agus den tsochaí.',
+              exampleVideo: 'Físeán Shampla',
+              projectDetailsTitle: 'Sonraí an tionsacadail',
+              projectDetailsDescription:
+                'Is é an chéad chóras AAC don Ghaeilge é Geabaire. Thosaigh an tionscadal seo le cruthú coincheapa a tógadh ar an ardán Coughdrop, agus tá súil againn leagan a thógáil a bheidh ar fáil ar shuíomh ABAIR sar i bhfad. Is le maoiniú ó An Chomhairle um Oideachas Gaeltachta agus Gaelscolaíochta (COGG) atá an acmhainn seo á fhorbairt. Is deacracht ar leith é an easpa acmhainní cumarsáide do theaghlaigh a labhraíonn Gaeilge sa Ghaeltacht agus sa Ghalltacht chomh maith. Is constaic mhór í chomh maith ó thaobh an oideachais de, go háirithe dóibh siúd ag freastal ar Ghaelscoileanna nó ar scoileanna Gaeltachta. Táimid ag súil le córas dátheangach AAC a chur ar fáil a ligfidh don úsáideoir Gaeilge agus Béarla a úsáid in aon abairt amháin, más mian leo. Beidh gá le seiceálaithe gramadaí a bheith leabaithe sa chóras chomh maith le foclóir atá oiriúnach don chomhthéacs cultúrta (e.g. an CLG, focail a bhaineann le tíreolaíocht na hÉireann, etc). Cuirfear pacáiste traenalá ar fáil freisin do mhúinteoirí bunaithe ar bhealaí le Geabaire a úsáid sa seomra ranga. Fágann an comhpháirtíocht le tionscadal ABAIR go gcuirfear guthanna sintéiseacha atá oiriúnach do pháistí ar fáil sna príomhchanúintí sna blianta atá amach romhainn laistigh de chóras Geabaire. ',
+              contactDetailsTitle: 'Sonraí teagmhála',
             },
           },
         },

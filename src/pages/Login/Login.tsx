@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import supabase from '@/services/supabase';
 
 function Login() {
@@ -55,7 +55,7 @@ function Login() {
   };
 
   return (
-    <CenteredFlexBox>
+    <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title={t('pageTitles.loginSignup')} />
         {confirmationEmailSent ? (
@@ -155,7 +155,7 @@ function Login() {
           )}
         </CenteredFlexBox>
       </Box>
-    </CenteredFlexBox>
+    </HorizontallyCenteredFlexBox>
   );
 }
 

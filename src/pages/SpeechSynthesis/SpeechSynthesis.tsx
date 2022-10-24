@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
@@ -18,52 +18,50 @@ import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl'
 function SpeechSynthesis() {
   const { t } = useTranslation();
   return (
-    <FullSizeBox sx={{ backgroundColor: 'secondary.wafer' }}>
-      <CenteredFlexBox>
-        <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-          <Meta title={t('pageTitles.synthesis')} />
-          <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
-          <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={6} my={-2}>
-                <CenteredFlexBox>
-                  <Box>
-                    <AbMapCtrl />
-                  </Box>
-                </CenteredFlexBox>
-              </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                sm={6}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Box minHeight={'56px'}>
-                  <AbSynthesisVoiceButtonsCtrl />
+    <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'secondary.wafer', minHeight: '100vh' }}>
+      <Box sx={{ maxWidth: 'sm', width: '100%' }}>
+        <Meta title={t('pageTitles.synthesis')} />
+        <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
+        <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
+          <Grid container spacing={0}>
+            <Grid item xs={12} sm={6} my={-2}>
+              <CenteredFlexBox>
+                <Box>
+                  <AbMapCtrl />
                 </Box>
-                <AbGenderChoicesCtrl />
-                <Box width={'90%'}>
-                  <AbSynthesisSpeedCtrl />
-                  <AbSynthesisPitchCtrl />
-                </Box>
-                <Box minHeight={'56px'}>
-                  <AbSynthesisModelCtrl />
-                </Box>
-              </Grid>
+              </CenteredFlexBox>
             </Grid>
-          </CenteredFlexBox>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={6}
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Box minHeight={'56px'}>
+                <AbSynthesisVoiceButtonsCtrl />
+              </Box>
+              <AbGenderChoicesCtrl />
+              <Box width={'90%'}>
+                <AbSynthesisSpeedCtrl />
+                <AbSynthesisPitchCtrl />
+              </Box>
+              <Box minHeight={'56px'}>
+                <AbSynthesisModelCtrl />
+              </Box>
+            </Grid>
+          </Grid>
+        </CenteredFlexBox>
 
-          <CenteredFlexBox>
-            <AbSynthesisCtrl>
-              <AbSynthesisButtonsCtrl />
-            </AbSynthesisCtrl>
-          </CenteredFlexBox>
-        </Box>
-      </CenteredFlexBox>
-    </FullSizeBox>
+        <CenteredFlexBox>
+          <AbSynthesisCtrl>
+            <AbSynthesisButtonsCtrl />
+          </AbSynthesisCtrl>
+        </CenteredFlexBox>
+      </Box>
+    </HorizontallyCenteredFlexBox>
   );
 }
 

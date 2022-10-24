@@ -11,13 +11,11 @@ import ScrollToTop from '@/utils/scrollToTop';
 import routes from '..';
 
 function Pages() {
-  const { viewHeight, setViewHeight } = useViewHeight();
+  const { setViewHeight } = useViewHeight();
   const { setViewWidth } = useViewWidth();
 
   const handleResize = () => {
-    console.log('viewHeight:', viewHeight);
     setViewHeight(window.innerHeight);
-    console.log('viewHeight:', viewHeight);
     setViewWidth(window.innerWidth);
   };
 

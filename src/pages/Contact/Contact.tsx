@@ -4,18 +4,18 @@ import Box from '@mui/material/Box';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { HorizontallyCenteredFlexBox } from '@/components/styled';
 
 function Contact() {
   const { t } = useTranslation();
 
   return (
-    <CenteredFlexBox>
+    <HorizontallyCenteredFlexBox>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.contact')} />
         <AbInfoHeader title={t('pageTitles.contact')} variant="front" />
       </Box>
-    </CenteredFlexBox>
+    </HorizontallyCenteredFlexBox>
   );
 }
 

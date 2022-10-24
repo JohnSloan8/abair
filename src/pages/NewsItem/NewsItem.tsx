@@ -9,7 +9,7 @@ import Image from 'mui-image';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox } from '@/components/styled';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { AbNewsStoryModel } from '@/models/news';
 import { ImageDataModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
@@ -38,7 +38,7 @@ function NewsItem() {
   }, [newsStories]);
 
   return (
-    <CenteredFlexBox>
+    <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'md', width: '100%' }}>
         <Meta title={t('pageTitles.news')} />
 
@@ -75,7 +75,7 @@ function NewsItem() {
           </Box>
         ) : null}
       </Box>
-    </CenteredFlexBox>
+    </HorizontallyCenteredFlexBox>
   );
 }
 
