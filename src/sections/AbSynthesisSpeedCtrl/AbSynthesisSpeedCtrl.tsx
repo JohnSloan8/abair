@@ -1,25 +1,25 @@
-import GraphicEqIcon from '@mui/icons-material/GraphicEq';
+import SpeedIcon from '@mui/icons-material/Speed';
 
 import AbSlider from '@/components/AbSlider';
-import { useSynthesisPitch } from '@/store/synthesis/voiceOptions';
+import { useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 
-const AbSynthesisPitchCtrl = () => {
-  const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
+const AbSynthesisSpeedCtrl = () => {
+  const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
 
   return (
     <AbSlider
       min={0.5}
-      value={synthesisPitch}
+      value={synthesisSpeed}
       max={1.5}
       handleSliderChange={(e) =>
-        setSynthesisPitch(parseFloat((e.target as HTMLInputElement).value))
+        setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))
       }
       step={0.1}
-      icon={GraphicEqIcon}
-      control="pitch"
+      icon={SpeedIcon}
+      control="speed"
       color="secondary.main"
     />
   );
 };
 
-export default AbSynthesisPitchCtrl;
+export default AbSynthesisSpeedCtrl;

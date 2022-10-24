@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import AbNewsStory from '@/components/AbNewsStory';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { CenteredFlexBox } from '@/components/styled';
 import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
@@ -27,33 +27,31 @@ function News() {
   }, []);
 
   return (
-    <FullSizeBox>
-      <Meta title={t('pageTitles.news')} />
-      <CenteredFlexBox>
-        <Box sx={{ maxWidth: 'md', width: '100%' }}>
-          <AbInfoHeader title={t('pageTitles.news')} variant="front" />
-          <CenteredFlexBox>
-            <Box sx={{ width: '100%', maxWidth: 'md' }}>
-              {loading ? (
-                <p>loading...</p>
-              ) : (
-                newsStories.map((nS: AbNewsStoryModel, i: number) => (
-                  <AbNewsStory
-                    key={i}
-                    id={nS.id}
-                    title={i18n.language === 'en' ? nS.title_en : nS.title_ga}
-                    date={nS.date}
-                    blurb={i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
-                    body={i18n.language === 'en' ? nS.body_en : nS.body_ga}
-                    images={nS.images}
-                  />
-                ))
-              )}
-            </Box>
-          </CenteredFlexBox>
-        </Box>
-      </CenteredFlexBox>
-    </FullSizeBox>
+    <CenteredFlexBox>
+      <Box sx={{ maxWidth: 'md', width: '100%' }}>
+        <Meta title={t('pageTitles.news')} />
+        <AbInfoHeader title={t('pageTitles.news')} variant="front" />
+        <CenteredFlexBox>
+          <Box sx={{ width: '100%', maxWidth: 'md' }}>
+            {loading ? (
+              <p>loading...</p>
+            ) : (
+              newsStories.map((nS: AbNewsStoryModel, i: number) => (
+                <AbNewsStory
+                  key={i}
+                  id={nS.id}
+                  title={i18n.language === 'en' ? nS.title_en : nS.title_ga}
+                  date={nS.date}
+                  blurb={i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
+                  body={i18n.language === 'en' ? nS.body_en : nS.body_ga}
+                  images={nS.images}
+                />
+              ))
+            )}
+          </Box>
+        </CenteredFlexBox>
+      </Box>
+    </CenteredFlexBox>
   );
 }
 

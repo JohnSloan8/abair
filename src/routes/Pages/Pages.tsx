@@ -3,19 +3,21 @@ import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
-import { TrueFullSizeBox } from '@/components/styled';
-// import Footer from '@/sections/Footer';
+// import { FullSizeBox } from '@/components/styled';
+import Footer from '@/sections/Footer';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
 import ScrollToTop from '@/utils/scrollToTop';
 
 import routes from '..';
 
 function Pages() {
-  const { setViewHeight } = useViewHeight();
+  const { viewHeight, setViewHeight } = useViewHeight();
   const { setViewWidth } = useViewWidth();
 
   const handleResize = () => {
+    console.log('viewHeight:', viewHeight);
     setViewHeight(window.innerHeight);
+    console.log('viewHeight:', viewHeight);
     setViewWidth(window.innerWidth);
   };
 
@@ -27,7 +29,7 @@ function Pages() {
 
   return (
     <Box>
-      <TrueFullSizeBox sx={{ position: 'relative' }} justifyContent="center">
+      <Box minHeight={'100vh'}>
         <Box sx={{ height: '64px' }}></Box>
         <ScrollToTop>
           <Routes>
@@ -36,8 +38,8 @@ function Pages() {
             })}
           </Routes>
         </ScrollToTop>
-      </TrueFullSizeBox>
-      {/* <Footer /> */}
+      </Box>
+      <Footer />
     </Box>
   );
 }

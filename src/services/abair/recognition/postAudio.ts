@@ -17,6 +17,7 @@ const postAudio = async (audioData: string) => {
       data: {
         recogniseBlob: audioData,
         developer: true,
+        method: 'online2bin',
       },
     });
     if (data) {

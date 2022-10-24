@@ -9,7 +9,7 @@ import Image from 'mui-image';
 
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
-import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
+import { CenteredFlexBox } from '@/components/styled';
 import { AbNewsStoryModel } from '@/models/news';
 import { ImageDataModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
@@ -38,16 +38,16 @@ function NewsItem() {
   }, [newsStories]);
 
   return (
-    <FullSizeBox>
-      <Meta title={t('pageTitles.news')} />
-      <CenteredFlexBox>
+    <CenteredFlexBox>
+      <Box sx={{ maxWidth: 'md', width: '100%' }}>
+        <Meta title={t('pageTitles.news')} />
+
         {newsStory !== undefined ? (
-          <Box sx={{ maxWidth: 'md', width: '100%' }}>
+          <Box>
             <AbInfoHeader
               title={i18n.language === 'en' ? newsStory.title_en : newsStory.title_ga}
               variant="front"
             />
-
             <CenteredFlexBox>
               <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
                 <Typography align="center">
@@ -74,8 +74,8 @@ function NewsItem() {
             </CenteredFlexBox>
           </Box>
         ) : null}
-      </CenteredFlexBox>
-    </FullSizeBox>
+      </Box>
+    </CenteredFlexBox>
   );
 }
 

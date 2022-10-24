@@ -12,8 +12,7 @@ function Home() {
   const { t } = useTranslation();
   return (
     <>
-      {/* <Meta title="home" /> */}
-      <Meta title={t('pages.home')} />
+      <Meta title={t('pageTitles.home')} />
       <AbHomePageSection1Ctrl />
       <FullSizeBox py={{ xs: 4, sm: 8 }}>
         <AbHomePageCoreTechnologiesCtrl />
