@@ -79,7 +79,7 @@ function Geabaire() {
         </CenteredFlexBox>
       </Box>
 
-      <Box py={8} sx={{ backgroundColor: 'primary.wafer' }}>
+      <Box py={8} sx={{ backgroundColor: 'primary.light' }}>
         <CenteredFlexBox>
           <Typography variant={'h5'} align="center">
             {t('pages.geabaire.contactDetailsTitle')}
