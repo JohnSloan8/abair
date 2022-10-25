@@ -21,7 +21,9 @@ function SpeechSynthesis() {
     <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'secondary.wafer', minHeight: '100vh' }}>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title={t('pageTitles.synthesis')} />
-        <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
+        </Box>
         <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
           <Grid container spacing={0}>
             <Grid item xs={12} sm={6} my={-2}>

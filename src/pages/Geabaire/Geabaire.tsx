@@ -17,7 +17,9 @@ function Geabaire() {
       <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'primary.main' }}>
         <Box pb={4} sx={{ width: '100%', maxWidth: 'md' }}>
           <Meta title="Geabaire" />
-          <AbInfoHeader title="Geabaire" color="background.paper" variant="front" />
+          <Box py={{ sm: 4, xs: 2 }}>
+            <AbInfoHeader title="Geabaire" color="background.paper" variant="front" />
+          </Box>
           <CenteredFlexBox>
             <Box maxWidth="md" border={8} borderRadius={2} borderColor={'primary.light'}>
               <Image

@@ -14,7 +14,9 @@ function Knowledge() {
     <HorizontallyCenteredFlexBox>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.knowledge')} />
-        <AbInfoHeader title={t('pageTitles.knowledge')} variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pageTitles.knowledge')} variant="front" />
+        </Box>
         <AbKnowledgeCtrl />
       </Box>
     </HorizontallyCenteredFlexBox>

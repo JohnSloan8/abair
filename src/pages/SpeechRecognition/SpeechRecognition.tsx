@@ -19,7 +19,9 @@ function SpeechRecognition() {
     <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'warning.wafer', minHeight: '100vh' }}>
       <Box sx={{ width: '100%', maxWidth: 'sm' }}>
         <Meta title={t('pageTitles.recognition')} />
-        <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
+        </Box>
         <CenteredFlexBox sx={{ width: '100%', position: 'relative' }}>
           <Box sx={{ position: 'relative' }}>
             <AbRecognitionVisualisationCtrl />

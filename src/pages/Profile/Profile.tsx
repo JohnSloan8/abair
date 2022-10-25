@@ -52,7 +52,9 @@ function Profile() {
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title="Profile" />
-        <AbInfoHeader title="Profile" variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title="Profile" variant="front" />
+        </Box>
         <CenteredFlexBox m={2}>
           <div aria-live="polite">
             {loading ? (

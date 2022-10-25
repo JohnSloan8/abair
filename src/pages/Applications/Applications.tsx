@@ -66,7 +66,7 @@ function Applications() {
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.applications')} />
         <CenteredFlexBox>
-          <Box sx={{ maxWidth: 'md', width: '100%' }}>
+          <Box sx={{ maxWidth: 'md', width: '100%' }} py={{ sm: 4, xs: 2 }}>
             <AbInfoHeader title={t('pageTitles.applications')} variant="front" />
           </Box>
         </CenteredFlexBox>

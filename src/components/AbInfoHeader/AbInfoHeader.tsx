@@ -22,7 +22,7 @@ function AbInfoHeader({
     <CenteredFlexBox
       width="100%"
       maxWidth="md"
-      height={{ sm: variation.heights[0], xs: variation.heights[1] }}
+      // height={{ sm: variation.heights[0], xs: variation.heights[1] }}
       px={1}
     >
       <Grid container direction={'column'}>

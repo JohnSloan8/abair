@@ -59,15 +59,21 @@ function Login() {
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title={t('pageTitles.loginSignup')} />
         {confirmationEmailSent ? (
-          <AbInfoHeader
-            title="Confirmation Email sent"
-            description="Please check your email to confirm your accout. Then you can login to Abair."
-            variant="front"
-          />
+          <Box py={{ sm: 4, xs: 2 }}>
+            <AbInfoHeader
+              title="Confirmation Email sent"
+              description="Please check your email to confirm your accout. Then you can login to Abair."
+              variant="front"
+            />
+          </Box>
         ) : showSignupPage ? (
-          <AbInfoHeader title={t('pages.auth.signup')} variant="front" />
+          <Box py={{ sm: 4, xs: 2 }}>
+            <AbInfoHeader title={t('pages.auth.signup')} variant="front" />
+          </Box>
         ) : (
-          <AbInfoHeader title={t('pages.auth.login')} variant="front" />
+          <Box py={{ sm: 4, xs: 2 }}>
+            <AbInfoHeader title={t('pages.auth.login')} variant="front" />
+          </Box>
         )}
         <CenteredFlexBox m={2}>
           {loading ? (
@@ -150,7 +156,6 @@ function Login() {
                   </>
                 )}
               </Grid>
-              {/* </form> */}
             </Box>
           )}
         </CenteredFlexBox>

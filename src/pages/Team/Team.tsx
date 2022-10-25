@@ -13,7 +13,9 @@ function Team() {
     <HorizontallyCenteredFlexBox>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.team')} />
-        <AbInfoHeader title={t('pageTitles.team')} variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pageTitles.team')} variant="front" />
+        </Box>
       </Box>
     </HorizontallyCenteredFlexBox>
   );

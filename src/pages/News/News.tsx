@@ -30,7 +30,9 @@ function News() {
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'md', width: '100%' }}>
         <Meta title={t('pageTitles.news')} />
-        <AbInfoHeader title={t('pageTitles.news')} variant="front" />
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pageTitles.news')} variant="front" />
+        </Box>
         <CenteredFlexBox>
           <Box sx={{ width: '100%', maxWidth: 'md' }}>
             {loading ? (

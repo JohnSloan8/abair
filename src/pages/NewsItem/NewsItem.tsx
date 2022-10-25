@@ -44,10 +44,12 @@ function NewsItem() {
 
         {newsStory !== undefined ? (
           <Box>
-            <AbInfoHeader
-              title={i18n.language === 'en' ? newsStory.title_en : newsStory.title_ga}
-              variant="front"
-            />
+            <Box py={{ sm: 4, xs: 2 }}>
+              <AbInfoHeader
+                title={i18n.language === 'en' ? newsStory.title_en : newsStory.title_ga}
+                variant="front"
+              />
+            </Box>
             <CenteredFlexBox>
               <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
                 <Typography align="center">
