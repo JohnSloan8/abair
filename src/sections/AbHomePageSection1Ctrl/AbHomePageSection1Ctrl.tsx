@@ -88,7 +88,7 @@ const AbHomePageSection1Ctrl = () => {
         {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
       </CenteredFlexBox>
 
-      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 55, xs: 40 } }}>
+      <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 55, xs: 50 } }}>
         <CenteredFlexBox ref={mainControlBox}>
           <Box width={'100%'} maxWidth={550} minWidth={250}>
             {frontPageTabs === 0 ? (

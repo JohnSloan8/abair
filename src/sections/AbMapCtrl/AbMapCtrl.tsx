@@ -60,7 +60,7 @@ const AbMapCtrl = () => {
             ? frontPageSelectionBoxSizeValue - 125
             : frontPageSelectionBoxSizeValue - 85
           : breakpointSize === 'xs'
-          ? frontPageSelectionBoxSizeValue - 85
+          ? frontPageSelectionBoxSizeValue - 90
           : frontPageSelectionBoxSizeValue - 65
       }
       irelandMapData={irelandMapData}
