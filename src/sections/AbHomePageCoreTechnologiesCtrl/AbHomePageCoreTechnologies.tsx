@@ -38,6 +38,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
               title={t('pageTitles.synthesis')}
               description={t('pages.home.technologyCards.synthesis.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
+              image="assets/images/misc/synthesis-card-screenshot.png"
             />
           </Grid>
           <Grid item>
@@ -46,6 +47,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
               title={t('pageTitles.recognition')}
               description={t('pages.home.technologyCards.recognition.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
+              image="assets/images/misc/recognition-card-screenshot.png"
             />
           </Grid>
         </Grid>

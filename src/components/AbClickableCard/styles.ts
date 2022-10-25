@@ -9,18 +9,18 @@ const styles: { [name: string]: AbClickableCardStyles } = {
     image: 'assets/images/misc/400x600_fallbackAbairImage.jpg',
   },
   app: {
-    titleVariant: 'h6',
-    color: 'info.main',
+    titleVariant: 'body1',
+    color: 'gray',
     padding: 1,
-    bottom: undefined,
-    width: 276,
-    height: 184,
+    bottom: 0,
+    width: 330,
+    height: 220,
     image: 'assets/images/misc/400x400_fallbackAbairImage.jpg',
   },
 };
 
 interface AbClickableCardStyles {
-  titleVariant: 'h5' | 'h6';
+  titleVariant: 'h5' | 'h6' | 'body1';
   color: string;
   padding: number;
   bottom?: number;

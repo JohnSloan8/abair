@@ -38,6 +38,10 @@ i18n
               main: {
                 title: 'State-of-the-art Speech and Language Technologies for Irish',
               },
+              mileGlor: {
+                title: 'A Thousand Voices',
+                description: 'Abair in the studio',
+              },
               core: {
                 title: 'Core Technologies',
                 description:
@@ -76,6 +80,7 @@ i18n
                   description: 'View all speech recognition requests',
                 },
               },
+              go: 'go',
             },
             auth: {
               login: 'Log In',
@@ -119,6 +124,10 @@ i18n
               main: {
                 title: 'Teicneolaíocht Urlabhra agus Teanga don Ghaeilge',
               },
+              mileGlor: {
+                title: 'Míle Glór',
+                description: 'Abair sa Stiúideo',
+              },
               core: {
                 title: 'Bonnteicneolaíochtaí',
                 description:
@@ -159,6 +168,7 @@ i18n
                   description: 'Bain triail as córas ÉIST agus féach siar ar do chuid iarrachtaí',
                 },
               },
+              go: 'ar aghaidh',
             },
             auth: {
               login: 'Logáil isteach',

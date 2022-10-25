@@ -6,12 +6,11 @@ import { CenteredFlexBox } from '@/components/styled';
 
 function Footer() {
   return (
-    <CenteredFlexBox sx={{ position: 'relative', backgroundColor: '#eaeaea', bottom: 0 }}>
+    <CenteredFlexBox py={2} sx={{ position: 'relative', backgroundColor: '#eaeaea', bottom: 0 }}>
       <Box>
         <Grid
           container
           direction="row"
-          py={2}
           spacing={{ sm: 4, xs: 2 }}
           justifyContent="center"
           alignItems="center"

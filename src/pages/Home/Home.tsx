@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import Meta from '@/components/Meta';
 import { FullSizeBox } from '@/components/styled';
+import AbHomeMileGlorCtrl from '@/sections/AbHomeMileGlorCtrl';
 import AbHomePageApplicationsCtrl from '@/sections/AbHomePageApplicationsCtrl';
 import AbHomePageCoreTechnologiesCtrl from '@/sections/AbHomePageCoreTechnologiesCtrl';
 import AbHomePageKnowledgeCtrl from '@/sections/AbHomePageKnowledgeCtrl';
@@ -14,6 +15,9 @@ function Home() {
     <>
       <Meta title={t('pageTitles.home')} />
       <AbHomePageSection1Ctrl />
+      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+        <AbHomeMileGlorCtrl />
+      </FullSizeBox>
       <FullSizeBox py={{ xs: 4, sm: 8 }}>
         <AbHomePageCoreTechnologiesCtrl />
       </FullSizeBox>
