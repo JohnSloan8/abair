@@ -35,6 +35,7 @@ interface AbClickableCardProps {
   description?: string;
   handleClickEvent?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   variation: 'main' | 'app' | 'sCapp';
+  borderColor?: 'primary' | 'secondary' | 'warning';
 }
 
 export type { AbClickableCardStyles, AbClickableCardProps };
