@@ -62,7 +62,7 @@ function Applications() {
   };
 
   return (
-    <HorizontallyCenteredFlexBox>
+    <HorizontallyCenteredFlexBox pb={8}>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.applications')} />
         <CenteredFlexBox>
@@ -88,6 +88,7 @@ function Applications() {
                 name={a.name}
                 description={i18n.language === 'en' ? a.description_en : a.description_ga}
                 image={a.image}
+                message={a.url === '#' ? t('pages.applications.comingSoon') : ''}
               />
             ))}
           </Box>

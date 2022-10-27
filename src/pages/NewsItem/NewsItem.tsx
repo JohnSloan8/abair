@@ -39,7 +39,7 @@ function NewsItem() {
 
   return (
     <HorizontallyCenteredFlexBox>
-      <Box sx={{ maxWidth: 'md', width: '100%' }}>
+      <Box sx={{ maxWidth: 'md', width: '100%' }} mb={8}>
         <Meta title={t('pageTitles.news')} />
 
         {newsStory !== undefined ? (
@@ -56,16 +56,19 @@ function NewsItem() {
                   {newsStory.images.map(
                     (image: ImageDataModel, i: number) =>
                       image !== null && (
-                        <Image
-                          key={i}
-                          duration={1000}
-                          height={200}
-                          easing="ease-out"
-                          alt={`news item image`}
-                          src={image.url}
-                          bgColor="#fff"
-                          showLoading
-                        />
+                        <CenteredFlexBox mb={4}>
+                          <Image
+                            key={i}
+                            duration={1000}
+                            height={300}
+                            width={400}
+                            easing="ease-out"
+                            alt={`news item image`}
+                            src={image.url}
+                            bgColor="#fff"
+                            showLoading
+                          />
+                        </CenteredFlexBox>
                       ),
                   )}
                 </Typography>

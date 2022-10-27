@@ -55,10 +55,10 @@ const routes: Routes = {
     title: 'geabaire',
     showInSidebar: false,
   },
-  [Pages.Team]: {
-    component: asyncComponentLoader(() => import('@/pages/Team')),
-    path: '/team',
-    title: 'team',
+  [Pages.About]: {
+    component: asyncComponentLoader(() => import('@/pages/About')),
+    path: '/about',
+    title: 'about',
     icon: GroupsIcon,
     showInSidebar: true,
   },

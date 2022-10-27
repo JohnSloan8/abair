@@ -10,7 +10,7 @@ enum Pages {
   Knowledge,
   Applications,
   Geabaire,
-  Team,
+  About,
   News,
   NewsItem,
   Login,

@@ -51,7 +51,7 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
         label={t('pages.home.writeHere')}
         rows={breakpointSize === 'xs' ? 3 : 4}
         disabled={awaitingSynthesis ? true : false}
-        autoFocus={true}
+        autoFocus={false}
         getter={synthesisText}
         onChangeHandler={(text) => {
           setSynthesisText(text);

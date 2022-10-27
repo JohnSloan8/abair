@@ -77,14 +77,18 @@ const AbHomePageSection1Ctrl = () => {
         backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
       }}
     >
-      <CenteredFlexBox height={{ sm: '96px', xs: '64px' }}>
+      <CenteredFlexBox height={{ sm: '84px', xs: '64px' }}>
         <AbInfoHeader variant="front" title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>
-      <CenteredFlexBox height={{ sm: '64px', xs: '48px' }}>
+      <CenteredFlexBox height={{ sm: '48px', xs: '48px' }} mb={1}>
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
-      <CenteredFlexBox ref={mainSelectionBox} height={frontPageSelectionBoxSizeValue}>
+      <CenteredFlexBox
+        ref={mainSelectionBox}
+        height={frontPageSelectionBoxSizeValue}
+        minHeight={200}
+      >
         {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
       </CenteredFlexBox>
 

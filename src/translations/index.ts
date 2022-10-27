@@ -27,7 +27,7 @@ i18n
             recognition: 'Speech Recognition',
             knowledge: 'Knowledge',
             applications: 'Applications',
-            team: 'Team',
+            about: 'About Us',
             news: 'News',
             loginSignup: 'Login/Signup',
             profile: 'Profile',
@@ -40,7 +40,7 @@ i18n
               },
               mileGlor: {
                 title: 'A Thousand Voices',
-                description: 'Abair in the studio',
+                description: 'ABAIR in the studio',
               },
               core: {
                 title: 'Core Technologies',
@@ -54,7 +54,7 @@ i18n
               },
               news: {
                 title: 'Latest News',
-                description: "Check out what's been going on recently in the world of Abair",
+                description: "Check out what's been going on recently in the world of ABAIR",
               },
               knowledge: {
                 title: 'Knowledge Base',
@@ -88,7 +88,7 @@ i18n
               emailAddress: 'Email Address',
               password: 'Password',
               confirmPassword: 'Confirm Password',
-              createAccount: 'Create an Abair Account',
+              createAccount: 'Create an ABAIR Account',
               haveAccount: 'I already have an account',
             },
             geabaire: {
@@ -102,6 +102,28 @@ i18n
                 'AAC don Ghaeilge aims to make the Irish language available to AAC users.  This project builds on an initial prototype using CoughDrop and previous accessibility projects by the ABAIR group. It is supported by An Chomhairle um Oideachas Gaeltachta agus Gaelscolaíochta (COGG). Lack of access to high-tech AAC in Irish is a particular problem for those in Irish speaking families both in the Gaeltacht and outside the Gaeltacht and can be a major roadblock in AAC using children’s’ education particularly for those attending gaelscoileanna. The speech output will feature synthetic children’s voices developed within ABAIR for the main dialects of Irish.  We aim for the AAC system to be bilingual with the ability to toggle between Irish and English midsentence, to have built in grammar correctors and to use culturally appropriate language i.e., words specific to Ireland e.g., the GAA, Irish geography etc. A crucial element to this project is a training package for teachers in how to use and integrate AAC don Ghaeilge into their teaching. ',
               contactDetailsTitle: 'Contact Details',
             },
+            about: {
+              aboutUsTitle: 'About Us',
+              aboutUsPin:
+                "ABAIR is a project of the Phonetics and Speech Laboratory at the School of Linguistic, Speech and Communication Sciences, Trinity College Dublin. We've been developing synthetic voices for Irish since 2008. We've covered all three major dialects – Ulster, Connaught and Munster Irish. We're also in the process of developing a speech recognition system for Irish.",
+              aboutUs:
+                "Synthetic voices and speech recognition have been in high demand for the last few years. Devices like Alexa are very popular and there are many uses for speech synthesis. There is no doubt that speech technology will flourish in the future especially now that Artificial Intelligence is improving. We've been providing speech technology for Irish since 2008 and have come a long way. Today ABAIR's technology is used in the fields of education and accessibility and we are planning to develop more. We are currently in the porcess of developing a speech recognition system.",
+              synthesisTitle: 'Synthesis',
+              synthesis:
+                ' There are a lot of use cases for text-to-speech (TTS) synthesis. It is used in public places, e.g. for announcements at train stations or aiports. TTS synthesis is extremely important for the visually impaired, because it enables them to use computers or smart phones. The amount of teaching material that incorporates TTS synthesis is constantly increasing too. People also like to use TTS synthesis to have newspaper articles read out to them while they are driving or jogging. In fact, TTS synthesis is a must for any language these days.',
+              speechRecognitionTitle: 'Speech Recognition',
+              speechRecognition:
+                "Speech recognition enables us to interact with computers by simply 'talking' to them, e.g. when you tell your GPS where to go or when you ask your smart phone for the weather forecast. There's an increasing demand for a speech recognition system for Irish, and ABAIR is currently developing one.",
+              challengeTitle: 'The Challenge',
+              challenge:
+                "Compared to major languages such as English and Spanish, there aren't as many resources available for minority languages like Irish. There are far less speakers and thus it is more difficult to build up a data base of recorded speech, which is indispensable for developing synthetic voices or speech recognition systems. Furthermore, experts are needed who understand the sound system and the structure of the language as well as engineers who are skilled in speech processing. That's why there is usually only a handful of people who develop speech technology for minority languages.",
+              aheadTitle: 'Ahead',
+              ahead:
+                'Machine learning has improved considerably over the last couple of years and we are always trying to use the latest technology to improve our software and to provide facilities to the public.',
+            },
+            applications: {
+              comingSoon: 'coming soon',
+            },
           },
         },
       },
@@ -109,11 +131,11 @@ i18n
         translation: {
           pageTitles: {
             home: 'Baile',
-            synthesis: 'Guthanna ‘Sintéiseacha',
+            synthesis: 'Guthanna Sintéiseacha',
             recognition: 'Aithint Chainte',
             knowledge: 'Eolas',
             applications: 'Iarratais',
-            team: 'An Fhoireann',
+            about: 'Eolas Fúinn',
             news: 'Nuacht',
             loginSignup: 'Logáil Isteach/Clarú',
             profile: 'Próifíl',
@@ -126,7 +148,7 @@ i18n
               },
               mileGlor: {
                 title: 'Míle Glór',
-                description: 'Abair sa Stiúideo',
+                description: 'ABAIR sa Stiúideo',
               },
               core: {
                 title: 'Bonnteicneolaíochtaí',
@@ -152,7 +174,7 @@ i18n
           },
           pages: {
             home: {
-              speak: 'abair',
+              speak: 'ABAIR',
               listen: 'éist',
               writeHere: 'scríobh anseo',
               speakInstructions: 'roghnaigh canúint & inscne > scríobh rud éigin > déan sintéis',
@@ -176,7 +198,7 @@ i18n
               emailAddress: 'Seoladh ríomhphoist',
               password: 'Pasfhocal',
               confirmPassword: 'Deimhnigh an Pasfhocal',
-              createAccount: 'Cruthaigh Cuntas Abair',
+              createAccount: 'Cruthaigh Cuntas ABAIR',
               haveAccount: 'Tá cuntas agam cheana féin',
             },
             geabaire: {
@@ -189,6 +211,28 @@ i18n
               projectDetailsDescription:
                 'Is é an chéad chóras AAC don Ghaeilge é Geabaire. Thosaigh an tionscadal seo le cruthú coincheapa a tógadh ar an ardán Coughdrop, agus tá súil againn leagan a thógáil a bheidh ar fáil ar shuíomh ABAIR sar i bhfad. Is le maoiniú ó An Chomhairle um Oideachas Gaeltachta agus Gaelscolaíochta (COGG) atá an acmhainn seo á fhorbairt. Is deacracht ar leith é an easpa acmhainní cumarsáide do theaghlaigh a labhraíonn Gaeilge sa Ghaeltacht agus sa Ghalltacht chomh maith. Is constaic mhór í chomh maith ó thaobh an oideachais de, go háirithe dóibh siúd ag freastal ar Ghaelscoileanna nó ar scoileanna Gaeltachta. Táimid ag súil le córas dátheangach AAC a chur ar fáil a ligfidh don úsáideoir Gaeilge agus Béarla a úsáid in aon abairt amháin, más mian leo. Beidh gá le seiceálaithe gramadaí a bheith leabaithe sa chóras chomh maith le foclóir atá oiriúnach don chomhthéacs cultúrta (e.g. an CLG, focail a bhaineann le tíreolaíocht na hÉireann, etc). Cuirfear pacáiste traenalá ar fáil freisin do mhúinteoirí bunaithe ar bhealaí le Geabaire a úsáid sa seomra ranga. Fágann an comhpháirtíocht le tionscadal ABAIR go gcuirfear guthanna sintéiseacha atá oiriúnach do pháistí ar fáil sna príomhchanúintí sna blianta atá amach romhainn laistigh de chóras Geabaire. ',
               contactDetailsTitle: 'Sonraí teagmhála',
+            },
+            about: {
+              aboutUsTitle: 'Eolas Fúinn',
+              aboutUsPin:
+                'Is tionscadal de chuid na Saotharlainne Foghraíochta agus Urlabhra ag Scoil na nEolaíochtaí Teangeolaíochta, Urlabhra agus Cumarsáide, Coláiste na Tríonóide, BÁC, é ABAIR. Tá muid ag forbairt glórtha sintéise don Ghaeilge ó 2008. Tá na trí mhórchanúíntí clúdaithe againn – Gaeilge Uladh, Chonnacht agus na Mumhan. Chomh maith leis sin, tá muid ag obair ar chóras aithint chainte don Ghaeilge faoi láthair.',
+              aboutUs:
+                'Tá borradh faoi ghlórtha sintéise agus aithint chainte le cúpla bliain anuas. Tá an-éileamh ar threalamh fearacht Alexa agus is iomaí feidhm a bhaintear as glórtha sintéise. Níl aon dabht ach go dtiocfaidh tuilleadh fáis ar theicneolaíocht urlabhra sna blianta atá amach romhainn agus an Intleacht Shaorga ag dul i bhfeabhas an t-am ar fad. Tá muid ag cur teicneolaíocht urlabhra don Ghaeilge ar fáil ó bhí 2008 ann agus is iomaí dul chun cinn atá déanta againn ó shin i leith. Sa lá atá inniú ann, baintear úsáid as teicneolaíochtaí de chuid ABAIR i réimse an oideachais agus na rochtana agus tá muid meáite ar a thuilleadh teicneolaíochta a fhorbairt. Tá córas aithint chainte ar na bacáin againn faoi láthair.',
+              synthesisTitle: 'Sintéis',
+              synthesis:
+                "Is iomaí feidhm atá leis an tsintéis Téacs-go-hUrlabhra ('Text-to-Speech'). Úsáidtear í i gcórais phoiblí, m. sh. le haghaidh fógraí sa stáisiún traenach nó ag an aerfort. Tá sí thar a bheith tábhachtach do dhaoine atá faoi mhíchumas radhairc ionas go bhfuil siad in ann ríomhairí agus gutháin chliste a úsáid gan stró. Tá líon na n-acmhainní teagaisc ar dlúthchuid díobh í an tsintéis ag fás ó lá go lá. Agus is minic a bhaineann daoine úsáid as sintéis chun éisteacht leis na scéalta nuaíochta is deireanaí agus iad ag tiomaint sa gcarr nó ag bogshodar. Go deimhin, is rud nach foláir a bheith ag teanga na laethanta seo é sintéis Teacs-go-hUrlabhra. ",
+              speechRecognitionTitle: 'Aithint Chainte',
+              speechRecognition:
+                'Cuireann aithint chainte ar ár gcumas plé le ríomhairí go héasca trína bheith ag "caint leo", cuir i gcás ainm baile a thabhairt don chóras GPS sa gcarr nó scéal na haimsire a fhiosrú den ghuthán cliste. Tá éileamh mór ar chóras aithint chainte don Ghaeilge agus tá ABAIR ag díriú ar an mbearna a líonadh',
+              challengeTitle: 'An Dúshlán',
+              challenge:
+                'Murab ionann is mórtheangacha dála an Bhéarla nó na Spáinnise, ní bhíonn an oiread céanna acmhainní ag mionteanga fearacht na Gaeilge. Tá líon na gcainteoirí i bhfad níos lú agus is deacair bunachar mór taifeadtaí a chur le chéile, rud a theastaíonn le haghaidh glórtha sintéise is córais aithint chainte a fhorbairt. Chomh maith leis sin, teastaíonn saineolaithe a bhfuil léargas acu ar fhoghraíocht agus struchtúr na teanga agus is gá le hinnealltóirí a bhfuil tuisicnit mhaith ar phróiseáil urlabhra acu. Mar sin, ní bhíonn ach dornán beag daoine ag obair ar theicneolaíocht urlabhra do mhionteangacha.',
+              aheadTitle: 'Chun Cinn',
+              ahead:
+                'Tá feabhas thar chuimse tagtha ar an ríomhfhoghlaim le cúpla bliain anuas agus bíonn muid i gcónaí ag iarraidh leas a bhaint as na teicneolaíochtaí is nua chun snas a chur ar ár gcuid bogearraí agus áiseanna nua a chur ar fáil don phobal.',
+            },
+            applications: {
+              comingSoon: 'le teacht',
             },
           },
         },
