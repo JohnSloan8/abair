@@ -16,14 +16,14 @@ const AbHomePageCoreTechnologiesCtrl = () => {
 
   return (
     <Box height={'100%'}>
-      <CenteredFlexBox height={'15%'}>
+      <CenteredFlexBox height={'20%'}>
         <AbInfoHeader
           title={t('infoHeader.home.core.title')}
           description={t('infoHeader.home.core.description')}
           variant="front"
         />
       </CenteredFlexBox>
-      <CenteredFlexBox height={'85%'}>
+      <CenteredFlexBox height={'80%'}>
         <Grid
           container
           direction="row"
