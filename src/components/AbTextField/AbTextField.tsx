@@ -21,6 +21,7 @@ const AbTextField = ({
   return (
     <TextField
       sx={{ backgroundColor: 'background.paper' }}
+      // inputProps={{ style: { fontSize: 24 } }}
       onChange={(e) => onChangeHandler(e.target.value)}
       id={label}
       label={label}

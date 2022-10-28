@@ -19,6 +19,7 @@ const AbSynthesisVoiceSelectionCtrl = () => {
         opacity: frontPageTabs === 0 ? 1 : 0,
         position: 'relative',
       }}
+      minHeight={300}
     >
       <CenteredFlexBox>
         <Box
@@ -28,6 +29,7 @@ const AbSynthesisVoiceSelectionCtrl = () => {
           }}
           minWidth={300}
           maxWidth={600}
+          minHeight={200}
         >
           <CenteredFlexBox height={'100%'} width={'100%'} sx={{ position: 'relative' }}>
             <AbMapCtrl />

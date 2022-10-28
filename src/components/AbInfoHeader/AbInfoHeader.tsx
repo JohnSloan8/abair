@@ -40,7 +40,7 @@ function AbInfoHeader({
         </Typography>
         {description ? (
           <Typography
-            pt={{ sm: 4, xs: 2 }}
+            pt={1}
             sx={{
               typography: {
                 sm: variation.descriptionFonts[0],

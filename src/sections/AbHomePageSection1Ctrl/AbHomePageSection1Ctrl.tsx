@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -19,12 +18,11 @@ import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionC
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
-import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
 
 const AbHomePageSection1Ctrl = () => {
-  const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
 
@@ -86,8 +84,8 @@ const AbHomePageSection1Ctrl = () => {
 
       <CenteredFlexBox
         ref={mainSelectionBox}
-        height={frontPageSelectionBoxSizeValue}
-        minHeight={200}
+        // height={frontPageSelectionBoxSizeValue}
+        // minHeight={200}
       >
         {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
       </CenteredFlexBox>

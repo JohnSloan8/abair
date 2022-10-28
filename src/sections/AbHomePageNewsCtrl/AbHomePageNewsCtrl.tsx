@@ -51,18 +51,20 @@ const AbHomePageNewsCtrl = () => {
               <SwiperSlide key={i}>
                 <Card sx={{ boxShadow: 3, width: 280, height: '100%' }}>
                   <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                    <Image
-                      duration={1000}
-                      height={180}
-                      easing="ease-out"
-                      // alt={`${nS.title + i}`}
-                      alt={`${i}`}
-                      src={nS.images ? nS.images[0].url : ''}
-                      bgColor="#fff"
-                      showLoading
-                    />
+                    <Box p={1}>
+                      <Image
+                        duration={1000}
+                        height={162}
+                        easing="ease-out"
+                        // alt={`${nS.title + i}`}
+                        alt={`${i}`}
+                        src={nS.images ? nS.images[0].url : ''}
+                        bgColor="#fff"
+                        showLoading
+                      />
+                    </Box>
                     <CardContent>
-                      <Box height={110}>
+                      <Box height={90}>
                         <Typography variant="body2">{nS.date}</Typography>
                         <Typography gutterBottom variant="h5">
                           {i18n.language === 'en' ? nS.title_en : nS.title_ga}

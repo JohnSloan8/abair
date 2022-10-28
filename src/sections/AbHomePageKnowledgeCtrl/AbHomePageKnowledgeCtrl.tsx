@@ -15,16 +15,14 @@ const AbHomePageKnowledgeCtrl = () => {
 
   return (
     <Box height={'100%'}>
-      <CenteredFlexBox>
-        <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader
-            title={t('infoHeader.home.knowledge.title')}
-            description={t('infoHeader.home.knowledge.description')}
-            variant="front"
-          />
-        </Box>
+      <CenteredFlexBox height={'20%'}>
+        <AbInfoHeader
+          title={t('infoHeader.home.knowledge.title')}
+          description={t('infoHeader.home.knowledge.description')}
+          variant="front"
+        />
       </CenteredFlexBox>
-      <CenteredFlexBox my={16}>
+      <CenteredFlexBox height={'80%'}>
         <Box component={Link} to={'/knowledge'}>
           <Image
             duration={1000}

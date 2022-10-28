@@ -34,7 +34,6 @@ const AbMapCtrl = () => {
   };
 
   const handleClick = (county: string) => {
-    console.log('county:', county);
     if (county !== synthesisCounty) {
       if (synthesisVoiceSelectedValue !== undefined) {
         setSynthesisCounty(county);
@@ -57,8 +56,8 @@ const AbMapCtrl = () => {
       height={
         location.pathname === '/speech-synthesis'
           ? breakpointSize === 'xs'
-            ? frontPageSelectionBoxSizeValue - 125
-            : frontPageSelectionBoxSizeValue - 85
+            ? 260
+            : 340
           : breakpointSize === 'xs'
           ? frontPageSelectionBoxSizeValue - 90
           : frontPageSelectionBoxSizeValue - 65

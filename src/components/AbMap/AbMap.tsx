@@ -39,14 +39,14 @@ const AbMap = ({
 
   return (
     <Box sx={{ position: 'relative' }}>
-      <svg viewBox="0 550 450 550" height={height * 0.9}>
+      <svg viewBox="0 520 450 600" height={height > 220 ? height * 0.9 : 200}>
         <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
           {irelandMapData.map((c, i) => (
             <g
               key={i}
               fill={getMapColor(c)[0]}
               stroke={getMapColor(c)[1]}
-              opacity={gaeltachts.includes(c.name) ? 0.7 : 1}
+              opacity={gaeltachts.includes(c.name) ? 0.6 : 1}
               onMouseEnter={() => handleMouseEnter(c.name)}
               onClick={() => {
                 handleClick(c.name);

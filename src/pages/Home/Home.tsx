@@ -15,19 +15,19 @@ function Home() {
     <>
       <Meta title={t('pageTitles.home')} />
       <AbHomePageSection1Ctrl />
-      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <AbHomeMileGlorCtrl />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 4, sm: 8 }}>
+      <FullSizeBox py={{ xs: 2, sm: 4 }}>
         <AbHomePageCoreTechnologiesCtrl />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <AbHomePageApplicationsCtrl />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 4, sm: 8 }}>
+      <FullSizeBox py={{ xs: 2, sm: 4 }}>
         <AbHomePageNewsCtrl />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 4, sm: 8 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <AbHomePageKnowledgeCtrl />
       </FullSizeBox>
     </>

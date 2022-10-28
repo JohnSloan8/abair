@@ -19,7 +19,8 @@ import supabase from '@/services/supabase';
 import { useSession } from '@/store/auth';
 import useSidebar from '@/store/sidebar';
 
-import abairFullLogo from '/assets/images/brand/abairFullLogo.png';
+// import abairFullLogo from '/assets/images/brand/abairFullLogo.png';
+import abairFullLogo from '/assets/images/brand/abair-logo-old.png';
 
 interface HeaderProps {
   logoSize?: number;

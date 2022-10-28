@@ -14,19 +14,19 @@ const AbHomePageApplicationsCtrl = () => {
   const { t } = useTranslation();
 
   return (
-    <Box height={'100%'} p={4}>
-      <CenteredFlexBox>
+    <Box height={'100%'}>
+      <CenteredFlexBox height={'20%'}>
         <AbInfoHeader
           title={t('infoHeader.home.applications.title')}
           description={t('infoHeader.home.applications.description')}
           variant="front"
         />
       </CenteredFlexBox>
-      <CenteredFlexBox pt={12}>
+      <CenteredFlexBox height={'80%'}>
         <Link to="/applications">
           <Image
             duration={1000}
-            width={breakpointSize === 'xs' ? 300 : 700}
+            width={breakpointSize === 'xs' ? 300 : 500}
             easing="ease-out"
             alt="Abair Applications"
             src="/assets/images/misc/abair-applications.png"
