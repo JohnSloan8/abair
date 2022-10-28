@@ -1,12 +1,13 @@
 import SpeedIcon from '@mui/icons-material/Speed';
 
 import AbSlider from '@/components/AbSlider';
-import { useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
+import { useSynthesisSpeed, useSynthesisVoiceIndex } from '@/store/synthesis/voiceOptions';
 
 const AbSynthesisSpeedCtrl = () => {
   const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();
+  const { synthesisVoiceIndex } = useSynthesisVoiceIndex();
 
-  return (
+  return synthesisVoiceIndex !== -1 ? (
     <AbSlider
       min={0.5}
       value={synthesisSpeed}
@@ -19,7 +20,7 @@ const AbSynthesisSpeedCtrl = () => {
       control="speed"
       color="secondary.main"
     />
-  );
+  ) : null;
 };
 
 export default AbSynthesisSpeedCtrl;

@@ -11,9 +11,11 @@ import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordSt
 import AbRecognitionVisualisationCtrl from '@/sections/AbRecognitionVisualisationCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
+import { useVoiceRecording } from '@/store/recognition';
 
 function SpeechRecognition() {
   const { t } = useTranslation();
+  const { voiceRecording } = useVoiceRecording();
 
   return (
     <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'warning.wafer', minHeight: '100vh' }}>
@@ -22,10 +24,12 @@ function SpeechRecognition() {
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
         </Box>
-        <CenteredFlexBox sx={{ width: '100%', position: 'relative' }}>
-          <Box sx={{ position: 'relative' }}>
-            <AbRecognitionVisualisationCtrl />
-          </Box>
+        <CenteredFlexBox sx={{ width: '100%', height: 100, position: 'relative' }}>
+          {voiceRecording && (
+            <Box sx={{ position: 'relative' }}>
+              <AbRecognitionVisualisationCtrl />
+            </Box>
+          )}
         </CenteredFlexBox>
         <CenteredFlexBox sx={{ position: 'relative', height: 70 }}>
           <Box

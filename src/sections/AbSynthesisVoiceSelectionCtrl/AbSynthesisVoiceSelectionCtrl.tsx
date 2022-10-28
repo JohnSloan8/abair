@@ -36,7 +36,7 @@ const AbSynthesisVoiceSelectionCtrl = () => {
           </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
-      <CenteredFlexBox height={{ sm: 85, xs: 55 }}>
+      <CenteredFlexBox height={{ sm: 85, xs: 55 }} mt={-2}>
         <AbGenderChoicesCtrl />
       </CenteredFlexBox>
     </Box>

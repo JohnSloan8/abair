@@ -1,11 +1,13 @@
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
 import AbSlider from '@/components/AbSlider';
-import { useSynthesisPitch } from '@/store/synthesis/voiceOptions';
+import { useSynthesisPitch, useSynthesisVoiceIndex } from '@/store/synthesis/voiceOptions';
 
 const AbSynthesisPitchCtrl = () => {
   const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();
-  return (
+  const { synthesisVoiceIndex } = useSynthesisVoiceIndex();
+
+  return synthesisVoiceIndex !== -1 ? (
     <AbSlider
       min={0.5}
       value={synthesisPitch}
@@ -18,7 +20,7 @@ const AbSynthesisPitchCtrl = () => {
       control="pitch"
       color="secondary.main"
     />
-  );
+  ) : null;
 };
 
 export default AbSynthesisPitchCtrl;

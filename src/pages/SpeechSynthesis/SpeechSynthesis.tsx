@@ -18,7 +18,10 @@ import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl'
 function SpeechSynthesis() {
   const { t } = useTranslation();
   return (
-    <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'secondary.wafer', minHeight: '100vh' }}>
+    <HorizontallyCenteredFlexBox
+      pb={8}
+      sx={{ backgroundColor: 'secondary.wafer', minHeight: '100vh' }}
+    >
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title={t('pageTitles.synthesis')} />
         <Box py={{ sm: 4, xs: 2 }}>
@@ -42,15 +45,19 @@ function SpeechSynthesis() {
               alignItems="center"
               justifyContent="center"
             >
-              <Box minHeight={'56px'}>
+              <Box minHeight={'69px'}>
                 <AbSynthesisVoiceButtonsCtrl />
               </Box>
               <AbGenderChoicesCtrl />
               <Box width={'90%'}>
-                <AbSynthesisSpeedCtrl />
-                <AbSynthesisPitchCtrl />
+                <Box minHeight={{ sm: '62px', xs: '52px' }}>
+                  <AbSynthesisSpeedCtrl />
+                </Box>
+                <Box minHeight={{ sm: '62px', xs: '52px' }}>
+                  <AbSynthesisPitchCtrl />
+                </Box>
               </Box>
-              <Box minHeight={'56px'}>
+              <Box minHeight={'77px'}>
                 <AbSynthesisModelCtrl />
               </Box>
             </Grid>

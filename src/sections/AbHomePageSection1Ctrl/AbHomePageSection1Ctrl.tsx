@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -17,6 +18,7 @@ import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
+import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
@@ -25,7 +27,8 @@ import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
 const AbHomePageSection1Ctrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
-
+  const { setSynthesisSpeed } = useSynthesisSpeed();
+  const { setSynthesisPitch } = useSynthesisPitch();
   const mainSelectionBox = useRef(null);
   const mainControlBox = useRef(null);
   const instructions = useRef(null);
@@ -33,6 +36,8 @@ const AbHomePageSection1Ctrl = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    setSynthesisSpeed(1);
+    setSynthesisPitch(1);
     inputBoxTl.current && inputBoxTl.current.kill();
     inputBoxTl.current = gsap.timeline().fromTo(
       mainSelectionBox.current,
@@ -82,11 +87,7 @@ const AbHomePageSection1Ctrl = () => {
         <AbTabsCtrl variation="frontpage" />
       </CenteredFlexBox>
 
-      <CenteredFlexBox
-        ref={mainSelectionBox}
-        // height={frontPageSelectionBoxSizeValue}
-        // minHeight={200}
-      >
+      <CenteredFlexBox ref={mainSelectionBox}>
         {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
       </CenteredFlexBox>
 

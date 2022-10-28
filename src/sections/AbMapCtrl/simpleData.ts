@@ -171,8 +171,7 @@ const irelandMapData = [
   },
   {
     name: 'Munster',
-    coordinates:
-      'M 30, 890 a 20,20 0 1,1 40, 0 a 20,20 0 1,1 -40,0 z M 115, 915 a 10,10 0 1,1 20, 0 a 10,10 0 1,1 -20,0 z',
+    coordinates: 'M 30, 890 a 20,20 0 1,1 40, 0 a 20,20 0 1,1 -40,0 z',
   },
 ];
 
