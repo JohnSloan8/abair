@@ -26,7 +26,7 @@ const AbHomePageApplicationsCtrl = () => {
         <Link to="/applications">
           <Image
             duration={1000}
-            width={breakpointSize === 'xs' ? 300 : 500}
+            width={breakpointSize === 'xs' ? 300 : 600}
             easing="ease-out"
             alt="Abair Applications"
             src="/assets/images/misc/abair-applications.png"

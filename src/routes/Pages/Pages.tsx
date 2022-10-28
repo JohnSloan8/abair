@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
+import AbRecognitionConsentCtrl from '@/sections/AbRecognitionConsentCtrl ';
 // import { FullSizeBox } from '@/components/styled';
 import Footer from '@/sections/Footer';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
@@ -28,6 +29,7 @@ function Pages() {
   return (
     <Box>
       <Box minHeight={'100vh'}>
+        <AbRecognitionConsentCtrl />
         <Box sx={{ height: '64px' }}></Box>
         <ScrollToTop>
           <Routes>

@@ -5,6 +5,7 @@ import AbIconButton from '@/components/AbIconButton';
 import Loading from '@/components/Loading';
 import { CenteredFlexBox } from '@/components/styled';
 import AbMediaCtrl from '@/sections/AbMediaCtrl';
+import { useConsent, useShowConsent } from '@/store/consent';
 import {
   useAwaitingTranscription,
   useMediaRecorderExists,
@@ -15,12 +16,18 @@ const AbRecognitionRecordStopButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
   const { mediaRecorderExists } = useMediaRecorderExists();
+  const { consent } = useConsent();
+  const { setShowConsent } = useShowConsent();
 
   const handleClick = () => {
     if (mediaRecorderExists) {
-      setVoiceRecording(true);
+      if (consent) {
+        setVoiceRecording(true);
+      } else {
+        setShowConsent(true);
+      }
     } else {
-      alert('you must log in or give permission for this site to use your microphone.');
+      alert('you give permission for this site to use your microphone and refresh.');
     }
   };
 

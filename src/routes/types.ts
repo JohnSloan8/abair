@@ -13,8 +13,8 @@ enum Pages {
   About,
   News,
   NewsItem,
-  Login,
-  Profile,
+  // Login,
+  // Profile,
   Contact,
   NotFound,
 }

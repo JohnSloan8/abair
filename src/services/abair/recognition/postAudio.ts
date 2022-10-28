@@ -19,7 +19,7 @@ const postAudio = async (audioData: string) => {
         developer: true,
         method: 'online2bin',
       },
-      timeout: 10000,
+      timeout: 15000,
     });
     if (data) {
       return data;

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
+// import { useNavigate } from 'react-router-dom';
 // import FaceIcon from '@mui/icons-material/Face';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+// import LoginIcon from '@mui/icons-material/Login';
+// import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,8 +15,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import { FlexBox } from '@/components/styled';
-import supabase from '@/services/supabase';
-import { useSession } from '@/store/auth';
+// import supabase from '@/services/supabase';
+// import { useSession } from '@/store/auth';
 import useSidebar from '@/store/sidebar';
 
 // import abairFullLogo from '/assets/images/brand/abairFullLogo.png';
@@ -28,16 +28,16 @@ interface HeaderProps {
 
 const Header = ({ logoSize = 50 }: HeaderProps) => {
   const [, sidebarActions] = useSidebar();
-  const { session } = useSession();
-  const navigate = useNavigate();
+  // const { session } = useSession();
+  // const navigate = useNavigate();
   const { i18n } = useTranslation();
 
-  const logOut = async () => {
-    console.log('logout called');
-    const { error } = await supabase.auth.signOut();
-    console.log('error:', error);
-    navigate('/login', { replace: true });
-  };
+  // const logOut = async () => {
+  //   console.log('logout called');
+  //   const { error } = await supabase.auth.signOut();
+  //   console.log('error:', error);
+  //   navigate('/login', { replace: true });
+  // };
 
   const changeLang = () => {
     i18n.language === 'en' ? i18n.changeLanguage('ga') : i18n.changeLanguage('en');
@@ -64,7 +64,8 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
             </Button>
           </FlexBox>
           <FlexBox>
-            <Box sx={{ position: 'absolute', right: { xs: 50, sm: 70 }, top: 14 }}>
+            {/* <Box sx={{ position: 'absolute', right: { xs: 50, sm: 70 }, top: 14 }}> */}
+            <Box sx={{ position: 'absolute', right: { xs: 20, sm: 30 }, top: 14 }}>
               <Typography color={'primary.dark'}>
                 <Button onClick={changeLang}>
                   <Typography color={i18n.language === 'ga' ? 'primary.dark' : 'primary.medium'}>
@@ -76,7 +77,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
                 </Button>
               </Typography>
             </Box>
-            {session ? (
+            {/* {session ? (
               //   <Chip icon={<FaceIcon />} label="" variant="outlined" />
               // ) : (
               <IconButton
@@ -99,7 +100,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
               >
                 <LoginIcon />
               </IconButton>
-            )}
+            )} */}
           </FlexBox>
         </Toolbar>
       </AppBar>

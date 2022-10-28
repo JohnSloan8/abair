@@ -14,7 +14,7 @@ const synthesisMetadataURL = 'https://abair.ie/api2/meta';
 const recognitionURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise';
 const recogniseAudioURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise_audio';
 
-const recognitionTimeLimit = 5;
+const recognitionTimeLimit = 10;
 
 const messages = {
   app: {

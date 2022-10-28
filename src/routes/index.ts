@@ -3,10 +3,10 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
-import LoginIcon from '@mui/icons-material/Login';
+// import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-import PersonIcon from '@mui/icons-material/Person';
+// import PersonIcon from '@mui/icons-material/Person';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 import asyncComponentLoader from '@/utils/loader';
@@ -82,20 +82,20 @@ const routes: Routes = {
     icon: ContactMailIcon,
     showInSidebar: true,
   },
-  [Pages.Login]: {
-    component: asyncComponentLoader(() => import('@/pages/Login')),
-    path: '/login',
-    title: 'loginSignup',
-    icon: LoginIcon,
-    showInSidebar: true,
-  },
-  [Pages.Profile]: {
-    component: asyncComponentLoader(() => import('@/pages/Profile')),
-    path: '/profile',
-    title: 'profile',
-    icon: PersonIcon,
-    showInSidebar: true,
-  },
+  // [Pages.Login]: {
+  //   component: asyncComponentLoader(() => import('@/pages/Login')),
+  //   path: '/login',
+  //   title: 'loginSignup',
+  //   icon: LoginIcon,
+  //   showInSidebar: true,
+  // },
+  // [Pages.Profile]: {
+  //   component: asyncComponentLoader(() => import('@/pages/Profile')),
+  //   path: '/profile',
+  //   title: 'profile',
+  //   icon: PersonIcon,
+  //   showInSidebar: true,
+  // },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),
     path: '*',
