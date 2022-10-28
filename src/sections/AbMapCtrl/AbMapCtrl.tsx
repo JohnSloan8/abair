@@ -1,14 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import AbMap from '@/components/AbMap';
-import {
-  synthesisVoiceIndexState,
-  synthesisVoiceSelected,
-  useSynthesisCounty,
-} from '@/store/synthesis/voiceOptions';
+import { useSynthesisCounty } from '@/store/synthesis/voiceOptions';
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 import irelandMapData from './simpleData';
@@ -19,8 +15,7 @@ const AbMapCtrl = () => {
   const { synthesisCounty, setSynthesisCounty } = useSynthesisCounty();
   const [hoveringCounty, setHoveringCounty] = useState('');
   const gaeltachts = ['Ulster', 'Connemara', 'Munster'];
-  const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
-  const resetSynthesisVoiceIndex = useResetRecoilState(synthesisVoiceIndexState);
+
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   const { breakpointSize } = useBreakpointSize();
   const location = useLocation();
@@ -35,19 +30,9 @@ const AbMapCtrl = () => {
 
   const handleClick = (county: string) => {
     if (county !== synthesisCounty) {
-      if (synthesisVoiceSelectedValue !== undefined) {
+      if (gaeltachts.includes(county)) {
         setSynthesisCounty(county);
-        gaeltachts.includes(county)
-          ? synthesisVoiceSelectedValue.locale !== county
-            ? resetSynthesisVoiceIndex()
-            : null
-          : null;
-      } else {
-        setSynthesisCounty(county);
-        resetSynthesisVoiceIndex();
       }
-    } else {
-      alert('no voice selected');
     }
   };
 
