@@ -15,7 +15,7 @@ enum Pages {
   NewsItem,
   // Login,
   // Profile,
-  Contact,
+  // Contact,
   NotFound,
 }
 

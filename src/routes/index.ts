@@ -1,5 +1,5 @@
 import AppsIcon from '@mui/icons-material/Apps';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
+// import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
@@ -75,13 +75,13 @@ const routes: Routes = {
     title: 'NewsItem',
     showInSidebar: false,
   },
-  [Pages.Contact]: {
-    component: asyncComponentLoader(() => import('@/pages/Contact')),
-    path: '/contact',
-    title: 'contact',
-    icon: ContactMailIcon,
-    showInSidebar: true,
-  },
+  // [Pages.Contact]: {
+  //   component: asyncComponentLoader(() => import('@/pages/Contact')),
+  //   path: '/contact',
+  //   title: 'contact',
+  //   icon: ContactMailIcon,
+  //   showInSidebar: true,
+  // },
   // [Pages.Login]: {
   //   component: asyncComponentLoader(() => import('@/pages/Login')),
   //   path: '/login',

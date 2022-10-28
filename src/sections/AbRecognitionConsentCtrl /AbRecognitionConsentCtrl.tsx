@@ -13,20 +13,18 @@ const AbRecognitionConsentCtrl = () => {
     setShowConsent(false);
   };
 
-  return (
-    showConsent && (
-      <FullSizeCenteredFlexBox
-        sx={{ zIndex: 9999, position: 'absolute', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
-      >
-        <AbConsent
-          title={t('pages.recognition.privacyTitle')}
-          description={t('pages.recognition.privacyRecordings')}
-          condition1={t('pages.recognition.over16')}
-          handleClick={onClickConsent}
-        />
-      </FullSizeCenteredFlexBox>
-    )
-  );
+  return showConsent ? (
+    <FullSizeCenteredFlexBox
+      sx={{ zIndex: 9999, position: 'absolute', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
+    >
+      <AbConsent
+        title={t('pages.recognition.privacyTitle')}
+        description={t('pages.recognition.privacyRecordings')}
+        condition1={t('pages.recognition.over16')}
+        handleClick={onClickConsent}
+      />
+    </FullSizeCenteredFlexBox>
+  ) : null;
 };
 
 export default AbRecognitionConsentCtrl;
