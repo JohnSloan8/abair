@@ -27,7 +27,9 @@ const AbRecognitionRecordStopButtonsCtrl = () => {
         setShowConsent(true);
       }
     } else {
-      alert('you give permission for this site to use your microphone and refresh.');
+      alert(
+        'To use this feature, you must give permission for this site to use your microphone, and then refresh.',
+      );
     }
   };
 
