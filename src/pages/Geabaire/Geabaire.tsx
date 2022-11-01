@@ -8,10 +8,11 @@ import Image from 'mui-image';
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 function Geabaire() {
   const { t } = useTranslation();
-
+  const { breakpointSize } = useBreakpointSize();
   return (
     <Box>
       <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'primary.main' }}>
@@ -24,8 +25,8 @@ function Geabaire() {
             <Box maxWidth="md" border={8} borderRadius={2} borderColor={'primary.light'}>
               <Image
                 duration={1000}
-                height={250}
-                width={600}
+                height={breakpointSize === 'xs' ? 140 : 250}
+                width={breakpointSize === 'xs' ? 340 : 600}
                 easing="ease-out"
                 alt="Abair Applications"
                 src="https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/applications/GeabaireInterfaceDemo.gif"
@@ -39,7 +40,7 @@ function Geabaire() {
           </Typography>
         </Box>
       </HorizontallyCenteredFlexBox>
-      <Box py={8}>
+      <Box py={8} px={1}>
         <CenteredFlexBox>
           <Typography variant={'h5'} align="center">
             {t('pages.geabaire.whatIsAACQuestion')}
@@ -52,7 +53,7 @@ function Geabaire() {
         </CenteredFlexBox>
       </Box>
 
-      <Box py={8} sx={{ backgroundColor: 'primary.light' }}>
+      <Box py={8} px={1} sx={{ backgroundColor: 'primary.light' }}>
         <CenteredFlexBox>
           <Box maxWidth="md">
             <Typography align="center" variant={'h5'}>
@@ -68,7 +69,7 @@ function Geabaire() {
         </CenteredFlexBox>
       </Box>
 
-      <Box py={8}>
+      <Box py={8} px={1}>
         <CenteredFlexBox>
           <Typography variant={'h5'} align="center">
             {t('pages.geabaire.projectDetailsTitle')}
@@ -81,7 +82,7 @@ function Geabaire() {
         </CenteredFlexBox>
       </Box>
 
-      <Box py={8} sx={{ backgroundColor: 'primary.light' }}>
+      <Box py={8} px={1} sx={{ backgroundColor: 'primary.light' }}>
         <CenteredFlexBox>
           <Typography variant={'h5'} align="center">
             {t('pages.geabaire.contactDetailsTitle')}

@@ -74,19 +74,6 @@ const useSynthesisAudioPlaying = () => {
   return { synthesisAudioPlaying, setSynthesisAudioPlaying };
 };
 
-const synthesisAudiosPlayingState = atom<boolean>({
-  key: 'synthesis-audio-playing-state',
-  default: false,
-});
-
-const useSynthesisAudiosPlaying = () => {
-  const [synthesisAudiosPlaying, setSynthesisAudiosPlaying] = useRecoilState(
-    synthesisAudiosPlayingState,
-  );
-
-  return { synthesisAudiosPlaying, setSynthesisAudiosPlaying };
-};
-
 export {
   useSynthesisText,
   isSynthesisTextEmptyString,
@@ -95,5 +82,4 @@ export {
   isSynthesisAudioEmpty,
   useSynthesisAudioPlaying,
   useSynthesisAudios,
-  useSynthesisAudiosPlaying,
 };

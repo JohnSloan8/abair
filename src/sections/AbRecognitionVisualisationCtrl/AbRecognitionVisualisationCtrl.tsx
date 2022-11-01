@@ -12,7 +12,7 @@ const AbRecognitionVisualisationCtrl = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { breakpointSize } = useBreakpointSize();
   const [width, setWidth] = useState(300);
-  const [height, setHeight] = useState(80);
+  const [height, setHeight] = useState(75);
 
   useEffect(() => {
     if (stream) {

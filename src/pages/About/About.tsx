@@ -12,12 +12,14 @@ function About() {
 
   return (
     <HorizontallyCenteredFlexBox>
-      <Box sx={{ width: '100%', maxWidth: 'md' }} mb={8}>
+      <Box sx={{ width: '100%', maxWidth: 'md' }} mb={8} px={1}>
         <Meta title={t('pageTitles.about')} />
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title={t('pageTitles.about')} variant="front" />
         </Box>
-        <Typography variant={'body1'}>{t('pages.about.aboutUsPin')}</Typography>
+        <Typography mb={2} variant={'body1'}>
+          {t('pages.about.aboutUsPin')}
+        </Typography>
         <Typography variant={'body1'}>{t('pages.about.aboutUs')}</Typography>
         <Typography variant={'h6'} align={'center'} mt={6} mb={1}>
           {t('pages.about.synthesisTitle')}

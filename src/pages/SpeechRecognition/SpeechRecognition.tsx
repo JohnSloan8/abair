@@ -24,14 +24,34 @@ function SpeechRecognition() {
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
         </Box>
-        <CenteredFlexBox sx={{ width: '100%', height: 100, position: 'relative' }}>
-          {voiceRecording && (
-            <Box sx={{ position: 'relative' }}>
+        <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
+          {voiceRecording ? (
+            <Box sx={{ position: 'relative', height: '100%' }}>
               <AbRecognitionVisualisationCtrl />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                position: 'relative',
+                backgroundColor: 'white',
+                height: '100%',
+                width: '484px',
+                border: '1px solid red',
+              }}
+            >
+              <Box
+                borderBottom={2}
+                sx={{
+                  position: 'relative',
+                  backgroundColor: 'white',
+                  height: '51%',
+                  width: '482px',
+                }}
+              ></Box>
             </Box>
           )}
         </CenteredFlexBox>
-        <CenteredFlexBox sx={{ position: 'relative', height: 70 }}>
+        <CenteredFlexBox mt={1} sx={{ position: 'relative', height: 70 }}>
           <Box
             my={4}
             mx={3}
