@@ -44,7 +44,18 @@ const filteredApplicationsState = selector({
       return l.filter((item) => item.category === categoryState);
     };
 
-    const filteredApplications = filterCategory(list);
+    const filteredApplications = filterCategory(list).sort((a, b) => {
+      console.log('a.category:', a.category);
+      console.log('b.category:', b.category);
+      if (a.url > b.url) {
+        return -1;
+      }
+      if (a.url < b.url) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log('filteredApplications:', filteredApplications);
     return filteredApplications;
   },
 });

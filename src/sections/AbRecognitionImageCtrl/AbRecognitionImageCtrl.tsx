@@ -2,7 +2,6 @@ import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 
-// import womanSpeakingIntoPhoneImg from 'assets/images/misc/woman-speaking-into-phone.png';
 import Image from 'mui-image';
 
 import { CenteredFlexBox } from '@/components/styled';
