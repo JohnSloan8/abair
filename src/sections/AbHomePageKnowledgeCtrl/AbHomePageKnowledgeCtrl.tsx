@@ -9,6 +9,8 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
+import publicationsLogo from '/assets/images/misc/publications.png';
+
 const AbHomePageKnowledgeCtrl = () => {
   const { t } = useTranslation();
   const { breakpointSize } = useBreakpointSize();
@@ -30,7 +32,7 @@ const AbHomePageKnowledgeCtrl = () => {
             width={breakpointSize === 'xs' ? 150 : 275}
             easing="ease-out"
             alt="Abair Applications"
-            src="assets/images/misc/publications.png"
+            src={publicationsLogo}
             showLoading
           />
         </Box>

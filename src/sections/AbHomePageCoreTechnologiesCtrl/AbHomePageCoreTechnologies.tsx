@@ -9,6 +9,9 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
+import recognitionCard from '/assets/images/misc/recognition-card-screenshot.png';
+import synthesisCard from '/assets/images/misc/synthesis-card-screenshot.png';
+
 const AbHomePageCoreTechnologiesCtrl = () => {
   const { breakpointSize } = useBreakpointSize();
   const navigate = useNavigate();
@@ -38,7 +41,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
               title={t('pageTitles.synthesis')}
               description={t('pages.home.technologyCards.synthesis.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
-              image="assets/images/misc/synthesis-card-screenshot.png"
+              image={synthesisCard}
             />
           </Grid>
           <Grid item>
@@ -47,7 +50,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
               title={t('pageTitles.recognition')}
               description={t('pages.home.technologyCards.recognition.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
-              image="assets/images/misc/recognition-card-screenshot.png"
+              image={recognitionCard}
             />
           </Grid>
         </Grid>

@@ -10,6 +10,9 @@ import AbInfoHeader from '@/components/AbInfoHeader';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
+import mileGlorLogo from '/assets/images/misc/míleglor.png';
+import recordingStudio from '/assets/images/misc/recording-studio-drawing.webp';
+
 const AbHomeMileGlorCtrl = () => {
   const { t } = useTranslation();
   const { breakpointSize } = useBreakpointSize();
@@ -41,7 +44,7 @@ const AbHomeMileGlorCtrl = () => {
                   width={breakpointSize === 'xs' ? 300 : 450}
                   easing="ease-out"
                   alt="Abair Applications"
-                  src="assets/images/misc/recording-studio-drawing.webp"
+                  src={recordingStudio}
                   showLoading
                 />
               </CenteredFlexBox>
@@ -54,7 +57,7 @@ const AbHomeMileGlorCtrl = () => {
                   width={breakpointSize === 'xs' ? 180 : 250}
                   easing="ease-out"
                   alt="Abair Applications"
-                  src="assets/images/misc/míleglor.png"
+                  src={mileGlorLogo}
                   showLoading
                 />
               </CenteredFlexBox>

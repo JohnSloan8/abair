@@ -6,6 +6,10 @@ import Typography from '@mui/material/Typography';
 
 import { CenteredFlexBox } from '@/components/styled';
 
+import cogg from '/assets/images/funders/COGG_logo_red.png';
+import DCHG from '/assets/images/funders/DCHG_logo_small.png';
+import S20 from '/assets/images/funders/S20.png';
+
 function Footer() {
   const { i18n } = useTranslation();
   return (
@@ -26,7 +30,7 @@ function Footer() {
                   maxWidth: { xs: 200, sm: 200 },
                 }}
                 alt="Logo of The Department of Culture Heritage and the Gaeltacht"
-                src="assets/images/funders/DCHG_logo_small.png"
+                src={DCHG}
               />
             </a>
           </Grid>
@@ -37,7 +41,7 @@ function Footer() {
                 sx={{
                   maxWidth: { xs: 200, sm: 200 },
                 }}
-                src="assets/images/funders/S20.png"
+                src={S20}
                 alt="Logo of the 20 years strategy of Irish"
               />
             </a>
@@ -49,7 +53,7 @@ function Footer() {
                 sx={{
                   maxWidth: { xs: 200, sm: 200 },
                 }}
-                src="assets/images/funders/COGG_logo_red.png"
+                src={cogg}
                 alt="Logo COGG"
               />
             </a>

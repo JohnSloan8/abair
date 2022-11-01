@@ -7,6 +7,7 @@ import Image from 'mui-image';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
 import { CenteredFlexBox, FlexBox } from '../styled';
+import fallbackImage from '/public/assets/images/misc/400x400_fallbackAbairImage.jpg';
 
 interface AbApplicationCardProps {
   name: string;
@@ -67,7 +68,7 @@ const AbApplicationCard = ({
                   width={breakpointSize === 'xs' ? 185 : 260}
                   easing="ease-out"
                   alt="Abair Applications"
-                  src={image !== null ? image : 'assets/images/misc/400x400_fallbackAbairImage.jpg'}
+                  src={image !== null ? image : fallbackImage}
                   showLoading
                 />
               </FlexBox>
