@@ -19,6 +19,7 @@ import {
   isSynthesisTextEmptyString,
   useAwaitingSynthesis,
   useSynthesisAudio,
+  useSynthesisAudios,
   useSynthesisText,
 } from '@/store/synthesis';
 import {
@@ -38,6 +39,7 @@ const AbSynthesisButtonsCtrl = () => {
   const { session } = useSession();
   const { synthesisText } = useSynthesisText();
   const { setSynthesisAudio } = useSynthesisAudio();
+  const { setSynthesisAudios } = useSynthesisAudios();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const filteredSynthesisVoiceOptionsValue = useRecoilValue(filteredSynthesisVoiceOptions);
@@ -88,6 +90,19 @@ const AbSynthesisButtonsCtrl = () => {
         synthesisSpeed,
       ).then((data: any) => {
         setSynthesisAudio('data:audio/wav;base64,' + data.audioContent);
+        setSynthesisAudios((synthesisAudios) => {
+          return [
+            {
+              voice: synthesisVoiceSelectedValue.name,
+              model: synthesisModel,
+              speed: synthesisSpeed.toString(),
+              pitch: synthesisPitch.toString(),
+              audioData: 'data:audio/wav;base64,' + data.audioContent,
+              text: synthesisText,
+            },
+            ...synthesisAudios,
+          ];
+        });
         setAwaitingSynthesis(false);
         postSynthesisRequest({
           user_id: session === null ? null : session.user.id,

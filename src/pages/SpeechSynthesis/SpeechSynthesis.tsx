@@ -8,6 +8,7 @@ import Meta from '@/components/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
+import AbSynthesisAudiosCtrl from '@/sections/AbSynthesisAudiosCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
@@ -68,6 +69,9 @@ function SpeechSynthesis() {
           <AbSynthesisCtrl>
             <AbSynthesisButtonsCtrl />
           </AbSynthesisCtrl>
+        </CenteredFlexBox>
+        <CenteredFlexBox>
+          <AbSynthesisAudiosCtrl />
         </CenteredFlexBox>
       </Box>
     </HorizontallyCenteredFlexBox>

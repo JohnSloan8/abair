@@ -1,5 +1,7 @@
 import { atom, selector, useRecoilState } from 'recoil';
 
+import { synthesisAudios } from '@/models/synthesis';
+
 const synthesisTextState = atom<string>({
   key: 'synthesis-text-state',
   default: '',
@@ -40,6 +42,17 @@ const useSynthesisAudio = () => {
   return { synthesisAudio, setSynthesisAudio };
 };
 
+const synthesisAudiosState = atom<synthesisAudios[]>({
+  key: 'synthesis-audios-state',
+  default: [],
+});
+
+const useSynthesisAudios = () => {
+  const [synthesisAudios, setSynthesisAudios] = useRecoilState(synthesisAudiosState);
+
+  return { synthesisAudios, setSynthesisAudios };
+};
+
 const isSynthesisAudioEmpty = selector({
   key: 'synthesis-audio-empty-state', // unique ID (with respect to other atoms/selectors)
   get: ({ get }) => {
@@ -61,6 +74,19 @@ const useSynthesisAudioPlaying = () => {
   return { synthesisAudioPlaying, setSynthesisAudioPlaying };
 };
 
+const synthesisAudiosPlayingState = atom<boolean>({
+  key: 'synthesis-audio-playing-state',
+  default: false,
+});
+
+const useSynthesisAudiosPlaying = () => {
+  const [synthesisAudiosPlaying, setSynthesisAudiosPlaying] = useRecoilState(
+    synthesisAudiosPlayingState,
+  );
+
+  return { synthesisAudiosPlaying, setSynthesisAudiosPlaying };
+};
+
 export {
   useSynthesisText,
   isSynthesisTextEmptyString,
@@ -68,4 +94,6 @@ export {
   useSynthesisAudio,
   isSynthesisAudioEmpty,
   useSynthesisAudioPlaying,
+  useSynthesisAudios,
+  useSynthesisAudiosPlaying,
 };

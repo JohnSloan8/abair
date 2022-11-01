@@ -6,4 +6,13 @@ interface synthesisRequestModel {
   text: string;
 }
 
-export type { synthesisRequestModel };
+interface synthesisAudios {
+  voice: string;
+  model: string;
+  speed: string;
+  pitch: string;
+  audioData: string;
+  text: string;
+}
+
+export type { synthesisRequestModel, synthesisAudios };

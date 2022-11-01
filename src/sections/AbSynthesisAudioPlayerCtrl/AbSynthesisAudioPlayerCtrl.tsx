@@ -22,7 +22,6 @@ const AbSynthesisAudioPlayerCtrl = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const playSynthesisAudio = () => {
-    console.log('in playSynthesisAudio');
     if (audioRef.current !== undefined) {
       if (audioRef.current !== null) {
         audioRef.current.play();
