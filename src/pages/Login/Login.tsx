@@ -42,14 +42,14 @@ function Login() {
         console.log(data.user);
         // setConfirmationEmailSent(true);
         setShowSignupPage(false);
-        navigate('/profile', { replace: true });
+        navigate('/dev/profile', { replace: true });
       }
     } else {
       setLoading(true);
       // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
       supabase.auth.signInWithPassword({ email, password }).then(() => {
         setLoading(false);
-        navigate('/profile', { replace: true });
+        navigate('/dev/profile', { replace: true });
       });
     }
   };

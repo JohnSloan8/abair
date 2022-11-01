@@ -30,7 +30,7 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    session ? getProfile(session, setProfile, setLoading) : navigate('/login');
+    session ? getProfile(session, setProfile, setLoading) : navigate('/dev/login');
 
     dialects === undefined ? getDialects(setDialects) : null;
     genders === undefined ? getGenders(setGenders) : null;

@@ -10,4 +10,13 @@ const useFrontPageTabs = () => {
   return { frontPageTabs, setFrontPageTabs };
 };
 
-export { useFrontPageTabs };
+const appTabsState = atom<number>({
+  key: 'app-tabs-state',
+  default: 0,
+});
+
+const useAppTabs = () => {
+  const [appTabs, setAppTabs] = useRecoilState(appTabsState);
+  return { appTabs, setAppTabs };
+};
+export { useFrontPageTabs, useAppTabs };

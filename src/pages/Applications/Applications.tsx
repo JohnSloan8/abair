@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -20,10 +20,11 @@ import {
   useApplications,
   useCategories,
 } from '@/store/applications';
+import { useAppTabs } from '@/store/tabs';
 
 function Applications() {
   const { t, i18n } = useTranslation();
-  const [tab, setTab] = useState(0);
+  const { appTabs, setAppTabs } = useAppTabs();
   const { applications, setApplications } = useApplications();
   const { categories, setCategories } = useCategories();
   const filteredApplications = useRecoilValue(filteredApplicationsState);
@@ -33,7 +34,7 @@ function Applications() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     const newIndex = categories[newValue].id;
     setApplicationCategoryFilter(newIndex);
-    setTab(newValue);
+    setAppTabs(newValue);
   };
 
   useEffect(() => {
@@ -41,6 +42,7 @@ function Applications() {
     if (applications.length === 0) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       getApplications().then((res: any) => {
+        console.log('res:', res);
         setApplications(res);
       });
     }
@@ -72,7 +74,7 @@ function Applications() {
         </CenteredFlexBox>
         <CenteredFlexBox>
           {categories ? (
-            <Tabs value={tab} onChange={handleChange} aria-label="disabled tabs example">
+            <Tabs value={appTabs} onChange={handleChange} aria-label="disabled tabs example">
               {categories.map((c, i) => (
                 <Tab key={i} label={i18n.language === 'en' ? c.name_en : c.name_ga} />
               ))}

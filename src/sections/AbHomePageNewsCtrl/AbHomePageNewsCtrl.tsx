@@ -50,7 +50,7 @@ const AbHomePageNewsCtrl = () => {
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
                 <Card sx={{ boxShadow: 3, width: 280, height: '100%' }}>
-                  <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
+                  <CardActionArea onClick={() => navigate(`/dev/news/${nS.id}`)}>
                     <Box p={1}>
                       <Image
                         duration={1000}
@@ -82,7 +82,7 @@ const AbHomePageNewsCtrl = () => {
         </CenteredFlexBox>
       </CenteredFlexBox>
       <CenteredFlexBox height={'10%'}>
-        <Box component={Link} to={'/news'}>
+        <Box component={Link} to={'/dev/news'}>
           <Typography variant="body1" m={2} align="center">
             {t('pages.home.seeAll')}
           </Typography>
