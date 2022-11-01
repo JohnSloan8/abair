@@ -6,7 +6,7 @@ const styles: { [name: string]: AbClickableCardStyles } = {
     bottom: 0,
     width: 390,
     height: 260,
-    image: '/public/assets/images/misc/400x600_fallbackAbairImage.jpg',
+    image: '/assets/images/misc/400x600_fallbackAbairImage.jpg',
   },
   app: {
     titleVariant: 'body1',
@@ -15,7 +15,7 @@ const styles: { [name: string]: AbClickableCardStyles } = {
     bottom: 0,
     width: 330,
     height: 220,
-    image: '/public/assets/images/misc/400x400_fallbackAbairImage.jpg',
+    image: '/assets/images/misc/400x400_fallbackAbairImage.jpg',
   },
 };
 

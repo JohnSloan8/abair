@@ -27,8 +27,8 @@ function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryProps) {
           <CardMedia
             component="img"
             sx={{ width: 200 }}
-            image={images[0].url}
-            alt="Live from space album cover"
+            image={images.length !== 0 ? images[0].url : ''}
+            alt="News story"
           />
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto' }}>

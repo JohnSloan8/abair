@@ -37,6 +37,11 @@ function NewsItem() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newsStories]);
 
+  useEffect(() => {
+    console.log('newsStory:', newsStory);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newsStory]);
+
   return (
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'md', width: '100%' }} mb={8}>
@@ -51,27 +56,30 @@ function NewsItem() {
               />
             </Box>
             <CenteredFlexBox>
+              <div dangerouslySetInnerHTML={{ __html: newsStory.video }} />
+            </CenteredFlexBox>
+            <CenteredFlexBox>
               <Box maxWidth="md" mt={{ xs: 1, sm: 2 }}>
-                <Typography align="center">
+                <CenteredFlexBox>
                   {newsStory.images.map(
                     (image: ImageDataModel, i: number) =>
                       image !== null && (
-                        <CenteredFlexBox mb={4}>
-                          <Image
-                            key={i}
-                            duration={1000}
-                            height={300}
-                            width={400}
-                            easing="ease-out"
-                            alt={`news item image`}
-                            src={image.url}
-                            bgColor="#fff"
-                            showLoading
-                          />
-                        </CenteredFlexBox>
+                        // <CenteredFlexBox mb={4} >
+                        <Image
+                          key={i}
+                          duration={1000}
+                          height={300}
+                          width={400}
+                          easing="ease-out"
+                          alt={`news item image`}
+                          src={image.url}
+                          bgColor="#fff"
+                          showLoading
+                        />
+                        // </CenteredFlexBox>
                       ),
                   )}
-                </Typography>
+                </CenteredFlexBox>
                 <Typography gutterBottom variant="body1" m={2} align="left">
                   {i18n.language === 'en' ? newsStory.body_en : newsStory.body_ga}
                 </Typography>

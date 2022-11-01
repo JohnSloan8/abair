@@ -58,7 +58,7 @@ const AbHomePageNewsCtrl = () => {
                         easing="ease-out"
                         // alt={`${nS.title + i}`}
                         alt={`${i}`}
-                        src={nS.images ? nS.images[0].url : ''}
+                        src={nS.images.length !== 0 ? nS.images[0].url : ''}
                         bgColor="#fff"
                         showLoading
                       />

@@ -12,6 +12,7 @@ interface AbNewsStoryModel {
   blurb_ga: string;
   body_ga: string;
   images: ImageDataModel[];
+  video: string;
 }
 
 export type { AbNewsStoryModel, ImageDataModel };
