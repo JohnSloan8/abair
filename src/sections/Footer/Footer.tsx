@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -5,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { CenteredFlexBox } from '@/components/styled';
 
 function Footer() {
+  const { i18n } = useTranslation();
   return (
     <CenteredFlexBox py={2} sx={{ position: 'relative', backgroundColor: '#eaeaea', bottom: 0 }}>
       <Box>
@@ -52,12 +55,21 @@ function Footer() {
             </a>
           </Grid>
         </Grid>
-
-        <Typography color="text.main" align="center">
-          Copyright © 2008&ndash;2022{' '}
-          <a href="http://www.tcd.ie/slscs/clcs/psl/">Phonetics and Speech Laboratory</a>, Trinity
-          College, Dublin, Ireland
-        </Typography>
+        {i18n.language === 'en' ? (
+          <Typography color="text.main" align="center">
+            Copyright © 2008&ndash;2022{' '}
+            <a href="http://www.tcd.ie/slscs/clcs/psl/">Phonetics and Speech Laboratory</a>, Trinity
+            College, Dublin, Ireland
+          </Typography>
+        ) : (
+          <Typography color="text.main" align="center">
+            Cóipcheart © 2008&ndash;2022{' '}
+            <a href="http://www.tcd.ie/slscs/clcs/psl/">
+              An tSaotharlann Foghraíochta agus Urlabhra
+            </a>
+            , Coláiste na Tríonóide, Baile Átha Cliath, Éire
+          </Typography>
+        )}
       </Box>
     </CenteredFlexBox>
   );

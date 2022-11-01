@@ -7,11 +7,13 @@ enum Pages {
   Home,
   SpeechSynthesis,
   SpeechRecognition,
-  Knowledge,
   Applications,
+  News,
+  Knowledge,
+
   Geabaire,
   About,
-  News,
+
   NewsItem,
   // Login,
   // Profile,

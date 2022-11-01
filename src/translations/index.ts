@@ -134,6 +134,24 @@ i18n
               reject: 'reject',
             },
           },
+          errorMessages: {
+            app: {
+              crash: {
+                title: 'Hmmmm... something went wrong. You can:',
+                options: {
+                  email: 'contact the Abair team through this email - sloanjs@tcd.ie',
+                  reset: 'Press here to reset the application',
+                },
+              },
+            },
+            loader: {
+              fail: 'There is something wrong with this component loading process... please try again later',
+            },
+            images: {
+              failed: 'something went wrong during image loading :(',
+            },
+            404: 'No route for this URL',
+          },
         },
       },
       ga: {
@@ -142,8 +160,8 @@ i18n
             home: 'Baile',
             synthesis: 'Guthanna Sintéiseacha',
             recognition: 'Aithint Chainte',
-            knowledge: 'Eolas',
-            applications: 'Iarratais',
+            knowledge: 'Taighde',
+            applications: 'Feidhmchláir',
             about: 'Eolas Fúinn',
             news: 'Nuacht',
             loginSignup: 'Logáil Isteach/Clarú',
@@ -175,7 +193,7 @@ i18n
                   'Lean na scéalta is déanaí ón tSaotharlann Foghraíochta agus Urlabhra, Coláiste na Tríonóide',
               },
               knowledge: {
-                title: 'Cillín na Saíochta',
+                title: 'Cillín na Saíochta: Taighde',
                 description:
                   'Féach anseo ar an taighde teangeolaíochta atá á dhéanamh sa tSaotharlann Foghraíochta agus Urlabhra, agus atá ina chrann taca do na forbairtí teicneolaíochta',
               },
@@ -252,6 +270,24 @@ i18n
               accept: 'glac leis',
               reject: 'diúltaigh',
             },
+          },
+          errorMessages: {
+            app: {
+              crash: {
+                title: 'Hmmmmm… chlis ar an gcóras. Is féidir leat:',
+                options: {
+                  email: 'Dul i dteagmháil le foireann ABAIR ag an seoladh - sloanjs@tcd.ie',
+                  reset: 'Brúigh anseo chun an feidhmchlár a athshocrú',
+                },
+              },
+            },
+            loader: {
+              fail: 'There is something wrong with this component loading process... please try again later',
+            },
+            images: {
+              failed: 'something went wrong during image loading :(',
+            },
+            404: 'No route for this URL',
           },
         },
       },
