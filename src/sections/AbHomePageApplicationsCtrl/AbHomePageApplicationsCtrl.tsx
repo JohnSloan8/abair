@@ -29,7 +29,7 @@ const AbHomePageApplicationsCtrl = () => {
             width={breakpointSize === 'xs' ? 300 : 600}
             easing="ease-out"
             alt="Abair Applications"
-            src="/assets/images/misc/abair-applications.png"
+            src="assets/images/misc/abair-applications.png"
             showLoading
           />
         </Link>

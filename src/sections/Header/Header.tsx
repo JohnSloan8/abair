@@ -14,13 +14,11 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+// import abairFullLogo from 'assets/images/brand/abairFullLogo.png';
 import { FlexBox } from '@/components/styled';
 // import supabase from '@/services/supabase';
 // import { useSession } from '@/store/auth';
 import useSidebar from '@/store/sidebar';
-
-// import abairFullLogo from '/assets/images/brand/abairFullLogo.png';
-import abairFullLogo from '/assets/images/brand/abair-logo-old.png';
 
 interface HeaderProps {
   logoSize?: number;
@@ -60,7 +58,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
           </FlexBox>
           <FlexBox>
             <Button component={Link} to={'/'}>
-              <img src={abairFullLogo} height={logoSize} />
+              <img src="assets/images/brand/abair-logo-old.png" height={logoSize} />
             </Button>
           </FlexBox>
           <FlexBox>

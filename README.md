@@ -1,5 +1,5 @@
 <a href="https://abair.ie/" target="_blank" rel="noreferrer">
- <img src="./public/assets/images/brand/abairFullLogo.png" title="Abair Website">
+ <img src="./publicassets/images/brand/abairFullLogo.png" title="Abair Website">
 </a>
 
 # Abair

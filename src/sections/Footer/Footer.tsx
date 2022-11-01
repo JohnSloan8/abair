@@ -26,7 +26,7 @@ function Footer() {
                   maxWidth: { xs: 200, sm: 200 },
                 }}
                 alt="Logo of The Department of Culture Heritage and the Gaeltacht"
-                src="/assets/images/funders/DCHG_logo_small.png"
+                src="assets/images/funders/DCHG_logo_small.png"
               />
             </a>
           </Grid>
@@ -37,7 +37,7 @@ function Footer() {
                 sx={{
                   maxWidth: { xs: 200, sm: 200 },
                 }}
-                src="/assets/images/funders/S20.png"
+                src="assets/images/funders/S20.png"
                 alt="Logo of the 20 years strategy of Irish"
               />
             </a>
@@ -49,7 +49,7 @@ function Footer() {
                 sx={{
                   maxWidth: { xs: 200, sm: 200 },
                 }}
-                src="/assets/images/funders/COGG_logo_red.png"
+                src="assets/images/funders/COGG_logo_red.png"
                 alt="Logo COGG"
               />
             </a>
