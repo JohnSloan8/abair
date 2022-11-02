@@ -68,8 +68,8 @@ function NewsItem() {
                         <Image
                           key={i}
                           duration={1000}
-                          height={300}
-                          width={400}
+                          height={220}
+                          width={340}
                           easing="ease-out"
                           alt={`news item image`}
                           src={image.url}
