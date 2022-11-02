@@ -69,7 +69,7 @@ function NewsItem() {
                           key={i}
                           duration={1000}
                           height={220}
-                          width={340}
+                          width={220}
                           easing="ease-out"
                           alt={`news item image`}
                           src={image.url}

@@ -24,12 +24,14 @@ function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryProps) {
     <Box m={{ sm: 2, xs: 1 }}>
       <CardActionArea onClick={() => navigate(`/news/${id}`)}>
         <Card sx={{ display: 'flex' }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 180, minWidth: 180, maxWidth: 180 }}
-            image={images.length !== 0 ? images[0].url : ''}
-            alt="news story image"
-          />
+          <Box p={1}>
+            <CardMedia
+              component="img"
+              sx={{ width: 180, minWidth: 180, maxWidth: 180 }}
+              image={images.length !== 0 ? images[0].url : ''}
+              alt="news story image"
+            />
+          </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto' }}>
               <Typography variant="body2">{date}</Typography>

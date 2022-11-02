@@ -49,12 +49,13 @@ const AbHomePageNewsCtrl = () => {
           <AbNewsSwiper>
             {newsStories.map((nS, i) => (
               <SwiperSlide key={i}>
-                <Card sx={{ boxShadow: 3, width: 280, height: '100%' }}>
+                <Card sx={{ boxShadow: 3, width: 300, height: '100%' }}>
                   <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                    <Box p={1}>
+                    <CenteredFlexBox>
                       <Image
                         duration={1000}
-                        height={162}
+                        height={140}
+                        width={140}
                         easing="ease-out"
                         // alt={`${nS.title + i}`}
                         alt={`${i}`}
@@ -62,11 +63,11 @@ const AbHomePageNewsCtrl = () => {
                         bgColor="#fff"
                         showLoading
                       />
-                    </Box>
+                    </CenteredFlexBox>
                     <CardContent>
-                      <Box height={90}>
+                      <Box height={200}>
                         <Typography variant="body2">{nS.date}</Typography>
-                        <Typography gutterBottom variant="h5">
+                        <Typography gutterBottom variant="h6">
                           {i18n.language === 'en' ? nS.title_en : nS.title_ga}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" align="center">
