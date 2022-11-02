@@ -22,7 +22,7 @@ function AbNewsStory({ id, title, date, blurb, images }: AbNewsStoryProps) {
 
   return (
     <Box m={{ sm: 2, xs: 1 }}>
-      <CardActionArea onClick={() => navigate(`/dev/news/${id}`)}>
+      <CardActionArea onClick={() => navigate(`/news/${id}`)}>
         <Card sx={{ display: 'flex' }}>
           <CardMedia
             component="img"
