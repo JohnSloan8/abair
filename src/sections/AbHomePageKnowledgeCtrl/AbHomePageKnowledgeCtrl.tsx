@@ -25,7 +25,7 @@ const AbHomePageKnowledgeCtrl = () => {
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'80%'}>
-        <Box component={Link} to={'/dev/knowledge'}>
+        <Box component={Link} to={'/knowledge'}>
           <Image
             duration={1000}
             height={breakpointSize === 'xs' ? 137.5 : 250}

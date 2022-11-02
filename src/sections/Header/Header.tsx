@@ -35,7 +35,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
   //   console.log('logout called');
   //   const { error } = await supabase.auth.signOut();
   //   console.log('error:', error);
-  //   navigate('/dev/login', { replace: true });
+  //   navigate('/login', { replace: true });
   // };
 
   const changeLang = () => {

@@ -25,7 +25,7 @@ const AbHomePageApplicationsCtrl = () => {
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'80%'}>
-        <Link to="/dev/applications">
+        <Link to="/applications">
           <Image
             duration={1000}
             width={breakpointSize === 'xs' ? 300 : 600}

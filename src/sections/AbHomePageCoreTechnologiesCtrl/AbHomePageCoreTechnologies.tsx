@@ -37,7 +37,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
         >
           <Grid item>
             <AbClickableCard
-              handleClickEvent={() => navigate('/dev/speech-synthesis')}
+              handleClickEvent={() => navigate('/speech-synthesis')}
               title={t('pageTitles.synthesis')}
               description={t('pages.home.technologyCards.synthesis.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
@@ -46,7 +46,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
           </Grid>
           <Grid item>
             <AbClickableCard
-              handleClickEvent={() => navigate('/dev/speech-recognition')}
+              handleClickEvent={() => navigate('/speech-recognition')}
               title={t('pageTitles.recognition')}
               description={t('pages.home.technologyCards.recognition.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
