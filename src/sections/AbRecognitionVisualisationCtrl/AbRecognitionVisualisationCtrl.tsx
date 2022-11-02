@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { useStream } from '@/store/recognition';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
 const AbRecognitionVisualisationCtrl = () => {
-  const location = useLocation();
   const [audioCtx, setAudioCtx] = useState<AudioContext>();
   const { stream } = useStream();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,7 +18,6 @@ const AbRecognitionVisualisationCtrl = () => {
         setAudioCtx(new AudioContext());
       }
     }
-    console.log('location:', location.pathname);
   }, [stream]);
 
   useEffect(() => {
@@ -35,11 +32,7 @@ const AbRecognitionVisualisationCtrl = () => {
 
   useEffect(() => {
     if (audioCtx) {
-      if (location.pathname === '/speech-recognition') {
-        visualize(stream, 'rgb(255, 235, 238)');
-      } else {
-        visualize(stream, 'rgb(255, 255, 255)');
-      }
+      visualize(stream, 'rgb(255, 255, 255)');
     }
   }, [audioCtx]);
 

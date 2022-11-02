@@ -36,7 +36,6 @@ function SpeechRecognition() {
                 backgroundColor: 'white',
                 height: '100%',
                 width: '484px',
-                border: '1px solid red',
               }}
             >
               <Box
