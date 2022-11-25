@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import AbButton from '../AbButton';
+import { AbButton } from 'abair-components';
+
 import { CenteredFlexBox } from '../styled';
 
 interface AbConsentProps {
@@ -36,7 +37,7 @@ function AbConsent({ title, description, condition1, handleClick }: AbConsentPro
           <AbButton
             label={'disagree'}
             selected={true}
-            variation={'alert'}
+            color={'warning'}
             onClick={() => {
               handleClick(false);
             }}
@@ -46,7 +47,7 @@ function AbConsent({ title, description, condition1, handleClick }: AbConsentPro
           <AbButton
             label={'agree'}
             selected={true}
-            variation={'model'}
+            color={'primary'}
             onClick={() => {
               handleClick(true);
             }}

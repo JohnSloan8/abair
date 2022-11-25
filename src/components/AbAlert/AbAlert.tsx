@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import AbButton from '../AbButton';
+import { AbButton } from 'abair-components';
+
 import { CenteredFlexBox } from '../styled';
 
 interface AbAlertProps {
@@ -21,7 +22,7 @@ function AbAlert({ description, handleClick }: AbAlertProps) {
       </Typography>
 
       <CenteredFlexBox pb={2}>
-        <AbButton label={'ok'} selected={true} variation={'alert'} onClick={handleClick} />
+        <AbButton label={'ok'} selected={true} color="warning" onClick={handleClick} />
       </CenteredFlexBox>
     </Box>
   );

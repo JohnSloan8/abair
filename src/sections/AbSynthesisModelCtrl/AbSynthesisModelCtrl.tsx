@@ -3,7 +3,8 @@ import { useRecoilValue } from 'recoil';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
-import AbButton from '@/components/AbButton';
+import { AbButton } from 'abair-components';
+
 import { synthesisModelOptions, useSynthesisModel } from '@/store/synthesis/voiceOptions';
 
 const AbSynthesisPitchCtrl = () => {
@@ -25,7 +26,7 @@ const AbSynthesisPitchCtrl = () => {
             label={m}
             onClick={() => setSynthesisModel(m)}
             selected={m === synthesisModel ? true : false}
-            variation="voice"
+            color={'secondary'}
           />
         </Box>
       ))}

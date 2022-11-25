@@ -2,7 +2,8 @@ import { useRecoilValue } from 'recoil';
 
 import Stack from '@mui/material/Stack';
 
-import AbButton from '@/components/AbButton';
+import { AbButton } from 'abair-components';
+
 import {
   filteredSynthesisVoiceOptions,
   synthesisVoiceModel,
@@ -32,7 +33,7 @@ const AbSynthesisPitchCtrl = () => {
             onClick={() => setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))}
             key={i}
             selected={k === synthesisVoiceSelectedValue ? true : false}
-            variation="voice"
+            color={'secondary'}
           />
         ))}
     </Stack>

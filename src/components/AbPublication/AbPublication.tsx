@@ -4,7 +4,8 @@ import { Card, CardActionArea, CardContent, Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import AbButton from '../AbButton';
+import { AbButton } from 'abair-components';
+
 import { CenteredFlexBox } from '../styled';
 
 interface AbPublicationProps {
@@ -54,9 +55,9 @@ function AbNewsStory({
                 <CenteredFlexBox my={3}>
                   <AbButton
                     label={'download full text (pdf)'}
-                    variation={'voice'}
+                    color={'secondary'}
                     onClick={handleDownload}
-                  ></AbButton>
+                  />
                 </CenteredFlexBox>
                 <CardActionArea onClick={() => setShowAllAbstract(false)}>
                   <Typography py={1} variant="body2" color="text.secondary">
