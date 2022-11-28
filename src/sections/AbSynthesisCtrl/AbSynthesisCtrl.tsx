@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
-import AbTextField from '@/components/AbTextField';
+import { AbTextField } from 'abair-components';
+
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
 import { useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
-import { useFrontPageTabs } from '@/store/tabs';
+// import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
 interface AbRecognitionCtrlProps {
@@ -16,7 +17,7 @@ interface AbRecognitionCtrlProps {
 }
 
 const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
-  const { frontPageTabs } = useFrontPageTabs();
+  // const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
   const { synthesisText, setSynthesisText } = useSynthesisText();
   const { awaitingSynthesis } = useAwaitingSynthesis();
@@ -47,13 +48,13 @@ const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
       }}
     >
       <AbTextField
-        key={frontPageTabs}
+        // key={frontPageTabs}
         label={t('pages.home.writeHere')}
         rows={breakpointSize === 'xs' ? 3 : 4}
         disabled={awaitingSynthesis ? true : false}
         autoFocus={false}
-        getter={synthesisText}
-        onChangeHandler={(text) => {
+        value={synthesisText}
+        onChange={(text) => {
           setSynthesisText(text);
         }}
       />

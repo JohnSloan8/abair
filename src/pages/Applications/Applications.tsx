@@ -7,7 +7,8 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
-import AbApplicationCard from '@/components/AbApplicationCard';
+import { AbInfoLinkCard } from 'abair-components';
+
 import AbInfoHeader from '@/components/AbInfoHeader';
 import Meta from '@/components/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
@@ -21,6 +22,7 @@ import {
   useCategories,
 } from '@/store/applications';
 import { useAppTabs } from '@/store/tabs';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 function Applications() {
   const { t, i18n } = useTranslation();
@@ -30,7 +32,7 @@ function Applications() {
   const filteredApplications = useRecoilValue(filteredApplicationsState);
   const navigate = useNavigate();
   const { setApplicationCategoryFilter } = useApplicationCategoryFilter();
-
+  const { breakpointSize } = useBreakpointSize();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     const newIndex = categories[newValue].id;
     setApplicationCategoryFilter(newIndex);
@@ -84,13 +86,14 @@ function Applications() {
         <CenteredFlexBox mt={2}>
           <Box sx={{ maxWidth: 'md', width: '100%' }}>
             {filteredApplications.map((a: ApplicationModel, i: number) => (
-              <AbApplicationCard
+              <AbInfoLinkCard
                 key={i}
-                handleClick={() => handleClick(a.url)}
+                onClick={() => handleClick(a.url)}
                 name={a.name}
                 description={i18n.language === 'en' ? a.description_en : a.description_ga}
                 image={a.image}
                 message={a.url === '#' ? t('pages.applications.comingSoon') : ''}
+                breakpointSize={breakpointSize}
               />
             ))}
           </Box>

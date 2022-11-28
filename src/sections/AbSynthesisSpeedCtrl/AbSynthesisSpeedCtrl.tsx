@@ -1,6 +1,7 @@
 import SpeedIcon from '@mui/icons-material/Speed';
 
-import AbSlider from '@/components/AbSlider';
+import { AbSlider } from 'abair-components';
+
 import { useSynthesisSpeed, useSynthesisVoiceIndex } from '@/store/synthesis/voiceOptions';
 
 const AbSynthesisSpeedCtrl = () => {
@@ -11,14 +12,11 @@ const AbSynthesisSpeedCtrl = () => {
     <AbSlider
       min={0.5}
       value={synthesisSpeed}
+      defaultValue={1}
       max={1.5}
-      handleSliderChange={(e) =>
-        setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))
-      }
+      onChange={(e) => setSynthesisSpeed(parseFloat((e.target as HTMLInputElement).value))}
       step={0.1}
       icon={SpeedIcon}
-      control="speed"
-      color="secondary.main"
     />
   ) : null;
 };

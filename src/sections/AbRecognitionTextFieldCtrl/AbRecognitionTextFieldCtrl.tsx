@@ -1,4 +1,6 @@
-import AbTextField from '@/components/AbTextField';
+// import AbTextField from '@/components/AbTextField';
+import { AbTextField } from 'abair-components';
+
 import { useEditableTranscriptionText } from '@/store/transcriptions';
 
 interface AbRecognitionCtrlTextFieldCtrlProps {
@@ -16,8 +18,8 @@ const AbRecognitionCtrlTextFieldCtrl = ({ rows = 4 }: AbRecognitionCtrlTextField
       rows={rows}
       disabled={false}
       autoFocus={false}
-      getter={typeof editableTranscriptionText === 'string' ? editableTranscriptionText : ''}
-      onChangeHandler={(text) => {
+      value={typeof editableTranscriptionText === 'string' ? editableTranscriptionText : ''}
+      onChange={(text) => {
         setEditableTranscriptionText(text);
       }}
     />
