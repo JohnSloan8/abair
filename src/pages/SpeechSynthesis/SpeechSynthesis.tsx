@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbSynthesisAudiosCtrl from '@/sections/AbSynthesisAudiosCtrl';
@@ -15,6 +14,8 @@ import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function SpeechSynthesis() {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ function SpeechSynthesis() {
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title={t('pageTitles.synthesis')} />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pageTitles.synthesis')} variant="front" />
+          <AbInfoHeader title={t('pageTitles.synthesis')} />
         </Box>
         <CenteredFlexBox m={{ sm: 2, xs: 0 }}>
           <Grid container spacing={0}>

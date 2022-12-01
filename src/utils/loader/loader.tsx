@@ -10,7 +10,7 @@ import { AnyProps, LoadComponent, LoaderDefaultOptions } from './types';
 // usually, we load components asynchronously with `Suspense` and `lazy` by this way
 
 /*
-  <Suspense fallback={<Loading />}>
+  <Suspense fallback={<AbLoading/>}>
     {lazy(_ => import('path/to/the/component'))}
   </Suspense>
 */

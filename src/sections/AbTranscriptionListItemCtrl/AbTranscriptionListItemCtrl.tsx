@@ -6,15 +6,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { AbIconButton } from 'abair-components';
+
 import { transcriptionModel } from '@/models/transcription';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionTextFieldCtrl from '@/sections/AbRecognitionTextFieldCtrl/AbRecognitionTextFieldCtrl';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
-
-import AbIconButton from '../../components/AbIconButton';
-import { CenteredFlexBox } from '../../components/styled';
+import { CenteredFlexBox } from '@/utils/flex';
 
 interface AbTranscriptionListItemCtrlProps {
   trans: transcriptionModel;
@@ -87,8 +87,8 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
       </AccordionDetails>
       <CenteredFlexBox>
         <AbIconButton
-          variation="gray"
-          handleClick={() => {
+          color="info"
+          onClick={() => {
             handleDelete(trans.id);
           }}
           icon={DeleteIcon}

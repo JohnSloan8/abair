@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { AbPopup } from 'abair-components';
 
-import { FullSizeCenteredFlexBox } from '@/components/styled';
 import { useConsent, useShowConsent } from '@/store/consent';
+import { FullSizeCenteredFlexBox } from '@/utils/flex';
 
 const AbRecognitionConsentCtrl = () => {
   const { t } = useTranslation();

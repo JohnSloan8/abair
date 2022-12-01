@@ -1,4 +1,4 @@
-import { blue, green, orange, red } from '@mui/material/colors';
+import { blue, green, grey, red } from '@mui/material/colors';
 import { ThemeOptions } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
@@ -44,11 +44,11 @@ const sharedTheme = {
       dark: red[800],
     },
     info: {
-      wafer: orange[50],
-      light: orange[100],
-      medium: orange[200],
-      main: orange[600],
-      dark: orange[800],
+      wafer: grey[50],
+      light: grey[100],
+      medium: grey[200],
+      main: grey[600],
+      dark: grey[800],
     },
   },
   components: {

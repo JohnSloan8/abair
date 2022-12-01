@@ -4,11 +4,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import { AbButton } from 'abair-components';
+import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 import mileGlorLogo from '/assets/images/misc/míleglor.png';
 import recordingStudio from '/assets/images/misc/recording-studio-drawing.webp';
@@ -24,7 +24,6 @@ const AbHomeMileGlorCtrl = () => {
           <AbInfoHeader
             title={t('infoHeader.home.mileGlor.title')}
             description={t('infoHeader.home.mileGlor.description')}
-            variant="front"
           />
         </CenteredFlexBox>
         <CenteredFlexBox height={'60%'}>

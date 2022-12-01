@@ -8,10 +8,8 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
 import { AbInfoLinkCard } from 'abair-components';
+import { AbInfoHeader } from 'abair-components';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { ApplicationModel } from '@/models/application';
 import { getApplications } from '@/services/supabase/applications';
 import getCategories from '@/services/supabase/applications/getCategories';
@@ -23,6 +21,8 @@ import {
 } from '@/store/applications';
 import { useAppTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Applications() {
   const { t, i18n } = useTranslation();
@@ -71,7 +71,7 @@ function Applications() {
         <Meta title={t('pageTitles.applications')} />
         <CenteredFlexBox>
           <Box sx={{ maxWidth: 'md', width: '100%' }} py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pageTitles.applications')} variant="front" />
+            <AbInfoHeader title={t('pageTitles.applications')} />
           </Box>
         </CenteredFlexBox>
         <CenteredFlexBox>

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
+import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import { CenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
+import { CenteredFlexBox } from '@/utils/flex';
 
 import applicationsLogo from '/assets/images/misc/abair-applications.png';
 
@@ -21,7 +21,6 @@ const AbHomePageApplicationsCtrl = () => {
         <AbInfoHeader
           title={t('infoHeader.home.applications.title')}
           description={t('infoHeader.home.applications.description')}
-          variant="front"
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'80%'}>

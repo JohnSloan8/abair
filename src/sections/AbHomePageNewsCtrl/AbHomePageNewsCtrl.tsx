@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import Image from 'mui-image';
+import { AbInfoHeader, AbNewsCard } from 'abair-components';
+import { Autoplay, Navigation, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper } from 'swiper/react';
 import { SwiperSlide } from 'swiper/react';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import AbNewsSwiper from '@/components/AbNewsSwiper';
-import { CenteredFlexBox } from '@/components/styled';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
+import { CenteredFlexBox } from '@/utils/flex';
+
+import './styles.css';
 
 const AbHomePageNewsCtrl = () => {
   const { newsStories, setNewsStories } = useNewsStories();
@@ -37,7 +39,6 @@ const AbHomePageNewsCtrl = () => {
         <AbInfoHeader
           title={t('infoHeader.home.news.title')}
           description={t('infoHeader.home.news.description')}
-          variant="front"
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'70%'} width={'100%'} sx={{ overflowX: 'hidden' }}>
@@ -46,40 +47,35 @@ const AbHomePageNewsCtrl = () => {
           maxWidth={920}
           sx={{ width: '100%', height: '100%', overflowX: 'hidden' }}
         >
-          <AbNewsSwiper>
-            {newsStories.map((nS, i) => (
-              <SwiperSlide key={i}>
-                <Card sx={{ boxShadow: 3, width: 300, height: '100%' }}>
-                  <CardActionArea onClick={() => navigate(`/news/${nS.id}`)}>
-                    <CenteredFlexBox>
-                      <Image
-                        duration={1000}
-                        height={140}
-                        width={140}
-                        easing="ease-out"
-                        // alt={`${nS.title + i}`}
-                        alt={`${i}`}
-                        src={nS.images.length !== 0 ? nS.images[0].url : ''}
-                        bgColor="#fff"
-                        showLoading
-                      />
-                    </CenteredFlexBox>
-                    <CardContent>
-                      <Box height={200}>
-                        <Typography variant="body2">{nS.date}</Typography>
-                        <Typography gutterBottom variant="h6">
-                          {i18n.language === 'en' ? nS.title_en : nS.title_ga}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary" align="center">
-                          {i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </AbNewsSwiper>
+          <Box width={920}>
+            <Swiper
+              slidesPerView={3}
+              loop={true}
+              spaceBetween={30}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={false}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {newsStories.map((nS, i) => (
+                <SwiperSlide key={i}>
+                  <AbNewsCard
+                    title={i18n.language === 'en' ? nS.title_en : nS.title_ga}
+                    blurb={i18n.language === 'en' ? nS.blurb_en : nS.blurb_ga}
+                    imageSrc={nS.images.length !== 0 ? nS.images[0].url : ''}
+                    date={nS.date}
+                    onClick={() => navigate(`/news/${nS.id}`)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
         </CenteredFlexBox>
       </CenteredFlexBox>
       <CenteredFlexBox height={'10%'}>

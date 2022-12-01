@@ -2,9 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
+import Meta from '@/utils/Meta';
+import { HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Contact() {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ function Contact() {
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.contact')} />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pageTitles.contact')} variant="front" />
+          <AbInfoHeader title={t('pageTitles.contact')} />
         </Box>
       </Box>
     </HorizontallyCenteredFlexBox>

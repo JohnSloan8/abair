@@ -12,14 +12,15 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
 // import Typography from '@mui/material/Typography';
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
 import { getDialects } from '@/services/supabase/dialects';
 import { getGenders } from '@/services/supabase/genders';
 import { getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
 import { useDialects, useGenders, useProfile } from '@/store/profile';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Profile() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -53,7 +54,7 @@ function Profile() {
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title="Profile" />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title="Profile" variant="front" />
+          <AbInfoHeader title="Profile" />
         </Box>
         <CenteredFlexBox m={2}>
           <div aria-live="polite">

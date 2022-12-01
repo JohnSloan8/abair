@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 
-import { CenteredFlexBox } from '@/components/styled';
 import { useVoiceRecording } from '@/store/recognition';
+import { CenteredFlexBox } from '@/utils/flex';
 
 interface AbRecognitionCtrlProps {
   buttons: React.ReactNode;

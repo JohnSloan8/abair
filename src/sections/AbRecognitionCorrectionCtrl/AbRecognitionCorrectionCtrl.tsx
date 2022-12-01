@@ -3,7 +3,8 @@ import { useRecoilValue } from 'recoil';
 import SaveIcon from '@mui/icons-material/Save';
 import Box from '@mui/material/Box';
 
-import AbIconButton from '@/components/AbIconButton';
+import { AbIconButton } from 'abair-components';
+
 import { patchTranscription } from '@/services/supabase/transcriptions';
 import { useAwaitingTranscription } from '@/store/recognition';
 import {
@@ -47,8 +48,8 @@ const AbRecognitionCorrectionCtrl = () => {
       }}
     >
       <AbIconButton
-        variation="stop"
-        handleClick={() => {
+        color="warning"
+        onClick={() => {
           saveEditableTranscription();
         }}
         icon={SaveIcon}

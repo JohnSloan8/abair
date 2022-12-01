@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
+import Meta from '@/utils/Meta';
+import { HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function About() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ function About() {
       <Box sx={{ width: '100%', maxWidth: 'md' }} mb={8} px={1}>
         <Meta title={t('pageTitles.about')} />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pageTitles.about')} variant="front" />
+          <AbInfoHeader title={t('pageTitles.about')} />
         </Box>
         <Typography mb={2} variant={'body1'}>
           {t('pages.about.aboutUsPin')}

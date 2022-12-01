@@ -8,9 +8,9 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import AbIconButton from '@/components/AbIconButton';
-import Loading from '@/components/Loading';
-import { CenteredFlexBox } from '@/components/styled';
+import { AbIconButton } from 'abair-components';
+import { AbLoading } from 'abair-components/';
+
 import getSynthesis from '@/services/abair/synthesis';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { postSynthesisRequest } from '@/services/supabase/synthesis-requests';
@@ -31,6 +31,7 @@ import {
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
+import { CenteredFlexBox } from '@/utils/flex';
 
 import AbSynthesisAudioPlayerCtrl from '../AbSynthesisAudioPlayerCtrl';
 
@@ -122,12 +123,12 @@ const AbSynthesisButtonsCtrl = () => {
             {!awaitingSynthesis ? (
               <AbIconButton
                 disabled={emptyString || synthesisVoiceIndex === -1}
-                variation="record"
-                handleClick={initGetSynthesis}
+                color="secondary"
+                onClick={initGetSynthesis}
                 icon={RecordVoiceOverIcon}
               />
             ) : (
-              <Loading />
+              <AbLoading />
             )}
           </CenteredFlexBox>
         </Grid>

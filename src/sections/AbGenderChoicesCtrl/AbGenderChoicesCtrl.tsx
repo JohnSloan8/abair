@@ -4,7 +4,8 @@ import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 import { Box } from '@mui/material';
 
-import AbIconButton from '@/components/AbIconButton';
+import { AbIconButton } from 'abair-components';
+
 import { useSynthesisGender } from '@/store/synthesis/voiceOptions';
 
 const AbGenderChoicesCtrl = () => {
@@ -14,10 +15,6 @@ const AbGenderChoicesCtrl = () => {
     { name: 'male', icon: MaleIcon },
     { name: 'female', icon: FemaleIcon },
   ];
-
-  const toggleGender = (gender: string) => {
-    setSynthesisGender(gender);
-  };
 
   useEffect(() => {
     console.log('gender:', synthesisGender);
@@ -29,9 +26,10 @@ const AbGenderChoicesCtrl = () => {
       {genders.map((g) => (
         <AbIconButton
           key={g.name}
-          variation={synthesisGender === g.name ? 'genderSelected' : 'genderUnselected'}
-          handleClick={() => {
-            toggleGender(g.name);
+          selected={g.name === synthesisGender ? true : false}
+          color="secondary"
+          onClick={() => {
+            setSynthesisGender(g.name);
           }}
           icon={g.icon}
         />

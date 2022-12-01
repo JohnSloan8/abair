@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { AbInfoHeader } from 'abair-components';
 import { gsap } from 'gsap';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import { CenteredFlexBox, FullSizeBox } from '@/components/styled';
 import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
 import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
 import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
@@ -21,6 +20,7 @@ import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
+import { CenteredFlexBox, FullSizeBox } from '@/utils/flex';
 
 import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
 
@@ -81,7 +81,7 @@ const AbHomePageSection1Ctrl = () => {
       }}
     >
       <CenteredFlexBox height={{ sm: '84px', xs: '64px' }}>
-        <AbInfoHeader variant="front" title={t('infoHeader.home.main.title')} />
+        <AbInfoHeader title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>
       <CenteredFlexBox height={{ sm: '48px', xs: '48px' }} mb={1}>
         <AbTabsCtrl variation="frontpage" />

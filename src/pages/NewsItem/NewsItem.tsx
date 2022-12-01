@@ -5,15 +5,15 @@ import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
-import { AbNewsStoryModel } from '@/models/news';
 import { ImageDataModel } from '@/models/news';
+import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function NewsItem() {
   const { t, i18n } = useTranslation();
@@ -52,7 +52,6 @@ function NewsItem() {
             <Box py={{ sm: 4, xs: 2 }}>
               <AbInfoHeader
                 title={i18n.language === 'en' ? newsStory.title_en : newsStory.title_ga}
-                variant="front"
               />
             </Box>
             <CenteredFlexBox>
@@ -64,7 +63,6 @@ function NewsItem() {
                   {newsStory.images.map(
                     (image: ImageDataModel, i: number) =>
                       image !== null && (
-                        // <CenteredFlexBox mb={4} >
                         <Image
                           key={i}
                           duration={1000}
@@ -76,11 +74,13 @@ function NewsItem() {
                           bgColor="#fff"
                           showLoading
                         />
-                        // </CenteredFlexBox>
                       ),
                   )}
                 </CenteredFlexBox>
-                <Typography gutterBottom variant="body1" m={2} align="left">
+                <Typography gutterBottom variant="body1" m={2} align="center">
+                  {i18n.language === 'en' ? newsStory.blurb_en : newsStory.blurb_ga}
+                </Typography>
+                <Typography gutterBottom variant="body2" m={2} align="left">
                   {i18n.language === 'en' ? newsStory.body_en : newsStory.body_ga}
                 </Typography>
               </Box>

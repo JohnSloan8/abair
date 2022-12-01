@@ -1,9 +1,9 @@
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import StopIcon from '@mui/icons-material/Stop';
 
-import AbIconButton from '@/components/AbIconButton';
-import Loading from '@/components/Loading';
-import { CenteredFlexBox } from '@/components/styled';
+import { AbIconButton } from 'abair-components';
+import { AbLoading } from 'abair-components/';
+
 import AbMediaCtrl from '@/sections/AbMediaCtrl';
 import { useConsent, useShowConsent } from '@/store/consent';
 import {
@@ -11,6 +11,7 @@ import {
   useMediaRecorderExists,
   useVoiceRecording,
 } from '@/store/recognition';
+import { CenteredFlexBox } from '@/utils/flex';
 
 const AbRecognitionRecordStopButtonsCtrl = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
@@ -36,13 +37,13 @@ const AbRecognitionRecordStopButtonsCtrl = () => {
   return (
     <CenteredFlexBox sx={{ position: 'relative' }}>
       {awaitingTranscription ? (
-        <Loading />
+        <AbLoading />
       ) : !voiceRecording ? (
-        <AbIconButton variation="stop" handleClick={handleClick} icon={KeyboardVoiceIcon} />
+        <AbIconButton color="warning" onClick={handleClick} icon={KeyboardVoiceIcon} />
       ) : (
         <AbIconButton
-          variation="stop"
-          handleClick={() => {
+          color="warning"
+          onClick={() => {
             setVoiceRecording(false);
           }}
           icon={StopIcon}

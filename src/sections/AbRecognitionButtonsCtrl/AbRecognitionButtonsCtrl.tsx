@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import { CenteredFlexBox } from '@/components/styled';
 import AbRecognitionAudioPlayerCtrl from '@/sections/AbRecognitionAudioPlayerCtrl';
 import AbRecognitionCorrectionCtrl from '@/sections/AbRecognitionCorrectionCtrl';
 import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
+import { CenteredFlexBox } from '@/utils/flex';
 
 interface AbRecognitionButtonsCtrlProps {
   showRecord?: boolean;

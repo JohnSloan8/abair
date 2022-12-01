@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
 import { useBreakpointSize } from '@/store/viewDimensions';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Geabaire() {
   const { t } = useTranslation();
@@ -19,7 +19,7 @@ function Geabaire() {
         <Box pb={4} sx={{ width: '100%', maxWidth: 'md' }}>
           <Meta title="Geabaire" />
           <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title="Geabaire" color="background.paper" variant="front" />
+            <AbInfoHeader title="Geabaire" color="background.paper" />
           </Box>
           <CenteredFlexBox>
             <Box maxWidth="md" border={8} borderRadius={2} borderColor={'primary.light'}>

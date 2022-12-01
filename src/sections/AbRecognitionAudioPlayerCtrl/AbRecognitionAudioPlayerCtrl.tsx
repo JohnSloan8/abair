@@ -5,7 +5,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import Box from '@mui/material/Box';
 
-import AbIconButton from '@/components/AbIconButton';
+import { AbIconButton } from 'abair-components';
+
 import {
   isRecognitionAudioEmpty,
   useAwaitingTranscription,
@@ -58,16 +59,16 @@ const AbRecognitionAudioPlayerCtrl = () => {
     >
       {!recognitionAudioPlaying ? (
         <AbIconButton
-          variation="stop"
-          handleClick={() => {
+          color="warning"
+          onClick={() => {
             playRecognitionAudio();
           }}
           icon={PlayArrowIcon}
         />
       ) : (
         <AbIconButton
-          variation="stop"
-          handleClick={() => {
+          color="warning"
+          onClick={() => {
             stopRecognitionAudio();
           }}
           icon={StopIcon}

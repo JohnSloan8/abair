@@ -2,11 +2,11 @@ import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 
-import { CenteredFlexBox } from '@/components/styled';
 import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
 import AbMapCtrl from '@/sections/AbMapCtrl';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
+import { CenteredFlexBox } from '@/utils/flex';
 
 const AbSynthesisVoiceSelectionCtrl = () => {
   const { frontPageTabs } = useFrontPageTabs();

@@ -2,8 +2,8 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-import { CenteredFlexBox, FullSizeCenteredFlexBox } from '@/components/styled';
 import { messages } from '@/config';
+import { CenteredFlexBox, FullSizeCenteredFlexBox } from '@/utils/flex';
 
 function NotFound() {
   return (

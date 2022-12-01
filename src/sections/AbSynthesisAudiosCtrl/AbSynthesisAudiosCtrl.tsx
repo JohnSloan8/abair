@@ -3,8 +3,8 @@ import { useRef } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import { CenteredFlexBox } from '@/components/styled';
 import { useSynthesisAudios } from '@/store/synthesis';
+import { CenteredFlexBox } from '@/utils/flex';
 
 const AbSynthesisAudiosCtrl = () => {
   const { synthesisAudios } = useSynthesisAudios();

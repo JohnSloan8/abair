@@ -8,10 +8,11 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { Box } from '@mui/system';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
 import supabase from '@/services/supabase';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Login() {
   const { t } = useTranslation();
@@ -63,16 +64,15 @@ function Login() {
             <AbInfoHeader
               title="Confirmation Email sent"
               description="Please check your email to confirm your accout. Then you can login to Abair."
-              variant="front"
             />
           </Box>
         ) : showSignupPage ? (
           <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pages.auth.signup')} variant="front" />
+            <AbInfoHeader title={t('pages.auth.signup')} />
           </Box>
         ) : (
           <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pages.auth.login')} variant="front" />
+            <AbInfoHeader title={t('pages.auth.login')} />
           </Box>
         )}
         <CenteredFlexBox m={2}>

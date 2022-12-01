@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
 import AbKnowledgeCtrl from '@/sections/AbKnowledgeCtrl';
+import Meta from '@/utils/Meta';
+import { HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Knowledge() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ function Knowledge() {
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
         <Meta title={t('pageTitles.knowledge')} />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pageTitles.knowledge')} variant="front" />
+          <AbInfoHeader title={t('pageTitles.knowledge')} />
         </Box>
         <AbKnowledgeCtrl />
       </Box>

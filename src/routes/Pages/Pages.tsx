@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 import AbRecognitionConsentCtrl from '@/sections/AbRecognitionConsentCtrl ';
-// import { FullSizeBox } from '@/components/styled';
+// import { FullSizeBox } from 'abair-components';
 import Footer from '@/sections/Footer';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
 import ScrollToTop from '@/utils/scrollToTop';

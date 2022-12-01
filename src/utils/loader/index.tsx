@@ -1,4 +1,5 @@
-import Loading from '@/components/Loading';
+import { AbLoading } from 'abair-components';
+
 import { loader as loaderDefaultOptions } from '@/config';
 
 import asyncComponentLoader from './loader';
@@ -8,7 +9,7 @@ const configuredAsyncComponentLoader = (
   loadComponent: LoadComponent,
   additionalProps: AnyProps = {},
   loaderOptions: LoaderDefaultOptions = loaderDefaultOptions,
-  FallbackWaiting = Loading,
+  FallbackWaiting = AbLoading,
 ) => asyncComponentLoader(loadComponent, additionalProps, loaderOptions, FallbackWaiting);
 
 export { loaderDefaultOptions };

@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import AbClickableCard from '@/components/AbClickableCard';
-import AbInfoHeader from '@/components/AbInfoHeader';
-import { CenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+import { AbClickableCard } from 'abair-components';
+
 import { useBreakpointSize } from '@/store/viewDimensions';
+import { CenteredFlexBox } from '@/utils/flex';
 
 import recognitionCard from '/assets/images/misc/recognition-card-screenshot.png';
 import synthesisCard from '/assets/images/misc/synthesis-card-screenshot.png';
@@ -23,7 +24,6 @@ const AbHomePageCoreTechnologiesCtrl = () => {
         <AbInfoHeader
           title={t('infoHeader.home.core.title')}
           description={t('infoHeader.home.core.description')}
-          variant="front"
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'80%'}>

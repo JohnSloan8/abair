@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
 
-import AbPublication from '@/components/AbPublication';
+import { AbPublication } from 'abair-components';
+
 import { publicationModel } from '@/models/publication';
 import { getPublications } from '@/services/supabase/publications';
 import { usePublications } from '@/store/publications';

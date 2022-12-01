@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
-import Meta from '@/components/Meta';
-import { FullSizeBox } from '@/components/styled';
+import { FullSizeBox } from 'abair-components';
+
 import AbHomeMileGlorCtrl from '@/sections/AbHomeMileGlorCtrl';
 import AbHomePageApplicationsCtrl from '@/sections/AbHomePageApplicationsCtrl';
 import AbHomePageCoreTechnologiesCtrl from '@/sections/AbHomePageCoreTechnologiesCtrl';
 import AbHomePageKnowledgeCtrl from '@/sections/AbHomePageKnowledgeCtrl';
 import AbHomePageNewsCtrl from '@/sections/AbHomePageNewsCtrl';
 import AbHomePageSection1Ctrl from '@/sections/AbHomePageSection1Ctrl';
+import Meta from '@/utils/Meta';
 
 function Home() {
   const { t } = useTranslation();

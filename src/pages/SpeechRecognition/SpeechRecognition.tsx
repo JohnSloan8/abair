@@ -3,15 +3,16 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import AbInfoHeader from '@/components/AbInfoHeader';
-import Meta from '@/components/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/components/styled';
+import { AbInfoHeader } from 'abair-components';
+
 import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
 import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
 import AbRecognitionVisualisationCtrl from '@/sections/AbRecognitionVisualisationCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
 import { useVoiceRecording } from '@/store/recognition';
+import Meta from '@/utils/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function SpeechRecognition() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ function SpeechRecognition() {
       <Box sx={{ width: '100%', maxWidth: 'sm' }}>
         <Meta title={t('pageTitles.recognition')} />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pageTitles.recognition')} variant="front" />
+          <AbInfoHeader title={t('pageTitles.recognition')} />
         </Box>
         <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
           {voiceRecording ? (

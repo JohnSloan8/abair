@@ -5,7 +5,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import Box from '@mui/material/Box';
 
-import AbIconButton from '@/components/AbIconButton';
+import { AbIconButton } from 'abair-components';
+
 import {
   isSynthesisAudioEmpty,
   useAwaitingSynthesis,
@@ -61,16 +62,16 @@ const AbSynthesisAudioPlayerCtrl = () => {
     >
       {!synthesisAudioPlaying ? (
         <AbIconButton
-          variation="record"
-          handleClick={() => {
+          color="secondary"
+          onClick={() => {
             playSynthesisAudio();
           }}
           icon={PlayArrowIcon}
         />
       ) : (
         <AbIconButton
-          variation="record"
-          handleClick={() => {
+          color="secondary"
+          onClick={() => {
             stopSynthesisAudio();
           }}
           icon={StopIcon}
