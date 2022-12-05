@@ -7,9 +7,9 @@ import { AbInfoHeader } from 'abair-components';
 
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
-import RecognitionWaveVisual from '@/sections/RecognitionWaveVisual';
 import RecognitionProgressBar from '@/state-control/RecognitionProgressBar';
 import RecognitionRecordStopButtons from '@/state-control/RecognitionRecordStopButtons';
+import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
 import { useVoiceRecording } from '@/store/recognition';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
@@ -27,10 +27,10 @@ function SpeechRecognition() {
         </Box>
         <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
           {voiceRecording ? (
-            <Box sx={{ position: 'relative', height: '100%' }}>
-              <RecognitionWaveVisual />
-            </Box>
+            // <Box sx={{ position: 'relative', height: '100%' }}>
+            <RecognitionWaveVisual />
           ) : (
+            // </Box>
             <Box
               sx={{
                 position: 'relative',

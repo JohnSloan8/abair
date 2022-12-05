@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { AbInfoHeader } from 'abair-components';
-import { AbRecognition } from 'abair-components';
+import { AbInteractionContainer } from 'abair-components';
 import { gsap } from 'gsap';
 
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
@@ -14,10 +14,10 @@ import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import RecognitionButtons from '@/sections/RecognitionButtons';
 import SynthesisButtons from '@/sections/SynthesisButtons';
-import AbSynthesisCtrl from '@/state-control/AbSynthesisCtrl';
 import RecognitionImage from '@/state-control/RecognitionImage';
-import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
+import RecognitionTextField from '@/state-control/RecognitionTextField';
 import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
+import SynthesisTextField from '@/state-control/SynthesisTextField';
 import { useVoiceRecording } from '@/store/recognition';
 import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
@@ -95,15 +95,18 @@ const AbHomePageSection1Ctrl = () => {
         <CenteredFlexBox ref={mainControlBox}>
           <Box width={'100%'} maxWidth={550} minWidth={250}>
             {frontPageTabs === 0 ? (
-              <AbSynthesisCtrl>
-                <SynthesisButtons />
-              </AbSynthesisCtrl>
+              <AbInteractionContainer
+                textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
+                buttons={<SynthesisButtons />}
+                color="secondary.light"
+              />
             ) : (
-              <AbRecognition
+              <AbInteractionContainer
                 textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
                 visualisation={<RecognitionWaveVisual />}
                 buttons={<RecognitionButtons />}
                 voiceRecording={voiceRecording}
+                color="warning.light"
               />
             )}
           </Box>

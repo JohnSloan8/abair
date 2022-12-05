@@ -7,13 +7,15 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { AbIconButton } from 'abair-components';
+import { AbInteractionContainer } from 'abair-components';
 
 import { transcriptionModel } from '@/models/transcription';
-import Recognition from '@/sections/Recognition';
+// import Recognition from '@/sections/Recognition';
 import RecognitionButtons from '@/sections/RecognitionButtons';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
 import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
+import { useBreakpointSize } from '@/store/viewDimensions';
 import { CenteredFlexBox } from '@/utils/flex';
 
 interface AbTranscriptionListItemCtrlProps {
@@ -23,6 +25,7 @@ interface AbTranscriptionListItemCtrlProps {
 const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps) => {
   const { transcription, setTranscription } = useTranscription();
   const { transcriptions, setTranscriptions } = useTranscriptions();
+  const { breakpointSize } = useBreakpointSize();
 
   const handleClick = (t: transcriptionModel) => {
     if (transcription?.id !== t.id) {
@@ -80,9 +83,10 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
               </Box>
             ))}
         </Box>
-        <Recognition
-          textbox={<RecognitionTextField rows={4} />}
+        <AbInteractionContainer
+          textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
           buttons={<RecognitionButtons showRecord={false} />}
+          color="warning.light"
         />
       </AccordionDetails>
       <CenteredFlexBox>

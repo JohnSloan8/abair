@@ -3,22 +3,25 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import { AbInfoHeader } from 'abair-components';
+import { AbInfoHeader, AbInteractionContainer } from 'abair-components';
 
 import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
 import SynthesisButtons from '@/sections/SynthesisButtons';
-import AbSynthesisCtrl from '@/state-control/AbSynthesisCtrl';
 import GenderChoices from '@/state-control/GenderChoices';
 import Map from '@/state-control/Map';
 import SynthesisHistoryItems from '@/state-control/SynthesisHistoryItems';
+import SynthesisTextField from '@/state-control/SynthesisTextField';
+import { useBreakpointSize } from '@/store/viewDimensions';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function SpeechSynthesis() {
   const { t } = useTranslation();
+  const { breakpointSize } = useBreakpointSize();
+
   return (
     <HorizontallyCenteredFlexBox
       pb={8}
@@ -67,9 +70,11 @@ function SpeechSynthesis() {
         </CenteredFlexBox>
 
         <CenteredFlexBox>
-          <AbSynthesisCtrl>
-            <SynthesisButtons />
-          </AbSynthesisCtrl>
+          <AbInteractionContainer
+            textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
+            buttons={<SynthesisButtons />}
+            color="secondary.light"
+          />
         </CenteredFlexBox>
         <CenteredFlexBox>
           <SynthesisHistoryItems />
