@@ -28,7 +28,7 @@
     "@mui/system": "^5.8.1",
     "@mui/utils": "^5.8.0",
     "@supabase/supabase-js": "^2.0.0-rc.8",
-    "abair-components": "^0.1.33",
+    "abair-components": "^0.1.39",
     "axios": "^0.27.2",
     "gsap": "^3.11.1",
     "i18next": "^22.0.0",

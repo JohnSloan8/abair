@@ -5,8 +5,6 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
-import AbMapCtrl from '@/sections/AbMapCtrl';
 import AbSynthesisAudiosCtrl from '@/sections/AbSynthesisAudiosCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
@@ -14,6 +12,8 @@ import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
+import GenderChoices from '@/state-control/GenderChoices';
+import Map from '@/state-control/Map';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
@@ -34,7 +34,7 @@ function SpeechSynthesis() {
             <Grid item xs={12} sm={6} my={-2}>
               <CenteredFlexBox>
                 <Box>
-                  <AbMapCtrl />
+                  <Map />
                 </Box>
               </CenteredFlexBox>
             </Grid>
@@ -50,7 +50,7 @@ function SpeechSynthesis() {
               <Box minHeight={'69px'}>
                 <AbSynthesisVoiceButtonsCtrl />
               </Box>
-              <AbGenderChoicesCtrl />
+              <GenderChoices />
               <Box width={'90%'}>
                 <Box minHeight={{ sm: '62px', xs: '52px' }}>
                   <AbSynthesisSpeedCtrl />

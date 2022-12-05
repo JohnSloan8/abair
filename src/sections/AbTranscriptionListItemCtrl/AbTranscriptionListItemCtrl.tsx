@@ -9,10 +9,10 @@ import Typography from '@mui/material/Typography';
 import { AbIconButton } from 'abair-components';
 
 import { transcriptionModel } from '@/models/transcription';
-import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
-import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
-import AbRecognitionTextFieldCtrl from '@/sections/AbRecognitionTextFieldCtrl/AbRecognitionTextFieldCtrl';
+import Recognition from '@/sections/Recognition';
+import RecognitionButtons from '@/sections/RecognitionButtons';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
+import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
 import { CenteredFlexBox } from '@/utils/flex';
 
@@ -80,9 +80,9 @@ const AbTranscriptionListItemCtrl = ({ trans }: AbTranscriptionListItemCtrlProps
               </Box>
             ))}
         </Box>
-        <AbRecognitionCtrl
-          textbox={<AbRecognitionTextFieldCtrl rows={4} />}
-          buttons={<AbRecognitionButtonsCtrl showRecord={false} />}
+        <Recognition
+          textbox={<RecognitionTextField rows={4} />}
+          buttons={<RecognitionButtons showRecord={false} />}
         />
       </AccordionDetails>
       <CenteredFlexBox>

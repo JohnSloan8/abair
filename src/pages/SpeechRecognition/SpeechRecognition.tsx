@@ -5,11 +5,11 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import AbRecognitionProgressBarCtrl from '@/sections/AbRecognitionProgressBarCtrl';
-import AbRecognitionRecordStopButtonsCtrl from '@/sections/AbRecognitionRecordStopButtonsCtrl';
-import AbRecognitionVisualisationCtrl from '@/sections/AbRecognitionVisualisationCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
+import RecognitionWaveVisual from '@/sections/RecognitionWaveVisual';
+import RecognitionProgressBar from '@/state-control/RecognitionProgressBar';
+import RecognitionRecordStopButtons from '@/state-control/RecognitionRecordStopButtons';
 import { useVoiceRecording } from '@/store/recognition';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
@@ -28,7 +28,7 @@ function SpeechRecognition() {
         <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
           {voiceRecording ? (
             <Box sx={{ position: 'relative', height: '100%' }}>
-              <AbRecognitionVisualisationCtrl />
+              <RecognitionWaveVisual />
             </Box>
           ) : (
             <Box
@@ -61,12 +61,12 @@ function SpeechRecognition() {
             height={52}
             sx={{ backgroundColor: 'warning.light' }}
           >
-            <AbRecognitionRecordStopButtonsCtrl />
+            <RecognitionRecordStopButtons />
           </Box>
         </CenteredFlexBox>
         <CenteredFlexBox>
           <Box height={'3px'} width={'97.5%'} sx={{ position: 'relative' }}>
-            <AbRecognitionProgressBarCtrl />
+            <RecognitionProgressBar />
           </Box>
         </CenteredFlexBox>
 

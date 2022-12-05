@@ -12,11 +12,11 @@ import { useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
 // import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
-interface AbRecognitionCtrlProps {
+interface RecognitionProps {
   children: React.ReactNode;
 }
 
-const AbSynthesisCtrl = ({ children }: AbRecognitionCtrlProps) => {
+const AbSynthesisCtrl = ({ children }: RecognitionProps) => {
   // const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
   const { synthesisText, setSynthesisText } = useSynthesisText();

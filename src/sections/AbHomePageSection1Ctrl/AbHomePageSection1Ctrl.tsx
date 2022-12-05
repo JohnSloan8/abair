@@ -6,23 +6,23 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { AbInfoHeader } from 'abair-components';
+import { AbRecognition } from 'abair-components';
 import { gsap } from 'gsap';
 
-import AbRecognitionButtonsCtrl from '@/sections/AbRecognitionButtonsCtrl';
-import AbRecognitionCtrl from '@/sections/AbRecognitionCtrl';
-import AbRecognitionImageCtrl from '@/sections/AbRecognitionImageCtrl';
-import AbRecognitionTextFieldCtrl from '@/sections/AbRecognitionTextFieldCtrl/AbRecognitionTextFieldCtrl';
 import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
 import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
+import RecognitionButtons from '@/sections/RecognitionButtons';
+import RecognitionImage from '@/state-control/RecognitionImage';
+import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
+import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
+import { useVoiceRecording } from '@/store/recognition';
 import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 import { CenteredFlexBox, FullSizeBox } from '@/utils/flex';
-
-import AbRecognitionVisualisationCtrl from '../AbRecognitionVisualisationCtrl';
 
 const AbHomePageSection1Ctrl = () => {
   const { frontPageTabs } = useFrontPageTabs();
@@ -34,7 +34,7 @@ const AbHomePageSection1Ctrl = () => {
   const instructions = useRef(null);
   const inputBoxTl = useRef(gsap.timeline());
   const { t } = useTranslation();
-
+  const { voiceRecording } = useVoiceRecording();
   useEffect(() => {
     setSynthesisSpeed(1);
     setSynthesisPitch(1);
@@ -84,11 +84,11 @@ const AbHomePageSection1Ctrl = () => {
         <AbInfoHeader title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>
       <CenteredFlexBox height={{ sm: '48px', xs: '48px' }} mb={1}>
-        <AbTabsCtrl variation="frontpage" />
+        <AbTabsCtrl />
       </CenteredFlexBox>
 
       <CenteredFlexBox ref={mainSelectionBox}>
-        {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <AbRecognitionImageCtrl />}
+        {frontPageTabs === 0 ? <AbSynthesisVoiceSelectionCtrl /> : <RecognitionImage />}
       </CenteredFlexBox>
 
       <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, bottom: { sm: 55, xs: 50 } }}>
@@ -99,10 +99,11 @@ const AbHomePageSection1Ctrl = () => {
                 <AbSynthesisButtonsCtrl />
               </AbSynthesisCtrl>
             ) : (
-              <AbRecognitionCtrl
-                textbox={<AbRecognitionTextFieldCtrl rows={breakpointSize === 'xs' ? 3 : 4} />}
-                visualisation={<AbRecognitionVisualisationCtrl />}
-                buttons={<AbRecognitionButtonsCtrl />}
+              <AbRecognition
+                textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
+                visualisation={<RecognitionWaveVisual />}
+                buttons={<RecognitionButtons />}
+                voiceRecording={voiceRecording}
               />
             )}
           </Box>

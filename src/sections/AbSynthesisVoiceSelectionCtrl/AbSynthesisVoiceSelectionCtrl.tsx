@@ -2,8 +2,8 @@ import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 
-import AbGenderChoicesCtrl from '@/sections/AbGenderChoicesCtrl';
-import AbMapCtrl from '@/sections/AbMapCtrl';
+import GenderChoices from '@/state-control/GenderChoices';
+import Map from '@/state-control/Map';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
 import { CenteredFlexBox } from '@/utils/flex';
@@ -32,12 +32,12 @@ const AbSynthesisVoiceSelectionCtrl = () => {
           minHeight={200}
         >
           <CenteredFlexBox height={'100%'} width={'100%'} sx={{ position: 'relative' }}>
-            <AbMapCtrl />
+            <Map />
           </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
       <CenteredFlexBox height={{ sm: 85, xs: 55 }} mt={-2}>
-        <AbGenderChoicesCtrl />
+        <GenderChoices />
       </CenteredFlexBox>
     </Box>
   );
