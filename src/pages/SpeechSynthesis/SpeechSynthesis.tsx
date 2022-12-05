@@ -5,15 +5,15 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import AbSynthesisAudiosCtrl from '@/sections/AbSynthesisAudiosCtrl';
-import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
-import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisModelCtrl from '@/sections/AbSynthesisModelCtrl';
 import AbSynthesisPitchCtrl from '@/sections/AbSynthesisPitchCtrl';
 import AbSynthesisSpeedCtrl from '@/sections/AbSynthesisSpeedCtrl';
 import AbSynthesisVoiceButtonsCtrl from '@/sections/AbSynthesisVoiceButtonsCtrl';
+import SynthesisButtons from '@/sections/SynthesisButtons';
+import AbSynthesisCtrl from '@/state-control/AbSynthesisCtrl';
 import GenderChoices from '@/state-control/GenderChoices';
 import Map from '@/state-control/Map';
+import SynthesisHistoryItems from '@/state-control/SynthesisHistoryItems';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
@@ -68,11 +68,11 @@ function SpeechSynthesis() {
 
         <CenteredFlexBox>
           <AbSynthesisCtrl>
-            <AbSynthesisButtonsCtrl />
+            <SynthesisButtons />
           </AbSynthesisCtrl>
         </CenteredFlexBox>
         <CenteredFlexBox>
-          <AbSynthesisAudiosCtrl />
+          <SynthesisHistoryItems />
         </CenteredFlexBox>
       </Box>
     </HorizontallyCenteredFlexBox>

@@ -5,7 +5,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { useBreakpointSize } from '@/store/viewDimensions';
 
-const AbSizingCtrl = () => {
+const Sizing = () => {
   const theme = useTheme();
   const { breakpointSize, setBreakpointSize } = useBreakpointSize();
   const xSmall = useMediaQuery(theme.breakpoints.down('sm'));
@@ -24,4 +24,4 @@ const AbSizingCtrl = () => {
   return null;
 };
 
-export default AbSizingCtrl;
+export default Sizing;

@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-import { Grid } from '@mui/material';
-import Box from '@mui/material/Box';
 
 import { AbIconButton } from 'abair-components';
 import { AbLoading } from 'abair-components/';
@@ -33,9 +31,7 @@ import {
 } from '@/store/synthesis/voiceOptions';
 import { CenteredFlexBox } from '@/utils/flex';
 
-import AbSynthesisAudioPlayerCtrl from '../AbSynthesisAudioPlayerCtrl';
-
-const AbSynthesisButtonsCtrl = () => {
+const SynthesisSpeakButton = () => {
   const { sessionID } = useSessionID();
   const { session } = useSession();
   const { synthesisText } = useSynthesisText();
@@ -115,31 +111,19 @@ const AbSynthesisButtonsCtrl = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
-      <Grid container direction="row" height="100%">
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
-          <CenteredFlexBox>
-            {!awaitingSynthesis ? (
-              <AbIconButton
-                disabled={emptyString || synthesisVoiceIndex === -1}
-                color="secondary"
-                onClick={initGetSynthesis}
-                icon={RecordVoiceOverIcon}
-              />
-            ) : (
-              <AbLoading />
-            )}
-          </CenteredFlexBox>
-        </Grid>
-        <Grid item xs={4}>
-          <CenteredFlexBox>
-            <AbSynthesisAudioPlayerCtrl />
-          </CenteredFlexBox>
-        </Grid>
-      </Grid>
-    </Box>
+    <CenteredFlexBox>
+      {!awaitingSynthesis ? (
+        <AbIconButton
+          disabled={emptyString || synthesisVoiceIndex === -1}
+          color="secondary"
+          onClick={initGetSynthesis}
+          icon={RecordVoiceOverIcon}
+        />
+      ) : (
+        <AbLoading />
+      )}
+    </CenteredFlexBox>
   );
 };
 
-export default AbSynthesisButtonsCtrl;
+export default SynthesisSpeakButton;

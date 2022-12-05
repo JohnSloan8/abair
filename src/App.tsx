@@ -8,10 +8,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import Pages from '@/routes/Pages';
-import AbSizingCtrl from '@/sections/AbSizingCtrl';
 import Header from '@/sections/Header';
 import Sidebar from '@/sections/Sidebar';
 import supabase from '@/services/supabase';
+import Sizing from '@/state-control/Sizing';
 import { useSession, useSessionID } from '@/store/auth';
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         <Header />
         <Sidebar />
         <Pages />
-        <AbSizingCtrl />
+        <Sizing />
       </BrowserRouter>
     </Fragment>
   );

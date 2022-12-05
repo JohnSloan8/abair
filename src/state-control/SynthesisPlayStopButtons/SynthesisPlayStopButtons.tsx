@@ -14,7 +14,7 @@ import {
   useSynthesisAudioPlaying,
 } from '@/store/synthesis';
 
-const AbSynthesisAudioPlayerCtrl = () => {
+const SynthesisPlayStopButtons = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const { synthesisAudio } = useSynthesisAudio();
   const emptySynthesisAudio = useRecoilValue(isSynthesisAudioEmpty);
@@ -82,4 +82,4 @@ const AbSynthesisAudioPlayerCtrl = () => {
   );
 };
 
-export default AbSynthesisAudioPlayerCtrl;
+export default SynthesisPlayStopButtons;

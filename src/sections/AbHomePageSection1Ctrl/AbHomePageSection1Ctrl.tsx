@@ -9,12 +9,12 @@ import { AbInfoHeader } from 'abair-components';
 import { AbRecognition } from 'abair-components';
 import { gsap } from 'gsap';
 
-import AbSynthesisButtonsCtrl from '@/sections/AbSynthesisButtonsCtrl';
-import AbSynthesisCtrl from '@/sections/AbSynthesisCtrl';
 import AbSynthesisVoiceSelectionCtrl from '@/sections/AbSynthesisVoiceSelectionCtrl';
 import AbTabsCtrl from '@/sections/AbTabsCtrl';
 import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
 import RecognitionButtons from '@/sections/RecognitionButtons';
+import SynthesisButtons from '@/sections/SynthesisButtons';
+import AbSynthesisCtrl from '@/state-control/AbSynthesisCtrl';
 import RecognitionImage from '@/state-control/RecognitionImage';
 import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
 import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
@@ -96,7 +96,7 @@ const AbHomePageSection1Ctrl = () => {
           <Box width={'100%'} maxWidth={550} minWidth={250}>
             {frontPageTabs === 0 ? (
               <AbSynthesisCtrl>
-                <AbSynthesisButtonsCtrl />
+                <SynthesisButtons />
               </AbSynthesisCtrl>
             ) : (
               <AbRecognition
