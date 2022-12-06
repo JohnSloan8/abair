@@ -5,12 +5,12 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import RecognitionConsentPopup from '@/state-control/RecognitionConsentPopup';
-import RecognitionProgressBar from '@/state-control/RecognitionProgressBar';
-import RecognitionRecordStopButtons from '@/state-control/RecognitionRecordStopButtons';
-import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
-import Transcriptions from '@/state-control/Transcriptions';
-import TranscriptionsList from '@/state-control/TranscriptionsList';
+import RecognitionConsentPopup from '@/display/controllers/RecognitionConsentPopup';
+import RecognitionProgressBar from '@/display/controllers/RecognitionProgressBar';
+import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecordStopButtons';
+import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
+import Transcriptions from '@/display/controllers/Transcriptions';
+import TranscriptionsList from '@/display/controllers/TranscriptionsList';
 import { useVoiceRecording } from '@/store/recognition';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';

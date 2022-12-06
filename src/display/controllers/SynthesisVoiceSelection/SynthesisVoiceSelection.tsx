@@ -2,8 +2,8 @@ import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
 
-import GenderChoices from '@/state-control/GenderChoices';
-import Map from '@/state-control/Map';
+import GenderChoices from '@/display/controllers/GenderChoices';
+import Map from '@/display/controllers/Map';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
 import { CenteredFlexBox } from '@/utils/flex';

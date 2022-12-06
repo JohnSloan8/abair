@@ -9,11 +9,11 @@ import Typography from '@mui/material/Typography';
 import { AbIconButton } from 'abair-components';
 import { AbInteractionContainer } from 'abair-components';
 
+// import Recognition from '@/display/sections/Recognition';
+import RecognitionButtons from '@/display/controllers/RecognitionButtons';
+import RecognitionTextField from '@/display/controllers/RecognitionTextField/RecognitionTextField';
 import { transcriptionModel } from '@/models/transcription';
-// import Recognition from '@/sections/Recognition';
-import RecognitionButtons from '@/sections/RecognitionButtons';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
-import RecognitionTextField from '@/state-control/RecognitionTextField/RecognitionTextField';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
 import { useBreakpointSize } from '@/store/viewDimensions';
 import { CenteredFlexBox } from '@/utils/flex';

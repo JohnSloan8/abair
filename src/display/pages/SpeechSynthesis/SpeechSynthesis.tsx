@@ -5,15 +5,15 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader, AbInteractionContainer } from 'abair-components';
 
-import SynthesisButtons from '@/sections/SynthesisButtons';
-import GenderChoices from '@/state-control/GenderChoices';
-import Map from '@/state-control/Map';
-import SynthesisHistoryItems from '@/state-control/SynthesisHistoryItems';
-import SynthesisModel from '@/state-control/SynthesisModel';
-import SynthesisPitch from '@/state-control/SynthesisPitch';
-import SynthesisSpeed from '@/state-control/SynthesisSpeed';
-import SynthesisTextField from '@/state-control/SynthesisTextField';
-import SynthesisVoiceButtons from '@/state-control/SynthesisVoiceButtons';
+import GenderChoices from '@/display/controllers/GenderChoices';
+import Map from '@/display/controllers/Map';
+import SynthesisButtons from '@/display/controllers/SynthesisButtons';
+import SynthesisHistoryItems from '@/display/controllers/SynthesisHistoryItems';
+import SynthesisModel from '@/display/controllers/SynthesisModel';
+import SynthesisPitch from '@/display/controllers/SynthesisPitch';
+import SynthesisSpeed from '@/display/controllers/SynthesisSpeed';
+import SynthesisTextField from '@/display/controllers/SynthesisTextField';
+import SynthesisVoiceButtons from '@/display/controllers/SynthesisVoiceButtons';
 import { useBreakpointSize } from '@/store/viewDimensions';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';

@@ -10,7 +10,6 @@ const rootURL = 'http://localhost:5173/';
 
 const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
-// const recognitionURL = 'http://0.0.0.0:8887/recognise';
 const recognitionURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise';
 const recogniseAudioURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise_audio';
 

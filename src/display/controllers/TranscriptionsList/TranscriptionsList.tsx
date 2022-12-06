@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 
+import TranscriptionListItem from '@/display/controllers/TranscriptionListItem';
 import { transcriptionModel } from '@/models/transcription';
-import TranscriptionListItem from '@/state-control/TranscriptionListItem';
 import { useTranscriptions } from '@/store/transcriptions';
 
 const TranscriptionsList = () => {

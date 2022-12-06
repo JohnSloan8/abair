@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import RecognitionCorrection from '@/state-control/RecognitionCorrection';
-import RecognitionPlayStopButtons from '@/state-control/RecognitionPlayStopButtons';
-import RecognitionProgressBar from '@/state-control/RecognitionProgressBar';
-import RecognitionRecordStopButtons from '@/state-control/RecognitionRecordStopButtons';
+import RecognitionCorrection from '@/display/controllers/RecognitionCorrection';
+import RecognitionPlayStopButtons from '@/display/controllers/RecognitionPlayStopButtons';
+import RecognitionProgressBar from '@/display/controllers/RecognitionProgressBar';
+import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecordStopButtons';
 import { CenteredFlexBox } from '@/utils/flex';
 
 interface RecognitionButtonsProps {

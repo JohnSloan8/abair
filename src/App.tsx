@@ -4,14 +4,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 
+import Sizing from '@/display/controllers/Sizing';
+import Header from '@/display/sections/Header';
+import Sidebar from '@/display/sections/Sidebar';
 // import { Session } from '@supabase/supabase-js';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import Pages from '@/routes/Pages';
-import Header from '@/sections/Header';
-import Sidebar from '@/sections/Sidebar';
 import supabase from '@/services/supabase';
-import Sizing from '@/state-control/Sizing';
 import { useSession, useSessionID } from '@/store/auth';
 
 function App() {

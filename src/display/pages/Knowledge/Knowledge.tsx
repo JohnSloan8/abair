@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 import { AbInfoHeader } from 'abair-components';
 
-import Publications from '@/state-control/Publications';
+import Publications from '@/display/controllers/Publications';
 import Meta from '@/utils/Meta';
 import { HorizontallyCenteredFlexBox } from '@/utils/flex';
 

@@ -4,7 +4,7 @@ import StopIcon from '@mui/icons-material/Stop';
 import { AbIconButton } from 'abair-components';
 import { AbLoading } from 'abair-components/';
 
-import Media from '@/state-control/Media';
+import Media from '@/display/controllers/Media';
 import { useConsent, useShowConsent } from '@/store/consent';
 import {
   useAwaitingTranscription,
