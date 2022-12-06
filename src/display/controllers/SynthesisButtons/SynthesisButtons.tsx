@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 
 import SynthesisPlayStopButtons from '@/display/controllers/SynthesisPlayStopButtons';
 import SynthesisSpeakButton from '@/display/controllers/SynthesisSpeakButton';
-import { CenteredFlexBox } from '@/utils/flex';
+import { CenteredFlexBox } from '@/display/utils/flex';
 
 const SynthesisButtons = () => {
   return (

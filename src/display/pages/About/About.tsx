@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography';
 
 import { AbInfoHeader } from 'abair-components';
 
-import Meta from '@/utils/Meta';
-import { HorizontallyCenteredFlexBox } from '@/utils/flex';
+import Meta from '@/display/sections/Meta';
+import { HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 
 function About() {
   const { t } = useTranslation();

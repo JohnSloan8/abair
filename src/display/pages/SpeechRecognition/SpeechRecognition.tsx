@@ -11,9 +11,9 @@ import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecor
 import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import TranscriptionsList from '@/display/controllers/TranscriptionsList';
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { useVoiceRecording } from '@/store/recognition';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function SpeechRecognition() {
   const { t } = useTranslation();

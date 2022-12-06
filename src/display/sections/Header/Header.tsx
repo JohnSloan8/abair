@@ -14,8 +14,8 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { FlexBox } from '@/display/utils/flex';
 import useSidebar from '@/store/sidebar';
-import { FlexBox } from '@/utils/flex';
 
 import abairFullLogo from '/assets/images/brand/abair-logo-old.png';
 

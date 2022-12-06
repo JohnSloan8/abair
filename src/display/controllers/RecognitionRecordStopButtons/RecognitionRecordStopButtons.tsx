@@ -5,13 +5,13 @@ import { AbIconButton } from 'abair-components';
 import { AbLoading } from 'abair-components/';
 
 import Media from '@/display/controllers/Media';
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useConsent, useShowConsent } from '@/store/consent';
 import {
   useAwaitingTranscription,
   useMediaRecorderExists,
   useVoiceRecording,
 } from '@/store/recognition';
-import { CenteredFlexBox } from '@/utils/flex';
 
 const RecognitionRecordStopButtons = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();

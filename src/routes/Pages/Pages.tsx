@@ -3,11 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
-// import { FullSizeBox } from 'abair-components';
 import Footer from '@/display/sections/Footer';
-// import RecognitionConsentPopup from '@/display/controllers/RecognitionConsentPopup';
+import ScrollToTop from '@/display/utils/scrollToTop';
 import { useViewHeight, useViewWidth } from '@/store/viewDimensions';
-import ScrollToTop from '@/utils/scrollToTop';
 
 import routes from '..';
 
@@ -29,7 +27,6 @@ function Pages() {
   return (
     <Box>
       <Box minHeight={'100vh'}>
-        {/* <RecognitionConsentPopup /> */}
         <Box sx={{ height: '64px' }}></Box>
         <ScrollToTop>
           <Routes>

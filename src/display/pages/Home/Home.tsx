@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import Meta from '@/utils/Meta';
-import { FullSizeBox } from '@/utils/flex';
+import Box from '@mui/material/Box';
+
+import Meta from '@/display/sections/Meta';
+import { FullSizeBox } from '@/display/utils/flex';
 
 import Applications from './sections/Applications';
 import CoreTechnologies from './sections/CoreTechnologies';
@@ -13,9 +15,11 @@ import News from './sections/News';
 function Home() {
   const { t } = useTranslation();
   return (
-    <>
+    <Box>
       <Meta title={t('pageTitles.home')} />
-      <Main />
+      <FullSizeBox>
+        <Main />
+      </FullSizeBox>
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <MileGlor />
       </FullSizeBox>
@@ -31,7 +35,7 @@ function Home() {
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <Knowledge />
       </FullSizeBox>
-    </>
+    </Box>
   );
 }
 

@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import { AbInfoHeader } from 'abair-components';
 
 import Publications from '@/display/controllers/Publications';
-import Meta from '@/utils/Meta';
-import { HorizontallyCenteredFlexBox } from '@/utils/flex';
+import Meta from '@/display/sections/Meta';
+import { HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 
 function Knowledge() {
   const { t } = useTranslation();

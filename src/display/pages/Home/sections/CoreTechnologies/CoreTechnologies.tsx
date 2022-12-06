@@ -7,8 +7,8 @@ import Grid from '@mui/material/Grid';
 import { AbInfoHeader } from 'abair-components';
 import { AbClickableCard } from 'abair-components';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 import recognitionCard from '/assets/images/misc/recognition-card-screenshot.png';
 import synthesisCard from '/assets/images/misc/synthesis-card-screenshot.png';

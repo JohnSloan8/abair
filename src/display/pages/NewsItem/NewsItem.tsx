@@ -8,12 +8,12 @@ import Typography from '@mui/material/Typography';
 import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { ImageDataModel } from '@/models/news';
 import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function NewsItem() {
   const { t, i18n } = useTranslation();

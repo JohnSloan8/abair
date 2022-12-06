@@ -14,9 +14,9 @@ import SynthesisPitch from '@/display/controllers/SynthesisPitch';
 import SynthesisSpeed from '@/display/controllers/SynthesisSpeed';
 import SynthesisTextField from '@/display/controllers/SynthesisTextField';
 import SynthesisVoiceButtons from '@/display/controllers/SynthesisVoiceButtons';
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function SpeechSynthesis() {
   const { t } = useTranslation();

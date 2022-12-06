@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 
 import GenderChoices from '@/display/controllers/GenderChoices';
 import Map from '@/display/controllers/Map';
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 const SynthesisVoiceSelection = () => {
   const { frontPageTabs } = useFrontPageTabs();

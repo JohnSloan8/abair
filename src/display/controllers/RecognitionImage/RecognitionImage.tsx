@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 
 import Image from 'mui-image';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 import womanSpeakingLogo from '/assets/images/misc/woman-speaking-into-phone.png';
 

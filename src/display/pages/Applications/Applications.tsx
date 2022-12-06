@@ -10,6 +10,8 @@ import Tabs from '@mui/material/Tabs';
 import { AbInfoLinkCard } from 'abair-components';
 import { AbInfoHeader } from 'abair-components';
 
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { ApplicationModel } from '@/models/application';
 import { getApplications } from '@/services/supabase/applications';
 import getCategories from '@/services/supabase/applications/getCategories';
@@ -21,8 +23,6 @@ import {
 } from '@/store/applications';
 import { useAppTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Applications() {
   const { t, i18n } = useTranslation();

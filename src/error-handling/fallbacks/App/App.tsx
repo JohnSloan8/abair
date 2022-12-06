@@ -8,8 +8,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 import { email } from '@/config';
-import { FullSizeCenteredFlexBox } from '@/utils/flex';
-import resetApp from '@/utils/reset-app';
+import { FullSizeCenteredFlexBox } from '@/display/utils/flex';
+import resetApp from '@/display/utils/reset-app';
 
 function AppErrorBoundaryFallback() {
   const { t } = useTranslation();

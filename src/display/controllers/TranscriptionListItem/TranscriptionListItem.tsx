@@ -12,11 +12,11 @@ import { AbInteractionContainer } from 'abair-components';
 // import Recognition from '@/display/sections/Recognition';
 import RecognitionButtons from '@/display/controllers/RecognitionButtons';
 import RecognitionTextField from '@/display/controllers/RecognitionTextField/RecognitionTextField';
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { transcriptionModel } from '@/models/transcription';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 interface TranscriptionListItemProps {
   trans: transcriptionModel;

@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 import { messages } from '@/config';
-import { CenteredFlexBox, FullSizeCenteredFlexBox } from '@/utils/flex';
+import { CenteredFlexBox, FullSizeCenteredFlexBox } from '@/display/utils/flex';
 
 function NotFound() {
   return (

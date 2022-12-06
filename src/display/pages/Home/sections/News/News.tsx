@@ -14,9 +14,9 @@ import 'swiper/css/pagination';
 import { Swiper } from 'swiper/react';
 import { SwiperSlide } from 'swiper/react';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
-import { CenteredFlexBox } from '@/utils/flex';
 
 import './styles.css';
 

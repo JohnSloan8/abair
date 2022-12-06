@@ -9,7 +9,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 // import PersonIcon from '@mui/icons-material/Person';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
-import asyncComponentLoader from '@/utils/loader';
+import asyncComponentLoader from '@/display/utils/loader';
 
 import { Pages, Routes } from './types';
 

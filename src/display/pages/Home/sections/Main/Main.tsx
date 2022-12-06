@@ -19,11 +19,11 @@ import SynthesisTextField from '@/display/controllers/SynthesisTextField';
 import SynthesisVoiceSelection from '@/display/controllers/SynthesisVoiceSelection';
 import Tabs from '@/display/controllers/Tabs';
 import Transcriptions from '@/display/controllers/Transcriptions';
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useVoiceRecording } from '@/store/recognition';
 import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox, FullSizeBox } from '@/utils/flex';
 
 const Main = () => {
   const { frontPageTabs } = useFrontPageTabs();
@@ -74,12 +74,9 @@ const Main = () => {
   }, [frontPageTabs]);
 
   return (
-    <FullSizeBox
-      sx={{
-        width: '100%',
-        position: 'relative',
-        backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer',
-      }}
+    <Box
+      height={'100%'}
+      sx={{ backgroundColor: frontPageTabs === 0 ? 'secondary.wafer' : 'warning.wafer' }}
     >
       <CenteredFlexBox height={{ sm: '84px', xs: '64px' }}>
         <AbInfoHeader title={t('infoHeader.home.main.title')} />
@@ -153,7 +150,7 @@ const Main = () => {
         <Transcriptions />
       </Box>
       <RecognitionConsentPopup />
-    </FullSizeBox>
+    </Box>
   );
 };
 

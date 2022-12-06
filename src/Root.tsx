@@ -6,9 +6,8 @@ import { createRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import { RecoilRoot } from 'recoil';
 
-import ThemeProvider from '@/theme/Provider';
-
-import './utils/translations';
+import ThemeProvider from '@/display/theme/Provider';
+import '@/display/utils/translations';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);

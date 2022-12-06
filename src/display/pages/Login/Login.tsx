@@ -10,9 +10,9 @@ import { Box } from '@mui/system';
 
 import { AbInfoHeader } from 'abair-components';
 
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Login() {
   const { t } = useTranslation();

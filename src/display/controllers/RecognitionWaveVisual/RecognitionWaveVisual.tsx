@@ -3,10 +3,10 @@ import Box from '@mui/material/Box';
 
 import { AbRecognitionWaveVisual } from 'abair-components';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useStream } from '@/store/recognition';
 import { useVoiceRecording } from '@/store/recognition';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 const RecognitionWaveVisual = () => {
   const { stream } = useStream();

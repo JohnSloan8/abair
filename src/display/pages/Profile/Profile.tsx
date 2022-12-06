@@ -14,13 +14,13 @@ import TextField from '@mui/material/TextField';
 // import Typography from '@mui/material/Typography';
 import { AbInfoHeader } from 'abair-components';
 
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { getDialects } from '@/services/supabase/dialects';
 import { getGenders } from '@/services/supabase/genders';
 import { getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
 import { useDialects, useGenders, useProfile } from '@/store/profile';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function Profile() {
   const [loading, setLoading] = useState<boolean>(true);

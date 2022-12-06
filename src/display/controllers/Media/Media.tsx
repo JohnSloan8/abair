@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 
+import convertBlobToBase64 from '@/display/utils/convertBlobToBase64';
 import postAudio from '@/services/abair/recognition';
 import postTranscription from '@/services/supabase/transcriptions/postTranscription';
 import { useSession, useSessionID } from '@/store/auth';
@@ -14,7 +15,6 @@ import {
   useVoiceRecording,
 } from '@/store/recognition';
 import { useEditableTranscriptionText, useTranscription } from '@/store/transcriptions';
-import convertBlobToBase64 from '@/utils/convertBlobToBase64';
 
 import { initMediaRecorder, initStream } from './utils';
 

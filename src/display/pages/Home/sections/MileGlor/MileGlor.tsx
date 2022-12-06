@@ -7,8 +7,8 @@ import { AbButton } from 'abair-components';
 import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 import mileGlorLogo from '/assets/images/misc/míleglor.png';
 import recordingStudio from '/assets/images/misc/recording-studio-drawing.webp';

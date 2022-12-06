@@ -5,7 +5,7 @@ import RecognitionCorrection from '@/display/controllers/RecognitionCorrection';
 import RecognitionPlayStopButtons from '@/display/controllers/RecognitionPlayStopButtons';
 import RecognitionProgressBar from '@/display/controllers/RecognitionProgressBar';
 import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecordStopButtons';
-import { CenteredFlexBox } from '@/utils/flex';
+import { CenteredFlexBox } from '@/display/utils/flex';
 
 interface RecognitionButtonsProps {
   showRecord?: boolean;

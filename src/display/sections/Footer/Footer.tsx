@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { CenteredFlexBox } from '@/utils/flex';
+import { CenteredFlexBox } from '@/display/utils/flex';
 
 import cogg from '/assets/images/funders/COGG_logo_red.png';
 import DCHG from '/assets/images/funders/DCHG_logo_small.png';

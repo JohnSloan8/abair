@@ -9,6 +9,7 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import { AbIconButton } from 'abair-components';
 import { AbLoading } from 'abair-components/';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import getSynthesis from '@/services/abair/synthesis';
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { postSynthesisRequest } from '@/services/supabase/synthesis-requests';
@@ -29,7 +30,6 @@ import {
   useSynthesisVoiceIndex,
   useSynthesisVoiceOptions,
 } from '@/store/synthesis/voiceOptions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 const SynthesisSpeakButton = () => {
   const { sessionID } = useSessionID();

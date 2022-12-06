@@ -8,11 +8,11 @@ import Box from '@mui/material/Box';
 import { AbNewsStory } from 'abair-components';
 import { AbInfoHeader } from 'abair-components';
 
+import Meta from '@/display/sections/Meta';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { AbNewsStoryModel } from '@/models/news';
 import { getNews } from '@/services/supabase/news';
 import { useNewsStories } from '@/store/news';
-import Meta from '@/utils/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
 
 function News() {
   const { t, i18n } = useTranslation();

@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 import { AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
-import { CenteredFlexBox } from '@/utils/flex';
 
 import applicationsLogo from '/assets/images/misc/abair-applications.png';
 

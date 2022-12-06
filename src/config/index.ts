@@ -1,4 +1,4 @@
-// import isMobile from '@/utils/is-mobile';
+// import isMobile from '@/display/utils/is-mobile';
 
 const title = 'Abair';
 
