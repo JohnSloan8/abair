@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 import { AbInfoHeader } from 'abair-components';
 
-import AbKnowledgeCtrl from '@/sections/AbKnowledgeCtrl';
+import Publications from '@/state-control/Publications';
 import Meta from '@/utils/Meta';
 import { HorizontallyCenteredFlexBox } from '@/utils/flex';
 
@@ -18,7 +18,7 @@ function Knowledge() {
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title={t('pageTitles.knowledge')} />
         </Box>
-        <AbKnowledgeCtrl />
+        <Publications />
       </Box>
     </HorizontallyCenteredFlexBox>
   );

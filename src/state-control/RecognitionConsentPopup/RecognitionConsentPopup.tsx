@@ -16,7 +16,7 @@ const RecognitionConsentPopup = () => {
 
   return showConsent ? (
     <FullSizeCenteredFlexBox
-      sx={{ zIndex: 9999, position: 'absolute', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
+      sx={{ zIndex: 9999, position: 'fixed', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
     >
       <AbPopup
         title={t('pages.recognition.privacyTitle')}

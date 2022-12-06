@@ -5,11 +5,12 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import AbTranscriptionsCtrl from '@/sections/AbTranscriptionsCtrl';
-import AbTranscriptionsListCtrl from '@/sections/AbTranscriptionsListCtrl';
+import RecognitionConsentPopup from '@/state-control/RecognitionConsentPopup';
 import RecognitionProgressBar from '@/state-control/RecognitionProgressBar';
 import RecognitionRecordStopButtons from '@/state-control/RecognitionRecordStopButtons';
 import RecognitionWaveVisual from '@/state-control/RecognitionWaveVisual';
+import Transcriptions from '@/state-control/Transcriptions';
+import TranscriptionsList from '@/state-control/TranscriptionsList';
 import { useVoiceRecording } from '@/store/recognition';
 import Meta from '@/utils/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/utils/flex';
@@ -27,7 +28,6 @@ function SpeechRecognition() {
         </Box>
         <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
           {voiceRecording ? (
-            // <Box sx={{ position: 'relative', height: '100%' }}>
             <RecognitionWaveVisual />
           ) : (
             // </Box>
@@ -72,12 +72,13 @@ function SpeechRecognition() {
 
         <CenteredFlexBox>
           <Grid container direction="column">
-            <AbTranscriptionsListCtrl />
+            <TranscriptionsList />
           </Grid>
         </CenteredFlexBox>
       </Box>
 
-      <AbTranscriptionsCtrl />
+      <Transcriptions />
+      <RecognitionConsentPopup />
     </HorizontallyCenteredFlexBox>
   );
 }

@@ -10,10 +10,8 @@ enum Pages {
   Applications,
   News,
   Knowledge,
-
   Geabaire,
   About,
-
   NewsItem,
   // Login,
   // Profile,
