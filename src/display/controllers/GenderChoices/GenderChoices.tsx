@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 
 import { AbIconButton } from 'abair-components';
 
-import { useSynthesisGender } from '@/store/synthesis/voiceOptions';
+import { useSynthesisGender } from '@/store/synthesis';
 
 const GenderChoices = () => {
   const { synthesisGender, setSynthesisGender } = useSynthesisGender();

@@ -2,7 +2,7 @@ import SpeedIcon from '@mui/icons-material/Speed';
 
 import { AbSlider } from 'abair-components';
 
-import { useSynthesisSpeed, useSynthesisVoiceIndex } from '@/store/synthesis/voiceOptions';
+import { useSynthesisSpeed, useSynthesisVoiceIndex } from '@/store/synthesis';
 
 const SynthesisSpeed = () => {
   const { synthesisSpeed, setSynthesisSpeed } = useSynthesisSpeed();

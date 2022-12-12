@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 
 import { AbButton } from 'abair-components';
 
-import { synthesisModelOptions, useSynthesisModel } from '@/store/synthesis/voiceOptions';
+import { synthesisModelOptions, useSynthesisModel } from '@/store/synthesis';
 
 const SynthesisModel = () => {
   const { synthesisModel, setSynthesisModel } = useSynthesisModel();

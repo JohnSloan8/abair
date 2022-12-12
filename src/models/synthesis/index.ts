@@ -1,18 +1,5 @@
-interface synthesisRequestModel {
-  id?: number;
-  user_id: string | null;
-  session_ID: string;
-  duration?: number;
-  text: string;
-}
+import synthesisAudioModel from './audio';
+import synthesisRequestModel from './request';
+import synthesisVoiceModel from './voice';
 
-interface synthesisAudios {
-  voice: string;
-  model: string;
-  speed: string;
-  pitch: string;
-  audioData: string;
-  text: string;
-}
-
-export type { synthesisRequestModel, synthesisAudios };
+export type { synthesisRequestModel, synthesisAudioModel, synthesisVoiceModel };

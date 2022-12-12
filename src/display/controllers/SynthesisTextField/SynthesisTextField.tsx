@@ -8,7 +8,7 @@ import { AbTextField } from 'abair-components';
 
 import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
-import { useSynthesisVoiceOptions } from '@/store/synthesis/voiceOptions';
+import { useSynthesisVoices } from '@/store/synthesis';
 
 interface SynthesisTextFieldProps {
   rows: number;
@@ -19,12 +19,12 @@ const SynthesisTextField = ({ rows = 4 }: SynthesisTextFieldProps) => {
   const { awaitingSynthesis } = useAwaitingSynthesis();
   const { t } = useTranslation();
 
-  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
 
   useEffect(() => {
-    if (synthesisVoiceOptions.length === 0) {
+    if (synthesisVoices.length === 0) {
       getSynthesisMetadata().then((res: any) => {
-        setSynthesisVoiceOptions(res);
+        setSynthesisVoices(res);
         console.log('voices:', res);
       });
     }

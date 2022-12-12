@@ -21,7 +21,7 @@ import Tabs from '@/display/controllers/Tabs';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import { CenteredFlexBox } from '@/display/utils/flex';
 import { useVoiceRecording } from '@/store/recognition';
-import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis/voiceOptions';
+import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 

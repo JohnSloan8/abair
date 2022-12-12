@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 
+import { headerHeight } from '@/display/config';
+
 const FlexBox = styled(Box)({
   display: 'flex',
 });
@@ -22,7 +24,7 @@ const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
 const FullSizeBox = styled(Box)({
   position: 'relative',
   width: '100%',
-  height: 'calc(100vh - 96px)',
+  height: `calc(100vh - ${headerHeight})`,
 });
 
 export {

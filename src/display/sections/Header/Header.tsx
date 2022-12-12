@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { headerHeight } from '@/display/config';
 import { FlexBox } from '@/display/utils/flex';
 import useSidebar from '@/store/sidebar';
 
@@ -43,7 +44,7 @@ const Header = ({ logoSize = 50 }: HeaderProps) => {
   return (
     <Box sx={{ flexGrow: 1 }} color="background">
       <AppBar color="inherit" elevation={0} position="fixed">
-        <Toolbar sx={{ justifyContent: 'space-between', minHeight: '64px' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', height: headerHeight }}>
           <FlexBox>
             <IconButton
               onClick={sidebarActions.toggle}

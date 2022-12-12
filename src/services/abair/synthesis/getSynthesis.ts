@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { synthesisURL } from '@/config';
-import { synthesisVoiceModel } from '@/store/synthesis/voiceOptions';
+import { synthesisVoiceModel } from '@/store/synthesis';
 
 const returnDialectCode = (dialect: string) => {
   if (dialect === 'Connemara') {

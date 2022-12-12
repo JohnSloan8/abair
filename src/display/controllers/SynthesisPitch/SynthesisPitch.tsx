@@ -2,7 +2,7 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
 import { AbSlider } from 'abair-components';
 
-import { useSynthesisPitch, useSynthesisVoiceIndex } from '@/store/synthesis/voiceOptions';
+import { useSynthesisPitch, useSynthesisVoiceIndex } from '@/store/synthesis';
 
 const SynthesisPitch = () => {
   const { synthesisPitch, setSynthesisPitch } = useSynthesisPitch();

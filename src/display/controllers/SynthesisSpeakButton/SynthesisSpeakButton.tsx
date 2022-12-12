@@ -22,14 +22,14 @@ import {
   useSynthesisText,
 } from '@/store/synthesis';
 import {
-  filteredSynthesisVoiceOptions,
+  filteredSynthesisVoices,
   synthesisVoiceSelected,
   useSynthesisModel,
   useSynthesisPitch,
   useSynthesisSpeed,
   useSynthesisVoiceIndex,
-  useSynthesisVoiceOptions,
-} from '@/store/synthesis/voiceOptions';
+  useSynthesisVoices,
+} from '@/store/synthesis';
 
 const SynthesisSpeakButton = () => {
   const { sessionID } = useSessionID();
@@ -39,8 +39,8 @@ const SynthesisSpeakButton = () => {
   const { setSynthesisAudios } = useSynthesisAudios();
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
-  const filteredSynthesisVoiceOptionsValue = useRecoilValue(filteredSynthesisVoiceOptions);
-  const { synthesisVoiceOptions, setSynthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const filteredSynthesisVoicesValue = useRecoilValue(filteredSynthesisVoices);
+  const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
   const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { awaitingSynthesis, setAwaitingSynthesis } = useAwaitingSynthesis();
   const { synthesisModel, setSynthesisModel } = useSynthesisModel();
@@ -48,9 +48,9 @@ const SynthesisSpeakButton = () => {
   const { synthesisSpeed } = useSynthesisSpeed();
 
   useEffect(() => {
-    if (synthesisVoiceOptions.length === 0) {
+    if (synthesisVoices.length === 0) {
       getSynthesisMetadata().then((res) => {
-        setSynthesisVoiceOptions(res);
+        setSynthesisVoices(res);
       });
     } else {
       null;
@@ -58,14 +58,12 @@ const SynthesisSpeakButton = () => {
   }, []);
 
   useEffect(() => {
-    filteredSynthesisVoiceOptionsValue !== undefined
-      ? filteredSynthesisVoiceOptionsValue.length === 0
+    filteredSynthesisVoicesValue !== undefined
+      ? filteredSynthesisVoicesValue.length === 0
         ? setSynthesisVoiceIndex(-1)
-        : setSynthesisVoiceIndex(
-            synthesisVoiceOptions.indexOf(filteredSynthesisVoiceOptionsValue[0]),
-          )
+        : setSynthesisVoiceIndex(synthesisVoices.indexOf(filteredSynthesisVoicesValue[0]))
       : null;
-  }, [filteredSynthesisVoiceOptionsValue]);
+  }, [filteredSynthesisVoicesValue]);
 
   useEffect(() => {
     if (synthesisVoiceSelectedValue !== undefined) {
@@ -74,6 +72,10 @@ const SynthesisSpeakButton = () => {
       );
     }
   }, [synthesisVoiceSelectedValue]);
+
+  useEffect(() => {
+    console.log('emptyString:', emptyString);
+  }, [emptyString]);
 
   const initGetSynthesis = () => {
     setAwaitingSynthesis(true);

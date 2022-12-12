@@ -5,18 +5,18 @@ import Stack from '@mui/material/Stack';
 import { AbButton } from 'abair-components';
 
 import {
-  filteredSynthesisVoiceOptions,
+  filteredSynthesisVoices,
   synthesisVoiceModel,
   synthesisVoiceSelected,
   useSynthesisVoiceIndex,
-  useSynthesisVoiceOptions,
-} from '@/store/synthesis/voiceOptions';
+  useSynthesisVoices,
+} from '@/store/synthesis';
 
 const SynthesisVoiceButtons = () => {
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
-  const filteredSynthesisVoiceOptionsValue = useRecoilValue(filteredSynthesisVoiceOptions);
+  const filteredSynthesisVoicesValue = useRecoilValue(filteredSynthesisVoices);
   const { setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
-  const { synthesisVoiceOptions } = useSynthesisVoiceOptions();
+  const { synthesisVoices } = useSynthesisVoices();
 
   return (
     <Stack
@@ -26,11 +26,11 @@ const SynthesisVoiceButtons = () => {
       justifyContent="center"
       my={{ sm: 2, xs: 1 }}
     >
-      {filteredSynthesisVoiceOptionsValue !== undefined &&
-        filteredSynthesisVoiceOptionsValue.map((k: synthesisVoiceModel, i: number) => (
+      {filteredSynthesisVoicesValue !== undefined &&
+        filteredSynthesisVoicesValue.map((k: synthesisVoiceModel, i: number) => (
           <AbButton
             label={k.name}
-            onClick={() => setSynthesisVoiceIndex(synthesisVoiceOptions.indexOf(k))}
+            onClick={() => setSynthesisVoiceIndex(synthesisVoices.indexOf(k))}
             key={i}
             selected={k === synthesisVoiceSelectedValue ? true : false}
             color={'secondary'}

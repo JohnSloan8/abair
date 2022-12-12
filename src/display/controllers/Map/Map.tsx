@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import { AbMap } from 'abair-components';
 
-import { useSynthesisCounty } from '@/store/synthesis/voiceOptions';
+import { useSynthesisCounty } from '@/store/synthesis';
 import { frontPageSelectionBoxSize, useBreakpointSize } from '@/store/viewDimensions';
 
 const Map = () => {
