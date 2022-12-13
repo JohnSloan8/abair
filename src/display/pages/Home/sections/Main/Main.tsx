@@ -99,7 +99,20 @@ const Main = () => {
             ) : (
               <AbInteractionContainer
                 textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
-                visualisation={<RecognitionWaveVisual />}
+                visualisation={
+                  <CenteredFlexBox
+                    height={'100%'}
+                    width={'100%'}
+                    sx={{ position: 'relative', zIndex: 2 }}
+                  >
+                    <Box px={2} sx={{ position: 'absolute', top: { xs: 2, sm: 10 } }}>
+                      <RecognitionWaveVisual
+                        width={484}
+                        height={breakpointSize === 'xs' ? 80 : 90}
+                      />
+                    </Box>
+                  </CenteredFlexBox>
+                }
                 buttons={<RecognitionButtons />}
                 variation="recognition"
               />

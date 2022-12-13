@@ -8,14 +8,16 @@ import { AbInfoHeader } from 'abair-components';
 import RecognitionConsentPopup from '@/display/controllers/RecognitionConsentPopup';
 import RecognitionProgressBar from '@/display/controllers/RecognitionProgressBar';
 import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecordStopButtons';
-// import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
+import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import TranscriptionsList from '@/display/controllers/TranscriptionsList';
 import Meta from '@/display/sections/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 function SpeechRecognition() {
   const { t } = useTranslation();
+  const { breakpointSize } = useBreakpointSize();
 
   return (
     <HorizontallyCenteredFlexBox sx={{ backgroundColor: 'warning.wafer', minHeight: '100vh' }}>
@@ -24,23 +26,30 @@ function SpeechRecognition() {
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title={t('pageTitles.recognition')} />
         </Box>
-        <CenteredFlexBox sx={{ width: '100%', height: { sm: 100, xs: 75 }, position: 'relative' }}>
+        <CenteredFlexBox sx={{ width: '100%', height: { sm: 110, xs: 80 }, position: 'relative' }}>
           <Box
             sx={{
               position: 'relative',
               backgroundColor: 'white',
               height: '100%',
-              width: '484px',
+              width: '400px',
             }}
+            pt={{ sm: 3 }}
           >
-            {/* <RecognitionWaveVisual /> */}
+            <CenteredFlexBox height={'100%'} width={400} sx={{ position: 'absolute', zIndex: 2 }}>
+              <Box>
+                <RecognitionWaveVisual width={400} height={breakpointSize === 'xs' ? 75 : 110} />
+              </Box>
+            </CenteredFlexBox>
             <Box
               borderBottom={2}
               sx={{
-                position: 'relative',
+                position: 'absolute',
                 backgroundColor: 'white',
-                height: '51%',
-                width: '482px',
+                height: { sm: '54%', xs: '46%' },
+                width: '100%',
+                top: 0,
+                zIndex: 1,
               }}
             ></Box>
           </Box>

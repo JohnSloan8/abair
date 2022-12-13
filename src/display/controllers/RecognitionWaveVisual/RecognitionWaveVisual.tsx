@@ -3,22 +3,22 @@ import { useEffect, useRef } from 'react';
 
 import Box from '@mui/material/Box';
 
-import { CenteredFlexBox } from '@/display/utils/flex';
 import { useStream } from '@/store/recognition';
 import { useVoiceRecording } from '@/store/recognition';
 import { useAudioContext } from '@/store/recognition';
-import { useBreakpointSize } from '@/store/viewDimensions';
 
-const RecognitionWaveVisual = () => {
+interface RecognitionWaveVisualisationProps {
+  width: number;
+  height: number;
+}
+
+const RecognitionWaveVisual = ({ width, height }: RecognitionWaveVisualisationProps) => {
   const { stream } = useStream();
-  const { breakpointSize } = useBreakpointSize();
+
   const { voiceRecording } = useVoiceRecording();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const { audioContext, setAudioContext } = useAudioContext();
-
-  const height = breakpointSize === 'xs' ? 75 : 100;
-  const width = breakpointSize === 'xs' ? 400 : 484;
 
   useEffect(() => {
     if (stream) {
@@ -95,26 +95,44 @@ const RecognitionWaveVisual = () => {
   };
 
   return (
-    <CenteredFlexBox
+    <Box
       sx={{
-        width: '100%',
-        position: 'relative',
         visibility: voiceRecording ? 'visible' : 'hidden',
       }}
     >
-      <Box sx={{ position: 'absolute', bottom: { sm: 16, xs: -5 } }}>
-        {/* <AbRecognitionWaveVisual
+      <canvas width={width} height={height} ref={canvasRef}></canvas>
+    </Box>
+  );
+};
+
+export default RecognitionWaveVisual;
+
+// <CenteredFlexBox
+//   sx={{
+//     width: '100%',
+//     position: 'relative',
+//     visibility: voiceRecording ? 'visible' : 'hidden',
+//   }}
+// >
+{
+  /* <Box sx={{ position: 'absolute', bottom: { sm: 16, xs: -5 } }}> */
+}
+{
+  /* <AbRecognitionWaveVisual
           stream={stream}
           breakpointSize={breakpointSize}
           audioCtx={audioCtx}
           canvasRef={canvasRef}
           height={breakpointSize === 'xs' ? 75 : 100}
           width={breakpointSize === 'xs' ? 400 : 484}
-        /> */}
-        <canvas width={width} height={height} ref={canvasRef}></canvas>
-      </Box>
-    </CenteredFlexBox>
-  );
-};
-
-export default RecognitionWaveVisual;
+        /> */
+}
+{
+  /* <canvas width={width} height={height} ref={canvasRef}></canvas>; */
+}
+{
+  /* </Box> */
+}
+{
+  /* </CenteredFlexBox> */
+}
