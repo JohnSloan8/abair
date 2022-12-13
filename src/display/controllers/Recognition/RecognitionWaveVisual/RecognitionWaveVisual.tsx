@@ -41,7 +41,6 @@ const RecognitionWaveVisual = ({ width, height }: RecognitionWaveVisualisationPr
   }, []);
 
   const visualize = (stream: MediaStream | undefined, fillColor: string) => {
-    console.log('visualise called');
     if (stream && audioContext && canvasRef.current !== null) {
       const source = audioContext.createMediaStreamSource(stream);
       const analyser = audioContext.createAnalyser();
@@ -53,7 +52,6 @@ const RecognitionWaveVisual = ({ width, height }: RecognitionWaveVisualisationPr
       //analyser.connect(audioCtx.destination);
 
       const draw = () => {
-        console.log('draw');
         if (canvasCtx !== null) {
           analyser.getByteTimeDomainData(dataArray);
 
