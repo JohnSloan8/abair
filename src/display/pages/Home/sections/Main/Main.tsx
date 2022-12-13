@@ -9,14 +9,14 @@ import { AbInfoHeader } from 'abair-components';
 import { AbInteractionContainer } from 'abair-components';
 import { gsap } from 'gsap';
 
-import RecognitionButtons from '@/display/controllers/RecognitionButtons';
-import RecognitionConsentPopup from '@/display/controllers/RecognitionConsentPopup';
-import RecognitionImage from '@/display/controllers/RecognitionImage';
-import RecognitionTextField from '@/display/controllers/RecognitionTextField';
-import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
-import SynthesisButtons from '@/display/controllers/SynthesisButtons';
-import SynthesisTextField from '@/display/controllers/SynthesisTextField';
-import SynthesisVoiceSelection from '@/display/controllers/SynthesisVoiceSelection';
+import RecognitionButtons from '@/display/controllers/Recognition/RecognitionButtons';
+import RecognitionConsentPopup from '@/display/controllers/Recognition/RecognitionConsentPopup';
+import RecognitionImage from '@/display/controllers/Recognition/RecognitionImage';
+import RecognitionTextField from '@/display/controllers/Recognition/RecognitionTextField';
+import RecognitionWaveVisual from '@/display/controllers/Recognition/RecognitionWaveVisual';
+import SynthesisButtons from '@/display/controllers/Synthesis/SynthesisButtons';
+import SynthesisTextField from '@/display/controllers/Synthesis/SynthesisTextField';
+import SynthesisVoiceSelection from '@/display/controllers/Synthesis/SynthesisVoiceSelection';
 import Tabs from '@/display/controllers/Tabs';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import { CenteredFlexBox } from '@/display/utils/flex';
@@ -107,7 +107,7 @@ const Main = () => {
                   >
                     <Box px={2} sx={{ position: 'absolute', top: { xs: 2, sm: 10 } }}>
                       <RecognitionWaveVisual
-                        width={484}
+                        width={breakpointSize === 'xs' ? 296 : 484}
                         height={breakpointSize === 'xs' ? 80 : 90}
                       />
                     </Box>

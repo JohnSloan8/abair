@@ -10,8 +10,8 @@ import { AbIconButton } from 'abair-components';
 import { AbInteractionContainer } from 'abair-components';
 
 // import Recognition from '@/display/sections/Recognition';
-import RecognitionButtons from '@/display/controllers/RecognitionButtons';
-import RecognitionTextField from '@/display/controllers/RecognitionTextField/RecognitionTextField';
+import RecognitionButtons from '@/display/controllers/Recognition/RecognitionButtons';
+import RecognitionTextField from '@/display/controllers/Recognition/RecognitionTextField/RecognitionTextField';
 import { CenteredFlexBox } from '@/display/utils/flex';
 import { transcriptionModel } from '@/models/transcription';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';

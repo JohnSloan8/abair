@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import SynthesisPlayStopButtons from '@/display/controllers/SynthesisPlayStopButtons';
-import SynthesisSpeakButton from '@/display/controllers/SynthesisSpeakButton';
+import SynthesisPlayStopButtons from '@/display/controllers/Synthesis/SynthesisPlayStopButtons';
+import SynthesisSpeakButton from '@/display/controllers/Synthesis/SynthesisSpeakButton';
 import { CenteredFlexBox } from '@/display/utils/flex';
 
 const SynthesisButtons = () => {

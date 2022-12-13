@@ -5,10 +5,10 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import RecognitionConsentPopup from '@/display/controllers/RecognitionConsentPopup';
-import RecognitionProgressBar from '@/display/controllers/RecognitionProgressBar';
-import RecognitionRecordStopButtons from '@/display/controllers/RecognitionRecordStopButtons';
-import RecognitionWaveVisual from '@/display/controllers/RecognitionWaveVisual';
+import RecognitionConsentPopup from '@/display/controllers/Recognition/RecognitionConsentPopup';
+import RecognitionProgressBar from '@/display/controllers/Recognition/RecognitionProgressBar';
+import RecognitionRecordStopButtons from '@/display/controllers/Recognition/RecognitionRecordStopButtons';
+import RecognitionWaveVisual from '@/display/controllers/Recognition/RecognitionWaveVisual';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import TranscriptionsList from '@/display/controllers/TranscriptionsList';
 import Meta from '@/display/sections/Meta';
