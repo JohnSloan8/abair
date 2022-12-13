@@ -86,7 +86,7 @@ const TranscriptionListItem = ({ trans }: TranscriptionListItemProps) => {
         <AbInteractionContainer
           textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
           buttons={<RecognitionButtons showRecord={false} />}
-          color="warning.light"
+          variation="recognition"
         />
       </AccordionDetails>
       <CenteredFlexBox>

@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 
 import Box from '@mui/material/Box';
 
-// import { AbRecognitionWaveVisual } from 'abair-components';
 import { CenteredFlexBox } from '@/display/utils/flex';
 import { useStream } from '@/store/recognition';
 import { useVoiceRecording } from '@/store/recognition';
@@ -15,6 +14,7 @@ const RecognitionWaveVisual = () => {
   const { breakpointSize } = useBreakpointSize();
   const { voiceRecording } = useVoiceRecording();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>(0);
   const { audioContext, setAudioContext } = useAudioContext();
 
   const height = breakpointSize === 'xs' ? 75 : 100;
@@ -33,6 +33,12 @@ const RecognitionWaveVisual = () => {
       visualize(stream, 'rgb(255, 255, 255)');
     }
   }, [audioContext]);
+
+  useEffect(() => {
+    return () => {
+      cancelAnimationFrame(animationRef.current);
+    };
+  }, []);
 
   const visualize = (stream: MediaStream | undefined, fillColor: string) => {
     console.log('visualise called');
@@ -80,7 +86,7 @@ const RecognitionWaveVisual = () => {
           }
         }
 
-        requestAnimationFrame(draw);
+        animationRef.current = requestAnimationFrame(draw);
       };
       draw();
     } else {

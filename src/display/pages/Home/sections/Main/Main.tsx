@@ -20,7 +20,6 @@ import SynthesisVoiceSelection from '@/display/controllers/SynthesisVoiceSelecti
 import Tabs from '@/display/controllers/Tabs';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import { CenteredFlexBox } from '@/display/utils/flex';
-import { useVoiceRecording } from '@/store/recognition';
 import { useSynthesisPitch, useSynthesisSpeed } from '@/store/synthesis';
 import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
@@ -35,7 +34,6 @@ const Main = () => {
   const instructions = useRef(null);
   const inputBoxTl = useRef(gsap.timeline());
   const { t } = useTranslation();
-  const { voiceRecording } = useVoiceRecording();
   useEffect(() => {
     setSynthesisSpeed(1);
     setSynthesisPitch(1);
@@ -96,15 +94,14 @@ const Main = () => {
               <AbInteractionContainer
                 textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
                 buttons={<SynthesisButtons />}
-                color="secondary.light"
+                variation="synthesis"
               />
             ) : (
               <AbInteractionContainer
                 textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
                 visualisation={<RecognitionWaveVisual />}
                 buttons={<RecognitionButtons />}
-                voiceRecording={voiceRecording}
-                color="warning.light"
+                variation="recognition"
               />
             )}
           </Box>
