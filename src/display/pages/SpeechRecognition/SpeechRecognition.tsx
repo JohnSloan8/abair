@@ -31,14 +31,21 @@ function SpeechRecognition() {
             sx={{
               position: 'relative',
               backgroundColor: 'white',
-              height: '100%',
-              width: '400px',
+              width: breakpointSize === 'xs' ? 296 : 384,
+              height: breakpointSize === 'xs' ? 90 : 100,
             }}
             pt={{ sm: 3 }}
           >
-            <CenteredFlexBox height={'100%'} width={400} sx={{ position: 'absolute', zIndex: 2 }}>
-              <Box>
-                <RecognitionWaveVisual width={400} height={breakpointSize === 'xs' ? 75 : 110} />
+            <CenteredFlexBox
+              height={'100%'}
+              width={'100%'}
+              sx={{ position: 'relative', zIndex: 2 }}
+            >
+              <Box px={2} sx={{ position: 'absolute', top: { xs: 0, sm: -16 } }}>
+                <RecognitionWaveVisual
+                  width={breakpointSize === 'xs' ? 296 : 384}
+                  height={breakpointSize === 'xs' ? 80 : 90}
+                />
               </Box>
             </CenteredFlexBox>
             <Box

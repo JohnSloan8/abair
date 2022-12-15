@@ -105,9 +105,9 @@ const Main = () => {
                     width={'100%'}
                     sx={{ position: 'relative', zIndex: 2 }}
                   >
-                    <Box px={2} sx={{ position: 'absolute', top: { xs: 2, sm: 10 } }}>
+                    <Box px={2} sx={{ position: 'absolute', top: { xs: 6, sm: 10 } }}>
                       <RecognitionWaveVisual
-                        width={breakpointSize === 'xs' ? 296 : 484}
+                        width={breakpointSize === 'xs' ? 296 : 384}
                         height={breakpointSize === 'xs' ? 80 : 90}
                       />
                     </Box>
