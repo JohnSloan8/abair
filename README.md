@@ -12,7 +12,7 @@ This is the source code for the [main website](https://abair.ie) of the Abair pr
 
 # Aims of the Website
 
-The codebase for the website is designed with two audiences in mind:
+The codebase was developed for two audiences:
 
 - Public
 - Developers
@@ -25,7 +25,7 @@ New developers (often students) must experience a frictionless onboarding proces
 
 The design for the Abair website follows the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle).
 
-Code is minimal, modular, with clear documentation in a logical structure.
+Code should be minimal, modular, with clear documentation and arranged in a logical structure.
 
 The tools employed, e.g. [React](https://reactjs.org/), [Supabase](https://supabase.com/), are widely used, well maintained and with comprehensive documentation.
 
@@ -138,12 +138,12 @@ The directories in the _src_ folder are:
 :open_file_folder: config\
 :open_file_folder: [display](#display)\
 :open_file_folder: error-handling\
-:open_file_folder: models\
-:open_file_folder: routes\
-:open_file_folder: services\
-:open_file_folder: store
+:open_file_folder: [models](#models)\
+:open_file_folder: [routes](#routes)\
+:open_file_folder: [services](#services)\
+:open_file_folder: [store](#store)
 
-## :open_file_folder: display
+## Display
 
 Each page on Abair consists of [:open_file_folder: components](#components), [:open_file_folder: controllers](#controllers), and [:open_file_folder: sections](#sections). Each is explained below
 
@@ -258,7 +258,7 @@ Example: The SynthesisSpeed controller is used on the _abair.ie/synthesis_ page,
 ...
 ```
 
-## :open_file_folder: models
+## Models
 
 Contains type descriptions for the objects used in the project.
 
@@ -277,7 +277,7 @@ interface synthesisVoiceModel {
 }
 ```
 
-## :open_file_folder: routes
+## Routes
 
 All routes for the project are listed in the _src/routes/index.ts_ file, with redering handled by [React Router](https://reactrouter.com/en/main) taking place in _src/routes/Pages/Pages.tsx_. A new route can be added by appending to the list:
 
@@ -296,11 +296,11 @@ const routes: Routes = {
         ...
 ```
 
-## :open_file_folder: services
+## Services
 
 All calls to external APIs take place here. These involve requests to the Abair speech API for synthesis and recognition, and to Supabase for data stored there (e.g. profile information, publications, images, request history etc.)
 
-## :open_file_folder: store
+## Store
 
 All state management is managed here. Each piece of state is defined with a custom React hook exported.
 
