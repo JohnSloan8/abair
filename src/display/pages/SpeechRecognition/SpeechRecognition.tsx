@@ -43,7 +43,7 @@ function SpeechRecognition() {
             >
               <Box px={2} sx={{ position: 'absolute', top: { xs: 0, sm: -16 } }}>
                 <RecognitionWaveVisual
-                  width={breakpointSize === 'xs' ? 286 : 364}
+                  width={breakpointSize === 'xs' ? 296 : 384}
                   height={breakpointSize === 'xs' ? 80 : 90}
                 />
               </Box>
