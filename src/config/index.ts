@@ -14,6 +14,7 @@ const recognitionURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise';
 const recogniseAudioURL = 'https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise_audio';
 
 const recognitionTimeLimit = 10;
+const headerHeight = '64px';
 
 const messages = {
   app: {
@@ -63,4 +64,5 @@ export {
   recognitionURL,
   recogniseAudioURL,
   recognitionTimeLimit,
+  headerHeight,
 };

@@ -14,7 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { headerHeight } from '@/display/config';
+import { headerHeight } from '@/config';
 import { FlexBox } from '@/display/utils/flex';
 import useSidebar from '@/store/sidebar';
 

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 
-import { headerHeight } from '@/display/config';
+import { headerHeight } from '@/config';
 
 const FlexBox = styled(Box)({
   display: 'flex',
