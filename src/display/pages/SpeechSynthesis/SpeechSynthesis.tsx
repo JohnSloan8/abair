@@ -73,7 +73,7 @@ function SpeechSynthesis() {
           <AbInteractionContainer
             textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
             buttons={<SynthesisButtons />}
-            color="secondary.light"
+            variation="synthesis"
           />
         </CenteredFlexBox>
         <CenteredFlexBox>

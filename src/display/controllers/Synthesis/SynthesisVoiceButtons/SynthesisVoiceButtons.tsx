@@ -4,9 +4,9 @@ import Stack from '@mui/material/Stack';
 
 import { AbButton } from 'abair-components';
 
+import { synthesisVoiceModel } from '@/models/synthesis';
 import {
   filteredSynthesisVoices,
-  synthesisVoiceModel,
   synthesisVoiceSelected,
   useSynthesisVoiceIndex,
   useSynthesisVoices,

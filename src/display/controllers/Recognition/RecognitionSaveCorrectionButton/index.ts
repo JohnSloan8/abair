@@ -1,3 +1,3 @@
-import RecognitionCorrection from './RecognitionCorrection';
+import RecognitionSaveCorrectionsButton from './RecognitionSaveCorrectionsButton';
 
-export default RecognitionCorrection;
+export default RecognitionSaveCorrectionsButton;
