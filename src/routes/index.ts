@@ -1,12 +1,12 @@
 import AppsIcon from '@mui/icons-material/Apps';
-// import ContactMailIcon from '@mui/icons-material/ContactMail';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
-// import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-// import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from '@mui/icons-material/Person';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 import asyncComponentLoader from '@/display/utils/loader';
@@ -76,27 +76,27 @@ const routes: Routes = {
     title: 'NewsItem',
     showInSidebar: false,
   },
-  // [Pages.Contact]: {
-  //   component: asyncComponentLoader(() => import('@/display/pages/Contact')),
-  //   path: '/contact',
-  //   title: 'contact',
-  //   icon: ContactMailIcon,
-  //   showInSidebar: true,
-  // },
-  // [Pages.Login]: {
-  //   component: asyncComponentLoader(() => import('@/display/pages/Login')),
-  //   path: '/login',
-  //   title: 'loginSignup',
-  //   icon: LoginIcon,
-  //   showInSidebar: true,
-  // },
-  // [Pages.Profile]: {
-  //   component: asyncComponentLoader(() => import('@/display/pages/Profile')),
-  //   path: '/profile',
-  //   title: 'profile',
-  //   icon: PersonIcon,
-  //   showInSidebar: true,
-  // },
+  [Pages.Contact]: {
+    component: asyncComponentLoader(() => import('@/display/pages/Contact')),
+    path: '/contact',
+    title: 'contact',
+    icon: ContactMailIcon,
+    showInSidebar: true,
+  },
+  [Pages.Login]: {
+    component: asyncComponentLoader(() => import('@/display/pages/Login')),
+    path: '/login',
+    title: 'loginSignup',
+    icon: LoginIcon,
+    showInSidebar: true,
+  },
+  [Pages.Profile]: {
+    component: asyncComponentLoader(() => import('@/display/pages/Profile')),
+    path: '/profile',
+    title: 'profile',
+    icon: PersonIcon,
+    showInSidebar: true,
+  },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/display/pages/NotFound')),
     path: '*',

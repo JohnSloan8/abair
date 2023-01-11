@@ -17,7 +17,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "https-preview": "serve dist",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update-types": "npx supabase gen types typescript --project-id \"pdntukcptgktuzpynlsv\" > types/supabase.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -45,6 +46,7 @@
     "react-media-recorder": "^1.6.6",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.2",
+    "supabase": "^1.30.1",
     "swiper": "^8.3.2"
   },
   "devDependencies": {

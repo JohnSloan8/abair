@@ -13,9 +13,9 @@ enum Pages {
   Geabaire,
   About,
   NewsItem,
-  // Login,
-  // Profile,
-  // Contact,
+  Login,
+  Profile,
+  Contact,
   NotFound,
 }
 

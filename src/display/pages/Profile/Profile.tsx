@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -31,22 +33,47 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    session ? getProfile(session, setProfile, setLoading) : navigate('/login');
+    if (session) {
+      getProfile(session).then((p) => {
+        if (p !== undefined) {
+          setProfile(p);
+        }
+      });
+    } else {
+      navigate('/login');
+    }
 
-    dialects === undefined ? getDialects(setDialects) : null;
-    genders === undefined ? getGenders(setGenders) : null;
+    if (dialects === undefined) {
+      getDialects().then((d) => {
+        if (d !== undefined) {
+          setDialects(d);
+        }
+      });
+    }
+
+    if (genders === undefined) {
+      getGenders().then((g) => {
+        if (g !== undefined) {
+          setGenders(g);
+        }
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    if (profile !== undefined && genders !== undefined && dialects !== undefined) {
+      setLoading(false);
+    }
+  }, [genders, dialects, profile]);
 
   const prepareToUpdateProfile = async (e: React.FormEvent) => {
     setLoading(true);
     e.preventDefault();
-    console.log('dialects:', dialects);
-    const updatedDialect = dialects.filter((d) => d.name === profile.dialect)[0];
-    const updatedGender = genders.filter((g) => g.name === profile.gender)[0];
-    console.log('updatedDialect:', updatedDialect);
-    await updateProfile(session, profile, updatedDialect, updatedGender);
-    console.log('profile updated');
-    setLoading(false);
+
+    updateProfile(profile).then((p) => {
+      console.log('updated Profile:', p);
+      setLoading(false);
+    });
   };
 
   return (
@@ -78,7 +105,7 @@ function Profile() {
                       name="username"
                       autoComplete="username"
                       placeholder="Your username"
-                      value={profile ? profile.username : ''}
+                      value={profile.username}
                       onChange={(e) => {
                         setProfile((profile) => ({ ...profile, username: e.target.value }));
                       }}
@@ -91,9 +118,8 @@ function Profile() {
                       label="Year of Birth"
                       name="year of birth"
                       autoComplete="year of birth"
-                      type="year of birth"
                       placeholder="Your year of birth"
-                      value={profile ? profile.year : ''}
+                      value={profile.year}
                       onChange={(e) => {
                         setProfile((profile) => ({ ...profile, year: parseInt(e.target.value) }));
                       }}
@@ -106,15 +132,18 @@ function Profile() {
                       <Select
                         labelId="dialect"
                         id="dialect"
-                        value={profile ? profile.dialect : ''}
+                        value={profile.dialect}
                         label="dialect"
-                        onChange={(e) =>
-                          setProfile((profile) => ({ ...profile, dialect: e.target.value }))
-                        }
+                        onChange={(e) => {
+                          setProfile((profile) => ({
+                            ...profile,
+                            dialect: e.target.value as number,
+                          }));
+                        }}
                       >
                         {dialects
                           ? dialects.map((d) => (
-                              <MenuItem key={d.id} value={d.name}>
+                              <MenuItem key={d.id} value={d.id}>
                                 {d.name}
                               </MenuItem>
                             ))
@@ -129,15 +158,18 @@ function Profile() {
                       <Select
                         labelId="gender"
                         id="gender"
-                        value={profile ? profile.gender : ''}
+                        value={profile.gender}
                         label="gender"
                         onChange={(e) =>
-                          setProfile((profile) => ({ ...profile, gender: e.target.value }))
+                          setProfile((profile) => ({
+                            ...profile,
+                            gender: e.target.value as number,
+                          }))
                         }
                       >
                         {genders
                           ? genders.map((d) => (
-                              <MenuItem key={d.id} value={d.name}>
+                              <MenuItem key={d.id} value={d.id}>
                                 {d.name}
                               </MenuItem>
                             ))

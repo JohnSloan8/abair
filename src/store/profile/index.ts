@@ -1,8 +1,9 @@
 import { atom, useRecoilState } from 'recoil';
 
-import { DialectModel, GenderModel, ProfileModel } from '@/models/profile';
+// import { DialectModel, GenderModel, ProfileModel } from '@/models/profile';
+import { Database } from '../../../types/supabase';
 
-const profileState = atom<ProfileModel>({
+const profileState = atom<Database['public']['Tables']['profiles']['Row']>({
   key: 'profile',
   default: undefined,
 });
@@ -12,7 +13,7 @@ const useProfile = () => {
   return { profile, setProfile };
 };
 
-const dialectsState = atom<DialectModel[]>({
+const dialectsState = atom<Database['public']['Tables']['dialects']['Row'][]>({
   key: 'dialects',
   default: undefined,
 });
@@ -22,7 +23,7 @@ const useDialects = () => {
   return { dialects, setDialects };
 };
 
-const gendersState = atom<GenderModel[]>({
+const gendersState = atom<Database['public']['Tables']['genders']['Row'][]>({
   key: 'genders',
   default: undefined,
 });

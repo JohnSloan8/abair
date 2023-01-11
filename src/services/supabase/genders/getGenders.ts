@@ -1,22 +1,14 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { GenderModel } from '@/models/profile';
 import supabase from '@/services/supabase';
 
-const getGenders = async (dataSetter: SetterOrUpdater<GenderModel[]>) => {
-  console.log('in getGenders');
+const getGenders = async () => {
   try {
-    const { data, error, status } = await supabase.from('genders').select(`id, name`);
+    const { data, error } = await supabase.from('genders').select(`*`);
 
-    if (error && status !== 406) {
-      throw error;
-    } else {
+    if (error) {
       console.log('error:', error);
-    }
-
-    if (data) {
-      console.log('data:', data);
-      dataSetter(data);
+      return;
+    } else {
+      return data;
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {

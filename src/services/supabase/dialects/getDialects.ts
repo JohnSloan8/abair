@@ -1,23 +1,17 @@
-import { SetterOrUpdater } from 'recoil';
-
-import { DialectModel } from '@/models/profile';
 import supabase from '@/services/supabase';
 
-const getDialects = async (dataSetter: SetterOrUpdater<DialectModel[]>) => {
+const getDialects = async () => {
   console.log('in getDialects');
   try {
-    const { data, error, status } = await supabase.from('dialects').select(`id, name`);
+    const { data, error } = await supabase.from('dialects').select(`*`);
 
-    if (error && status !== 406) {
-      throw error;
-    } else {
+    if (error) {
       console.log('error:', error);
+      return;
+    } else {
+      return data;
     }
 
-    if (data) {
-      console.log('data:', data);
-      dataSetter(data);
-    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     alert(e.message);
