@@ -104,33 +104,3 @@ const RecognitionWaveVisual = ({ width, height }: RecognitionWaveVisualisationPr
 };
 
 export default RecognitionWaveVisual;
-
-// <CenteredFlexBox
-//   sx={{
-//     width: '100%',
-//     position: 'relative',
-//     visibility: voiceRecording ? 'visible' : 'hidden',
-//   }}
-// >
-{
-  /* <Box sx={{ position: 'absolute', bottom: { sm: 16, xs: -5 } }}> */
-}
-{
-  /* <AbRecognitionWaveVisual
-          stream={stream}
-          breakpointSize={breakpointSize}
-          audioCtx={audioCtx}
-          canvasRef={canvasRef}
-          height={breakpointSize === 'xs' ? 75 : 100}
-          width={breakpointSize === 'xs' ? 400 : 484}
-        /> */
-}
-{
-  /* <canvas width={width} height={height} ref={canvasRef}></canvas>; */
-}
-{
-  /* </Box> */
-}
-{
-  /* </CenteredFlexBox> */
-}

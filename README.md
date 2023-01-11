@@ -79,37 +79,37 @@ Abair is built using the following:
 
 Clone project from Github:
 
-```js
+```bash
 git clone https://github.com/JohnSloan8/abair.git
 ```
 
 Install dependencies:
 
-```js
+```bash
 npm install
 ```
 
 Run dev environment:
 
-```js
+```bash
 npm run dev
 ```
 
 Build:
 
-```js
+```bash
 npm run build
 ```
 
 Run a preview of the build from the dist folder in http:
 
-```js
+```bash
 npm run preview
 ```
 
 Same with https:
 
-```js
+```bash
 npm run https-preview
 ```
 
