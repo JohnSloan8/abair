@@ -4,7 +4,7 @@ interface transcriptionModel {
   user_id: string | null;
   session_ID: string;
   correct?: boolean | null;
-  correction?: string | null | undefined;
+  correction?: string | undefined;
   corrected?: boolean;
   audio_file_path: string;
   duration: number;

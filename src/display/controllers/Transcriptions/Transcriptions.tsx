@@ -33,7 +33,7 @@ const Transcriptions = () => {
   useEffect(() => {
     updateTranscriptions();
     setAwaitingTranscription(false);
-    if (transcription !== undefined) {
+    if (transcription !== undefined && transcription.audio_file_path !== null) {
       getAudio(transcription.audio_file_path).then((res: any) => {
         setRecognitionAudio(`data:audio/wav;base64,${res.audio}`);
       });

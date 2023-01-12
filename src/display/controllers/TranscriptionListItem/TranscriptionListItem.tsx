@@ -13,13 +13,14 @@ import { AbInteractionContainer } from 'abair-components';
 import RecognitionButtons from '@/display/controllers/Recognition/RecognitionButtons';
 import RecognitionTextField from '@/display/controllers/Recognition/RecognitionTextField/RecognitionTextField';
 import { CenteredFlexBox } from '@/display/utils/flex';
-import { transcriptionModel } from '@/models/transcription';
 import deleteTranscription from '@/services/supabase/transcriptions/deleteTranscription';
 import { useTranscription, useTranscriptions } from '@/store/transcriptions';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
+import { Database } from '../../../../types/supabase';
+
 interface TranscriptionListItemProps {
-  trans: transcriptionModel;
+  trans: Database['public']['Tables']['transcriptions']['Row'];
 }
 
 const TranscriptionListItem = ({ trans }: TranscriptionListItemProps) => {
@@ -27,7 +28,7 @@ const TranscriptionListItem = ({ trans }: TranscriptionListItemProps) => {
   const { transcriptions, setTranscriptions } = useTranscriptions();
   const { breakpointSize } = useBreakpointSize();
 
-  const handleClick = (t: transcriptionModel) => {
+  const handleClick = (t: Database['public']['Tables']['transcriptions']['Row']) => {
     if (transcription?.id !== t.id) {
       setTranscription(t);
     } else {
@@ -39,7 +40,11 @@ const TranscriptionListItem = ({ trans }: TranscriptionListItemProps) => {
     id !== undefined
       ? // eslint-disable-next-line @typescript-eslint/no-unused-vars
         deleteTranscription(id).then((res) => {
-          setTranscriptions(transcriptions.filter((t: transcriptionModel) => t.id !== id));
+          setTranscriptions(
+            transcriptions.filter(
+              (t: Database['public']['Tables']['transcriptions']['Row']) => t.id !== id,
+            ),
+          );
         })
       : alert("can't delete undefined");
   };
@@ -68,7 +73,9 @@ const TranscriptionListItem = ({ trans }: TranscriptionListItemProps) => {
         <Box>{`"${
           trans.correction
             ? trans.correction
-            : trans.recognition_response[0].utterance.replaceAll('\n', ' - ')
+            : trans.recognition_response !== null
+            ? trans.recognition_response[0].utterance.replaceAll('\n', ' - ')
+            : ''
         }"`}</Box>
       </AccordionSummary>
       <AccordionDetails>

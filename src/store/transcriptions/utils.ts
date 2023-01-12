@@ -1,14 +1,14 @@
 import { SetterOrUpdater } from 'recoil';
 
-import { transcriptionModel } from '@/models/transcription';
+import { Database } from '../../../types/supabase';
 
 const updateTranscriptions = (
   id: number,
   correct: boolean | null,
-  correction: string | null,
   corrected: boolean,
-  transcriptions: transcriptionModel[],
-  setter: SetterOrUpdater<transcriptionModel[]>,
+  correction: string,
+  transcriptions: Database['public']['Tables']['transcriptions']['Row'][],
+  setter: SetterOrUpdater<Database['public']['Tables']['transcriptions']['Row'][]>,
 ) => {
   setter(
     [...transcriptions].map((item) => {
@@ -20,9 +20,9 @@ const updateTranscriptions = (
 };
 
 const appendTranscription = (
-  transcription: transcriptionModel,
-  transcriptions: transcriptionModel[],
-  setter: SetterOrUpdater<transcriptionModel[]>,
+  transcription: Database['public']['Tables']['transcriptions']['Row'],
+  transcriptions: Database['public']['Tables']['transcriptions']['Row'][],
+  setter: SetterOrUpdater<Database['public']['Tables']['transcriptions']['Row'][]>,
 ) => {
   setter([...transcriptions, transcription]);
 };

@@ -1,8 +1,8 @@
 import { atom, selector, useRecoilState } from 'recoil';
 
-import { transcriptionModel } from '@/models/transcription';
+import { Database } from '../../../types/supabase';
 
-const transcriptionsState = atom<transcriptionModel[]>({
+const transcriptionsState = atom<Database['public']['Tables']['transcriptions']['Row'][]>({
   key: 'transcriptions',
   default: [],
 });
@@ -12,7 +12,7 @@ const useTranscriptions = () => {
   return { transcriptions, setTranscriptions };
 };
 
-const transcriptionState = atom<transcriptionModel | undefined>({
+const transcriptionState = atom<Database['public']['Tables']['transcriptions']['Row'] | undefined>({
   key: 'transcription',
   default: undefined,
 });

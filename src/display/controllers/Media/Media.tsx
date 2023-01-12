@@ -100,6 +100,7 @@ const Media = () => {
                   correct: data.correct,
                   correction: data.correction,
                   corrected: data.corrected,
+                  created_at: data.created_at,
                 });
               });
             });

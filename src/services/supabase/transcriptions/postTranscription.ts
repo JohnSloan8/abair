@@ -1,7 +1,10 @@
-import { transcriptionModel } from '@/models/transcription';
 import supabase from '@/services/supabase';
 
-const postTranscription = async (transcriptionData: transcriptionModel) => {
+import { Database } from '../../../../types/supabase';
+
+const postTranscription = async (
+  transcriptionData: Database['public']['Tables']['transcriptions']['Insert'],
+) => {
   try {
     const { data, error } = await supabase
       .from('transcriptions')
