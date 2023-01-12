@@ -22,6 +22,10 @@ const RecognitionConsentPopup = () => {
         title={t('pages.recognition.privacyTitle')}
         description={t('pages.recognition.privacyRecordings')}
         condition1={t('pages.recognition.over16')}
+        buttons={[
+          { text: 'disagree', color: 'warning' },
+          { text: 'agree', color: 'primary' },
+        ]}
         borderColor="warning.main"
         onClick={onClickConsent}
       />
