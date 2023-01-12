@@ -19,7 +19,7 @@ export interface Database {
           id?: number;
         };
       };
-      ab_publications: {
+      publications: {
         Row: {
           abstract: string | null;
           authors: Json | null;

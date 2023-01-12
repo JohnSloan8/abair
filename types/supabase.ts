@@ -19,7 +19,7 @@ export interface Database {
           id?: number;
         };
       };
-      ab_publications: {
+      publications: {
         Row: {
           abstract: string | null;
           authors: Json | null;
@@ -292,7 +292,7 @@ export interface Database {
       };
       profiles: {
         Row: {
-          dialect: number;
+          dialect: number | null;
           gender: number | null;
           id: string;
           updated_at: string | null;
@@ -300,7 +300,7 @@ export interface Database {
           year: number | null;
         };
         Insert: {
-          dialect?: number;
+          dialect?: number | null;
           gender?: number | null;
           id: string;
           updated_at?: string | null;
@@ -308,7 +308,7 @@ export interface Database {
           year?: number | null;
         };
         Update: {
-          dialect?: number;
+          dialect?: number | null;
           gender?: number | null;
           id?: string;
           updated_at?: string | null;

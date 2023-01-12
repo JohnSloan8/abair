@@ -7,7 +7,7 @@ const getProfile = async (sess: Session) => {
   try {
     const { user } = sess;
 
-    const { data, error } = await supabase.from('profiles').select(`*`).eq('id', user.id).single();
+    const { data, error } = await supabase.from('profiles').select(`*`).eq('id', user.id);
 
     if (error) {
       console.log('error:', error);

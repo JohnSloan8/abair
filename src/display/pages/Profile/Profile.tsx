@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable react-hooks/exhaustive-deps */
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -13,19 +13,25 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
+import { AbPopup } from 'abair-components';
 // import Typography from '@mui/material/Typography';
 import { AbInfoHeader } from 'abair-components';
 
 import Meta from '@/display/sections/Meta';
-import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
+import {
+  CenteredFlexBox,
+  FullSizeCenteredFlexBox,
+  HorizontallyCenteredFlexBox,
+} from '@/display/utils/flex';
 import { getDialects } from '@/services/supabase/dialects';
 import { getGenders } from '@/services/supabase/genders';
-import { getProfile, updateProfile } from '@/services/supabase/profile';
+import { createProfile, getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
 import { useDialects, useGenders, useProfile } from '@/store/profile';
 
 function Profile() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [profileUpdatedVisible, setProfileUpdatedVisible] = useState<boolean>(false);
   const { session } = useSession();
   const { profile, setProfile } = useProfile();
   const { dialects, setDialects } = useDialects();
@@ -35,8 +41,14 @@ function Profile() {
   useEffect(() => {
     if (session) {
       getProfile(session).then((p) => {
-        if (p !== undefined) {
-          setProfile(p);
+        if (p !== undefined && p.length !== 0) {
+          setProfile(p[0]);
+        } else {
+          createProfile(session.user.id).then((p) => {
+            if (p !== undefined) {
+              setProfile(p);
+            }
+          });
         }
       });
     } else {
@@ -61,19 +73,21 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    if (profile !== undefined && genders !== undefined && dialects !== undefined) {
+    if (genders !== undefined && dialects !== undefined && profile !== undefined) {
       setLoading(false);
     }
   }, [genders, dialects, profile]);
 
-  const prepareToUpdateProfile = async (e: React.FormEvent) => {
-    setLoading(true);
-    e.preventDefault();
-
-    updateProfile(profile).then((p) => {
-      console.log('updated Profile:', p);
-      setLoading(false);
-    });
+  const prepareToSetProfile = async () => {
+    if (session !== null) {
+      setLoading(true);
+      updateProfile(profile).then(() => {
+        setProfileUpdatedVisible(true);
+        setLoading(false);
+      });
+    } else {
+      alert('not logged in');
+    }
   };
 
   return (
@@ -88,14 +102,7 @@ function Profile() {
             {loading ? (
               'Loading...'
             ) : session ? (
-              <Box
-                component="form"
-                noValidate
-                onSubmit={(e: FormEvent<HTMLFormElement>) => {
-                  prepareToUpdateProfile(e);
-                }}
-                sx={{ mt: 3 }}
-              >
+              <Box>
                 <Grid container spacing={0}>
                   <Grid item xs={12} my={1}>
                     <TextField
@@ -103,11 +110,17 @@ function Profile() {
                       id="username"
                       label="Username"
                       name="username"
-                      autoComplete="username"
                       placeholder="Your username"
-                      value={profile.username}
+                      value={
+                        profile.username !== undefined && profile.username !== null
+                          ? profile.username
+                          : ''
+                      }
                       onChange={(e) => {
-                        setProfile((profile) => ({ ...profile, username: e.target.value }));
+                        setProfile((profile) => ({
+                          ...profile,
+                          username: e.target.value,
+                        }));
                       }}
                     />
                   </Grid>
@@ -119,7 +132,9 @@ function Profile() {
                       name="year of birth"
                       autoComplete="year of birth"
                       placeholder="Your year of birth"
-                      value={profile.year}
+                      value={
+                        profile.year !== undefined && profile.year !== null ? profile.year : ''
+                      }
                       onChange={(e) => {
                         setProfile((profile) => ({ ...profile, year: parseInt(e.target.value) }));
                       }}
@@ -132,7 +147,11 @@ function Profile() {
                       <Select
                         labelId="dialect"
                         id="dialect"
-                        value={profile.dialect}
+                        value={
+                          profile.dialect !== undefined && profile.dialect !== null
+                            ? profile.dialect
+                            : ''
+                        }
                         label="dialect"
                         onChange={(e) => {
                           setProfile((profile) => ({
@@ -158,14 +177,18 @@ function Profile() {
                       <Select
                         labelId="gender"
                         id="gender"
-                        value={profile.gender}
+                        value={
+                          profile.gender !== undefined && profile.gender !== null
+                            ? profile.gender
+                            : ''
+                        }
                         label="gender"
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setProfile((profile) => ({
                             ...profile,
                             gender: e.target.value as number,
-                          }))
-                        }
+                          }));
+                        }}
                       >
                         {genders
                           ? genders.map((d) => (
@@ -180,7 +203,7 @@ function Profile() {
                 </Grid>
                 <CenteredFlexBox sx={{ width: '100%' }}>
                   <Button
-                    type="submit"
+                    onClick={prepareToSetProfile}
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                     disabled={loading}
@@ -195,6 +218,22 @@ function Profile() {
           </div>
         </CenteredFlexBox>
       </Box>
+      {profileUpdatedVisible && (
+        <FullSizeCenteredFlexBox
+          sx={{ zIndex: 9999, position: 'fixed', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
+        >
+          <AbPopup
+            title="Profile Updated"
+            description="Thank you for providing this information :-)"
+            condition1=""
+            borderColor="primary.main"
+            buttons={[{ text: 'ok', color: 'primary' }]}
+            onClick={() => {
+              setProfileUpdatedVisible(false);
+            }}
+          />
+        </FullSizeCenteredFlexBox>
+      )}
     </HorizontallyCenteredFlexBox>
   );
 }
