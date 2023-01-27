@@ -9,6 +9,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import PersonIcon from '@mui/icons-material/Person';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
+import { rootURL } from '@/config';
 import asyncComponentLoader from '@/display/utils/loader';
 
 import { Pages, Routes } from './types';
@@ -16,55 +17,55 @@ import { Pages, Routes } from './types';
 const routes: Routes = {
   [Pages.Home]: {
     component: asyncComponentLoader(() => import('@/display/pages/Home')),
-    path: '/',
+    path: `${rootURL}`,
     title: 'home',
     icon: HomeIcon,
     showInSidebar: true,
   },
   [Pages.SpeechSynthesis]: {
     component: asyncComponentLoader(() => import('@/display/pages/SpeechSynthesis')),
-    path: '/speech-synthesis',
+    path: `${rootURL}speech-synthesis`,
     title: 'synthesis',
     icon: RecordVoiceOverIcon,
     showInSidebar: true,
   },
   [Pages.SpeechRecognition]: {
     component: asyncComponentLoader(() => import('@/display/pages/SpeechRecognition')),
-    path: '/speech-recognition',
+    path: `${rootURL}speech-recognition`,
     title: 'recognition',
     icon: HearingIcon,
     showInSidebar: true,
   },
   [Pages.Applications]: {
     component: asyncComponentLoader(() => import('@/display/pages/Applications')),
-    path: '/applications',
+    path: `${rootURL}applications`,
     title: 'applications',
     icon: AppsIcon,
     showInSidebar: true,
   },
   [Pages.News]: {
     component: asyncComponentLoader(() => import('@/display/pages/News')),
-    path: '/news',
+    path: `${rootURL}news`,
     title: 'news',
     icon: NewspaperIcon,
     showInSidebar: true,
   },
   [Pages.Knowledge]: {
     component: asyncComponentLoader(() => import('@/display/pages/Knowledge')),
-    path: '/knowledge',
+    path: `${rootURL}knowledge`,
     title: 'knowledge',
     icon: MenuBookIcon,
     showInSidebar: true,
   },
   [Pages.Geabaire]: {
     component: asyncComponentLoader(() => import('@/display/pages/Geabaire')),
-    path: '/geabaire',
+    path: `${rootURL}geabaire`,
     title: 'geabaire',
     showInSidebar: false,
   },
   [Pages.About]: {
     component: asyncComponentLoader(() => import('@/display/pages/About')),
-    path: '/about',
+    path: `${rootURL}about`,
     title: 'about',
     icon: GroupsIcon,
     showInSidebar: true,
@@ -72,27 +73,27 @@ const routes: Routes = {
 
   [Pages.NewsItem]: {
     component: asyncComponentLoader(() => import('@/display/pages/NewsItem')),
-    path: '/news/:newsID',
+    path: `${rootURL}news/:newsID`,
     title: 'NewsItem',
     showInSidebar: false,
   },
   [Pages.Contact]: {
     component: asyncComponentLoader(() => import('@/display/pages/Contact')),
-    path: '/contact',
+    path: `${rootURL}contact`,
     title: 'contact',
     icon: ContactMailIcon,
     showInSidebar: true,
   },
   [Pages.Login]: {
     component: asyncComponentLoader(() => import('@/display/pages/Login')),
-    path: '/login',
+    path: `${rootURL}login`,
     title: 'loginSignup',
     icon: LoginIcon,
     showInSidebar: true,
   },
   [Pages.Profile]: {
     component: asyncComponentLoader(() => import('@/display/pages/Profile')),
-    path: '/profile',
+    path: `${rootURL}profile`,
     title: 'profile',
     icon: PersonIcon,
     showInSidebar: true,

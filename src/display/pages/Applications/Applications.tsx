@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import Box from '@mui/material/Box';
@@ -30,7 +29,6 @@ function Applications() {
   const { applications, setApplications } = useApplications();
   const { categories, setCategories } = useCategories();
   const filteredApplications = useRecoilValue(filteredApplicationsState);
-  const navigate = useNavigate();
   const { setApplicationCategoryFilter } = useApplicationCategoryFilter();
   const { breakpointSize } = useBreakpointSize();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -58,11 +56,7 @@ function Applications() {
   }, []);
 
   const handleClick = (url: string) => {
-    if (url[0] === '/') {
-      navigate(url);
-    } else {
-      window.location.replace(url);
-    }
+    window.location.replace(url);
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
@@ -33,7 +33,7 @@ function Pages() {
             {Object.values(routes).map(({ path, component: Component }) => {
               return <Route key={path} path={path} element={<Component />} />;
             })}
-            <Route key={'/'} path={'/'} element={<Navigate to="/dev" />} />
+            {/* <Route key={'/'} path={'/'} element={<Navigate to="/dev" />} /> */}
           </Routes>
         </ScrollToTop>
       </Box>
