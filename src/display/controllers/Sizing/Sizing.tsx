@@ -7,7 +7,7 @@ import { useBreakpointSize } from '@/store/viewDimensions';
 
 const Sizing = () => {
   const theme = useTheme();
-  const { breakpointSize, setBreakpointSize } = useBreakpointSize();
+  const { /*breakpointSize,*/ setBreakpointSize } = useBreakpointSize();
   const xSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const small = useMediaQuery(theme.breakpoints.up('sm'));
   const medium = useMediaQuery(theme.breakpoints.up('md'));
@@ -17,9 +17,9 @@ const Sizing = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [xSmall, small, medium]);
 
-  useEffect(() => {
-    console.log('breakpointSize:', breakpointSize);
-  }, [breakpointSize]);
+  // useEffect(() => {
+  //   console.log('breakpointSize:', breakpointSize);
+  // }, [breakpointSize]);
 
   return null;
 };

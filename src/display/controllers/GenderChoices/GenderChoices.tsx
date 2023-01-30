@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-
+// import { useEffect } from 'react';
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 import { Box } from '@mui/material';
@@ -16,10 +15,10 @@ const GenderChoices = () => {
     { name: 'female', icon: FemaleIcon },
   ];
 
-  useEffect(() => {
-    console.log('gender:', synthesisGender);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [synthesisGender]);
+  // useEffect(() => {
+  //   console.log('gender:', synthesisGender);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [synthesisGender]);
 
   return (
     <Box>

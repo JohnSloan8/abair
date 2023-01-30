@@ -73,9 +73,9 @@ const SynthesisSpeakButton = () => {
     }
   }, [synthesisVoiceSelectedValue]);
 
-  useEffect(() => {
-    console.log('emptyString:', emptyString);
-  }, [emptyString]);
+  // useEffect(() => {
+  //   console.log('emptyString:', emptyString);
+  // }, [emptyString]);
 
   const initGetSynthesis = () => {
     setAwaitingSynthesis(true);

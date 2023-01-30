@@ -48,12 +48,10 @@ const Transcriptions = () => {
   const updateTranscriptions = () => {
     if (session) {
       getTranscriptions(session.user.id).then((res: any) => {
-        console.log('getTranscriptions:', res);
         setTranscriptions(res);
       });
     } else {
       getThisSessionTranscriptions(sessionID).then((res: any) => {
-        console.log('getThisSessionTranscriptions:', res);
         setTranscriptions(res);
       });
     }

@@ -16,11 +16,11 @@ import { useSession, useSessionID } from '@/store/auth';
 
 function App() {
   const { setSession } = useSession();
-  const { sessionID, setSessionID } = useSessionID();
+  const { /*sessionID,*/ setSessionID } = useSessionID();
 
-  useEffect(() => {
-    console.log('sessionID:', sessionID);
-  }, [sessionID]);
+  // useEffect(() => {
+  //   console.log('sessionID:', sessionID);
+  // }, [sessionID]);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

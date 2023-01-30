@@ -25,7 +25,6 @@ const SynthesisTextField = ({ rows = 4 }: SynthesisTextFieldProps) => {
     if (synthesisVoices.length === 0) {
       getSynthesisMetadata().then((res: any) => {
         setSynthesisVoices(res);
-        console.log('voices:', res);
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
