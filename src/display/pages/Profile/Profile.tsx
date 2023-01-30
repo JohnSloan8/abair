@@ -2,7 +2,7 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -36,6 +36,7 @@ function Profile() {
   const { profile, setProfile } = useProfile();
   const { dialects, setDialects } = useDialects();
   const { genders, setGenders } = useGenders();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,11 +80,16 @@ function Profile() {
   }, [genders, dialects, profile]);
 
   const prepareToSetProfile = async () => {
+    console.log('params:');
     if (session !== null) {
       setLoading(true);
       updateProfile(profile).then(() => {
         setProfileUpdatedVisible(true);
         setLoading(false);
+
+        if (searchParams.get('origin')) {
+          window.location.href = `https://abair.ie/qa/${searchParams.get('origin')}`;
+        }
       });
     } else {
       alert('not logged in');
