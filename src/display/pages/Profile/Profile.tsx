@@ -17,6 +17,7 @@ import { AbPopup } from 'abair-components';
 // import Typography from '@mui/material/Typography';
 import { AbInfoHeader } from 'abair-components';
 
+import { rootURL } from '@/config';
 import Meta from '@/display/sections/Meta';
 import {
   CenteredFlexBox,
@@ -53,7 +54,7 @@ function Profile() {
         }
       });
     } else {
-      navigate('/login');
+      navigate(`${rootURL}/login`);
     }
 
     if (dialects === undefined) {
