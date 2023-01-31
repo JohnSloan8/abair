@@ -80,7 +80,6 @@ function Profile() {
   }, [genders, dialects, profile]);
 
   const prepareToSetProfile = async () => {
-    console.log('params:');
     if (session !== null) {
       setLoading(true);
       updateProfile(profile).then(() => {

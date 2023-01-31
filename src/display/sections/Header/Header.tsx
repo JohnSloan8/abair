@@ -32,7 +32,6 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
   const { i18n } = useTranslation();
 
   const logOut = async () => {
-    console.log('logout called');
     const { error } = await supabase.auth.signOut();
     console.log('error:', error);
     navigate(`${rootURL}login`, { replace: true });

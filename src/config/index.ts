@@ -8,6 +8,7 @@ const repository = 'https://github.com/JohnSloan8/abair';
 
 const production = false;
 const rootURL = production ? '/qa/abair/' : '/';
+const authRedirectBackToOriginRootURL = 'https://abair.ie/qa/';
 
 const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
@@ -66,4 +67,5 @@ export {
   recogniseAudioURL,
   recognitionTimeLimit,
   headerHeight,
+  authRedirectBackToOriginRootURL,
 };

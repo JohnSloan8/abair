@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 
 import { AbInfoHeader } from 'abair-components';
 
-import { rootURL } from '@/config';
+import { authRedirectBackToOriginRootURL, rootURL } from '@/config';
 import Meta from '@/display/sections/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
@@ -24,6 +24,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const toggleSignupPage = () => {
     setShowSignupPage(!showSignupPage);
@@ -44,14 +45,22 @@ function Login() {
         console.log(data.user);
         // setConfirmationEmailSent(true);
         setShowSignupPage(false);
-        navigate(`${rootURL}profile`, { replace: true });
+        if (searchParams.get('origin')) {
+          window.location.href = `${authRedirectBackToOriginRootURL}${searchParams.get('origin')}`;
+        } else {
+          navigate(`${rootURL}profile`, { replace: true });
+        }
       }
     } else {
       setLoading(true);
       // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
       supabase.auth.signInWithPassword({ email, password }).then(() => {
         setLoading(false);
-        navigate(`${rootURL}profile`, { replace: true });
+        if (searchParams.get('origin')) {
+          window.location.href = `${authRedirectBackToOriginRootURL}${searchParams.get('origin')}`;
+        } else {
+          navigate(`${rootURL}profile`, { replace: true });
+        }
       });
     }
   };
