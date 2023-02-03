@@ -6,7 +6,7 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
-const production = true;
+const production = false;
 const rootURL = production ? '/qa/abair/' : '/';
 const authRedirectBackToOriginRootURL = 'https://abair.ie/qa/';
 
