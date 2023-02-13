@@ -27,10 +27,17 @@ const FullSizeBox = styled(Box)({
   height: `calc(100vh - ${headerHeight})`,
 });
 
+const AlmostFullSizeBox = styled(Box)({
+  position: 'relative',
+  width: '100%',
+  height: `calc(90vh - ${headerHeight})`,
+});
+
 export {
   HorizontallyCenteredFlexBox,
   FlexBox,
   CenteredFlexBox,
   FullSizeCenteredFlexBox,
   FullSizeBox,
+  AlmostFullSizeBox,
 };

@@ -5,22 +5,12 @@ import Box from '@mui/material/Box';
 import GenderChoices from '@/display/controllers/GenderChoices';
 import Map from '@/display/controllers/Map';
 import { CenteredFlexBox } from '@/display/utils/flex';
-import { useFrontPageTabs } from '@/store/tabs';
 import { frontPageSelectionBoxSize } from '@/store/viewDimensions';
 
 const SynthesisVoiceSelection = () => {
-  const { frontPageTabs } = useFrontPageTabs();
   const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
   return (
-    <Box
-      width={'100%'}
-      height={frontPageSelectionBoxSizeValue}
-      sx={{
-        opacity: frontPageTabs === 0 ? 1 : 0,
-        position: 'relative',
-      }}
-      minHeight={300}
-    >
+    <Box width={'100%'} minHeight={280}>
       <CenteredFlexBox>
         <Box
           height={{
@@ -36,7 +26,7 @@ const SynthesisVoiceSelection = () => {
           </CenteredFlexBox>
         </Box>
       </CenteredFlexBox>
-      <CenteredFlexBox height={{ sm: 85, xs: 55 }} mt={-2}>
+      <CenteredFlexBox height={{ sm: 65, xs: 55 }} mt={-2}>
         <GenderChoices />
       </CenteredFlexBox>
     </Box>

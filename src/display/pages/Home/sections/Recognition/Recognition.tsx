@@ -27,7 +27,7 @@ import { CenteredFlexBox, FullSizeCenteredFlexBox } from '@/display/utils/flex';
 // import { useFrontPageTabs } from '@/store/tabs';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
-const Main = () => {
+const Recognition = () => {
   // const { frontPageTabs } = useFrontPageTabs();
   const { breakpointSize } = useBreakpointSize();
   // const { setSynthesisSpeed } = useSynthesisSpeed();
@@ -311,4 +311,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Recognition;
