@@ -6,7 +6,7 @@ import Meta from '@/display/sections/Meta';
 import { FullSizeBox } from '@/display/utils/flex';
 
 import Applications from './sections/Applications';
-import CoreTechnologies from './sections/CoreTechnologies';
+// import CoreTechnologies from './sections/CoreTechnologies';
 import Knowledge from './sections/Knowledge';
 import Main from './sections/Main';
 import MileGlor from './sections/MileGlor';
@@ -21,17 +21,17 @@ function Home() {
         <Main />
       </FullSizeBox>
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
-        <MileGlor />
-      </FullSizeBox>
-      <FullSizeBox py={{ xs: 2, sm: 4 }}>
-        <CoreTechnologies />
-      </FullSizeBox>
-      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <Applications />
       </FullSizeBox>
       <FullSizeBox py={{ xs: 2, sm: 4 }}>
         <News />
       </FullSizeBox>
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
+        <MileGlor />
+      </FullSizeBox>
+      {/* <FullSizeBox py={{ xs: 2, sm: 4 }}>
+        <CoreTechnologies />
+      </FullSizeBox> */}
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <Knowledge />
       </FullSizeBox>
