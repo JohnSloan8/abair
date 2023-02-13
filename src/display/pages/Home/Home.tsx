@@ -17,9 +17,9 @@ function Home() {
   return (
     <Box>
       <Meta title={t('pageTitles.home')} />
-      <FullSizeBox>
-        <Main />
-      </FullSizeBox>
+
+      <Main />
+
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <Applications />
       </FullSizeBox>

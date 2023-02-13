@@ -202,7 +202,7 @@ i18n
           pages: {
             home: {
               speak: 'ABAIR',
-              listen: 'éist',
+              listen: 'ÉIST',
               writeHere: 'scríobh anseo',
               speakInstructions: 'roghnaigh canúint & inscne > scríobh rud éigin > déan sintéis',
               listenInstructions: 'téigh go háit chiúin > cliceáil ar an micreafón > labhair amach',

@@ -1,2 +1,0 @@
-sed -i 's/assets\//qa\/abair\/assets\//g' *.js
-rsync -a ./dist johnsloan@abair.ovh:/home/johnsloan/web-apps/abair
