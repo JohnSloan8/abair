@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 
 import { AbInfoHeader } from 'abair-components';
 
-import { authRedirectBackToOriginRootURL, rootURL } from '@/config';
+import { basePath, domain } from '@/config';
 import Meta from '@/display/sections/Meta';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
@@ -46,9 +46,9 @@ function Login() {
         // setConfirmationEmailSent(true);
         setShowSignupPage(false);
         if (searchParams.get('origin')) {
-          window.location.href = `${authRedirectBackToOriginRootURL}${searchParams.get('origin')}`;
+          window.location.href = `${domain}${searchParams.get('origin')}`;
         } else {
-          navigate(`${rootURL}profile`, { replace: true });
+          navigate(`${basePath}profile`, { replace: true });
         }
       }
     } else {
@@ -57,9 +57,9 @@ function Login() {
       supabase.auth.signInWithPassword({ email, password }).then(() => {
         setLoading(false);
         if (searchParams.get('origin')) {
-          window.location.href = `${authRedirectBackToOriginRootURL}${searchParams.get('origin')}`;
+          window.location.href = `${domain}${searchParams.get('origin')}`;
         } else {
-          navigate(`${rootURL}profile`, { replace: true });
+          navigate(`${basePath}profile`, { replace: true });
         }
       });
     }

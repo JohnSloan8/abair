@@ -24,6 +24,8 @@ type PathRouteCustomProps = {
   component: FC;
   icon?: FC<SvgIconProps>;
   showInSidebar: boolean;
+  loggedIn: boolean;
+  loggedOut: boolean;
 };
 
 type Routes = Record<Pages, PathRouteProps & PathRouteCustomProps>;

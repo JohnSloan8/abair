@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import { AbInfoHeader } from 'abair-components';
 import { AbClickableCard } from 'abair-components';
 
-import { rootURL } from '@/config';
+import { basePath } from '@/config';
 import { CenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
@@ -38,7 +38,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
         >
           <Grid item>
             <AbClickableCard
-              handleClickEvent={() => navigate(`${rootURL}speech-synthesis`)}
+              handleClickEvent={() => navigate(`${basePath}speech-synthesis`)}
               title={t('pageTitles.synthesis')}
               description={t('pages.home.technologyCards.synthesis.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}
@@ -47,7 +47,7 @@ const AbHomePageCoreTechnologiesCtrl = () => {
           </Grid>
           <Grid item>
             <AbClickableCard
-              handleClickEvent={() => navigate(`${rootURL}speech-recognition`)}
+              handleClickEvent={() => navigate(`${basePath}speech-recognition`)}
               title={t('pageTitles.recognition')}
               description={t('pages.home.technologyCards.recognition.description')}
               variation={breakpointSize === 'xs' ? 'app' : 'main'}

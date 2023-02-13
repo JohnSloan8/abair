@@ -10,11 +10,13 @@ import ListItemText from '@mui/material/ListItemText';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import routes from '@/routes';
+import { useSession } from '@/store/auth';
 import useSidebar from '@/store/sidebar';
 
 function Sidebar() {
   const [isSidebarOpen, sidebarActions] = useSidebar();
   const { t } = useTranslation();
+  const { session } = useSession();
 
   return (
     <SwipeableDrawer
@@ -33,7 +35,10 @@ function Sidebar() {
         }}
       >
         {Object.values(routes)
-          .filter((route) => route.showInSidebar)
+          .filter(
+            (route) =>
+              route.showInSidebar && ((route.loggedIn && session) || (route.loggedOut && !session)),
+          )
           .map(({ path, title, icon: Icon }) => (
             <ListItem sx={{ py: 0, px: 1 }} key={path}>
               <ListItemButton onClick={sidebarActions.close} component={Link} to={path}>

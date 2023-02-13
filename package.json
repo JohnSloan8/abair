@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build  --base=/abair/",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "https-preview": "serve dist",
     "prepare": "husky install",

@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { rootURL } from '@/config';
+import { basePath } from '@/config';
 import { headerHeight } from '@/config';
 import { FlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
@@ -34,7 +34,7 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
   const logOut = async () => {
     const { error } = await supabase.auth.signOut();
     console.log('error:', error);
-    navigate(`${rootURL}login`, { replace: true });
+    navigate(`${basePath}login`, { replace: true });
   };
 
   const changeLang = () => {
@@ -57,7 +57,7 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
             </IconButton>
           </FlexBox>
           <FlexBox>
-            <Button component={Link} to={`${rootURL}`}>
+            <Button component={Link} to={`${basePath}`}>
               <img src={abairFullLogo} height={logoSize} />
             </Button>
           </FlexBox>

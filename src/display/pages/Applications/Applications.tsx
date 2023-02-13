@@ -82,11 +82,19 @@ function Applications() {
             {filteredApplications.map((a: ApplicationModel, i: number) => (
               <AbInfoLinkCard
                 key={i}
-                onClick={() => handleClick(a.url)}
+                onClick={() =>
+                  a.name === 'An Bat Mírialta'
+                    ? handleClick('/applications/bat-mirialta')
+                    : handleClick(a.url)
+                }
                 name={a.name}
                 description={i18n.language === 'en' ? a.description_en : a.description_ga}
                 image={a.image}
-                message={a.url === '#' ? t('pages.applications.comingSoon') : ''}
+                message={
+                  a.url === '#' && a.name !== 'An Bat Mírialta'
+                    ? t('pages.applications.comingSoon')
+                    : ''
+                }
                 breakpointSize={breakpointSize}
               />
             ))}

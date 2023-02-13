@@ -6,9 +6,9 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
-const production = false;
-const rootURL = production ? '/qa/abair/' : '/';
-const authRedirectBackToOriginRootURL = 'https://abair.ie/qa/';
+// const production = false;
+const basePath = '/';
+const domain = 'http://localhost/';
 
 const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
@@ -60,12 +60,12 @@ export {
   title,
   defaultMetaTags,
   giphy404,
-  rootURL,
+  basePath,
   synthesisURL,
   synthesisMetadataURL,
   recognitionURL,
   recogniseAudioURL,
   recognitionTimeLimit,
   headerHeight,
-  authRedirectBackToOriginRootURL,
+  domain,
 };

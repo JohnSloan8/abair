@@ -17,7 +17,7 @@ import { AbPopup } from 'abair-components';
 // import Typography from '@mui/material/Typography';
 import { AbInfoHeader } from 'abair-components';
 
-import { rootURL } from '@/config';
+import { domain } from '@/config';
 import Meta from '@/display/sections/Meta';
 import {
   CenteredFlexBox,
@@ -54,7 +54,7 @@ function Profile() {
         }
       });
     } else {
-      navigate(`${rootURL}/login`);
+      navigate(`${domain}/login`);
     }
 
     if (dialects === undefined) {
@@ -88,7 +88,7 @@ function Profile() {
         setLoading(false);
 
         if (searchParams.get('origin')) {
-          window.location.href = `https://abair.ie/qa/${searchParams.get('origin')}`;
+          window.location.href = `${domain}${searchParams.get('origin')}`;
         }
       });
     } else {
