@@ -12,7 +12,7 @@ const RecognitionImage = () => {
   // const frontPageSelectionBoxSizeValue = useRecoilValue(frontPageSelectionBoxSize);
 
   return (
-    <Box sx={{ width: '100%', position: 'relative' }} height={450}>
+    <Box sx={{ width: '100%', position: 'relative' }} height={455}>
       <CenteredFlexBox>
         <Box sx={{ position: 'absolute', bottom: 0, height: '100%' }}>
           <Image

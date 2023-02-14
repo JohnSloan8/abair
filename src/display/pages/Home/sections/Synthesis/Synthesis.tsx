@@ -32,7 +32,7 @@ const Synthesis = () => {
   }, []);
 
   return (
-    <Box>
+    <Box pt={4}>
       <Typography variant={'h5'} align="center" sx={{ color: 'secondary.dark' }}>
         {t('pages.home.speak')}
       </Typography>
@@ -42,32 +42,30 @@ const Synthesis = () => {
         sx={{ typography: { sm: 'body1', xs: 'body2' } }}
         color={'secondary.dark'}
         align="center"
+        height={50}
       >
         {t('pages.home.speakInstructions')}
       </Typography>
-
       <CenteredFlexBox>
         <SynthesisVoiceSelection />
       </CenteredFlexBox>
-      <Box width={'100%'} sx={{ position: 'absolute', bottom: 0 }}>
-        <CenteredFlexBox>
-          <Box maxWidth={500} width={'100%'} minWidth={250}>
-            <AbInteractionContainer
-              textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
-              buttons={<SynthesisButtons />}
-              variation="synthesis"
-            />
-          </Box>
-        </CenteredFlexBox>
-        <CenteredFlexBox p={2}>
-          <AbButton
-            label={'More synthesis options'}
-            onClick={() => navigate(`${basePath}speech-synthesis`)}
-            selected={false}
-            color={'secondary'}
+      <CenteredFlexBox>
+        <Box width={'100%'} maxWidth={500} minWidth={350}>
+          <AbInteractionContainer
+            textbox={<SynthesisTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
+            buttons={<SynthesisButtons />}
+            variation="synthesis"
           />
-        </CenteredFlexBox>
-      </Box>
+        </Box>
+      </CenteredFlexBox>
+      <CenteredFlexBox p={4}>
+        <AbButton
+          label={'advanced synthesis options'}
+          onClick={() => navigate(`${basePath}speech-synthesis`)}
+          selected={false}
+          color={'secondary'}
+        />
+      </CenteredFlexBox>
     </Box>
   );
 };

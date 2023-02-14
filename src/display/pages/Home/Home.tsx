@@ -2,49 +2,51 @@ import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
 
-import { AbInfoHeader } from 'abair-components';
-
 import Meta from '@/display/sections/Meta';
-import { AlmostFullSizeBox, CenteredFlexBox } from '@/display/utils/flex';
+import { FullSizeBox } from '@/display/utils/flex';
 
 import Applications from './sections/Applications';
 // import CoreTechnologies from './sections/CoreTechnologies';
 import Knowledge from './sections/Knowledge';
 import MileGlor from './sections/MileGlor';
 import News from './sections/News';
-import Recognition from './sections/Recognition';
-import Synthesis from './sections/Synthesis';
+import Top from './sections/Top';
 
 function Home() {
   const { t } = useTranslation();
+
   return (
     <Box>
       <Meta title={t('pageTitles.home')} />
-      <CenteredFlexBox>
-        <AbInfoHeader title={t('infoHeader.home.main.title')} />
-      </CenteredFlexBox>
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'secondary.wafer' }}>
-        <Synthesis />
-      </AlmostFullSizeBox>
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'warning.wafer' }}>
-        <Recognition />
-      </AlmostFullSizeBox>
 
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
+      <Top />
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
         <Applications />
-      </AlmostFullSizeBox>
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }}>
+      </FullSizeBox>
+      <FullSizeBox
+        py={{ xs: 2, sm: 4 }}
+        borderTop={2}
+        borderBottom={2}
+        borderColor="primary.light"
+        sx={{ backgroundColor: 'primary.wafer' }}
+      >
         <News />
-      </AlmostFullSizeBox>
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      </FullSizeBox>
+      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
         <MileGlor />
-      </AlmostFullSizeBox>
-      {/* <AlmostFullSizeBox py={{ xs: 2, sm: 4 }}>
+      </FullSizeBox>
+      {/* <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
         <CoreTechnologies />
-      </AlmostFullSizeBox> */}
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      </FullSizeBox> */}
+      <FullSizeBox
+        py={{ xs: 2, sm: 4 }}
+        borderTop={2}
+        borderBottom={2}
+        borderColor="primary.light"
+        sx={{ backgroundColor: 'primary.wafer' }}
+      >
         <Knowledge />
-      </AlmostFullSizeBox>
+      </FullSizeBox>
     </Box>
   );
 }

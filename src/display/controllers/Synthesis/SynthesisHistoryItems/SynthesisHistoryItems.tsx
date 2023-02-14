@@ -1,14 +1,18 @@
 import { useRef } from 'react';
 
+import DownloadIcon from '@mui/icons-material/Download';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
-import { AbSynthesisHistoryItem } from 'abair-components';
+import { AbIconButton, AbSynthesisHistoryItem, FullSizeCenteredFlexBox } from 'abair-components';
 
 import { useSynthesisAudios } from '@/store/synthesis';
 
 const SynthesisHistoryItems = () => {
   const { synthesisAudios } = useSynthesisAudios();
   const audiosRef = useRef<HTMLAudioElement>(null);
+  const aRef = useRef<HTMLAnchorElement>(null);
 
   const playAudios = (audioData: string) => {
     if (audiosRef.current !== undefined) {
@@ -19,23 +23,84 @@ const SynthesisHistoryItems = () => {
     }
   };
 
+  const downloadAudio = (
+    audioData: string,
+    v: string,
+    m: string,
+    s: string,
+    p: string,
+    t: string,
+  ) => {
+    if (aRef.current !== undefined) {
+      if (aRef.current !== null) {
+        aRef.current.href = audioData;
+        aRef.current.download = `${v}_${m}_${s}_${p}_${t}.wav`;
+        aRef.current.click();
+      }
+    }
+  };
+
   return (
     <Box width={'95%'} mt={2}>
       {synthesisAudios.map((audiosObj, i) => (
         <Box key={i}>
-          <AbSynthesisHistoryItem
-            voice={audiosObj.voice}
-            model={audiosObj.model}
-            speed={audiosObj.speed}
-            pitch={audiosObj.pitch}
-            text={audiosObj.text}
-            onClick={() => {
-              playAudios(audiosObj.audioData);
-            }}
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              <AbSynthesisHistoryItem
+                voice={audiosObj.voice}
+                model={audiosObj.model}
+                speed={audiosObj.speed}
+                pitch={audiosObj.pitch}
+                text={audiosObj.text}
+                onClick={() => {
+                  console.log('audio clicked');
+                }}
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <FullSizeCenteredFlexBox
+                nonce={undefined}
+                onResize={undefined}
+                onResizeCapture={undefined}
+              >
+                <AbIconButton
+                  selected={true}
+                  color="secondary"
+                  onClick={() => {
+                    playAudios(audiosObj.audioData);
+                  }}
+                  icon={PlayArrowIcon}
+                />
+              </FullSizeCenteredFlexBox>
+            </Grid>
+            <Grid item xs={2}>
+              <FullSizeCenteredFlexBox
+                nonce={undefined}
+                onResize={undefined}
+                onResizeCapture={undefined}
+              >
+                <AbIconButton
+                  selected={true}
+                  color="secondary"
+                  onClick={() => {
+                    downloadAudio(
+                      audiosObj.audioData,
+                      audiosObj.voice,
+                      audiosObj.model,
+                      audiosObj.speed,
+                      audiosObj.pitch,
+                      audiosObj.text,
+                    );
+                  }}
+                  icon={DownloadIcon}
+                />
+              </FullSizeCenteredFlexBox>
+            </Grid>
+          </Grid>
         </Box>
       ))}
       <audio src={''} ref={audiosRef} />
+      <a href={''} ref={aRef} download={'tester.wav'} />
     </Box>
   );
 };

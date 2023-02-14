@@ -27,7 +27,7 @@ const Recognition = () => {
   const navigate = useNavigate();
 
   return (
-    <Box>
+    <Box pt={4}>
       <Typography variant={'h5'} align="center" sx={{ color: 'warning.dark' }}>
         {t('pages.home.listen')}
       </Typography>
@@ -37,6 +37,7 @@ const Recognition = () => {
         sx={{ typography: { sm: 'body1', xs: 'body2' } }}
         color={'warning.dark'}
         align="center"
+        height={50}
       >
         {t('pages.home.listenInstructions')}
       </Typography>
@@ -44,7 +45,7 @@ const Recognition = () => {
         <RecognitionImage />
       </CenteredFlexBox>
       <CenteredFlexBox>
-        <Box width={'100%'} maxWidth={500} minWidth={250}>
+        <Box width={'100%'} maxWidth={500} minWidth={350}>
           <AbInteractionContainer
             textbox={<RecognitionTextField rows={breakpointSize === 'xs' ? 3 : 4} />}
             visualisation={
@@ -70,10 +71,10 @@ const Recognition = () => {
       <Transcriptions />
 
       <RecognitionConsentPopup />
-      <CenteredFlexBox p={2}>
+      <CenteredFlexBox p={4}>
         <AbButton
-          label={'More recognition options'}
-          onClick={() => navigate(`${basePath}recognition`)}
+          label={'advanced recognition options'}
+          onClick={() => navigate(`${basePath}speech-recognition`)}
           selected={false}
           color={'warning'}
         />
