@@ -26,11 +26,11 @@ function Home() {
       <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'secondary.wafer' }}>
         <Synthesis />
       </AlmostFullSizeBox>
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'warning.wafer' }}>
         <Recognition />
       </AlmostFullSizeBox>
 
-      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
+      <AlmostFullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
         <Applications />
       </AlmostFullSizeBox>
       <AlmostFullSizeBox py={{ xs: 2, sm: 4 }}>

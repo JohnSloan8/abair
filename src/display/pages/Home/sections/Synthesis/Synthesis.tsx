@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 // import { Calculate } from '@mui/icons-material';
 import Box from '@mui/material/Box';
@@ -9,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { AbInteractionContainer } from 'abair-components';
 import { AbButton } from 'abair-components';
 
+import { basePath } from '@/config';
 // import { headerHeight } from '@/config';
 import SynthesisButtons from '@/display/controllers/Synthesis/SynthesisButtons';
 import SynthesisTextField from '@/display/controllers/Synthesis/SynthesisTextField';
@@ -21,6 +23,7 @@ const Synthesis = () => {
   const { breakpointSize } = useBreakpointSize();
   const { setSynthesisSpeed } = useSynthesisSpeed();
   const { setSynthesisPitch } = useSynthesisPitch();
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   useEffect(() => {
@@ -59,7 +62,7 @@ const Synthesis = () => {
         <CenteredFlexBox p={2}>
           <AbButton
             label={'More synthesis options'}
-            onClick={() => console.log('clicked')}
+            onClick={() => navigate(`${basePath}speech-synthesis`)}
             selected={false}
             color={'secondary'}
           />
