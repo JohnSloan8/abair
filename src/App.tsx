@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import Sizing from '@/display/controllers/Sizing';
 import Header from '@/display/sections/Header';
 import Sidebar from '@/display/sections/Sidebar';
@@ -25,12 +27,12 @@ function App() {
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      setSessionID(self.crypto.randomUUID());
+      setSessionID(uuidv4());
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      setSessionID(self.crypto.randomUUID());
+      setSessionID(uuidv4());
     });
   }, []);
 

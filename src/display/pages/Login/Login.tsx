@@ -48,7 +48,7 @@ function Login() {
         if (searchParams.get('origin')) {
           window.location.href = `${domain}${searchParams.get('origin')}`;
         } else {
-          navigate(`${basePath}profile`, { replace: true });
+          navigate(`${domain}profile`, { replace: true });
         }
       }
     } else {
