@@ -15,6 +15,8 @@ enum Pages {
   NewsItem,
   Login,
   Profile,
+  APIs,
+  Corpora,
   Contact,
   NotFound,
 }

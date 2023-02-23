@@ -10,6 +10,6 @@ interface ApplicationModel {
   image: string;
   description_en: string;
   description_ga: string;
-  category: number;
+  category?: number;
 }
 export type { ApplicationModel, ApplicationCategoryModel };

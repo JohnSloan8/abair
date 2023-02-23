@@ -32,6 +32,8 @@ i18n
             loginSignup: 'Login/Signup',
             profile: 'Profile',
             contact: 'Contact',
+            APIs: 'APIs',
+            corpora: 'corpora',
           },
           infoHeader: {
             home: {
@@ -60,6 +62,10 @@ i18n
                 title: 'Knowledge Base',
                 description:
                   'Learn about the linguistic research being carried out which informs the technological development',
+              },
+              APIs: {
+                title: 'APIs',
+                description: 'Access all the ABAIR APIs',
               },
             },
           },
@@ -167,6 +173,8 @@ i18n
             loginSignup: 'Logáil Isteach/Clarú',
             profile: 'Próifíl',
             contact: 'Teagmháil',
+            APIs: 'APIs',
+            corpora: 'corpora',
           },
           infoHeader: {
             home: {
@@ -196,6 +204,14 @@ i18n
                 title: 'Cillín na Saíochta: Taighde',
                 description:
                   'Féach anseo ar an taighde teangeolaíochta atá á dhéanamh sa tSaotharlann Foghraíochta agus Urlabhra, agus atá ina chrann taca do na forbairtí teicneolaíochta',
+              },
+              APIs: {
+                title: 'APIs',
+                description: 'Access all the ABAIR APIs',
+              },
+              Corpora: {
+                title: 'Corpora',
+                description: 'Access all the ABAIR Corpora',
               },
             },
           },
