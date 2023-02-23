@@ -6,7 +6,7 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
-const production = false;
+const production = true;
 const basePath = '/';
 const domain = production ? 'http://abair-qa.duckdns.org/' : 'http://localhost/';
 

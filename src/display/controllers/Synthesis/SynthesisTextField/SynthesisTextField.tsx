@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import { AbTextField } from 'abair-components';
 
-import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
+// import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { useAwaitingSynthesis, useSynthesisText } from '@/store/synthesis';
 import { useSynthesisVoices } from '@/store/synthesis';
 
@@ -19,13 +19,14 @@ const SynthesisTextField = ({ rows = 4 }: SynthesisTextFieldProps) => {
   const { awaitingSynthesis } = useAwaitingSynthesis();
   const { t } = useTranslation();
 
-  const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
+  // const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
+  const { synthesisVoices } = useSynthesisVoices();
 
   useEffect(() => {
     if (synthesisVoices.length === 0) {
-      getSynthesisMetadata().then((res: any) => {
-        setSynthesisVoices(res);
-      });
+      // getSynthesisMetadata().then((res: any) => {
+      //   setSynthesisVoices(res);
+      // });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

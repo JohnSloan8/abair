@@ -11,7 +11,7 @@ import { AbLoading } from 'abair-components/';
 
 import { CenteredFlexBox } from '@/display/utils/flex';
 import getSynthesis from '@/services/abair/synthesis';
-import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
+// import getSynthesisMetadata from '@/services/abair/synthesis/metadata';
 import { postSynthesisRequest } from '@/services/supabase/synthesis-requests';
 import { useSession, useSessionID } from '@/store/auth';
 import {
@@ -27,8 +27,7 @@ import {
   useSynthesisModel,
   useSynthesisPitch,
   useSynthesisSpeed,
-  useSynthesisVoiceIndex,
-  useSynthesisVoices,
+  useSynthesisVoiceIndex, // useSynthesisVoices,
 } from '@/store/synthesis';
 
 const SynthesisSpeakButton = () => {
@@ -40,29 +39,29 @@ const SynthesisSpeakButton = () => {
   const emptyString = useRecoilValue(isSynthesisTextEmptyString);
   const synthesisVoiceSelectedValue = useRecoilValue(synthesisVoiceSelected);
   const filteredSynthesisVoicesValue = useRecoilValue(filteredSynthesisVoices);
-  const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
-  const { synthesisVoiceIndex, setSynthesisVoiceIndex } = useSynthesisVoiceIndex();
+  // const { synthesisVoices, setSynthesisVoices } = useSynthesisVoices();
+  const { synthesisVoiceIndex } = useSynthesisVoiceIndex();
   const { awaitingSynthesis, setAwaitingSynthesis } = useAwaitingSynthesis();
   const { synthesisModel, setSynthesisModel } = useSynthesisModel();
   const { synthesisPitch } = useSynthesisPitch();
   const { synthesisSpeed } = useSynthesisSpeed();
 
-  useEffect(() => {
-    if (synthesisVoices.length === 0) {
-      getSynthesisMetadata().then((res) => {
-        setSynthesisVoices(res);
-      });
-    } else {
-      null;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (synthesisVoices.length === 0) {
+  //     // getSynthesisMetadata().then((res) => {
+  //     //   setSynthesisVoices(res);
+  //     // });
+  //   } else {
+  //     null;
+  //   }
+  // }, []);
 
   useEffect(() => {
     filteredSynthesisVoicesValue !== undefined
       ? filteredSynthesisVoicesValue.length === 0
-        ? setSynthesisVoiceIndex(-1)
-        : setSynthesisVoiceIndex(synthesisVoices.indexOf(filteredSynthesisVoicesValue[0]))
-      : null;
+      : // ? setSynthesisVoiceIndex(-1)
+        // : setSynthesisVoiceIndex(synthesisVoices.indexOf(filteredSynthesisVoicesValue[0]))
+        null;
   }, [filteredSynthesisVoicesValue]);
 
   useEffect(() => {
