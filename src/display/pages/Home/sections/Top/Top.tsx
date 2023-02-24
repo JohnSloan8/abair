@@ -14,7 +14,7 @@ const Top = () => {
   const { t } = useTranslation();
 
   return (
-    <Box>
+    <Box sx={{ position: 'relative' }}>
       <CenteredFlexBox sx={{ position: 'absolute', width: '100%', height: 60 }}>
         <AbInfoHeader title={t('infoHeader.home.main.title')} />
       </CenteredFlexBox>

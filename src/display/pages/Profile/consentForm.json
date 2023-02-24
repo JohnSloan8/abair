@@ -1,0 +1,34 @@
+{
+  "General Understanding": [
+    {
+      "content": "I confirm that I have read and understood the Information Leaflet for the above study. The information has been fully explained to me and I have been able to ask questions, all of which have been answered to my satisfaction",
+      "section": "1"
+    },
+    {
+      "content": "I understand that taking part in this study is entirely voluntary. I understand that not taking part will have no negative impact on me.  ",
+      "section": "2"
+    },
+    {
+      "content": "I understand that I can leave this study at any time without giving a reason. I understand that leaving this study will not affect my (insert detail as applicable - e.g. education, employment), now or in the future.",
+      "section": "3"
+    },
+    {
+      "content": "I understand that I will not be paid for taking part in this study  or receive any benefits from any products developed as a result of this research study. ",
+      "section": "4"
+    },
+    {
+      "content": "I know how to contact the research team if I need to. ",
+      "section": "5"
+    }
+  ],
+  "Consent": [
+    {
+      "content": "I agree to take part in this research study, having been fully informed of the risks and benefits in the participant information leaflet provided to me.  ",
+      "section": "6"
+    },
+    {
+      "content": "I agree to the use of information about me (personal data) including (insert detail as applicable - e.g. information taken from my personnel file and records and/or information from focus group meetings etc.) being used by the research team for this research study as described in the participant information leaflet. ",
+      "section": "7"
+    }
+  ]
+}

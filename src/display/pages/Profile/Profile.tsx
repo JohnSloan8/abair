@@ -6,12 +6,17 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import { AbPopup } from 'abair-components';
 // import Typography from '@mui/material/Typography';
@@ -29,6 +34,9 @@ import { getGenders } from '@/services/supabase/genders';
 import { createProfile, getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
 import { useDialects, useGenders, useProfile } from '@/store/profile';
+
+import consentForm from './consentForm.json';
+import informationSheet from './informationSheet.json';
 
 function Profile() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -99,7 +107,7 @@ function Profile() {
   return (
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-        <Meta title="Profile" />
+        <Meta title="Profile & Consent" />
         <Box py={{ sm: 4, xs: 2 }}>
           <AbInfoHeader title="Profile" />
         </Box>
@@ -217,6 +225,66 @@ function Profile() {
                     Update profile
                   </Button>
                 </CenteredFlexBox>
+                <Box py={{ sm: 2, xs: 1 }}>
+                  <AbInfoHeader title="Information Sheet" />
+
+                  <Box
+                    width={'100%'}
+                    height={'240px'}
+                    border={1}
+                    mt={2}
+                    borderColor="lightgray"
+                    sx={{ backgroundColor: 'white', overflowY: 'scroll' }}
+                  >
+                    {informationSheet.map((section, i) => (
+                      <Box key={i} p={2}>
+                        <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                          {section.title}
+                        </Typography>
+                        <Typography>{section.content}</Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box p={2}>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Checkbox sx={{ padding: 2 }} />}
+                        label="I have read the Information Sheet"
+                        labelPlacement="start"
+                      />
+                    </FormGroup>
+                  </Box>
+                </Box>
+
+                <Box py={{ sm: 2, xs: 1 }}>
+                  <AbInfoHeader title="Consent Form" />
+                  <Box p={2}>
+                    <FormGroup>
+                      {consentForm['General Understanding'].map((gU, i) => (
+                        <FormControlLabel
+                          key={i}
+                          control={<Checkbox sx={{ padding: 2 }} />}
+                          labelPlacement="start"
+                          label={gU.content}
+                          sx={{ paddingBottom: 2 }}
+                        />
+                      ))}
+                    </FormGroup>
+                  </Box>
+                  <Box p={2}>
+                    <FormGroup>
+                      {consentForm['Consent'].map((c, i) => (
+                        <FormControlLabel
+                          key={i}
+                          control={<Switch sx={{ padding: 2 }} />}
+                          labelPlacement="start"
+                          label={c.content}
+                          sx={{ paddingBottom: 2 }}
+                        />
+                      ))}
+                    </FormGroup>
+                  </Box>
+                </Box>
               </Box>
             ) : (
               <p>not logged in</p>
