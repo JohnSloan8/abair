@@ -15,6 +15,7 @@ enum Pages {
   NewsItem,
   Login,
   Profile,
+  Consent,
   APIs,
   Corpora,
   Contact,

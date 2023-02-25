@@ -1,3 +1,3 @@
-import RecognitionConsentPopup from './RecognitionConsentPopup';
+import RecognitionTempConsentPopup from './RecognitionTempConsentPopup';
 
-export default RecognitionConsentPopup;
+export default RecognitionTempConsentPopup;

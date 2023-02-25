@@ -9,6 +9,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import PersonIcon from '@mui/icons-material/Person';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 import { basePath } from '@/config';
@@ -67,6 +68,15 @@ const routes: Routes = {
     path: `${basePath}knowledge`,
     title: 'knowledge',
     icon: MenuBookIcon,
+    showInSidebar: true,
+    loggedIn: true,
+    loggedOut: true,
+  },
+  [Pages.Consent]: {
+    component: asyncComponentLoader(() => import('@/display/pages/Consent')),
+    path: `${basePath}consent`,
+    title: 'consent',
+    icon: PlaylistAddCheckIcon,
     showInSidebar: true,
     loggedIn: true,
     loggedOut: true,

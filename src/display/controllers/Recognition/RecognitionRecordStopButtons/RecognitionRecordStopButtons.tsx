@@ -6,26 +6,26 @@ import { AbLoading } from 'abair-components/';
 
 import Media from '@/display/controllers/Media';
 import { CenteredFlexBox } from '@/display/utils/flex';
-import { useConsent, useShowConsent } from '@/store/consent';
 import {
   useAwaitingTranscription,
   useMediaRecorderExists,
   useVoiceRecording,
 } from '@/store/recognition';
+import { useShowTempConsent, useTempConsent } from '@/store/tempConsent';
 
 const RecognitionRecordStopButtons = () => {
   const { voiceRecording, setVoiceRecording } = useVoiceRecording();
   const { awaitingTranscription } = useAwaitingTranscription();
   const { mediaRecorderExists } = useMediaRecorderExists();
-  const { consent } = useConsent();
-  const { setShowConsent } = useShowConsent();
+  const { tempConsent } = useTempConsent();
+  const { setShowTempConsent } = useShowTempConsent();
 
   const handleClick = () => {
     if (mediaRecorderExists) {
-      if (consent) {
+      if (tempConsent) {
         setVoiceRecording(true);
       } else {
-        setShowConsent(true);
+        setShowTempConsent(true);
       }
     } else {
       alert(

@@ -3,18 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { AbPopup } from 'abair-components';
 
 import { FullSizeCenteredFlexBox } from '@/display/utils/flex';
-import { useConsent, useShowConsent } from '@/store/consent';
+import { useShowTempConsent, useTempConsent } from '@/store/tempConsent';
 
-const RecognitionConsentPopup = () => {
+const RecognitionTempConsentPopup = () => {
   const { t } = useTranslation();
-  const { showConsent, setShowConsent } = useShowConsent();
-  const { setConsent } = useConsent();
-  const onClickConsent = (agree: boolean) => {
-    setConsent(agree);
-    setShowConsent(false);
+  const { showTempConsent, setShowTempConsent } = useShowTempConsent();
+  const { setTempConsent } = useTempConsent();
+  const onClickTempConsent = (agree: boolean) => {
+    setTempConsent(agree);
+    setShowTempConsent(false);
   };
 
-  return showConsent ? (
+  return showTempConsent ? (
     <FullSizeCenteredFlexBox
       sx={{ zIndex: 9999, position: 'fixed', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
     >
@@ -27,10 +27,10 @@ const RecognitionConsentPopup = () => {
           { text: 'agree', color: 'primary' },
         ]}
         borderColor="warning.main"
-        onClick={onClickConsent}
+        onClick={onClickTempConsent}
       />
     </FullSizeCenteredFlexBox>
   ) : null;
 };
 
-export default RecognitionConsentPopup;
+export default RecognitionTempConsentPopup;

@@ -33,7 +33,8 @@ i18n
             profile: 'Profile',
             contact: 'Contact',
             APIs: 'APIs',
-            corpora: 'corpora',
+            corpora: 'Corpora',
+            consent: 'Consent',
           },
           infoHeader: {
             home: {
@@ -174,7 +175,8 @@ i18n
             profile: 'Próifíl',
             contact: 'Teagmháil',
             APIs: 'APIs',
-            corpora: 'corpora',
+            corpora: 'Corpora',
+            consent: 'Consent',
           },
           infoHeader: {
             home: {

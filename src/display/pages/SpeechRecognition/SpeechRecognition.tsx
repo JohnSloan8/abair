@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid';
 
 import { AbInfoHeader } from 'abair-components';
 
-import RecognitionConsentPopup from '@/display/controllers/Recognition/RecognitionConsentPopup';
 import RecognitionProgressBar from '@/display/controllers/Recognition/RecognitionProgressBar';
 import RecognitionRecordStopButtons from '@/display/controllers/Recognition/RecognitionRecordStopButtons';
+import RecognitionTempConsentPopup from '@/display/controllers/Recognition/RecognitionTempConsentPopup';
 import RecognitionWaveVisual from '@/display/controllers/Recognition/RecognitionWaveVisual';
 import Transcriptions from '@/display/controllers/Transcriptions';
 import TranscriptionsList from '@/display/controllers/TranscriptionsList';
@@ -88,7 +88,7 @@ function SpeechRecognition() {
       </Box>
 
       <Transcriptions />
-      <RecognitionConsentPopup />
+      <RecognitionTempConsentPopup />
     </HorizontallyCenteredFlexBox>
   );
 }

@@ -1,8 +1,19 @@
 import { atom, useRecoilState } from 'recoil';
 
-const consentState = atom<boolean>({
+import { Database } from '../../../types/supabase';
+
+const consentState = atom<Database['public']['Tables']['consent']['Row']>({
   key: 'consent',
-  default: false,
+  default: {
+    agree: false,
+    contact: false,
+    created_at: null,
+    data: false,
+    leave: false,
+    read_info: false,
+    user_id: '',
+    voluntary: false,
+  },
 });
 
 const useConsent = () => {
@@ -10,14 +21,24 @@ const useConsent = () => {
   return { consent, setConsent };
 };
 
-const showConsentState = atom<boolean>({
-  key: 'show-consent',
+const tempConsentState = atom<boolean>({
+  key: 'tempConsent',
   default: false,
 });
 
-const useShowConsent = () => {
-  const [showConsent, setShowConsent] = useRecoilState(showConsentState);
-  return { showConsent, setShowConsent };
+const useTempConsent = () => {
+  const [tempConsent, setTempConsent] = useRecoilState(tempConsentState);
+  return { tempConsent, setTempConsent };
 };
 
-export { useConsent, useShowConsent };
+const showTempConsentState = atom<boolean>({
+  key: 'show-tempConsent',
+  default: false,
+});
+
+const useShowTempConsent = () => {
+  const [showTempConsent, setShowTempConsent] = useRecoilState(showTempConsentState);
+  return { showTempConsent, setShowTempConsent };
+};
+
+export { useTempConsent, useShowTempConsent, useConsent };

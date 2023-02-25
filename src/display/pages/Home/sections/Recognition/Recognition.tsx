@@ -12,8 +12,8 @@ import { AbButton } from 'abair-components';
 
 import { basePath } from '@/config';
 import RecognitionButtons from '@/display/controllers/Recognition/RecognitionButtons';
-import RecognitionConsentPopup from '@/display/controllers/Recognition/RecognitionConsentPopup';
 import RecognitionImage from '@/display/controllers/Recognition/RecognitionImage';
+import RecognitionTempConsentPopup from '@/display/controllers/Recognition/RecognitionTempConsentPopup';
 import RecognitionTextField from '@/display/controllers/Recognition/RecognitionTextField';
 import RecognitionWaveVisual from '@/display/controllers/Recognition/RecognitionWaveVisual';
 import Transcriptions from '@/display/controllers/Transcriptions';
@@ -70,7 +70,7 @@ const Recognition = () => {
 
       <Transcriptions />
 
-      <RecognitionConsentPopup />
+      <RecognitionTempConsentPopup />
       <CenteredFlexBox p={4}>
         <AbButton
           label={'advanced recognition options'}
