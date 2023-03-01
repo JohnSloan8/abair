@@ -26,7 +26,7 @@ import {
 } from '@/display/utils/flex';
 import { getDialects } from '@/services/supabase/dialects';
 import { getGenders } from '@/services/supabase/genders';
-import { createProfile, getProfile, updateProfile } from '@/services/supabase/profile';
+import { getProfile, updateProfile } from '@/services/supabase/profile';
 import { useSession } from '@/store/auth';
 import { useDialects, useGenders, useProfile } from '@/store/profile';
 
@@ -46,11 +46,7 @@ function Profile() {
         if (p !== undefined && p.length !== 0) {
           setProfile(p[0]);
         } else {
-          createProfile(session.user.id).then((p) => {
-            if (p !== undefined) {
-              setProfile(p);
-            }
-          });
+          console.log('no profile');
         }
       });
     } else {
