@@ -104,7 +104,7 @@ function Profile() {
           <AbInfoHeader title="Profile" />
         </Box>
         <CenteredFlexBox m={2}>
-          <div aria-live="polite">
+          <Box>
             {loading ? (
               'Loading...'
             ) : session ? (
@@ -221,7 +221,7 @@ function Profile() {
             ) : (
               <p>not logged in</p>
             )}
-          </div>
+          </Box>
         </CenteredFlexBox>
       </Box>
       {profileUpdatedVisible && (

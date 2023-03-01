@@ -18,78 +18,40 @@ import supabase from '@/services/supabase';
 function Login() {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const [confirmationEmailSent] = useState(false);
-  const [showSignupPage, setShowSignupPage] = useState(false);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const toggleSignupPage = () => {
-    setShowSignupPage(!showSignupPage);
-  };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (showSignupPage) {
-      setLoading(true);
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      });
+
+    setLoading(true);
+    // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
+    supabase.auth.signInWithPassword({ email, password }).then(() => {
       setLoading(false);
-      if (error) {
-        console.log(error);
+      if (searchParams.get('origin')) {
+        window.location.href = `${domain}${searchParams.get('origin')}`;
       } else {
-        console.log(data.user);
-        // setConfirmationEmailSent(true);
-        setShowSignupPage(false);
-        if (searchParams.get('origin')) {
-          window.location.href = `${domain}${searchParams.get('origin')}`;
-        } else {
-          navigate(`${domain}profile`, { replace: true });
-        }
+        navigate(`${basePath}profile`, { replace: true });
       }
-    } else {
-      setLoading(true);
-      // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
-      supabase.auth.signInWithPassword({ email, password }).then(() => {
-        setLoading(false);
-        if (searchParams.get('origin')) {
-          window.location.href = `${domain}${searchParams.get('origin')}`;
-        } else {
-          navigate(`${basePath}profile`, { replace: true });
-        }
-      });
-    }
+    });
   };
 
   return (
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-        <Meta title={t('pageTitles.loginSignup')} />
-        {confirmationEmailSent ? (
-          <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader
-              title="Confirmation Email sent"
-              description="Please check your email to confirm your accout. Then you can login to Abair."
-            />
-          </Box>
-        ) : showSignupPage ? (
-          <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pages.auth.signup')} />
-          </Box>
-        ) : (
-          <Box py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pages.auth.login')} />
-          </Box>
-        )}
+        <Meta title={t('pageTitles.login')} />
+
+        <Box py={{ sm: 4, xs: 2 }}>
+          <AbInfoHeader title={t('pages.auth.login')} />
+        </Box>
+
         <CenteredFlexBox m={2}>
           {loading ? (
             'Processing...'
-          ) : confirmationEmailSent ? (
-            <></>
           ) : (
             <Box
               component="form"
@@ -127,45 +89,22 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Grid>
-                {showSignupPage ? (
-                  <>
-                    <Grid item xs={12} my={1}>
-                      <TextField
-                        required
-                        fullWidth
-                        name="confirm password"
-                        label={t('pages.auth.confirmPassword')}
-                        type="password"
-                        id="password"
-                        autoComplete="new-password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </Grid>
-                    <CenteredFlexBox sx={{ width: '100%' }}>
-                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        {t('pages.auth.signup')}
-                      </Button>
-                    </CenteredFlexBox>
-
-                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                      {t('pages.auth.haveAccount')}
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <CenteredFlexBox sx={{ width: '100%' }}>
-                      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        {t('pages.auth.login')}
-                      </Button>
-                    </CenteredFlexBox>
-
-                    <Button sx={{ color: 'secondary.main' }} onClick={toggleSignupPage}>
-                      {t('pages.auth.createAccount')}
-                    </Button>
-                  </>
-                )}
               </Grid>
+
+              <CenteredFlexBox sx={{ width: '100%' }}>
+                <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                  {t('pages.auth.login')}
+                </Button>
+              </CenteredFlexBox>
+
+              <Button
+                sx={{ color: 'secondary.main' }}
+                onClick={() => {
+                  navigate('/sign-up');
+                }}
+              >
+                {t('pages.auth.createAccount')}
+              </Button>
             </Box>
           )}
         </CenteredFlexBox>

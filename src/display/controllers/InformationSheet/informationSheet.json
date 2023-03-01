@@ -1,0 +1,76 @@
+{
+  "over 16": [
+    {
+      "title": "Invitation ",
+      "content": "You are being invited to be recorded reading aloud for linguistic and speech-technological research concerning Irish as part of the ABAIR Project. In addition to that, you have the option to register with the project’s informants’ network Líonra Faisnéiseoirí (LíoFa) which will allow you to take part in future research by ABAIR."
+    },
+    {
+      "title": "What is the purpose of the study?",
+      "content": "The ABAIR Project conducts research on Irish in order to improve scientific/linguistic knowledge of the language, and to develop speech technology for the language. More information about the project, and our publicly available applications and resources, can be found at www.abair.tcd.ie LíoFa allows ABAIR researchers to contact Irish speakers as part of new or ongoing work, such as online perception tests, feedback on our applications, further recording, etc. "
+    },
+    {
+      "title": "Why have I been chosen to participate? ",
+      "content": "We are recruiting people who speak Irish to part in this research. "
+    },
+    {
+      "title": "Do I have to take part? ",
+      "content": "No. It is up to you to decide whether or not to take part. If you do decide to take part you will be given this information leaflet to keep and asked to sign a consent form. Additionally, and independently, you do not have to register with LíoFa in order to take part today. If you do decide to take part, you will still be free to change your mind at any time and without giving a reason"
+    },
+    {
+      "title": "What will happen to me if I take part? ",
+      "content": "If you agree to take part in this research, your voice will be recorded and stored for analysis along with limited personal information about your age, linguistic background, and relationship with the Irish language. Your personal data will be stored between a server in Trinity College and the cloud, in a manner compliant with GDPR safeguarding. Directly identifiable personal information, such as contact details, will be kept in an encrypted file and will be destroyed after 10 years. Pseudonymised data (i.e. the speech recording itself, and limited biographical/language information) will be kept indefinitely for archival purposes, as this may be of interest to future research on the Irish language. However, you may contact ABAIR at any time (details provided below) to request the destruction of all data relating to you, and this will be carried out as soon as possible. Storage of your personal data will be restricted to the European Union and countries deemed 'adequate' with regards to data safeguarding."
+    },
+    {
+      "title": "What are the benefits of taking part?",
+      "content": "Participants will be directly contributing to the development of speech technology for the Irish language. With ABAIR, these resources are being developed with public funding and are made freely available to the public without intention to monetise or privatise. "
+    },
+    {
+      "title": "What are the possible disadvantages and risks of taking part?",
+      "content": "Minimal. The data (including recordings) being collected are not at all of a sensitive nature. All personal data will be treated with appropriate care in line with our legal responsibilities.  "
+    },
+    {
+      "title": "Will my participation in this study be kept confidential?",
+      "content": "Your privacy is important to us. As noted above, your personal information will be stored securely in Trinity College, Dublin for up to 10 years, after the destruction of which only pseudonymised speech recordings will remain in our holding. Speech data and limited, scientifically relevant information (such as age, gender, and language background) may be shared internationally with the wider scientific community. However, any information that leaves Trinity will have no association with your name or contact details; your identity remains confidential to anyone outside of ABAIR."
+    },
+    {
+      "title": "What will happen to the results of this research?",
+      "content": "Information from this research may be presented at conferences and seminars and/or published in scientific papers. If this is the case, your identity will remain confidential. "
+    },
+    {
+      "title": "What do I do if I have any further questions? ",
+      "content": "If you have any questions or concerns regarding your participation in this research, please ask the researcher that gave you this information leaflet for further information. They will be happy to answer any questions that you may have. "
+    },
+    { "title": "Date", "content": "01/04/2023" },
+    { "title": "Data Controller", "content": "Trinity College, Dublin" },
+    {
+      "title": "Data Protection Officer",
+      "content": "Data Protection Officer, Secretary's Office, Trinity College, Dublin, Dublin 2,Ireland,\nEmail: dataprotection@tcd.ie, \nWebsite: www.tcd.ie/privacy "
+    },
+    {
+      "title": "What is the lawful basis to use my personal data? ",
+      "content": "The legal basis for processing your personal data comes from the EU General Data Protection Regulation (GDPR). With your consent (Article 6(1)(a) GDPR), your information will only be used for this research which aims in the public interest to improve linguistic knowledge of Irish and develop speech technology with this knowledge (Article 6(1)(e,f) GDPR). "
+    },
+    {
+      "title": "What are my rights in relation to your use of my personal data?",
+      "content": "You are entitled to request any of the rights below unless it would make it impossible or very difficult to carry out the research study. The right to access to your personal data;  The right to receive a copy of your personal data; The right to ask us to restrict our use of your personal data;  The right to ask us to correct inaccurate information about you; or  The right to ask us to delete your personal data.  You are entitled to object to any further processing of the information we hold about you (except where it is de-identified).  You can exercise these rights or learn more about data protection in relation to this study by contacting the PI at [insert detail] or the Trinity College Data Protection Officer (contact details above).  Please note that these rights relate to data which could identify you (personal data). If your data has been anonymised, we will not be able to access or delete it as we will have no way of being able to link the data to you.  If you are unhappy with how we have used your personal data, you can raise a concern with the Data Protection Commission via their online form – https://forms.dataprotection.ie/contact – or contact the Commission at: Data Protection Commission, 21 Fitzwilliam Square South, Dublin 2, D02 RD28, Ireland, https://www.dataprotection.ie "
+    }
+  ],
+  "under 16": [
+    {
+      "title": "What is the lawful basis to use my personal data? ",
+      "content": "The legal basis for processing your personal data comes from the EU General Data Protection Regulation (GDPR). With your consent (Article 6(1)(a) GDPR), your information will only be used for this research which aims in the public interest to improve linguistic knowledge of Irish and develop speech technology with this knowledge (Article 6(1)(e,f) GDPR). "
+    },
+    {
+      "title": "What are my rights in relation to your use of my personal data?",
+      "content": "You are entitled to request any of the rights below unless it would make it impossible or very difficult to carry out the research study. The right to access to your personal data;  The right to receive a copy of your personal data; The right to ask us to restrict our use of your personal data;  The right to ask us to correct inaccurate information about you; or  The right to ask us to delete your personal data.  You are entitled to object to any further processing of the information we hold about you (except where it is de-identified).  You can exercise these rights or learn more about data protection in relation to this study by contacting the PI at [insert detail] or the Trinity College Data Protection Officer (contact details above).  Please note that these rights relate to data which could identify you (personal data). If your data has been anonymised, we will not be able to access or delete it as we will have no way of being able to link the data to you.  If you are unhappy with how we have used your personal data, you can raise a concern with the Data Protection Commission via their online form – https://forms.dataprotection.ie/contact – or contact the Commission at: Data Protection Commission, 21 Fitzwilliam Square South, Dublin 2, D02 RD28, Ireland, https://www.dataprotection.ie "
+    }
+  ],
+  "parent": [
+    { "title": "Date", "content": "01/04/2023" },
+    { "title": "Data Controller", "content": "Trinity College, Dublin" },
+    {
+      "title": "Data Protection Officer",
+      "content": "Data Protection Officer, Secretary's Office, Trinity College, Dublin, Dublin 2,Ireland,\nEmail: dataprotection@tcd.ie, \nWebsite: www.tcd.ie/privacy "
+    }
+  ]
+}

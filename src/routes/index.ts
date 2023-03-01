@@ -4,12 +4,12 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import PersonIcon from '@mui/icons-material/Person';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 
 import { basePath } from '@/config';
@@ -72,15 +72,6 @@ const routes: Routes = {
     loggedIn: true,
     loggedOut: true,
   },
-  [Pages.Consent]: {
-    component: asyncComponentLoader(() => import('@/display/pages/Consent')),
-    path: `${basePath}consent`,
-    title: 'consent',
-    icon: PlaylistAddCheckIcon,
-    showInSidebar: true,
-    loggedIn: true,
-    loggedOut: true,
-  },
   [Pages.Geabaire]: {
     component: asyncComponentLoader(() => import('@/display/pages/Geabaire')),
     path: `${basePath}geabaire`,
@@ -119,8 +110,17 @@ const routes: Routes = {
   [Pages.Login]: {
     component: asyncComponentLoader(() => import('@/display/pages/Login')),
     path: `${basePath}login`,
-    title: 'loginSignup',
+    title: 'login',
     icon: LoginIcon,
+    showInSidebar: true,
+    loggedIn: false,
+    loggedOut: true,
+  },
+  [Pages.SignUp]: {
+    component: asyncComponentLoader(() => import('@/display/pages/SignUp')),
+    path: `${basePath}sign-up`,
+    title: 'signUp',
+    icon: HowToRegIcon,
     showInSidebar: true,
     loggedIn: false,
     loggedOut: true,

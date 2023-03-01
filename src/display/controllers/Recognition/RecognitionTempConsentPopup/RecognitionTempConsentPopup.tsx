@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { AbPopup } from 'abair-components';
 
 import { FullSizeCenteredFlexBox } from '@/display/utils/flex';
-import { useShowTempConsent, useTempConsent } from '@/store/tempConsent';
+import { useShowTempConsent, useTempConsent } from '@/store/consent';
 
 const RecognitionTempConsentPopup = () => {
   const { t } = useTranslation();

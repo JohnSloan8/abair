@@ -1,14 +1,19 @@
 import supabase from '@/services/supabase';
 
-const getConsent = async (userID: string) => {
+const getConsent = async (consentGroup: string) => {
   try {
-    const { data, error } = await supabase.from('consent').select(`*`).eq('id', userID).single();
+    const { data, error } = await supabase
+      .from('ab_consent')
+      .select(`*`)
+      .eq('consent_group', consentGroup);
 
     if (error) {
       throw error;
+      console.log('error', error);
     }
 
     if (data) {
+      console.log('data', data);
       return data;
     }
 
