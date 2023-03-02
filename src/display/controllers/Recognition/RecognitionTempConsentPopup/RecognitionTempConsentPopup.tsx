@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { AbPopup } from 'abair-components';
 
-import { FullSizeCenteredFlexBox } from '@/display/utils/flex';
+import { CenteredFlexBox } from '@/display/utils/flex';
 import { useShowTempConsent, useTempConsent } from '@/store/consent';
 
 const RecognitionTempConsentPopup = () => {
@@ -15,8 +15,15 @@ const RecognitionTempConsentPopup = () => {
   };
 
   return showTempConsent ? (
-    <FullSizeCenteredFlexBox
-      sx={{ zIndex: 9999, position: 'fixed', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
+    <CenteredFlexBox
+      sx={{
+        zIndex: 9999,
+        position: 'fixed',
+        top: '0',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        width: '50%',
+        height: '100%',
+      }}
     >
       <AbPopup
         title={t('pages.recognition.privacyTitle')}
@@ -29,7 +36,7 @@ const RecognitionTempConsentPopup = () => {
         borderColor="warning.main"
         onClick={onClickTempConsent}
       />
-    </FullSizeCenteredFlexBox>
+    </CenteredFlexBox>
   ) : null;
 };
 

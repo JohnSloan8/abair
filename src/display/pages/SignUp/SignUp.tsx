@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import DownloadIcon from '@mui/icons-material/Download';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -11,7 +12,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
 
-import { AbInfoHeader } from 'abair-components';
+import { AbIconButton, AbInfoHeader } from 'abair-components';
 
 // import { domain } from '@/config';
 import Consent from '@/display/controllers/Consent';
@@ -117,9 +118,31 @@ function SignUp() {
                           // consent for the ABAIR project."
                           group="over 16"
                         />
+                        <CenteredFlexBox>
+                          <Typography>Download Information Sheet</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
                         <Consent group="over 16" title="Consent" />
+                        <CenteredFlexBox>
+                          <Typography>Download Consent Form</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
 
                       <Box mt={4}>
@@ -156,9 +179,31 @@ function SignUp() {
                           // description="Please read the information below pertaining to GDPR and informed consent for your child or dependent."
                           group="parent"
                         />
+                        <CenteredFlexBox>
+                          <Typography>Download Parent/Caregiver Information Sheet</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
                         <Consent group="parent" title="Consent for Parents and Caregivers" />
+                        <CenteredFlexBox>
+                          <Typography>Download Parent/Caregiver Consent Form</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
                         <Box mt={4}>
@@ -179,9 +224,31 @@ function SignUp() {
                           // description="Please read the information below pertaining to GDPR and informed consent for your child or dependent."
                           group="under 16"
                         />
+                        <CenteredFlexBox>
+                          <Typography>Download Under 16s Information Sheet</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
                         <Consent group="under 16" title="Consent for Under 16s" />
+                        <CenteredFlexBox>
+                          <Typography>Download Under 16s Consent Form</Typography>
+                          <AbIconButton
+                            selected={true}
+                            color="secondary"
+                            onClick={() => {
+                              console.log('download');
+                            }}
+                            icon={DownloadIcon}
+                          />
+                        </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
                         <Box mt={4}>

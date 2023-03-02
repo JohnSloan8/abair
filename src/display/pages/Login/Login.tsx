@@ -96,15 +96,16 @@ function Login() {
                   {t('pages.auth.login')}
                 </Button>
               </CenteredFlexBox>
-
-              <Button
-                sx={{ color: 'secondary.main' }}
-                onClick={() => {
-                  navigate('/sign-up');
-                }}
-              >
-                {t('pages.auth.createAccount')}
-              </Button>
+              <CenteredFlexBox sx={{ width: '100%' }}>
+                <Button
+                  sx={{ color: 'secondary.main' }}
+                  onClick={() => {
+                    navigate('/sign-up');
+                  }}
+                >
+                  {t('pages.auth.createAccount')}
+                </Button>
+              </CenteredFlexBox>
             </Box>
           )}
         </CenteredFlexBox>
