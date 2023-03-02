@@ -2,46 +2,70 @@
   "over 16": [
     {
       "title": "read_info",
-      "content": "I confirm that I have read and understood the Information Leaflet for the above study. The information has been fully explained to me and I have been able to ask questions, all of which have been answered to my satisfaction"
+      "content": "I confirm that I have read and understood the Information Leaflet."
     },
 
     {
       "title": "voluntary",
-      "content": "I understand that taking part in this study is entirely voluntary. I understand that not taking part will have no negative impact on me.  "
+      "content": "I understand that joining ABAIR and using the platform is entirely voluntary. I understand that not taking part will have no negative impact on me.  "
     },
     {
       "title": "leave",
-      "content": "I understand that I can leave this study at any time without giving a reason. I understand that leaving this study will not affect my (insert detail as applicable - e.g. education, employment), now or in the future."
+      "content": "I understand that I can stop using the paltform and close my account at any time without giving a reason. I understand that doing so will not affect me in any negative manner."
     },
-    { "title": "contact", "content": "I know how to contact the research team if I need to. " },
+    { "title": "contact", "content": "I know how to contact the research team if I need to." },
     {
       "title": "agree",
-      "content": "I agree to take part in this research study, having been fully informed of the risks and benefits in the participant information leaflet provided to me.  "
+      "content": "I agree to take part in this research study, having been fully informed of the risks and benefits in the Information Sheet."
     },
     {
       "title": "data",
-      "content": "I agree to the use of information about me (personal data) including (insert detail as applicable - e.g. information taken from my personnel file and records and/or information from focus group meetings etc.) being used by the research team for this research study as described in the participant information leaflet. "
+      "content": "I agree to the use of data collected from my use of ABAIR, including voice recordings (from use of speech recognition), and basic demographic information about me (e.g. sex, birth year, linguistic background) being used by the research team for this research project as described in the Information Sheet. "
     }
   ],
   "under 16": [
     {
       "title": "read_info",
-      "content": "I confirm that I have read and understood the Information Leaflet for the above study. The information has been fully explained to me and I have been able to ask questions, all of which have been answered to my satisfaction"
+      "content": "I read the Information Sheet and understand it."
     },
 
     {
       "title": "voluntary",
-      "content": "I understand that taking part in this study is entirely voluntary. I understand that not taking part will have no negative impact on me.  "
+      "content": "Joining ABAIR is my choice."
+    },
+
+    {
+      "title": "leave",
+      "content": "I can stop using ABAIR whenever I want."
+    },
+
+    {
+      "title": "agree",
+      "content": "I agree to join ABAIR."
     }
   ],
   "parent": [
     {
+      "title": "read_info",
+      "content": "I confirm that I have read and understood the Information Leaflet."
+    },
+
+    {
+      "title": "voluntary",
+      "content": "I understand that my child/dependant's joining ABAIR and using the platform is entirely voluntary. I understand that not joining will have no negative impact on them.  "
+    },
+    {
+      "title": "leave",
+      "content": "I understand that my child/dependant can stop using the paltform and close their account at any time without giving a reason. I understand that doing so will not affect them in any negative manner."
+    },
+    { "title": "contact", "content": "I know how to contact the research team if I need to." },
+    {
       "title": "agree",
-      "content": "I agree to take part in this research study, having been fully informed of the risks and benefits in the participant information leaflet provided to me.  "
+      "content": "I agree for my my child/dependant to take part in this research project, having been fully informed of the risks and benefits in the Information Sheet."
     },
     {
       "title": "data",
-      "content": "I agree to the use of information about me (personal data) including (insert detail as applicable - e.g. information taken from my personnel file and records and/or information from focus group meetings etc.) being used by the research team for this research study as described in the participant information leaflet. "
+      "content": "I agree to the use of data collected from my child/dependant's use of ABAIR, including voice recordings (from use of speech recognition), and basic demographic information about them (e.g. sex, birth year, linguistic background) being used by the research team for this research project as described in the Information Sheet. "
     }
   ]
 }

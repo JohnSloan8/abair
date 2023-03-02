@@ -154,11 +154,11 @@ function SignUp() {
                         <InformationSheet
                           title="Information Sheet for Parents and Caregivers of Under 16s"
                           // description="Please read the information below pertaining to GDPR and informed consent for your child or dependent."
-                          group="under 16"
+                          group="parent"
                         />
                       </Box>
                       <Box mt={4}>
-                        <Consent group="under 16" title="Consent for Parents and Caregivers" />
+                        <Consent group="parent" title="Consent for Parents and Caregivers" />
                       </Box>
                       <Box mt={4}>
                         <Box mt={4}>
