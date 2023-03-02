@@ -69,6 +69,11 @@ i18n
                 title: 'APIs',
                 description: 'Access all the ABAIR APIs',
               },
+
+              corpora: {
+                title: 'Corpora',
+                description: 'Access all the ABAIR Corpora',
+              },
             },
           },
           pages: {
@@ -214,7 +219,7 @@ i18n
                 title: 'APIs',
                 description: 'Access all the ABAIR APIs',
               },
-              Corpora: {
+              corpora: {
                 title: 'Corpora',
                 description: 'Access all the ABAIR Corpora',
               },

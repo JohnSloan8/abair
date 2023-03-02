@@ -60,52 +60,59 @@ function Corpora() {
   return (
     <HorizontallyCenteredFlexBox pb={8}>
       <Box sx={{ width: '100%', maxWidth: 'md' }}>
-        <Meta title={t('pageTitles.APIs')} />
+        <Meta title={t('pageTitles.corpora')} />
         <CenteredFlexBox>
           <Box sx={{ maxWidth: 'md', width: '100%' }} py={{ sm: 4, xs: 2 }}>
-            <AbInfoHeader title={t('pageTitles.APIs')} />
+            <AbInfoHeader title={t('pageTitles.corpora')} />
           </Box>
         </CenteredFlexBox>
-
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
-          >
-            <FormControlLabel value="female" control={<Radio />} label="Female" />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-          </RadioGroup>
-        </FormControl>
-
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Age</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
-          >
-            <FormControlLabel value="under 18" control={<Radio />} label="under 18" />
-            <FormControlLabel value="18-34" control={<Radio />} label="18-34" />
-            <FormControlLabel value="35-50" control={<Radio />} label="35-50" />
-            <FormControlLabel value="50+" control={<Radio />} label="50+" />
-          </RadioGroup>
-        </FormControl>
-
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Location</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
-          >
-            <FormControlLabel value="Oireachtas" control={<Radio />} label="Oireachtas" />
-            <FormControlLabel value="Lab" control={<Radio />} label="Lab" />
-            <FormControlLabel value="Home" control={<Radio />} label="Home" />
-          </RadioGroup>
-        </FormControl>
-
+        <HorizontallyCenteredFlexBox>
+          <Box m={1}>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="all"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel value="all" control={<Radio />} label="all" />
+                <FormControlLabel value="female" control={<Radio />} label="Female" />
+                <FormControlLabel value="male" control={<Radio />} label="Male" />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+          <Box m={1}>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Age</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="all"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel value="all" control={<Radio />} label="all" />
+                <FormControlLabel value="under 18" control={<Radio />} label="under 18" />
+                <FormControlLabel value="18-34" control={<Radio />} label="18-34" />
+                <FormControlLabel value="35-50" control={<Radio />} label="35-50" />
+                <FormControlLabel value="50+" control={<Radio />} label="50+" />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+          <Box m={1}>
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Location</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="all"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel value="all" control={<Radio />} label="all" />
+                <FormControlLabel value="Oireachtas" control={<Radio />} label="Oireachtas" />
+                <FormControlLabel value="Lab" control={<Radio />} label="Lab" />
+                <FormControlLabel value="Home" control={<Radio />} label="Home" />
+              </RadioGroup>
+            </FormControl>
+          </Box>
+        </HorizontallyCenteredFlexBox>
         <CenteredFlexBox mt={2}>
           <Box sx={{ maxWidth: 'md', width: '100%' }}>
             {corpora.map((a: ApplicationModel, i: number) => (
