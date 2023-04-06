@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import DownloadIcon from '@mui/icons-material/Download';
 import Box from '@mui/material/Box';
@@ -28,6 +28,7 @@ import { useProfile } from '@/store/profile';
 function SignUp() {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
+  const [searchParams] = useSearchParams();
 
   const [group, setGroup] = useState('');
 
@@ -40,11 +41,8 @@ function SignUp() {
   const { setProfile } = useProfile();
 
   const navigate = useNavigate();
-  // const [searchParams] = useSearchParams();
 
   const handleSubmit = async () => {
-    console.log('email:', email);
-    console.log('password:', password);
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email: email,
@@ -61,7 +59,11 @@ function SignUp() {
             setProfile(p);
           }
         });
-        navigate(`/profile`, { replace: true });
+        if (searchParams.get('origin') !== null) {
+          navigate(`/profile?origin=${searchParams.get('origin')}`, { replace: true });
+        } else {
+          navigate(`/profile`, { replace: true });
+        }
       }
     }
   };
@@ -280,7 +282,11 @@ function SignUp() {
           <Button
             sx={{ color: 'secondary.main' }}
             onClick={() => {
-              navigate('/login');
+              if (searchParams.get('origin') !== null) {
+                navigate(`/login?origin=${searchParams.get('origin')}`);
+              } else {
+                navigate('/login');
+              }
             }}
           >
             {t('pages.auth.haveAccount')}

@@ -50,7 +50,11 @@ function Profile() {
         }
       });
     } else {
-      navigate(`${domain}/login`);
+      if (searchParams.get('origin') !== null) {
+        navigate(`/login?origin=${searchParams.get('origin')}`);
+      } else {
+        navigate(`/login`);
+      }
     }
 
     if (dialects === undefined) {
@@ -80,11 +84,12 @@ function Profile() {
     if (session !== null) {
       setLoading(true);
       updateProfile(profile).then(() => {
-        setProfileUpdatedVisible(true);
         setLoading(false);
 
         if (searchParams.get('origin')) {
           window.location.href = `${domain}/${searchParams.get('origin')}`;
+        } else {
+          setProfileUpdatedVisible(true);
         }
       });
     } else {

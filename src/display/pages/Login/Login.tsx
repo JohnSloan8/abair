@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -39,6 +39,10 @@ function Login() {
       }
     });
   };
+
+  useEffect(() => {
+    console.log('searchParams:', searchParams.get('origin'));
+  }, []);
 
   return (
     <HorizontallyCenteredFlexBox>
@@ -100,7 +104,11 @@ function Login() {
                 <Button
                   sx={{ color: 'secondary.main' }}
                   onClick={() => {
-                    navigate('/sign-up');
+                    if (searchParams.get('origin') !== null) {
+                      navigate(`/sign-up?origin=${searchParams.get('origin')}`);
+                    } else {
+                      navigate('/sign-up');
+                    }
                   }}
                 >
                   {t('pages.auth.createAccount')}

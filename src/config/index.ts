@@ -8,7 +8,7 @@ const repository = 'https://github.com/JohnSloan8/abair';
 
 const production = false;
 const basePath = '/';
-const domain = production ? 'https://abair-qa.duckdns.org/' : 'http://localhost:8000/';
+const domain = production ? 'https://detail-design-develop.com' : 'http://localhost:8000';
 
 const synthesisURL = 'https://abair.ie/api2/synthesise';
 const synthesisMetadataURL = 'https://abair.ie/api2/meta';
