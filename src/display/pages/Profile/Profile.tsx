@@ -84,7 +84,7 @@ function Profile() {
         setLoading(false);
 
         if (searchParams.get('origin')) {
-          window.location.href = `${domain}${searchParams.get('origin')}`;
+          window.location.href = `${domain}/${searchParams.get('origin')}`;
         }
       });
     } else {

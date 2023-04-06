@@ -33,7 +33,7 @@ function Login() {
     supabase.auth.signInWithPassword({ email, password }).then(() => {
       setLoading(false);
       if (searchParams.get('origin')) {
-        window.location.href = `${domain}${searchParams.get('origin')}`;
+        window.location.href = `${domain}/${searchParams.get('origin')}`;
       } else {
         navigate(`${basePath}profile`, { replace: true });
       }
