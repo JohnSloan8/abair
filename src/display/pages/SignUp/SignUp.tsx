@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -16,6 +16,8 @@ import { AbIconButton, AbInfoHeader } from 'abair-components';
 
 // import { domain } from '@/config';
 import Consent from '@/display/controllers/Consent';
+import ConsentChild from '@/display/controllers/ConsentChild';
+import ConsentParent from '@/display/controllers/ConsentParent';
 import InformationSheet from '@/display/controllers/InformationSheet';
 import Meta from '@/display/sections/Meta';
 import ParentConsentForm from '@/display/sections/ParentConsentForm';
@@ -23,9 +25,22 @@ import SignUpForm from '@/display/sections/SignUpForm';
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
 import { createProfile } from '@/services/supabase/profile';
+import {
+  useAdultConsentOK,
+  useChildConsentOK,
+  useEmailPasswordOK,
+  useParentConsentOK,
+  useParentEmailNameOK,
+} from '@/store/auth';
 import { useProfile } from '@/store/profile';
 
 function SignUp() {
+  const { emailPasswordOK } = useEmailPasswordOK();
+  const { adultConsentOK } = useAdultConsentOK();
+  const { parentConsentOK } = useParentConsentOK();
+  const { childConsentOK } = useChildConsentOK();
+  const { parentEmailNameOK } = useParentEmailNameOK();
+
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
@@ -41,6 +56,10 @@ function SignUp() {
   const { setProfile } = useProfile();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('adultConsentOK:', adultConsentOK);
+  }, [adultConsentOK]);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -113,13 +132,7 @@ function SignUp() {
                     </Typography>
                     <Box p={4} mt={2} sx={{ backgroundColor: 'primary.wafer' }}>
                       <Box>
-                        <InformationSheet
-                          title="Information Sheet"
-                          //     description="
-                          // Please read the following Information Sheet on GDPR compliance and informed
-                          // consent for the ABAIR project."
-                          group="over 16"
-                        />
+                        <InformationSheet title="Information Sheet" group="over 16" />
                         <CenteredFlexBox>
                           <Typography>Download Information Sheet</Typography>
                           <AbIconButton
@@ -133,7 +146,7 @@ function SignUp() {
                         </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
-                        <Consent group="over 16" title="Consent" />
+                        <Consent title="Consent" />
                         <CenteredFlexBox>
                           <Typography>Download Consent Form</Typography>
                           <AbIconButton
@@ -161,7 +174,12 @@ function SignUp() {
                       </Box>
 
                       <CenteredFlexBox sx={{ width: '100%' }}>
-                        <Button onClick={handleSubmit} variant="contained" sx={{ mt: 4 }}>
+                        <Button
+                          disabled={emailPasswordOK && adultConsentOK ? false : true}
+                          onClick={handleSubmit}
+                          variant="contained"
+                          sx={{ mt: 4 }}
+                        >
                           {t('pages.auth.signup')}
                         </Button>
                       </CenteredFlexBox>
@@ -194,7 +212,7 @@ function SignUp() {
                         </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
-                        <Consent group="parent" title="Consent for Parents and Caregivers" />
+                        <ConsentParent title="Consent for Parents and Caregivers" />
                         <CenteredFlexBox>
                           <Typography>Download Parent/Caregiver Consent Form</Typography>
                           <AbIconButton
@@ -239,7 +257,7 @@ function SignUp() {
                         </CenteredFlexBox>
                       </Box>
                       <Box mt={4}>
-                        <Consent group="under 16" title="Consent for Under 16s" />
+                        <ConsentChild title="Consent for Under 16s" />
                         <CenteredFlexBox>
                           <Typography>Download Under 16s Consent Form</Typography>
                           <AbIconButton
@@ -266,7 +284,19 @@ function SignUp() {
                           />
                         </Box>
                         <CenteredFlexBox sx={{ width: '100%' }}>
-                          <Button onClick={handleSubmit} variant="contained" sx={{ mt: 4 }}>
+                          <Button
+                            disabled={
+                              emailPasswordOK &&
+                              parentConsentOK &&
+                              childConsentOK &&
+                              parentEmailNameOK
+                                ? false
+                                : true
+                            }
+                            onClick={handleSubmit}
+                            variant="contained"
+                            sx={{ mt: 4 }}
+                          >
                             {t('pages.auth.signup')}
                           </Button>
                         </CenteredFlexBox>

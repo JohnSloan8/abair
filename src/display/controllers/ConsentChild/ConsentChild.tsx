@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import { CenteredFlexBox } from '@/display/utils/flex';
-import { useAdultConsentOK } from '@/store/auth';
+import { useChildConsentOK } from '@/store/auth';
 
 import consentForm from './consentForm.json';
 
@@ -18,9 +18,9 @@ interface ConsentProps {
   title: string;
 }
 
-const Consent = ({ group = 'over 16', title }: ConsentProps) => {
+const ConsentChild = ({ group = 'under 16', title }: ConsentProps) => {
   const [noChecked, setNoChecked] = useState(0);
-  const { setAdultConsentOK } = useAdultConsentOK();
+  const { setChildConsentOK } = useChildConsentOK();
 
   const checkCompleted = (i: number, checked: boolean) => {
     if (!checked) {
@@ -32,9 +32,9 @@ const Consent = ({ group = 'over 16', title }: ConsentProps) => {
 
   useEffect(() => {
     if (noChecked === consentForm[group].length) {
-      setAdultConsentOK(true);
+      setChildConsentOK(true);
     } else {
-      setAdultConsentOK(false);
+      setChildConsentOK(false);
     }
   }, [noChecked]);
 
@@ -63,4 +63,4 @@ const Consent = ({ group = 'over 16', title }: ConsentProps) => {
   );
 };
 
-export default Consent;
+export default ConsentChild;
