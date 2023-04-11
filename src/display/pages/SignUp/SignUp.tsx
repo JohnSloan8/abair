@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -56,10 +56,6 @@ function SignUp() {
   const { setProfile } = useProfile();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log('adultConsentOK:', adultConsentOK);
-  }, [adultConsentOK]);
 
   const handleSubmit = async () => {
     setLoading(true);
