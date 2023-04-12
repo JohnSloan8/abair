@@ -36,6 +36,7 @@ i18n
             APIs: 'APIs',
             corpora: 'Corpora',
             consent: 'Consent',
+            forgotPassword: 'Forgot password',
           },
           infoHeader: {
             home: {
@@ -102,8 +103,10 @@ i18n
               password: 'Password',
               confirmPassword: 'Confirm Password',
               createAccount: 'Create an ABAIR Account',
+              forgotPassword: 'Forgot password',
               haveAccount: 'I already have an account',
               name: 'Name',
+              sendEmail: 'Send email',
             },
             geabaire: {
               description: 'Providing Irish voices to AAC users',
@@ -185,6 +188,7 @@ i18n
             APIs: 'APIs',
             corpora: 'Corpora',
             consent: 'Consent',
+            forgotPassword: 'Dearmad ar pasfhocal',
           },
           infoHeader: {
             home: {
@@ -253,8 +257,10 @@ i18n
               password: 'Pasfhocal',
               confirmPassword: 'Deimhnigh an Pasfhocal',
               createAccount: 'Cruthaigh Cuntas ABAIR',
+              forgotPassword: 'Dearmad ar pasfhocal',
               haveAccount: 'Tá cuntas agam cheana féin',
               name: 'Ainm',
+              sendEmail: 'Ríomhphost a sheoladh',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',

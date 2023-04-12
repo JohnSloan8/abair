@@ -116,6 +116,14 @@ const routes: Routes = {
     loggedIn: false,
     loggedOut: true,
   },
+  [Pages.ForgotPassword]: {
+    component: asyncComponentLoader(() => import('@/display/pages/ForgotPassword')),
+    path: `${basePath}forgot-password`,
+    title: 'forgot password',
+    showInSidebar: false,
+    loggedIn: false,
+    loggedOut: true,
+  },
   [Pages.SignUp]: {
     component: asyncComponentLoader(() => import('@/display/pages/SignUp')),
     path: `${basePath}sign-up`,
