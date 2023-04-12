@@ -96,6 +96,7 @@ i18n
             },
             auth: {
               login: 'Log In',
+              incorrectEmailOrPassword: 'Your email address or password is incorrect.',
               signup: 'Sign Up',
               emailAddress: 'Email Address',
               password: 'Password',
@@ -246,6 +247,7 @@ i18n
             },
             auth: {
               login: 'Logáil isteach',
+              incorrectEmailOrPassword: 'Tá do ríomhphost nó pasfhocal mícheart.',
               signup: 'Cláraigh',
               emailAddress: 'Seoladh ríomhphoist',
               password: 'Pasfhocal',

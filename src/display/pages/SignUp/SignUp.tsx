@@ -83,6 +83,25 @@ function SignUp() {
     }
   };
 
+  const downloadInfoSheet = async (filename: string) => {
+    const { data, error } = await supabase.storage
+      .from('public/abair-bucket')
+      .download('information-sheets/' + filename + '.pdf');
+    if (error) {
+      console.log(error.message);
+    } else if (data) {
+      console.log('data:', data);
+      const blob = data;
+      const link = document.createElement('a');
+      // create a blobURI pointing to our Blob
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.append(link);
+      link.click();
+      link.remove();
+    }
+  };
+
   return (
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'md', width: '100%' }}>
@@ -135,7 +154,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              console.log('download');
+                              downloadInfoSheet('InformationSheetOver16s');
                             }}
                             icon={DownloadIcon}
                           />
@@ -149,7 +168,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              console.log('download');
+                              downloadInfoSheet('ConsentFormOver16s');
                             }}
                             icon={DownloadIcon}
                           />
@@ -201,7 +220,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              console.log('download');
+                              downloadInfoSheet('InformationSheetParentsCaregivers');
                             }}
                             icon={DownloadIcon}
                           />
@@ -215,7 +234,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              console.log('download');
+                              downloadInfoSheet('ConsentFormParentsCaregivers');
                             }}
                             icon={DownloadIcon}
                           />
@@ -246,7 +265,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              console.log('download');
+                              downloadInfoSheet('InformationSheetUnder16s');
                             }}
                             icon={DownloadIcon}
                           />
@@ -261,6 +280,7 @@ function SignUp() {
                             color="secondary"
                             onClick={() => {
                               console.log('download');
+                              downloadInfoSheet('ConsentFormUnder16s');
                             }}
                             icon={DownloadIcon}
                           />

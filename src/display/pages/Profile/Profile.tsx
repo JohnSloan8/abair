@@ -37,6 +37,7 @@ function Profile() {
   const { profile, setProfile } = useProfile();
   const { dialects, setDialects } = useDialects();
   const { genders, setGenders } = useGenders();
+  const [birthYears] = useState(Array.from({ length: 100 }, (value, index) => 1923 + index));
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -132,22 +133,32 @@ function Profile() {
                     />
                   </Grid>
                   <Grid item xs={12} my={1}>
-                    <TextField
-                      fullWidth
-                      id="year of birth"
-                      label="Year of Birth"
-                      name="year of birth"
-                      autoComplete="year of birth"
-                      placeholder="Your year of birth"
-                      value={
-                        profile.year !== undefined && profile.year !== null ? profile.year : ''
-                      }
-                      onChange={(e) => {
-                        setProfile((profile) => ({ ...profile, year: parseInt(e.target.value) }));
-                      }}
-                    />
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple-select-label">Birth Year</InputLabel>
+                      <Select
+                        labelId="birth year"
+                        id="birth year"
+                        value={
+                          profile.year !== undefined && profile.year !== null ? profile.year : ''
+                        }
+                        label="dialect"
+                        onChange={(e) => {
+                          setProfile((profile) => ({
+                            ...profile,
+                            year: e.target.value as number,
+                          }));
+                        }}
+                      >
+                        {birthYears
+                          ? birthYears.map((d) => (
+                              <MenuItem key={d} value={d}>
+                                {d}
+                              </MenuItem>
+                            ))
+                          : ''}
+                      </Select>
+                    </FormControl>
                   </Grid>
-
                   <Grid item xs={12} my={1}>
                     <FormControl fullWidth>
                       <InputLabel id="demo-simple-select-label">Dialect</InputLabel>

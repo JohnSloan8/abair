@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
 import { AbInfoHeader } from 'abair-components';
@@ -18,6 +19,7 @@ import supabase from '@/services/supabase';
 function Login() {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
+  const [wrongCredentials, setWrongCredentials] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,12 +32,23 @@ function Login() {
 
     setLoading(true);
     // const { user, error } = supabase.auth.signInWithPassword({ email, password }).then(() => {
-    supabase.auth.signInWithPassword({ email, password }).then(() => {
+    supabase.auth.signInWithPassword({ email, password }).then((e) => {
+      const { data, error } = e;
+      console.log('data:', data);
+      console.log('error:', error);
       setLoading(false);
-      if (searchParams.get('origin')) {
-        window.location.href = `${domain}/${searchParams.get('origin')}`;
-      } else {
-        navigate(`${basePath}profile`, { replace: true });
+      if (error) {
+        console.log('in error');
+        setWrongCredentials(true);
+      }
+      if (data.user && data.session) {
+        console.log('in data');
+
+        if (searchParams.get('origin')) {
+          window.location.href = `${domain}/${searchParams.get('origin')}`;
+        } else {
+          navigate(`${basePath}profile`, { replace: true });
+        }
       }
     });
   };
@@ -94,7 +107,14 @@ function Login() {
                   />
                 </Grid>
               </Grid>
-
+              <Typography
+                sx={{ visibility: wrongCredentials ? 'visible' : 'hidden' }}
+                align="center"
+                variant="body2"
+                color="warning.main"
+              >
+                {t('pages.auth.incorrectEmailOrPassword')}
+              </Typography>
               <CenteredFlexBox sx={{ width: '100%' }}>
                 <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
                   {t('pages.auth.login')}
