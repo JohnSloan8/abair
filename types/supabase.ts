@@ -321,6 +321,9 @@ export interface Database {
           updated_at: string | null;
           username: string | null;
           year: number | null;
+          over_16: boolean;
+          parent_caregiver_name?: string | null;
+          parent_caregiver_email?: string | null;
         };
         Insert: {
           dialect?: number | null;
@@ -329,6 +332,9 @@ export interface Database {
           updated_at?: string | null;
           username?: string | null;
           year?: number | null;
+          over_16?: boolean;
+          parent_caregiver_name?: string | null;
+          parent_caregiver_email?: string | null;
         };
         Update: {
           dialect?: number | null;
@@ -337,6 +343,9 @@ export interface Database {
           updated_at?: string | null;
           username?: string | null;
           year?: number | null;
+          over_16?: boolean;
+          parent_caregiver_name?: string | null;
+          parent_caregiver_email?: string | null;
         };
       };
       synthesis_requests: {

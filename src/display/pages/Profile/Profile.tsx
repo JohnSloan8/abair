@@ -12,6 +12,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import { AbPopup } from 'abair-components';
 // import Typography from '@mui/material/Typography';
@@ -229,6 +230,16 @@ function Profile() {
                     Update profile
                   </Button>
                 </CenteredFlexBox>
+                {!profile.over_16 && (
+                  <Box mt={2}>
+                    <Typography
+                      fontWeight="bold"
+                      align="center"
+                    >{`Parent/Caregiver Details:`}</Typography>
+                    <Typography align="center">{`name: ${profile.parent_caregiver_name}`}</Typography>
+                    <Typography align="center">{`email: ${profile.parent_caregiver_email}`}</Typography>
+                  </Box>
+                )}
               </Box>
             ) : (
               <p>not logged in</p>
