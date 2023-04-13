@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 import { CenteredFlexBox } from '@/display/utils/flex';
+import { validateEmail, validatePassword } from '@/display/utils/validators';
 import { useEmailPasswordOK } from '@/store/auth';
 
 interface SignUpFormProps {
@@ -55,23 +56,6 @@ const SignUpForm = ({
   useEffect(() => {
     console.log('emailPaaswordOK:', emailPasswordOK);
   }, [emailPasswordOK]);
-
-  const emailRe =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  const validateEmail = (email: string) => {
-    if (String(email).toLowerCase().match(emailRe) !== null) {
-      return true;
-    }
-    return false;
-  };
-
-  const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  const validatePassword = (password: string) => {
-    if (String(password).match(passwordRe) !== null) {
-      return true;
-    }
-    return false;
-  };
 
   const validateConfirmPassword = (confirmPassword: string) => {
     if (password === confirmPassword) {
@@ -118,7 +102,7 @@ const SignUpForm = ({
         {title}
       </Typography>
       <CenteredFlexBox p={2} sx={{ backgroundColor: 'background.paper' }}>
-        <Box maxWidth="sm">
+        <Box width={360}>
           <Grid container spacing={0}>
             <Grid item xs={12} my={1}>
               <TextField

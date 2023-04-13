@@ -111,7 +111,7 @@ function Profile() {
             {loading ? (
               'Loading...'
             ) : session ? (
-              <Box>
+              <Box width={360}>
                 <Grid container spacing={0}>
                   <Grid item xs={12} my={1}>
                     <TextField

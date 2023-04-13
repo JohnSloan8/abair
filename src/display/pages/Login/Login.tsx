@@ -77,6 +77,7 @@ function Login() {
                 handleSubmit(e);
               }}
               sx={{ mt: 3 }}
+              width={360}
             >
               <Grid container spacing={0}>
                 <Grid item xs={12} my={1}>

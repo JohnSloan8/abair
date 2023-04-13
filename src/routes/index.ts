@@ -124,6 +124,14 @@ const routes: Routes = {
     loggedIn: false,
     loggedOut: true,
   },
+  [Pages.UpdatePassword]: {
+    component: asyncComponentLoader(() => import('@/display/pages/UpdatePassword')),
+    path: `${basePath}update-password`,
+    title: 'update password',
+    showInSidebar: false,
+    loggedIn: true,
+    loggedOut: true,
+  },
   [Pages.SignUp]: {
     component: asyncComponentLoader(() => import('@/display/pages/SignUp')),
     path: `${basePath}sign-up`,

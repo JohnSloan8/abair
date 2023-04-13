@@ -175,7 +175,7 @@ function SignUp() {
                         </CenteredFlexBox>
                       </Box>
 
-                      <Box mt={4}>
+                      <Box mt={4} width={'100%'}>
                         <SignUpForm
                           who="self"
                           title="Sign Up"

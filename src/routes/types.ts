@@ -15,6 +15,7 @@ enum Pages {
   NewsItem,
   Login,
   ForgotPassword,
+  UpdatePassword,
   SignUp,
   Profile,
   APIs,

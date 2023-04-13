@@ -20,10 +20,6 @@ function App() {
   const { setSession } = useSession();
   const { /*sessionID,*/ setSessionID } = useSessionID();
 
-  // useEffect(() => {
-  //   console.log('sessionID:', sessionID);
-  // }, [sessionID]);
-
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -31,6 +27,8 @@ function App() {
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
+      console.log('_event:', _event);
+
       setSession(session);
       setSessionID(uuidv4());
     });
