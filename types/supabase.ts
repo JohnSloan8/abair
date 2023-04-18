@@ -329,7 +329,7 @@ export interface Database {
         Insert: {
           dialect?: number | null;
           gender?: number | null;
-          id: string;
+          id?: string;
           updated_at?: string | null;
           username?: string | null;
           year?: number | null;

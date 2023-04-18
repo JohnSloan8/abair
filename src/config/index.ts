@@ -6,7 +6,7 @@ const email = 'sloanjs@tcd.ie';
 
 const repository = 'https://github.com/JohnSloan8/abair';
 
-const production = false;
+const production = true;
 const basePath = '/';
 const domain = production ? 'https://detail-design-develop.com' : 'http://localhost:8000';
 
