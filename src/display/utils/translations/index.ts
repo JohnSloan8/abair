@@ -98,6 +98,8 @@ i18n
             },
             auth: {
               login: 'Log In',
+              logout: 'Log Out',
+
               incorrectEmailOrPassword: 'Your email address or password is incorrect.',
               signup: 'Sign Up',
               emailAddress: 'Email Address',
@@ -154,6 +156,14 @@ i18n
               over16: 'I confirm that I am 16 years of age or older.',
               accept: 'accept',
               reject: 'reject',
+            },
+            profile: {
+              thanks: 'Your profile has been updated',
+              updated: 'Profile Updated',
+              username: 'Username',
+              birthYear: 'Year of Birth',
+              dialect: 'Dialect',
+              gender: 'Gender',
             },
           },
           errorMessages: {
@@ -256,7 +266,8 @@ i18n
               go: 'ar aghaidh',
             },
             auth: {
-              login: 'Logáil isteach',
+              login: 'Logáil Isteach',
+              logout: 'Logáil Amach',
               incorrectEmailOrPassword: 'Tá do ríomhphost nó pasfhocal mícheart.',
               signup: 'Cláraigh',
               emailAddress: 'Seoladh ríomhphoist',
@@ -312,6 +323,14 @@ i18n
               over16: "Dearbhaím go bhfuilim 16 bliana d'aois nó níos sine.",
               accept: 'glac leis',
               reject: 'diúltaigh',
+            },
+            profile: {
+              thanks: 'Go raibh maith agat as an eolas seo a sholáthar',
+              updated: 'Próifíl Nuashonraithe',
+              username: 'Ainm Úsáideora',
+              birthYear: 'Bliain Breithe',
+              dialect: 'Canúint',
+              gender: 'Inscne',
             },
           },
           errorMessages: {

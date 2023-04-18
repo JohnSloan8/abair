@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,11 +14,14 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { basePath } from '@/config';
+import { AbMenu } from 'abair-components';
+
+import { basePath, domain } from '@/config';
 import { headerHeight } from '@/config';
 import { FlexBox } from '@/display/utils/flex';
 import supabase from '@/services/supabase';
 import { useSession } from '@/store/auth';
+import { useProfile } from '@/store/profile';
 import useSidebar from '@/store/sidebar';
 
 import abairFullLogo from '/assets/images/brand/abair-logo-old.png';
@@ -26,16 +31,46 @@ interface HeaderProps {
 }
 
 const Header = ({ logoSize = 45 }: HeaderProps) => {
+  const { session, setSession } = useSession();
   const [, sidebarActions] = useSidebar();
-  const { session } = useSession();
+  const { profile, setProfile } = useProfile();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const [items, setItems] = useState<string[]>([
+    `${t('pages.auth.login')}/${t('pages.auth.signup')}`,
+  ]);
 
   const logOut = async () => {
     const { error } = await supabase.auth.signOut();
     console.log('error:', error);
+    setItems([`${t('pages.auth.login')}/${t('pages.auth.signup')}`]);
+    setProfile(null);
+    setSession(null);
     navigate(`${basePath}login`, { replace: true });
   };
+
+  const handleMenuChoice = async (item: string) => {
+    if (item === `${t('pages.auth.logout')}`) {
+      logOut();
+    } else if (item === `${t('pageTitles.profile')}`) {
+      window.location.href = `${domain}/profile?origin=applications/bat-mirialta`;
+    } else if (item === `${t('pages.auth.login')}/${t('pages.auth.signup')}`) {
+      window.location.href = `${domain}/login?origin=applications/bat-mirialta`;
+    }
+  };
+
+  useEffect(() => {
+    if (profile) {
+      // console.log('profile:', profile);
+      if (profile.username !== null && profile.username !== undefined) {
+        setItems([profile.username, `${t('pageTitles.profile')}`, `${t('pages.auth.logout')}`]);
+      } else {
+        setItems([`${t('pages.auth.login')}/${t('pages.auth.signup')}`]);
+      }
+    } else {
+      // console.log('profile:', profile);
+    }
+  }, [profile, i18n.language]);
 
   const changeLang = () => {
     i18n.language === 'en' ? i18n.changeLanguage('ga') : i18n.changeLanguage('en');
@@ -62,7 +97,7 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
             </Button>
           </FlexBox>
           <FlexBox>
-            <Box sx={{ position: 'absolute', right: { xs: 46, sm: 56 }, top: 16 }}>
+            <Box sx={{ position: 'absolute', right: { xs: 66, sm: 86 }, top: 16 }}>
               <Typography color={'primary.dark'}>
                 <Button onClick={changeLang}>
                   <Typography
@@ -81,15 +116,11 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
               </Typography>
             </Box>
             {session ? (
-              <IconButton
-                onClick={logOut}
-                size="medium"
-                edge="end"
-                sx={{ color: 'primary.main' }}
-                aria-label="log in"
-              >
-                <LogoutIcon />
-              </IconButton>
+              <AbMenu
+                avatar={profile !== null ? String(profile.avatar) : ''}
+                items={items}
+                handleMenuChoice={handleMenuChoice}
+              />
             ) : (
               <IconButton
                 component={Link}

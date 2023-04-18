@@ -27,6 +27,7 @@ function Sidebar() {
       disableBackdropTransition={false}
       swipeAreaWidth={20}
       transitionDuration={500}
+      disableScrollLock={true}
     >
       <List
         sx={{

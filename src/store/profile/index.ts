@@ -3,9 +3,9 @@ import { atom, useRecoilState } from 'recoil';
 // import { DialectModel, GenderModel, ProfileModel } from '@/models/profile';
 import { Database } from '../../../types/supabase';
 
-const profileState = atom<Database['public']['Tables']['profiles']['Row']>({
+const profileState = atom<Database['public']['Tables']['profiles']['Row'] | null>({
   key: 'profile',
-  default: undefined,
+  default: null,
 });
 
 const useProfile = () => {

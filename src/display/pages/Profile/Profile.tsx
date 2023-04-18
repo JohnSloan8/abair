@@ -2,12 +2,16 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+import LoginIcon from '@mui/icons-material/Login';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -41,6 +45,7 @@ function Profile() {
   const [birthYears] = useState(Array.from({ length: 100 }, (value, index) => 1923 + index));
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (session) {
@@ -79,11 +84,12 @@ function Profile() {
   useEffect(() => {
     if (genders !== undefined && dialects !== undefined && profile !== undefined) {
       setLoading(false);
+      console.log('profile:', profile);
     }
   }, [genders, dialects, profile]);
 
   const prepareToSetProfile = async () => {
-    if (session !== null) {
+    if (session !== null && profile !== null) {
       setLoading(true);
       updateProfile(profile).then(() => {
         setLoading(false);
@@ -117,11 +123,13 @@ function Profile() {
                     <TextField
                       fullWidth
                       id="username"
-                      label="Username"
+                      label={t('pages.profile.username')}
                       name="username"
                       placeholder="Your username"
                       value={
-                        profile.username !== undefined && profile.username !== null
+                        profile !== null &&
+                        profile.username !== undefined &&
+                        profile.username !== null
                           ? profile.username
                           : ''
                       }
@@ -140,15 +148,18 @@ function Profile() {
                         labelId="birth year"
                         id="birth year"
                         value={
-                          profile.year !== undefined && profile.year !== null ? profile.year : ''
+                          profile !== null && profile.year !== undefined && profile.year !== null
+                            ? profile.year
+                            : ''
                         }
-                        label="dialect"
+                        label={t('pages.profile.birthYear')}
                         onChange={(e) => {
                           setProfile((profile) => ({
                             ...profile,
                             year: e.target.value as number,
                           }));
                         }}
+                        inputProps={{ MenuProps: { disableScrollLock: true } }}
                       >
                         {birthYears
                           ? birthYears.map((d) => (
@@ -167,17 +178,20 @@ function Profile() {
                         labelId="dialect"
                         id="dialect"
                         value={
-                          profile.dialect !== undefined && profile.dialect !== null
+                          profile !== null &&
+                          profile.dialect !== undefined &&
+                          profile.dialect !== null
                             ? profile.dialect
                             : ''
                         }
-                        label="dialect"
+                        label={t('pages.profile.dialect')}
                         onChange={(e) => {
                           setProfile((profile) => ({
                             ...profile,
                             dialect: e.target.value as number,
                           }));
                         }}
+                        inputProps={{ MenuProps: { disableScrollLock: true } }}
                       >
                         {dialects
                           ? dialects.map((d) => (
@@ -197,7 +211,9 @@ function Profile() {
                         labelId="gender"
                         id="gender"
                         value={
-                          profile.gender !== undefined && profile.gender !== null
+                          profile !== null &&
+                          profile.gender !== undefined &&
+                          profile.gender !== null
                             ? profile.gender
                             : ''
                         }
@@ -208,6 +224,7 @@ function Profile() {
                             gender: e.target.value as number,
                           }));
                         }}
+                        inputProps={{ MenuProps: { disableScrollLock: true } }}
                       >
                         {genders
                           ? genders.map((d) => (
@@ -230,7 +247,7 @@ function Profile() {
                     Update profile
                   </Button>
                 </CenteredFlexBox>
-                {!profile.over_16 && (
+                {profile !== null && profile.over_16 === false && (
                   <Box mt={2}>
                     <Typography
                       fontWeight="bold"
@@ -251,16 +268,29 @@ function Profile() {
         <FullSizeCenteredFlexBox
           sx={{ zIndex: 9999, position: 'fixed', top: '0', backgroundColor: 'rgba(0,0,0,0.3)' }}
         >
-          <AbPopup
-            title="Profile Updated"
-            description="Thank you for providing this information :-)"
-            condition1=""
-            borderColor="primary.main"
-            buttons={[{ text: 'ok', color: 'primary' }]}
-            onClick={() => {
-              setProfileUpdatedVisible(false);
-            }}
-          />
+          {session ? (
+            <AbPopup
+              title={t('pages.profile.updated')}
+              description={t('pages.profile.thanks')}
+              condition1=""
+              borderColor="primary.main"
+              buttons={[{ text: 'ok', color: 'primary' }]}
+              onClick={() => {
+                setProfileUpdatedVisible(false);
+              }}
+            />
+          ) : (
+            <IconButton
+              component={Link}
+              to="/login"
+              size="medium"
+              edge="end"
+              sx={{ color: 'primary.main' }}
+              aria-label="log in"
+            >
+              <LoginIcon />
+            </IconButton>
+          )}
         </FullSizeCenteredFlexBox>
       )}
     </HorizontallyCenteredFlexBox>

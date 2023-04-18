@@ -315,15 +315,16 @@ export interface Database {
       };
       profiles: {
         Row: {
-          dialect: number | null;
-          gender: number | null;
-          id: string;
-          updated_at: string | null;
-          username: string | null;
-          year: number | null;
-          over_16: boolean;
+          dialect?: number | null;
+          gender?: number | null;
+          id?: string;
+          updated_at?: string | null;
+          username?: string | null;
+          year?: number | null;
+          over_16?: boolean;
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
+          avatar?: string | null;
         };
         Insert: {
           dialect?: number | null;
@@ -335,6 +336,7 @@ export interface Database {
           over_16?: boolean;
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
+          avatar?: string | null;
         };
         Update: {
           dialect?: number | null;
@@ -346,6 +348,7 @@ export interface Database {
           over_16?: boolean;
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
+          avatar?: string | null;
         };
       };
       synthesis_requests: {
