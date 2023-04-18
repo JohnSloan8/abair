@@ -19,7 +19,7 @@ import supabase from '@/services/supabase';
 
 function ForgotPassword() {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(false);
+  const [showSentPasswordLink, setShowSentPasswordLink] = useState(false);
   const [emailOK, setEmailOK] = useState(false);
   const [email, setEmail] = useState('');
 
@@ -36,7 +36,7 @@ function ForgotPassword() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoading(true);
+    setShowSentPasswordLink(true);
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${domain}update-password`,
     });
@@ -54,8 +54,8 @@ function ForgotPassword() {
         </Box>
 
         <CenteredFlexBox m={2}>
-          {loading ? (
-            'Processing...'
+          {showSentPasswordLink ? (
+            t('pages.auth.passwordUpdating')
           ) : (
             <Box
               component="form"

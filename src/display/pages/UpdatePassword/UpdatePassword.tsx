@@ -50,10 +50,10 @@ function UpdatePassword() {
   return (
     <HorizontallyCenteredFlexBox>
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
-        <Meta title={t('pageTitles.UpdatePassword')} />
+        <Meta title={t('pageTitles.updatePassword')} />
 
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title={t('pages.auth.UpdatePassword')} />
+          <AbInfoHeader title={t('pages.auth.updatePassword')} />
         </Box>
 
         <CenteredFlexBox m={2}>
