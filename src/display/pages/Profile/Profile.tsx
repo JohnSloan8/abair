@@ -56,6 +56,18 @@ function Profile() {
       getProfile(session).then((p) => {
         if (p !== undefined && p.length !== 0) {
           setProfile(p[0]);
+          if (p[0].dialect) {
+            setDialect(p[0].dialect);
+          }
+          if (p[0].gender) {
+            setGender(p[0].gender);
+          }
+          if (p[0].year) {
+            setYear(p[0].year);
+          }
+          if (p[0].username) {
+            setUsername(p[0].username);
+          }
         } else {
           console.log('no profile');
         }
