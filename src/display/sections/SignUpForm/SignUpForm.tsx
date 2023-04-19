@@ -23,6 +23,7 @@ interface SignUpFormProps {
   setPassword: Dispatch<SetStateAction<string>>;
   confirmPassword: string;
   setConfirmPassword: Dispatch<SetStateAction<string>>;
+  emailAlreadyUsedError: boolean;
 }
 
 const SignUpForm = ({
@@ -34,6 +35,7 @@ const SignUpForm = ({
   setPassword,
   confirmPassword,
   setConfirmPassword,
+  emailAlreadyUsedError,
 }: SignUpFormProps) => {
   const { t } = useTranslation();
   const [emailOK, setEmailOK] = useState(false);
@@ -44,6 +46,10 @@ const SignUpForm = ({
   const confirmPasswordRef = useRef<HTMLInputElement>();
 
   const { emailPasswordOK, setEmailPasswordOK } = useEmailPasswordOK();
+
+  useEffect(() => {
+    console.log('emailAlreadyUsedError', emailAlreadyUsedError);
+  }, [emailAlreadyUsedError]);
 
   useEffect(() => {
     if (emailOK && passwordOK && confirmPasswordOK) {
@@ -120,6 +126,15 @@ const SignUpForm = ({
                 helperText={!emailOK && email !== '' ? 'must be a valid email' : ''}
               />
             </Grid>
+            <Typography
+              variant="body2"
+              width={'100%'}
+              align="center"
+              color="warning.main"
+              sx={{ display: emailAlreadyUsedError ? 'block' : 'none' }}
+            >
+              email matched an existing ABAIR account
+            </Typography>
             <Grid item xs={12} my={1}>
               <TextField
                 inputRef={passwordRef}

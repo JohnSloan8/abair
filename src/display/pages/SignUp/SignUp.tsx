@@ -48,6 +48,7 @@ function SignUp() {
   const [group, setGroup] = useState('');
 
   const [email, setEmail] = useState('');
+  const [emailAlreadyUsedError, setEmailAlreadyUsedError] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -65,9 +66,13 @@ function SignUp() {
     });
     setLoading(false);
     if (error) {
-      console.log(error);
+      console.log('error', error.message);
+      if (error.message === 'User already registered') {
+        setEmailAlreadyUsedError(true);
+      }
     } else {
       if (data.user !== null) {
+        setEmailAlreadyUsedError(false);
         console.log(data.user);
         createProfile(data.user.id, group, parentName, parentEmail).then((p) => {
           if (p !== undefined) {
@@ -185,6 +190,7 @@ function SignUp() {
                           setPassword={setPassword}
                           confirmPassword={confirmPassword}
                           setConfirmPassword={setConfirmPassword}
+                          emailAlreadyUsedError={emailAlreadyUsedError}
                         />
                       </Box>
 
@@ -297,6 +303,7 @@ function SignUp() {
                             setPassword={setPassword}
                             confirmPassword={confirmPassword}
                             setConfirmPassword={setConfirmPassword}
+                            emailAlreadyUsedError={emailAlreadyUsedError}
                           />
                         </Box>
                         <CenteredFlexBox sx={{ width: '100%' }}>
