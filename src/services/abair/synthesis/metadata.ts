@@ -15,8 +15,8 @@ const getSynthesisMetadata = async () => {
       return data.data;
     }
   } catch (error: any) {
-    alert('error:' + error);
-    return false;
+    alert('error:' + error + '\n\nsynthesis engine is down');
+    return [];
   }
 };
 

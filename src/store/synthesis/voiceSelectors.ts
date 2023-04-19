@@ -77,7 +77,8 @@ const filteredSynthesisVoices = selector({
       }
     };
 
-    if (list !== undefined && list.length !== 0) {
+    if (list !== undefined) {
+      console.log('list:', list);
       const filteredCounty = countyFilter(list);
       const filteredGender = genderFilter(filteredCounty);
       const filteredModel = modelFilter(filteredGender);

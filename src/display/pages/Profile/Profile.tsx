@@ -37,6 +37,10 @@ import { useDialects, useGenders, useProfile } from '@/store/profile';
 
 function Profile() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [username, setUsername] = useState('');
+  const [year, setYear] = useState<number | null>(null);
+  const [dialect, setDialect] = useState<number | null>(null);
+  const [gender, setGender] = useState<number | null>(null);
   const [profileUpdatedVisible, setProfileUpdatedVisible] = useState<boolean>(false);
   const { session } = useSession();
   const { profile, setProfile } = useProfile();
@@ -110,7 +114,10 @@ function Profile() {
       <Box sx={{ maxWidth: 'sm', width: '100%' }}>
         <Meta title="Profile & Consent" />
         <Box py={{ sm: 4, xs: 2 }}>
-          <AbInfoHeader title="Profile" />
+          <AbInfoHeader
+            title={t('infoHeader.home.profile.title')}
+            description={t('infoHeader.home.profile.description')}
+          />
         </Box>
         <CenteredFlexBox m={2}>
           <Box>
@@ -125,7 +132,7 @@ function Profile() {
                       id="username"
                       label={t('pages.profile.username')}
                       name="username"
-                      placeholder="Your username"
+                      placeholder={t('pages.profile.username')}
                       value={
                         profile !== null &&
                         profile.username !== undefined &&
@@ -134,16 +141,24 @@ function Profile() {
                           : ''
                       }
                       onChange={(e) => {
+                        setUsername(e.target.value);
                         setProfile((profile) => ({
                           ...profile,
                           username: e.target.value,
                         }));
                       }}
+                      helperText={
+                        username.length !== 0 && username.length < 3
+                          ? t('pages.profile.minimumThreeLetters')
+                          : ''
+                      }
                     />
                   </Grid>
                   <Grid item xs={12} my={1}>
                     <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">Birth Year</InputLabel>
+                      <InputLabel id="demo-simple-select-label">
+                        {t('pages.profile.birthYear')}
+                      </InputLabel>
                       <Select
                         labelId="birth year"
                         id="birth year"
@@ -154,6 +169,7 @@ function Profile() {
                         }
                         label={t('pages.profile.birthYear')}
                         onChange={(e) => {
+                          setYear(e.target.value as number);
                           setProfile((profile) => ({
                             ...profile,
                             year: e.target.value as number,
@@ -173,7 +189,9 @@ function Profile() {
                   </Grid>
                   <Grid item xs={12} my={1}>
                     <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">Dialect</InputLabel>
+                      <InputLabel id="demo-simple-select-label">
+                        {t('pages.profile.dialect')}
+                      </InputLabel>
                       <Select
                         labelId="dialect"
                         id="dialect"
@@ -186,6 +204,8 @@ function Profile() {
                         }
                         label={t('pages.profile.dialect')}
                         onChange={(e) => {
+                          setDialect(e.target.value as number);
+
                           setProfile((profile) => ({
                             ...profile,
                             dialect: e.target.value as number,
@@ -206,7 +226,9 @@ function Profile() {
 
                   <Grid item xs={12} my={1}>
                     <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                      <InputLabel id="demo-simple-select-label">
+                        {t('pages.profile.gender')}
+                      </InputLabel>
                       <Select
                         labelId="gender"
                         id="gender"
@@ -219,6 +241,8 @@ function Profile() {
                         }
                         label="gender"
                         onChange={(e) => {
+                          setGender(e.target.value as number);
+
                           setProfile((profile) => ({
                             ...profile,
                             gender: e.target.value as number,
@@ -242,9 +266,15 @@ function Profile() {
                     onClick={prepareToSetProfile}
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
-                    disabled={loading}
+                    disabled={
+                      loading ||
+                      username.length < 3 ||
+                      year === null ||
+                      gender === null ||
+                      dialect === null
+                    }
                   >
-                    Update profile
+                    Save profile
                   </Button>
                 </CenteredFlexBox>
                 {profile !== null && profile.over_16 === false && (

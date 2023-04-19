@@ -61,13 +61,12 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
 
   useEffect(() => {
     if (profile) {
-      // console.log('profile:', profile);
-      if (profile.username !== null && profile.username !== undefined) {
-        setItems([profile.username, `${t('pageTitles.profile')}`, `${t('pages.auth.logout')}`]);
-      } else {
-        setItems([`${t('pages.auth.login')}/${t('pages.auth.signup')}`]);
-      }
+      const displayUsername =
+        profile.username !== null && profile.username !== undefined ? profile.username : 'anon';
+      setItems([displayUsername, `${t('pageTitles.profile')}`, `${t('pages.auth.logout')}`]);
     } else {
+      setItems([`${t('pages.auth.login')}/${t('pages.auth.signup')}`]);
+
       // console.log('profile:', profile);
     }
   }, [profile, i18n.language]);

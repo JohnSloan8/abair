@@ -75,6 +75,10 @@ i18n
                 title: 'Corpora',
                 description: 'Access all the ABAIR Corpora',
               },
+              profile: {
+                title: 'Profile',
+                description: 'Please provide the following information',
+              },
             },
           },
           pages: {
@@ -164,6 +168,8 @@ i18n
               birthYear: 'Year of Birth',
               dialect: 'Dialect',
               gender: 'Gender',
+              minimumThreeLetters: 'At least 3 letters',
+              save: 'save',
             },
           },
           errorMessages: {
@@ -242,6 +248,10 @@ i18n
               corpora: {
                 title: 'Corpora',
                 description: 'Access all the ABAIR Corpora',
+              },
+              profile: {
+                title: 'Próifíl',
+                description: 'Tabhair an t-eolas seo a leanas le do thoil',
               },
             },
           },
@@ -331,6 +341,8 @@ i18n
               birthYear: 'Bliain Breithe',
               dialect: 'Canúint',
               gender: 'Inscne',
+              minimumThreeLetters: '3 litir ar a laghad',
+              save: 'sábháil',
             },
           },
           errorMessages: {
