@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
-import { AbInfoHeader, AbNewsCard } from 'abair-components';
+import { AbButton, AbInfoHeader, AbNewsCard } from 'abair-components';
 import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -79,10 +77,16 @@ const AbHomePageNewsCtrl = () => {
         </CenteredFlexBox>
       </CenteredFlexBox>
       <CenteredFlexBox height={'10%'}>
-        <Box component={Link} to={'/news'}>
-          <Typography variant="body1" m={2} align="center">
-            {t('pages.home.seeAll')}
-          </Typography>
+        <Box width={200}>
+          <AbButton
+            label={t('pages.home.seeAll')}
+            onClick={() => {
+              navigate('/news');
+            }}
+            selected={true}
+            color={'secondary'}
+            fullWidth={true}
+          />
         </Box>
       </CenteredFlexBox>
     </Box>

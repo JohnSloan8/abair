@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Meta from '@/display/sections/Meta';
 import { FullSizeBox } from '@/display/utils/flex';
 
-import APIs from './sections/APIs';
+// import APIs from './sections/APIs';
 import Applications from './sections/Applications';
-import Corpora from './sections/Corpora';
+// import Corpora from './sections/Corpora';
 // import CoreTechnologies from './sections/CoreTechnologies';
 import Knowledge from './sections/Knowledge';
 import MileGlor from './sections/MileGlor';
@@ -27,8 +27,6 @@ function Home() {
       </FullSizeBox>
       <FullSizeBox
         py={{ xs: 2, sm: 4 }}
-        borderTop={2}
-        borderBottom={2}
         borderColor="primary.light"
         sx={{ backgroundColor: 'primary.wafer' }}
       >
@@ -42,19 +40,17 @@ function Home() {
       </FullSizeBox> */}
       <FullSizeBox
         py={{ xs: 2, sm: 4 }}
-        borderTop={2}
-        borderBottom={2}
         borderColor="primary.light"
         sx={{ backgroundColor: 'primary.wafer' }}
       >
         <Knowledge />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.paper' }}>
+      {/* <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.paper' }}>
         <APIs />
       </FullSizeBox>
       <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
         <Corpora />
-      </FullSizeBox>
+      </FullSizeBox> */}
     </Box>
   );
 }

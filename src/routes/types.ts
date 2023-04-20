@@ -18,8 +18,8 @@ enum Pages {
   UpdatePassword,
   SignUp,
   Profile,
-  APIs,
-  Corpora,
+  // APIs,
+  // Corpora,
   Contact,
   NotFound,
 }

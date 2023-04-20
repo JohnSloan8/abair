@@ -26,7 +26,7 @@ const AbHomeMileGlorCtrl = () => {
             description={t('infoHeader.home.mileGlor.description')}
           />
         </CenteredFlexBox>
-        <CenteredFlexBox height={'60%'}>
+        <CenteredFlexBox height={'70%'}>
           <Grid
             container
             direction="row"
@@ -39,8 +39,8 @@ const AbHomeMileGlorCtrl = () => {
               <CenteredFlexBox>
                 <Image
                   duration={1000}
-                  height={breakpointSize === 'xs' ? 175 : 300}
-                  width={breakpointSize === 'xs' ? 300 : 450}
+                  height={breakpointSize === 'xs' ? 175 : 410}
+                  width={breakpointSize === 'xs' ? 300 : 650}
                   easing="ease-out"
                   alt="Abair Applications"
                   src={recordingStudio}
@@ -52,8 +52,8 @@ const AbHomeMileGlorCtrl = () => {
               <CenteredFlexBox>
                 <Image
                   duration={1000}
-                  height={breakpointSize === 'xs' ? 150 : 250}
-                  width={breakpointSize === 'xs' ? 180 : 250}
+                  height={breakpointSize === 'xs' ? 150 : 340}
+                  width={breakpointSize === 'xs' ? 180 : 340}
                   easing="ease-out"
                   alt="Abair Applications"
                   src={mileGlorLogo}
@@ -63,14 +63,17 @@ const AbHomeMileGlorCtrl = () => {
             </Grid>
           </Grid>
         </CenteredFlexBox>
-        <CenteredFlexBox height={'20%'}>
-          <AbButton
-            color={'primary'}
-            label={t('pages.home.go')}
-            onClick={() => {
-              window.location.href = 'https://phoneticsrv3.lcs.tcd.ie/studio/ga/recorder/';
-            }}
-          />
+        <CenteredFlexBox height={'10%'}>
+          <Box width={200}>
+            <AbButton
+              color={'secondary'}
+              label={t('pages.home.go')}
+              onClick={() => {
+                window.location.href = 'https://phoneticsrv3.lcs.tcd.ie/studio/ga/recorder/';
+              }}
+              fullWidth={true}
+            />
+          </Box>
         </CenteredFlexBox>
       </Box>
     </HorizontallyCenteredFlexBox>

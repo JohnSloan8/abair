@@ -1,11 +1,9 @@
-import ApiIcon from '@mui/icons-material/Api';
 import AppsIcon from '@mui/icons-material/Apps';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HearingIcon from '@mui/icons-material/Hearing';
 import HomeIcon from '@mui/icons-material/Home';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -141,24 +139,24 @@ const routes: Routes = {
     loggedIn: false,
     loggedOut: true,
   },
-  [Pages.APIs]: {
-    component: asyncComponentLoader(() => import('@/display/pages/APIs')),
-    path: `${basePath}APIs`,
-    title: 'APIs',
-    icon: ApiIcon,
-    showInSidebar: true,
-    loggedIn: true,
-    loggedOut: false,
-  },
-  [Pages.Corpora]: {
-    component: asyncComponentLoader(() => import('@/display/pages/Corpora')),
-    path: `${basePath}corpora`,
-    title: 'corpora',
-    icon: LibraryBooksIcon,
-    showInSidebar: true,
-    loggedIn: true,
-    loggedOut: false,
-  },
+  // [Pages.APIs]: {
+  //   component: asyncComponentLoader(() => import('@/display/pages/APIs')),
+  //   path: `${basePath}APIs`,
+  //   title: 'APIs',
+  //   icon: ApiIcon,
+  //   showInSidebar: true,
+  //   loggedIn: true,
+  //   loggedOut: false,
+  // },
+  // [Pages.Corpora]: {
+  //   component: asyncComponentLoader(() => import('@/display/pages/Corpora')),
+  //   path: `${basePath}corpora`,
+  //   title: 'corpora',
+  //   icon: LibraryBooksIcon,
+  //   showInSidebar: true,
+  //   loggedIn: true,
+  //   loggedOut: false,
+  // },
   [Pages.Profile]: {
     component: asyncComponentLoader(() => import('@/display/pages/Profile')),
     path: `${basePath}profile`,

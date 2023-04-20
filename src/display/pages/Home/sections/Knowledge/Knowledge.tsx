@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
-import { AbInfoHeader } from 'abair-components';
+import { AbButton, AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
 import { CenteredFlexBox } from '@/display/utils/flex';
@@ -14,6 +15,7 @@ import publicationsLogo from '/assets/images/misc/publications.png';
 const AbHomePageKnowledgeCtrl = () => {
   const { t } = useTranslation();
   const { breakpointSize } = useBreakpointSize();
+  const navigate = useNavigate();
 
   return (
     <Box height={'100%'}>
@@ -23,16 +25,29 @@ const AbHomePageKnowledgeCtrl = () => {
           description={t('infoHeader.home.knowledge.description')}
         />
       </CenteredFlexBox>
-      <CenteredFlexBox height={'80%'}>
+      <CenteredFlexBox height={'70%'}>
         <Box component={Link} to={'/knowledge'}>
           <Image
             duration={1000}
-            height={breakpointSize === 'xs' ? 137.5 : 250}
-            width={breakpointSize === 'xs' ? 150 : 275}
+            height={breakpointSize === 'xs' ? 137.5 : 300}
+            width={breakpointSize === 'xs' ? 150 : 325}
             easing="ease-out"
             alt="Abair Applications"
             src={publicationsLogo}
             showLoading
+          />
+        </Box>
+      </CenteredFlexBox>
+      <CenteredFlexBox height={'10%'}>
+        <Box width={200}>
+          <AbButton
+            label={t('pages.home.seeAll')}
+            onClick={() => {
+              navigate('/knowledge');
+            }}
+            selected={true}
+            color={'secondary'}
+            fullWidth={true}
           />
         </Box>
       </CenteredFlexBox>

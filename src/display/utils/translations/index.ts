@@ -155,7 +155,7 @@ i18n
             recognition: {
               privacyTitle: 'Privacy',
               privacyRecordings:
-                'All recordings will be saved completely anonymously and will not be published. We will use the recordings only internally to create a speech recognition system.',
+                'If you are over 16, you can use this feature anonymously. Your audio data will not be stored for longer than necessary to complete recognition. If you wish to help us improve our recognition models, please consider signing up for an account and consenting to use of your audio recordings for this purpose.',
               downloadConsent: 'Download the consent form',
               over16: 'I confirm that I am 16 years of age or older.',
               accept: 'accept',
@@ -328,7 +328,7 @@ i18n
             recognition: {
               privacyTitle: 'Príobháideachas',
               privacyRecordings:
-                'Sábhálfar na taifeadtaí uilig gan ainm is ní fhoilseofar iad. Ní úsáidfimid na taifeadtaí seo ach go hinmheánach chun córas aithint chainte a thógáil.',
+                'GA - If you are over 16, you can use this feature anonymously. Your audio data will not be stored for longer than necessary to complete recognition. If you wish to help us improve our recognition models, please consider signing up for an account and consenting to use of your audio recordings for this purpose.',
               downloadConsent: 'Íoslódáil an Fhoirm Thoilithe',
               over16: "Dearbhaím go bhfuilim 16 bliana d'aois nó níos sine.",
               accept: 'glac leis',

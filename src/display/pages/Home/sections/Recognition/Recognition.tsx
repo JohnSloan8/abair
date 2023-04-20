@@ -56,7 +56,7 @@ const Recognition = () => {
               >
                 <Box px={2} sx={{ position: 'absolute', top: { sm: 6, md: 10 } }}>
                   <RecognitionWaveVisual
-                    width={breakpointSize === 'xs' ? 296 : 384}
+                    width={breakpointSize === 'xs' ? 256 : 256}
                     height={breakpointSize === 'xs' ? 80 : 90}
                   />
                 </Box>
