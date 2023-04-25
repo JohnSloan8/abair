@@ -116,11 +116,11 @@ function SignUp() {
           <AbInfoHeader title={t('pages.auth.signup')} />
         </Box>
 
-        <CenteredFlexBox m={1}>
+        <CenteredFlexBox>
           {loading ? (
             'Processing...'
           ) : (
-            <Box>
+            <Box border={1} width={'100%'}>
               <Box p={1}>
                 <CenteredFlexBox>
                   <Typography mr={2} variant="h6" align="center">
@@ -146,12 +146,12 @@ function SignUp() {
               {group !== '' ? (
                 group === 'over 16' ? (
                   <Box mt={2}>
-                    <Typography align="center" px={4}>
+                    <Typography align="center" px={2}>
                       Please read the following Information Sheet on GDPR compliance and informed
                       consent for the ABAIR project.
                     </Typography>
-                    <Box p={4} mt={2} sx={{ backgroundColor: 'primary.wafer' }}>
-                      <Box>
+                    <Box p={1} mt={2} sx={{ backgroundColor: 'primary.wafer' }}>
+                      <Box mt={1}>
                         <InformationSheet title="Information Sheet" group="over 16" />
                         <CenteredFlexBox>
                           <Typography>Download Information Sheet</Typography>
@@ -165,7 +165,7 @@ function SignUp() {
                           />
                         </CenteredFlexBox>
                       </Box>
-                      <Box mt={4}>
+                      <Box mt={2}>
                         <Consent title="Consent" />
                         <CenteredFlexBox>
                           <Typography>Download Consent Form</Typography>
@@ -194,7 +194,7 @@ function SignUp() {
                         />
                       </Box>
 
-                      <CenteredFlexBox sx={{ width: '100%' }}>
+                      <CenteredFlexBox sx={{ width: '100%' }} pb={2}>
                         <Button
                           disabled={emailPasswordOK && adultConsentOK ? false : true}
                           onClick={handleSubmit}
@@ -208,19 +208,19 @@ function SignUp() {
                   </Box>
                 ) : (
                   <Box mt={2}>
-                    <Typography align="center" px={4}>
+                    <Typography align="center" px={2}>
                       Your parent or caregiver must help you sign up. Please ask them to read the
                       information below.
                     </Typography>
 
-                    <Box p={4} mt={2} sx={{ backgroundColor: 'secondary.wafer' }}>
-                      <Box>
+                    <Box p={1} mt={2} sx={{ backgroundColor: 'secondary.wafer' }}>
+                      <Box mt={1}>
                         <InformationSheet
                           title="Information Sheet for Parents and Caregivers of Under 16s"
                           // description="Please read the information below pertaining to GDPR and informed consent for your child or dependent."
                           group="parent"
                         />
-                        <CenteredFlexBox>
+                        <CenteredFlexBox mt={1}>
                           <Typography>Download Parent/Caregiver Information Sheet</Typography>
                           <AbIconButton
                             selected={true}
@@ -232,9 +232,9 @@ function SignUp() {
                           />
                         </CenteredFlexBox>
                       </Box>
-                      <Box mt={4}>
+                      <Box mt={2}>
                         <ConsentParent title="Consent for Parents and Caregivers" />
-                        <CenteredFlexBox>
+                        <CenteredFlexBox mt={2}>
                           <Typography>Download Parent/Caregiver Consent Form</Typography>
                           <AbIconButton
                             selected={true}
@@ -246,7 +246,7 @@ function SignUp() {
                           />
                         </CenteredFlexBox>
                       </Box>
-                      <Box mt={4}>
+                      <Box mt={4} pb={3}>
                         <Box mt={4}>
                           <ParentConsentForm
                             parentEmail={parentEmail}
@@ -258,7 +258,7 @@ function SignUp() {
                       </Box>
                     </Box>
 
-                    <Box p={4} mt={6} sx={{ backgroundColor: 'primary.wafer' }}>
+                    <Box p={1} mt={2} sx={{ backgroundColor: 'primary.wafer' }}>
                       <Box>
                         <InformationSheet
                           title="Information Sheet for Under 16s"
@@ -277,7 +277,7 @@ function SignUp() {
                           />
                         </CenteredFlexBox>
                       </Box>
-                      <Box mt={4}>
+                      <Box mt={2}>
                         <ConsentChild title="Consent for Under 16s" />
                         <CenteredFlexBox>
                           <Typography>Download Under 16s Consent Form</Typography>
@@ -318,7 +318,7 @@ function SignUp() {
                             }
                             onClick={handleSubmit}
                             variant="contained"
-                            sx={{ mt: 4 }}
+                            sx={{ mt: 4, mb: 3 }}
                           >
                             {t('pages.auth.signup')}
                           </Button>

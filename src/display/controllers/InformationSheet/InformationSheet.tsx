@@ -37,7 +37,7 @@ const InformationSheet = ({
       <Card
         sx={{ width: '100%', height: { height }, backgroundColor: 'white', overflowY: 'scroll' }}
       >
-        <CardContent sx={{ padding: 4 }}>
+        <CardContent sx={{ padding: 2 }}>
           {informationSheet[group].map((section, i) => (
             <Box key={i} py={1}>
               <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
