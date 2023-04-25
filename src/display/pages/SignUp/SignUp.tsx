@@ -240,7 +240,7 @@ function SignUp() {
                             selected={true}
                             color="secondary"
                             onClick={() => {
-                              downloadInfoSheet('ConsentFormParentsCaregivers');
+                              downloadInfoSheet('ConsentFormforParentsCaregivers');
                             }}
                             icon={DownloadIcon}
                           />
