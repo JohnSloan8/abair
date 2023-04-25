@@ -120,7 +120,7 @@ function SignUp() {
           {loading ? (
             'Processing...'
           ) : (
-            <Box border={1} width={'100%'}>
+            <Box width={'100%'}>
               <Box p={1}>
                 <CenteredFlexBox>
                   <Typography mr={2} variant="h6" align="center">
