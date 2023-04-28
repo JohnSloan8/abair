@@ -228,7 +228,7 @@ function Profile() {
                         {dialects
                           ? dialects.map((d) => (
                               <MenuItem key={d.id} value={d.id}>
-                                {d.name}
+                                {t(`pages.profile.${d.name?.toLowerCase()}`)}
                               </MenuItem>
                             ))
                           : ''}
@@ -265,7 +265,7 @@ function Profile() {
                         {genders
                           ? genders.map((d) => (
                               <MenuItem key={d.id} value={d.id}>
-                                {d.name}
+                                {t(`pages.profile.${d.name?.toLowerCase()}`)}
                               </MenuItem>
                             ))
                           : null}
@@ -286,7 +286,7 @@ function Profile() {
                       dialect === null
                     }
                   >
-                    Save profile
+                    {t(`pages.profile.save`)}
                   </Button>
                 </CenteredFlexBox>
                 {profile !== null && profile.over_16 === false && (

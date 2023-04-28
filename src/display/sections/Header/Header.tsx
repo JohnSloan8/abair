@@ -19,6 +19,7 @@ import { AbMenu } from 'abair-components';
 import { basePath, domain } from '@/config';
 import { headerHeight } from '@/config';
 import { FlexBox } from '@/display/utils/flex';
+import { useChangeLanguage } from '@/hooks';
 import supabase from '@/services/supabase';
 import { useSession } from '@/store/auth';
 import { useProfile } from '@/store/profile';
@@ -36,6 +37,7 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
   const { profile, setProfile } = useProfile();
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
+  const changeLanguage = useChangeLanguage();
   const [items, setItems] = useState<string[]>([
     `${t('pages.auth.login')}/${t('pages.auth.signup')}`,
   ]);
@@ -71,10 +73,6 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
     }
   }, [profile, i18n.language]);
 
-  const changeLang = () => {
-    i18n.language === 'en' ? i18n.changeLanguage('ga') : i18n.changeLanguage('en');
-  };
-
   return (
     <Box sx={{ flexGrow: 1 }} color="background">
       <AppBar color="inherit" elevation={0} position="fixed">
@@ -98,7 +96,7 @@ const Header = ({ logoSize = 45 }: HeaderProps) => {
           <FlexBox>
             <Box sx={{ position: 'absolute', right: { xs: 66, sm: 86 }, top: 16 }}>
               <Typography color={'primary.dark'}>
-                <Button onClick={changeLang}>
+                <Button onClick={changeLanguage}>
                   <Typography
                     variant="body2"
                     color={i18n.language === 'ga' ? 'primary.dark' : 'primary.medium'}

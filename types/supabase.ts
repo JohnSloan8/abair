@@ -325,6 +325,7 @@ export interface Database {
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
           avatar?: string | null;
+          language_preference?: string;
         };
         Insert: {
           dialect?: number | null;
@@ -337,6 +338,7 @@ export interface Database {
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
           avatar?: string | null;
+          language_preference?: string;
         };
         Update: {
           dialect?: number | null;
@@ -349,6 +351,7 @@ export interface Database {
           parent_caregiver_name?: string | null;
           parent_caregiver_email?: string | null;
           avatar?: string | null;
+          language_preference?: string;
         };
       };
       synthesis_requests: {

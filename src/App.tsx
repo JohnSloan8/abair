@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +14,7 @@ import Sidebar from '@/display/sections/Sidebar';
 // import { Session } from '@supabase/supabase-js';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
+import { useChangeLanguage } from '@/hooks';
 import Pages from '@/routes/Pages';
 import supabase from '@/services/supabase';
 import { useSession, useSessionID } from '@/store/auth';
@@ -24,12 +26,17 @@ function App() {
   const { setSession } = useSession();
   const { /*sessionID,*/ setSessionID } = useSessionID();
   const { setProfile } = useProfile();
+  const { i18n } = useTranslation();
+  const changeLanguage = useChangeLanguage();
 
   const loadProfile = (session: Session | null) => {
     if (session !== null) {
       getProfile(session).then((p) => {
         if (p !== undefined && p.length !== 0) {
           setProfile(p[0]);
+          if (i18n.language !== p[0].language_preference) {
+            changeLanguage();
+          }
         } else {
           console.log('no profile');
         }
