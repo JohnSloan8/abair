@@ -121,6 +121,9 @@ i18n
               iAm: 'I am',
               over16: 'Over 16',
               under16: 'Under 16',
+              minEight:
+                'minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+              passwordsDontMatch: "Passwords don't match",
             },
             geabaire: {
               description: 'Providing Irish voices to AAC users',
@@ -302,6 +305,9 @@ i18n
               iAm: 'Tá mé',
               over16: 'os cionn 16',
               under16: 'faoi 16',
+              minEight:
+                'Ocht gcarachtar ar a laghad, litir chás uachtair amháin ar a laghad, litir chás íochtair amháin, uimhir amháin agus carachtar speisialta amháin',
+              passwordsDontMatch: 'Ní hionann pasfhocail',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',

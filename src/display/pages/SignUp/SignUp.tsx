@@ -150,11 +150,6 @@ function SignUp() {
                     </RadioGroup>
                   </FormControl>
                 </CenteredFlexBox>
-                {i18n.language === 'ga' && (
-                  <Typography mr={2} variant="body1" align="center">
-                    (Leagan gaeilge le teacht)
-                  </Typography>
-                )}
               </Box>
 
               {group !== '' ? (
@@ -164,6 +159,11 @@ function SignUp() {
                       Please read the following Information Sheet on GDPR compliance and informed
                       consent for the ABAIR project.
                     </Typography>
+                    {i18n.language === 'ga' && (
+                      <Typography mr={2} my={1} variant="body2" align="center">
+                        *Leagan Gaeilge le teacht
+                      </Typography>
+                    )}
                     <Box p={1} mt={2} sx={{ backgroundColor: 'primary.wafer' }}>
                       <Box mt={1}>
                         <InformationSheet title="Information Sheet" group="over 16" />

@@ -147,11 +147,7 @@ const SignUpForm = ({
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                helperText={
-                  !passwordOK && password !== ''
-                    ? 'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'
-                    : ''
-                }
+                helperText={!passwordOK && password !== '' ? t('pages.auth.minEight') : ''}
               />
             </Grid>
 
@@ -168,7 +164,9 @@ const SignUpForm = ({
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 helperText={
-                  !confirmPasswordOK && confirmPassword !== '' ? "Passwords don't match" : ''
+                  !confirmPasswordOK && confirmPassword !== ''
+                    ? t('pages.auth.passwordsDontMatch')
+                    : ''
                 }
               />
             </Grid>
