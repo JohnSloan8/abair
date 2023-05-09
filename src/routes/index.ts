@@ -111,7 +111,7 @@ const routes: Routes = {
     title: 'login',
     icon: LoginIcon,
     showInSidebar: true,
-    loggedIn: false,
+    loggedIn: true,
     loggedOut: true,
   },
   [Pages.ForgotPassword]: {

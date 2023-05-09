@@ -118,6 +118,9 @@ i18n
               name: 'Name',
               sendEmail: 'Send email',
               updatePassword: 'Update Password',
+              iAm: 'I am',
+              over16: 'Over 16',
+              under16: 'Under 16',
             },
             geabaire: {
               description: 'Providing Irish voices to AAC users',
@@ -289,13 +292,16 @@ i18n
               password: 'Pasfhocal',
               confirmPassword: 'Deimhnigh an Pasfhocal',
               createAccount: 'Cruthaigh Cuntas ABAIR',
-              forgotPassword: 'Dearmad ar pasfhocal',
+              forgotPassword: 'Pasfhocal dearmadta',
               updatePassword: 'Pasfhocal a Nuashonrú',
               passwordUpdating:
                 '(GA) Má tá an ríomhphost seo cláraithe, tá nasc athshlánaithe pasfhocail á sheoladh anois',
               haveAccount: 'Tá cuntas agam cheana féin',
               name: 'Ainm',
               sendEmail: 'Ríomhphost a sheoladh',
+              iAm: 'Tá mé',
+              over16: 'os cionn 16',
+              under16: 'faoi 16',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',

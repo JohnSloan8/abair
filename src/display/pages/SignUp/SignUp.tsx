@@ -41,7 +41,7 @@ function SignUp() {
   const { childConsentOK } = useChildConsentOK();
   const { parentEmailNameOK } = useParentEmailNameOK();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
 
@@ -124,8 +124,9 @@ function SignUp() {
               <Box p={1}>
                 <CenteredFlexBox>
                   <Typography mr={2} variant="h6" align="center">
-                    I am:
+                    {t('pages.auth.iAm')}
                   </Typography>
+
                   <FormControl>
                     <RadioGroup
                       aria-labelledby="demo-radio-buttons-group-label"
@@ -136,11 +137,24 @@ function SignUp() {
                       }}
                       value={group}
                     >
-                      <FormControlLabel value="over 16" control={<Radio />} label="over 16" />
-                      <FormControlLabel value="under 16" control={<Radio />} label="under 16" />
+                      <FormControlLabel
+                        value="over 16"
+                        control={<Radio />}
+                        label={t('pages.auth.over16')}
+                      />
+                      <FormControlLabel
+                        value="under 16"
+                        control={<Radio />}
+                        label={t('pages.auth.under16')}
+                      />
                     </RadioGroup>
                   </FormControl>
                 </CenteredFlexBox>
+                {i18n.language === 'ga' && (
+                  <Typography mr={2} variant="body1" align="center">
+                    (Leagan gaeilge le teacht)
+                  </Typography>
+                )}
               </Box>
 
               {group !== '' ? (

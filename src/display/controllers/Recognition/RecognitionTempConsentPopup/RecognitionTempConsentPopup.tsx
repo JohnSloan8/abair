@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AbPopup } from 'abair-components';
 
 import { CenteredFlexBox } from '@/display/utils/flex';
 import { useShowTempConsent, useTempConsent } from '@/store/consent';
+import { useBreakpointSize } from '@/store/viewDimensions';
 
 const RecognitionTempConsentPopup = () => {
   const { t } = useTranslation();
@@ -13,18 +15,23 @@ const RecognitionTempConsentPopup = () => {
     setTempConsent(agree);
     setShowTempConsent(false);
   };
+  const { breakpointSize } = useBreakpointSize();
+
+  useEffect(() => {
+    console.log('breakpointSize:', breakpointSize);
+  }, [breakpointSize]);
 
   return showTempConsent ? (
     <CenteredFlexBox
       sx={{
         zIndex: 9999,
         position: 'absolute',
-        top: '0',
+        bottom: 0,
+        right: 0,
         backgroundColor: 'rgba(0,0,0,0.3)',
-        width: '100%',
-        height: '100%',
+        width: ['xs', 'sm'].includes(breakpointSize) ? '100%' : '50%',
+        height: ['xs', 'sm'].includes(breakpointSize) ? '50%' : '100%',
       }}
-      borderRadius={5}
       p={1}
     >
       <AbPopup
