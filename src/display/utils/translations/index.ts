@@ -304,10 +304,10 @@ i18n
               sendEmail: 'Ríomhphost a sheoladh',
               iAm: 'Tá mé',
               over16: 'os cionn 16',
-              under16: 'faoi 16',
+              under16: 'faoi bhun 16',
               minEight:
-                'Ocht gcarachtar ar a laghad, litir chás uachtair amháin ar a laghad, litir chás íochtair amháin, uimhir amháin agus carachtar speisialta amháin',
-              passwordsDontMatch: 'Ní hionann pasfhocail',
+                '8 gcarachtar ar a laghad, ar a laghad ceannlitir amháin, litir bheag amháin, uimhir amháin agus carachtar speisialta amháin',
+              passwordsDontMatch: 'Ní hionann na pasfhocail',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',
