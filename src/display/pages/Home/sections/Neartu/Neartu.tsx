@@ -1,19 +1,21 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
-import { AbButton } from 'abair-components';
-import { AbInfoHeader } from 'abair-components';
+import { AbButton, AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
 import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
-import mileGlorLogo from '/assets/images/misc/míleglorUnited.png';
+import neartuTransparentLogo from '/assets/images/misc/neartuTransparent.png';
 
-const AbHomeMileGlorCtrl = () => {
-  const { t } = useTranslation();
+const Neartu = () => {
   const { breakpointSize } = useBreakpointSize();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <HorizontallyCenteredFlexBox height={'100%'}>
@@ -21,30 +23,33 @@ const AbHomeMileGlorCtrl = () => {
         <HorizontallyCenteredFlexBox height={'20%'}>
           <Box>
             <AbInfoHeader
-              title={t('infoHeader.home.mileGlor.title')}
-              description={t('infoHeader.home.mileGlor.description')}
+              title={t('infoHeader.home.neartu.title')}
+              description={t('infoHeader.home.neartu.description')}
             />
           </Box>
         </HorizontallyCenteredFlexBox>
         <CenteredFlexBox height={'50%'}>
-          <Image
-            duration={1000}
-            height={breakpointSize === 'xs' ? 300 : 300}
-            width={breakpointSize === 'xs' ? 300 : 300}
-            easing="ease-out"
-            alt="Mile Glór Image"
-            src={mileGlorLogo}
-            showLoading
-          />
+          <Box component={Link} to={'/neartu'}>
+            <Image
+              duration={1000}
+              height={breakpointSize === 'xs' ? 250 : 320}
+              width={breakpointSize === 'xs' ? 250 : 320}
+              easing="ease-out"
+              alt="Abair Applications"
+              src={neartuTransparentLogo}
+              showLoading
+            />
+          </Box>
         </CenteredFlexBox>
         <CenteredFlexBox height={'10%'}>
           <Box width={200}>
             <AbButton
-              color={'primary'}
               label={t('pages.home.go')}
               onClick={() => {
-                window.location.href = 'https://phoneticsrv3.lcs.tcd.ie/studio/ga/recorder/';
+                navigate('/neartu');
               }}
+              selected={true}
+              color={'primary'}
               fullWidth={true}
             />
           </Box>
@@ -54,4 +59,4 @@ const AbHomeMileGlorCtrl = () => {
   );
 };
 
-export default AbHomeMileGlorCtrl;
+export default Neartu;

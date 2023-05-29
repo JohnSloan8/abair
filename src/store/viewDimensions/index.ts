@@ -20,7 +20,7 @@ const useViewWidth = () => {
   return { viewWidth, setViewWidth };
 };
 
-const breakpointSizeState = atom<'md' | 'sm' | 'xs'>({
+const breakpointSizeState = atom<'lg' | 'md' | 'sm' | 'xs'>({
   key: 'breakpoint-size',
   default: 'xs',
 });

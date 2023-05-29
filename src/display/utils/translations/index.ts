@@ -33,6 +33,7 @@ i18n
             signUp: 'Sign Up',
             profile: 'Profile',
             contact: 'Contact',
+            neartu: 'Neartú',
             APIs: 'APIs',
             corpora: 'Corpora',
             consent: 'Consent',
@@ -66,6 +67,10 @@ i18n
                 title: 'Knowledge Base',
                 description:
                   'Learn about the linguistic research being carried out which informs the technological development',
+              },
+              neartu: {
+                title: 'Neartú',
+                description: 'English description',
               },
               APIs: {
                 title: 'APIs',
@@ -215,6 +220,7 @@ i18n
             news: 'Nuacht',
             login: 'Logáil Isteach',
             signUp: 'Clarú',
+            neartu: 'Neartú',
             profile: 'Próifíl',
             contact: 'Teagmháil',
             APIs: 'APIs',
@@ -251,6 +257,10 @@ i18n
                 title: 'Cillín na Saíochta: Taighde',
                 description:
                   'Féach anseo ar an taighde teangeolaíochta atá á dhéanamh sa tSaotharlann Foghraíochta agus Urlabhra, agus atá ina chrann taca do na forbairtí teicneolaíochta',
+              },
+              neartu: {
+                title: 'Neartú',
+                description: 'Irish description',
               },
               APIs: {
                 title: 'APIs',

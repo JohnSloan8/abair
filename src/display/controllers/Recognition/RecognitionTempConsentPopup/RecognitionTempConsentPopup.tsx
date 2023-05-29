@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AbPopup } from 'abair-components';
@@ -16,10 +15,6 @@ const RecognitionTempConsentPopup = () => {
     setShowTempConsent(false);
   };
   const { breakpointSize } = useBreakpointSize();
-
-  useEffect(() => {
-    console.log('breakpointSize:', breakpointSize);
-  }, [breakpointSize]);
 
   return showTempConsent ? (
     <CenteredFlexBox

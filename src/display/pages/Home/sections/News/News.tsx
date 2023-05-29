@@ -84,7 +84,7 @@ const AbHomePageNewsCtrl = () => {
               navigate('/news');
             }}
             selected={true}
-            color={'secondary'}
+            color={'primary'}
             fullWidth={true}
           />
         </Box>

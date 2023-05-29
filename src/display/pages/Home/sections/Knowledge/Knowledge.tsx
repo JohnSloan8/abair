@@ -46,7 +46,7 @@ const AbHomePageKnowledgeCtrl = () => {
               navigate('/knowledge');
             }}
             selected={true}
-            color={'secondary'}
+            color={'primary'}
             fullWidth={true}
           />
         </Box>

@@ -19,8 +19,8 @@ const APIs = () => {
     <Box height={'100%'}>
       <CenteredFlexBox height={'20%'}>
         <AbInfoHeader
-          title={t('infoHeader.home.Corpora.title')}
-          description={t('infoHeader.home.Corpora.description')}
+          title={t('infoHeader.home.Neartu.title')}
+          description={t('infoHeader.home.Neartu.description')}
         />
       </CenteredFlexBox>
       <CenteredFlexBox>
@@ -32,7 +32,7 @@ const APIs = () => {
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'80%'}>
-        <Box component={Link} to={'/Corpora'}>
+        <Box component={Link} to={'/Neartu'}>
           <Image
             duration={1000}
             height={breakpointSize === 'xs' ? 137.5 : 350}

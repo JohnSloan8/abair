@@ -7,19 +7,26 @@ import { useBreakpointSize } from '@/store/viewDimensions';
 
 const Sizing = () => {
   const theme = useTheme();
-  const { /*breakpointSize,*/ setBreakpointSize } = useBreakpointSize();
+  const { breakpointSize, setBreakpointSize } = useBreakpointSize();
   const xSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const small = useMediaQuery(theme.breakpoints.up('sm'));
   const medium = useMediaQuery(theme.breakpoints.up('md'));
+  const large = useMediaQuery(theme.breakpoints.up('lg'));
 
   useEffect(() => {
-    xSmall ? setBreakpointSize('xs') : medium ? setBreakpointSize('md') : setBreakpointSize('sm');
+    large
+      ? setBreakpointSize('lg')
+      : medium
+      ? setBreakpointSize('md')
+      : small
+      ? setBreakpointSize('sm')
+      : setBreakpointSize('xs');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [xSmall, small, medium]);
+  }, [xSmall, small, medium, large]);
 
-  // useEffect(() => {
-  //   console.log('breakpointSize:', breakpointSize);
-  // }, [breakpointSize]);
+  useEffect(() => {
+    console.log('breakpointSize:', breakpointSize);
+  }, [breakpointSize]);
 
   return null;
 };

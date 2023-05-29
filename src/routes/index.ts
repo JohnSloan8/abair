@@ -96,6 +96,14 @@ const routes: Routes = {
     loggedIn: true,
     loggedOut: true,
   },
+  [Pages.Neartu]: {
+    component: asyncComponentLoader(() => import('@/display/pages/Neartu')),
+    path: `${basePath}neartu`,
+    title: 'Neartu',
+    showInSidebar: false,
+    loggedIn: true,
+    loggedOut: true,
+  },
   [Pages.Contact]: {
     component: asyncComponentLoader(() => import('@/display/pages/Contact')),
     path: `${basePath}contact`,

@@ -18,6 +18,7 @@ enum Pages {
   UpdatePassword,
   SignUp,
   Profile,
+  Neartu,
   // APIs,
   // Corpora,
   Contact,

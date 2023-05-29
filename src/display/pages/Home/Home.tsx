@@ -6,12 +6,10 @@ import Meta from '@/display/sections/Meta';
 import { FullSizeBox } from '@/display/utils/flex';
 
 // import APIs from './sections/APIs';
-import Applications from './sections/Applications';
-// import Corpora from './sections/Corpora';
-// import CoreTechnologies from './sections/CoreTechnologies';
 import Knowledge from './sections/Knowledge';
-import MileGlor from './sections/MileGlor';
 import News from './sections/News';
+// import Corpora from './sections/Corpora';
+import Second from './sections/Second';
 import Top from './sections/Top';
 
 function Home() {
@@ -22,9 +20,9 @@ function Home() {
       <Meta title={t('pageTitles.home')} />
 
       <Top />
-      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
-        <Applications />
-      </FullSizeBox>
+      <Box py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
+        <Second />
+      </Box>
       <FullSizeBox
         py={{ xs: 2, sm: 4 }}
         borderColor="primary.light"
@@ -32,12 +30,7 @@ function Home() {
       >
         <News />
       </FullSizeBox>
-      <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
-        <MileGlor />
-      </FullSizeBox>
-      {/* <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'primary.wafer' }}>
-        <CoreTechnologies />
-      </FullSizeBox> */}
+
       <FullSizeBox
         py={{ xs: 2, sm: 4 }}
         borderColor="primary.light"

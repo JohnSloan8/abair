@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { AbButton, AbInfoHeader } from 'abair-components';
 import Image from 'mui-image';
 
-import { CenteredFlexBox } from '@/display/utils/flex';
+import { CenteredFlexBox, HorizontallyCenteredFlexBox } from '@/display/utils/flex';
 import { useBreakpointSize } from '@/store/viewDimensions';
 
 import applicationsLogo from '/assets/images/misc/abair-applications.png';
@@ -19,18 +19,20 @@ const AbHomePageApplicationsCtrl = () => {
 
   return (
     <Box height={'100%'}>
-      <CenteredFlexBox height={'20%'}>
-        <AbInfoHeader
-          title={t('infoHeader.home.applications.title')}
-          description={t('infoHeader.home.applications.description')}
-        />
-      </CenteredFlexBox>
+      <HorizontallyCenteredFlexBox height={'20%'}>
+        <Box>
+          <AbInfoHeader
+            title={t('infoHeader.home.applications.title')}
+            description={t('infoHeader.home.applications.description')}
+          />
+        </Box>
+      </HorizontallyCenteredFlexBox>
 
-      <CenteredFlexBox height={'70%'}>
+      <CenteredFlexBox height={'50%'}>
         <Link to="/applications">
           <Image
             duration={1000}
-            width={breakpointSize === 'xs' ? 400 : 900}
+            width={breakpointSize === 'xs' ? 400 : 650}
             easing="ease-out"
             alt="Abair Applications"
             src={applicationsLogo}
@@ -46,7 +48,7 @@ const AbHomePageApplicationsCtrl = () => {
               navigate('/applications');
             }}
             selected={true}
-            color={'secondary'}
+            color={'primary'}
             fullWidth={true}
           />
         </Box>
