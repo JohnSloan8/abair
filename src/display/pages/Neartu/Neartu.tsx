@@ -246,7 +246,7 @@ function Neartu() {
                       description={t('pages.profile.thanks')}
                       condition1=""
                       borderColor="secondary.main"
-                      buttons={[{ text: 'ok', color: 'secondary' }]}
+                      buttons={[{ text: 'ok', color: 'primary' }]}
                       onClick={() => {
                         setShowSubmittedConfirmation(false);
                       }}
