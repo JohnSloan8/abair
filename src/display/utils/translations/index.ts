@@ -112,6 +112,7 @@ i18n
               incorrectEmailOrPassword: 'Your email address or password is incorrect.',
               signup: 'Sign Up',
               emailAddress: 'Email Address',
+              validEmail: 'Must be a valid email address',
               password: 'Password',
               confirmPassword: 'Confirm Password',
               createAccount: 'Create an ABAIR Account',
@@ -129,6 +130,15 @@ i18n
               minEight:
                 'minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
               passwordsDontMatch: "Passwords don't match",
+            },
+            neartu: {
+              expressionInterest: 'Expression of Interest',
+              validName: 'Name must be at least 2 letters',
+              interest: 'The aspect in which you are most interested',
+              otherInfo: 'Any other details you would like to inform us of',
+              consent:
+                'I confirm that I am willing to have my details added to the ABAIR.ie list of contacts',
+              send: 'send',
             },
             geabaire: {
               description: 'Providing Irish voices to AAC users',
@@ -302,6 +312,7 @@ i18n
               incorrectEmailOrPassword: 'Tá do ríomhphost nó pasfhocal mícheart.',
               signup: 'Cláraigh',
               emailAddress: 'Seoladh ríomhphoist',
+              validEmail: 'Irish - Must be a valid email address',
               password: 'Pasfhocal',
               confirmPassword: 'Deimhnigh an Pasfhocal',
               createAccount: 'Cruthaigh Cuntas ABAIR',
@@ -318,6 +329,15 @@ i18n
               minEight:
                 '8 gcarachtar ar a laghad, ar a laghad ceannlitir amháin, litir bheag amháin, uimhir amháin agus carachtar speisialta amháin',
               passwordsDontMatch: 'Ní hionann na pasfhocail',
+            },
+            neartu: {
+              expressionInterest: 'Léiriú spéise',
+              validName: '2 charachtar ar a laghad',
+              interest: 'An ghné a bhfuil spéis agat ann',
+              otherInfo: 'Aon sonraí eile a mba mhaith leat a chur in iúl dúinn',
+              consent:
+                'Tá mé sásta go gcuirfí ar liosta teagmhála de chuid an tionscadail ABAIR.ie mé',
+              send: 'seoladh',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',
