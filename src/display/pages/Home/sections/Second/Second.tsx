@@ -11,7 +11,12 @@ const Secondary = () => {
   const { breakpointSize } = useBreakpointSize();
 
   return (
-    <Box py={4} height={breakpointSize !== 'lg' ? '300vh' : '100vh'} sx={{ position: 'relative' }}>
+    <Box
+      py={2}
+      mt={2}
+      height={breakpointSize !== 'lg' ? '200vh' : '66.7vh'}
+      sx={{ position: 'relative' }}
+    >
       <Grid container height={'100%'} width={'100%'}>
         <Grid item lg={4} md={12} width={'100%'}>
           <Neartu />

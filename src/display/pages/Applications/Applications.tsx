@@ -31,6 +31,7 @@ function Applications() {
   const filteredApplications = useRecoilValue(filteredApplicationsState);
   const { setApplicationCategoryFilter } = useApplicationCategoryFilter();
   const { breakpointSize } = useBreakpointSize();
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     const newIndex = categories[newValue].id;
     setApplicationCategoryFilter(newIndex);

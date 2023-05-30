@@ -242,8 +242,8 @@ function Neartu() {
                     p={1}
                   >
                     <AbPopup
-                      title={t('pages.profile.updated')}
-                      description={t('pages.profile.thanks')}
+                      title={''}
+                      description={t('pages.neartu.requestSubmitted')}
                       condition1=""
                       borderColor="secondary.main"
                       buttons={[{ text: 'ok', color: 'primary' }]}
@@ -332,6 +332,7 @@ function Neartu() {
                           <Checkbox
                             color={'secondary'}
                             onChange={(e) => setConsent(e.target.checked)}
+                            checked={consent}
                           />
                         </FlexBox>
                       </Grid>

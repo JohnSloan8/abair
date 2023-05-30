@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 import { AbButton } from 'abair-components';
 import { AbInfoHeader } from 'abair-components';
@@ -18,26 +19,38 @@ const AbHomeMileGlorCtrl = () => {
   return (
     <HorizontallyCenteredFlexBox height={'100%'}>
       <Box maxWidth={'md'}>
-        <HorizontallyCenteredFlexBox height={'20%'}>
-          <Box>
+        <HorizontallyCenteredFlexBox height={'25%'}>
+          <Box px={2}>
             <AbInfoHeader
               title={t('infoHeader.home.mileGlor.title')}
               description={t('infoHeader.home.mileGlor.description')}
+              descriptionFonts={['body1', 'body2']}
             />
           </Box>
         </HorizontallyCenteredFlexBox>
-        <CenteredFlexBox height={'50%'}>
-          <Image
-            duration={1000}
-            height={breakpointSize === 'xs' ? 300 : 300}
-            width={breakpointSize === 'xs' ? 300 : 300}
-            easing="ease-out"
-            alt="Mile Glór Image"
-            src={mileGlorLogo}
-            showLoading
-          />
+        <CenteredFlexBox height={'60%'}>
+          <Button
+            onClick={() => {
+              window.location.href = 'https://phoneticsrv3.lcs.tcd.ie/studio/ga/recorder/';
+            }}
+            sx={{
+              '&:hover': {
+                backgroundColor: 'transparent', // Set the hover background color to transparent
+              },
+            }}
+          >
+            <Image
+              duration={1000}
+              height={breakpointSize === 'xs' ? 300 : 300}
+              width={breakpointSize === 'xs' ? 300 : 300}
+              easing="ease-out"
+              alt="Mile Glór Logo"
+              src={mileGlorLogo}
+              showLoading
+            />
+          </Button>
         </CenteredFlexBox>
-        <CenteredFlexBox height={'10%'}>
+        <CenteredFlexBox height={'5%'}>
           <Box width={200}>
             <AbButton
               color={'primary'}

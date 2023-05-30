@@ -70,7 +70,7 @@ i18n
               },
               neartu: {
                 title: 'Neartú',
-                description: 'English description',
+                description: 'Working for equal rights for people with disabilities',
               },
               APIs: {
                 title: 'APIs',
@@ -270,7 +270,7 @@ i18n
               },
               neartu: {
                 title: 'Neartú',
-                description: 'Irish description',
+                description: 'Ag obair ar son cearta comhionanna do dhaoine faoi mhíchumas',
               },
               APIs: {
                 title: 'APIs',
@@ -312,7 +312,7 @@ i18n
               incorrectEmailOrPassword: 'Tá do ríomhphost nó pasfhocal mícheart.',
               signup: 'Cláraigh',
               emailAddress: 'Seoladh ríomhphoist',
-              validEmail: 'Irish - Must be a valid email address',
+              validEmail: 'Cuir seoladh bailí ríomphoist ar fáil, le do thoil',
               password: 'Pasfhocal',
               confirmPassword: 'Deimhnigh an Pasfhocal',
               createAccount: 'Cruthaigh Cuntas ABAIR',
@@ -337,7 +337,8 @@ i18n
               otherInfo: 'Aon sonraí eile a mba mhaith leat a chur in iúl dúinn',
               consent:
                 'Tá mé sásta go gcuirfí ar liosta teagmhála de chuid an tionscadail ABAIR.ie mé',
-              send: 'seoladh',
+              send: 'seol sonraí',
+              requestSubmitted: 'Glacadh le do chuid sonraí. Beimid chugat go luath.',
             },
             geabaire: {
               description: 'Córas cumarsáide AAC le Gaeilge',

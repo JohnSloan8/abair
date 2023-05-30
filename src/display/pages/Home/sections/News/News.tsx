@@ -37,6 +37,7 @@ const AbHomePageNewsCtrl = () => {
         <AbInfoHeader
           title={t('infoHeader.home.news.title')}
           description={t('infoHeader.home.news.description')}
+          descriptionFonts={['body1', 'body2']}
         />
       </CenteredFlexBox>
       <CenteredFlexBox height={'70%'} width={'100%'} sx={{ overflowX: 'hidden' }}>

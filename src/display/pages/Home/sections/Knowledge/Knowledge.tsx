@@ -29,8 +29,8 @@ const AbHomePageKnowledgeCtrl = () => {
         <Box component={Link} to={'/knowledge'}>
           <Image
             duration={1000}
-            height={breakpointSize === 'xs' ? 137.5 : 300}
-            width={breakpointSize === 'xs' ? 150 : 325}
+            height={breakpointSize === 'xs' ? 137.5 : 200}
+            width={breakpointSize === 'xs' ? 150 : 220}
             easing="ease-out"
             alt="Abair Applications"
             src={publicationsLogo}

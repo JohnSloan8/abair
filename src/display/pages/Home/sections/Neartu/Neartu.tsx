@@ -20,28 +20,29 @@ const Neartu = () => {
   return (
     <HorizontallyCenteredFlexBox height={'100%'}>
       <Box maxWidth={'md'}>
-        <HorizontallyCenteredFlexBox height={'20%'}>
-          <Box>
+        <HorizontallyCenteredFlexBox height={'25%'}>
+          <Box px={2}>
             <AbInfoHeader
               title={t('infoHeader.home.neartu.title')}
               description={t('infoHeader.home.neartu.description')}
+              descriptionFonts={['body1', 'body2']}
             />
           </Box>
         </HorizontallyCenteredFlexBox>
-        <CenteredFlexBox height={'50%'}>
+        <CenteredFlexBox height={'60%'}>
           <Box component={Link} to={'/neartu'}>
             <Image
               duration={1000}
               height={breakpointSize === 'xs' ? 250 : 320}
               width={breakpointSize === 'xs' ? 250 : 320}
               easing="ease-out"
-              alt="Abair Applications"
+              alt="Neartú logo"
               src={neartuTransparentLogo}
               showLoading
             />
           </Box>
         </CenteredFlexBox>
-        <CenteredFlexBox height={'10%'}>
+        <CenteredFlexBox height={'5%'}>
           <Box width={200}>
             <AbButton
               label={t('pages.home.go')}

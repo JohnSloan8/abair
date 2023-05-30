@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 
 import Meta from '@/display/sections/Meta';
-import { FullSizeBox } from '@/display/utils/flex';
+import { TwoThirdsSizeBox } from '@/display/utils/flex';
 
 // import APIs from './sections/APIs';
 import Knowledge from './sections/Knowledge';
@@ -20,24 +20,24 @@ function Home() {
       <Meta title={t('pageTitles.home')} />
 
       <Top />
-      <Box py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.default' }}>
+      <Box py={{ xs: 1, sm: 2 }} sx={{ backgroundColor: 'background.default' }}>
         <Second />
       </Box>
-      <FullSizeBox
+      <TwoThirdsSizeBox
         py={{ xs: 2, sm: 4 }}
         borderColor="primary.light"
         sx={{ backgroundColor: 'primary.wafer' }}
       >
         <News />
-      </FullSizeBox>
+      </TwoThirdsSizeBox>
 
-      <FullSizeBox
+      <TwoThirdsSizeBox
         py={{ xs: 2, sm: 4 }}
         borderColor="primary.light"
-        sx={{ backgroundColor: 'primary.wafer' }}
+        sx={{ backgroundColor: 'background.default' }}
       >
         <Knowledge />
-      </FullSizeBox>
+      </TwoThirdsSizeBox>
       {/* <FullSizeBox py={{ xs: 2, sm: 4 }} sx={{ backgroundColor: 'background.paper' }}>
         <APIs />
       </FullSizeBox>

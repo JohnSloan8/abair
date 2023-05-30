@@ -19,16 +19,17 @@ const AbHomePageApplicationsCtrl = () => {
 
   return (
     <Box height={'100%'}>
-      <HorizontallyCenteredFlexBox height={'20%'}>
-        <Box>
+      <HorizontallyCenteredFlexBox height={'25%'}>
+        <Box px={2}>
           <AbInfoHeader
             title={t('infoHeader.home.applications.title')}
             description={t('infoHeader.home.applications.description')}
+            descriptionFonts={['body1', 'body2']}
           />
         </Box>
       </HorizontallyCenteredFlexBox>
 
-      <CenteredFlexBox height={'50%'}>
+      <CenteredFlexBox height={'60%'}>
         <Link to="/applications">
           <Image
             duration={1000}
@@ -40,7 +41,7 @@ const AbHomePageApplicationsCtrl = () => {
           />
         </Link>
       </CenteredFlexBox>
-      <CenteredFlexBox height={'10%'}>
+      <CenteredFlexBox height={'5%'}>
         <Box width={200}>
           <AbButton
             label={t('pages.home.seeAll')}
