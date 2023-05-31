@@ -17,12 +17,12 @@ import { CenteredFlexBox, FlexBox, HorizontallyCenteredFlexBox } from '@/display
 import { validateEmail } from '@/display/utils/validators';
 import { createInterest } from '@/services/supabase/neartu';
 
-import AACClassroom from '/assets/images/misc/AACClassroom.jpg';
-import AACScreenshot from '/assets/images/misc/AACScreenshot.png';
-import UsingAAC from '/assets/images/misc/UsingAAC.jpg';
+import AACClassroom from '/assets/images/misc/AACClassroom-min.jpg';
+import AACScreenshot from '/assets/images/misc/AACScreenshot-min.png';
+import UsingAAC from '/assets/images/misc/UsingAAC-min.jpg';
 import neartuTransparentLogo from '/assets/images/misc/neartuTransparent.png';
-import Ronan from '/assets/images/misc/ronan_leitheoir_scaileain1.jpg';
-import screenreader from '/assets/images/misc/screenreader.png';
+import Ronan from '/assets/images/misc/ronan_leitheoir_scaileain1-min.jpg';
+import screenreader from '/assets/images/misc/screenreader-min.png';
 
 function Neartu() {
   const { t } = useTranslation();
