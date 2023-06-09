@@ -32,7 +32,7 @@ const Synthesis = () => {
   }, []);
 
   return (
-    <Box pt={4}>
+    <Box pt={4} width={'100%'}>
       <Typography variant={'h5'} align="center" sx={{ color: 'secondary.dark' }}>
         {t('pages.home.speak')}
       </Typography>
@@ -60,7 +60,7 @@ const Synthesis = () => {
       </CenteredFlexBox>
       <CenteredFlexBox p={4}>
         <AbButton
-          label={'advanced synthesis options'}
+          label={t('pages.home.advancedSynthesisOptions')}
           onClick={() => navigate(`${basePath}speech-synthesis`)}
           selected={false}
           color={'secondary'}

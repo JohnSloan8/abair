@@ -27,7 +27,7 @@ const Recognition = () => {
   const navigate = useNavigate();
 
   return (
-    <Box pt={4}>
+    <Box pt={4} width={'100%'}>
       <Typography variant={'h5'} align="center" sx={{ color: 'warning.dark' }}>
         {t('pages.home.listen')}
       </Typography>
@@ -73,7 +73,7 @@ const Recognition = () => {
       <RecognitionTempConsentPopup />
       <CenteredFlexBox p={4}>
         <AbButton
-          label={'advanced recognition options'}
+          label={t('pages.home.advancedRecognitionOptions')}
           onClick={() => navigate(`${basePath}speech-recognition`)}
           selected={false}
           color={'warning'}

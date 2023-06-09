@@ -103,6 +103,8 @@ i18n
                   description: 'View all speech recognition requests',
                 },
               },
+              advancedSynthesisOptions: 'advanced synthesis options',
+              advancedRecognitionOptions: 'advanced recognition options',
               go: 'go',
             },
             auth: {
@@ -304,6 +306,8 @@ i18n
                   description: 'Bain triail as córas ÉIST agus féach siar ar do chuid iarrachtaí',
                 },
               },
+              advancedSynthesisOptions: 'tuilleadh roghanna sintéise',
+              advancedRecognitionOptions: 'tuilleadh roghanna aitheanta cainte',
               go: 'ar aghaidh',
             },
             auth: {
