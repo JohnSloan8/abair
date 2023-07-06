@@ -12,4 +12,14 @@ const useNewsStories = () => {
   return { newsStories, setNewsStories };
 };
 
-export { useNewsStories };
+const posterShownState = atom<boolean>({
+  key: 'poster-shown-state',
+  default: false,
+});
+
+const usePosterShown = () => {
+  const [posterShown, setPosterShown] = useRecoilState(posterShownState);
+  return { posterShown, setPosterShown };
+};
+
+export { useNewsStories, usePosterShown };
