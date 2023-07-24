@@ -32,6 +32,9 @@ function Home() {
       setTimeout(() => {
         setShowPoster(true);
         setPosterShown(true);
+        setTimeout(() => {
+          setShowPoster(false);
+        }, 8000);
       }, 2000);
     }
   }, []);
